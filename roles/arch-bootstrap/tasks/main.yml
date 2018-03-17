@@ -30,6 +30,8 @@
   with_items: "{{ drive.partitions }}"
   when: item.mountpoint is defined
 
+- import_tasks: btrfs.yml
+
 - name: retrieve UUIDs of encrypted partitions
   command: blkid -s UUID -o value /dev/disk/by-partlabel/{{ item.name }}
   register: device_uuids
