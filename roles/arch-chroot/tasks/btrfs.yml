@@ -1,0 +1,17 @@
+---
+- name: Recursive create given subvolume path
+  btrfs_subvolume:
+    state: present
+    path: /
+- name: Recursive create given subvolume path
+  btrfs_subvolume:
+    state: present
+    path: /tmp
+- name: Recursive create given subvolume path
+  btrfs_subvolume:
+    state: present
+    path: /var
+- name: Recursive create given subvolume path
+  btrfs_subvolume:
+    state: present
+    path: /home

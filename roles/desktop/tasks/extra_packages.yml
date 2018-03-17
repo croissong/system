@@ -1,0 +1,48 @@
+---
+- name: install extra packages from repo
+  pacman: name={{ item }}
+  with_items: "{{ extra_packages }}"
+
+- name: install host-specific packages from repo
+  pacman: name={{ item }}
+  with_items: "{{ host_extra_packages }}"
+  when: host_extra_packages is defined
+
+- name: Install packages from AUR
+  block:
+
+    # Avoid interactive password prompts while installing AUR packages.
+    - name: set NOPASSWD for makepkg
+      lineinfile:
+        path: /etc/sudoers
+        line: '{{ user.name }} ALL=(root) NOPASSWD: /usr/bin/pacman'
+        validate: 'visudo -cf %s'
+        state: present
+      tags: aur
+
+    - name: install extra packages from AUR
+      aur:
+        name: "{{ item }}"
+        user: "{{ user.name }}"
+        dir: /tmp
+      tags: aur
+      with_items: "{{ extra_aur_packages }}"
+
+    - name: install host-specific packages from AUR
+      aur:
+        name: "{{ item }}"
+        user: "{{ user.name }}"
+        dir: /tmp
+      tags: aur
+      with_items: "{{ host_extra_aur_packages }}"
+      when: host_extra_aur_packages is defined
+
+  always:
+
+    # Make sure NOPASSWD is always removed even if above tasks failed.
+    - name: remove NOPASSWD for makepkg
+      lineinfile:
+        path: /etc/sudoers
+        line: '{{ user.name }} ALL=(root) NOPASSWD: /usr/bin/pacman'
+        validate: 'visudo -cf %s'
+        state: absent

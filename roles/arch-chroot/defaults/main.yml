@@ -1,0 +1,34 @@
+hostname: localhost
+timezone: America/Los_Angeles
+country: United States
+locales:
+  - en_US
+
+initramfs_hooks:
+  - base
+  - systemd
+  - autodetect
+  - keyboard
+  - sd-vconsole
+  - modconf
+  - block
+  - sd-encrypt
+  - filesystems
+  - fsck
+
+packages:
+  - arch-wiki-lite
+  - coreutils
+  - dialog
+  - glances
+  - linux-firmware
+  - lsof
+  - moreutils
+  - rsync
+  - sysstat
+  - wpa_supplicant
+
+# File name for encryption key used by dmcrypt to encrypt non-root
+# partitions. The key is stored on encrypted root partition which is unlocked
+# with a password.
+luks_key_name: luks.key

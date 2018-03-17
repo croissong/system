@@ -1,0 +1,63 @@
+---
+
+- name: sync system clock
+  command: timedatectl set-ntp true
+
+- name: partition drive
+  parted:
+    label: "{{ drive.table }}"
+    device: "{{ drive.device }}"
+    # Parted indexes partitions starting from 1:
+    number: "{{ item.0 + 1 }}"
+    name: "{{ item.1.name }}"
+    part_start: "{{ item.1.start }}"
+    part_end: "{{ item.1.end }}"
+    part_type: "{{ item.1.type|default(omit) }}"
+    flags: "{{ item.1.flags|default(omit) }}"
+    state: present
+  with_indexed_items:
+    - "{{ drive.partitions }}"
+ 
+- name: encrypt partitions
+  import_tasks: encrypt.yml
+
+- name: mount partitions
+  mount:
+    path: "{{ arch_root }}{{ item.mountpoint }}"
+    src: "{{ item.encrypt | ternary('/dev/mapper/arch-' + item.name, 'PARTLABEL=' + item.name) }}"
+    fstype: "{{ item.filesystem }}"
+    state: mounted
+  with_items: "{{ drive.partitions }}"
+  when: item.mountpoint is defined
+
+- name: retrieve UUIDs of encrypted partitions
+  command: blkid -s UUID -o value /dev/disk/by-partlabel/{{ item.name }}
+  register: device_uuids
+  with_items: "{{ drive.partitions }}"
+  when: item.encrypt
+
+- name: copy key file to root partition
+  copy:
+    src: "/{{ luks_key_name }}"
+    dest: "{{ arch_root }}/{{ luks_key_name }}"
+    mode: 0000
+
+- name: shred precreated LUKS key file
+  command: "shred -u /{{ luks_key_name }}"
+
+- name: Bootstrap base Arch Linux.
+  command: "pacstrap {{ arch_root }} base base-devel reflector ansible btrfs-progs
+"
+
+- name: generate crypttab file to unlock encrypted non-root partitions
+  lineinfile:
+    path: "{{ arch_root }}/etc/crypttab"
+    line: "arch-{{ item.item.name }} UUID={{ item.stdout }} /{{ luks_key_name }} luks"
+    state: present
+    create: true
+  with_items: "{{ device_uuids.results }}"
+  when: item.stdout is defined and item.item.name != 'root'
+
+- name: generate fstab file
+  shell: genfstab -U {{ arch_root }} > {{ arch_root }}/etc/fstab
+

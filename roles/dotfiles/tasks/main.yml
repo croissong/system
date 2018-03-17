@@ -1,0 +1,44 @@
+---
+
+- name: install stow to manage symlinks
+  pacman: name=stow
+- name: check if dotfiles exist
+  stat:
+    path: "${HOME}/dotfiles"
+  become_user: "{{ user.name }}"
+  register: dotfiles_dir
+
+- name: clone dotfiles
+  command: "git clone {{ dotfiles.repo }} ${HOME}/dotfiles"
+  become_user: "{{ user.name }}"
+  when: not dotfiles_dir.stat.exists
+
+- name: install dotfiles dependencies
+  pacman:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ dotfiles.deps }}"
+
+- name: install dotfiles
+  command: "{{ dotfiles.install_cmd }}"
+  become_user: "{{ user.name }}"
+
+- name: add bash dotfiles to .bashrc
+  lineinfile:
+    path: /home/{{ user.name }}/.bashrc
+    line: 'source ${HOME}/.bashrc.local'
+    create: yes
+
+# Keepassxc config is installed here once instead of symlinked from dotfiles
+# repo as keepassxc constantly rewrites its config cause changed to be added
+# into Git repository.
+- name: create Keepassxc config dir
+  file:
+    path: "${HOME}/.config/keepassxc"
+    state: directory
+  become_user: "{{ user.name }}"
+
+- name: install Keepassxc config
+  copy:
+    src: keepassxc.ini
+    dest: "${HOME}/.config/keepassxc/"

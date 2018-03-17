@@ -1,0 +1,92 @@
+---
+
+- name: configure initramfs build hooks
+  lineinfile:
+    path: /etc/mkinitcpio.conf
+    regexp: '^HOOKS='
+    line: HOOKS="{{ initramfs_hooks | join(' ') }}"
+
+- name: embed LUKS key into initramfs
+  lineinfile:
+    path: /etc/mkinitcpio.conf
+    regexp: '^FILES='
+    line: 'FILES=(/{{ luks_key_name }})'
+
+- name: rebuild initramfs
+  command: mkinitcpio -p linux
+
+- name: restrict access permissions to initramfs
+  file:
+    path: "/boot/{{ item }}"
+    mode: 0600
+  with_items:
+    - initramfs-linux.img
+    - initramfs-linux-fallback.img
+
+- name: 'detect boot firmware (UEFI or BIOS)'
+  shell: '[ -d /sys/firmware/efi ] && echo UEFI || echo BIOS'
+  register: firmware
+
+- name: create /boot/efi directory
+  file:
+    path: /boot/efi
+    state: directory
+  when: firmware.stdout == 'UEFI'
+
+- name: install bootloader packages
+  pacman:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - grub
+    - efibootmgr
+
+- name: configure encrypted device for GRUB
+  lineinfile:
+    path: /etc/default/grub
+    regexp: '^(.*)GRUB_CMDLINE_LINUX='
+    line: >
+      GRUB_CMDLINE_LINUX="rd.luks.uuid={{ item.stdout }}
+      rd.luks.name={{ item.stdout }}=arch-root
+      rd.luks.key={{ item.stdout }}=/{{ luks_key_name }}"
+      acpi_sleep=nonvs
+  with_items: "{{ hostvars.localhost.device_uuids.results }}"
+  when: item.stdout is defined and item.item.name == 'root'
+
+- name: enable GRUB to unlock encrypted /boot
+  lineinfile:
+    path: /etc/default/grub
+    regexp: '^(.*)GRUB_ENABLE_CRYPTODISK='
+    line: "GRUB_ENABLE_CRYPTODISK=y"
+  with_items: "{{ hostvars.localhost.device_uuids.results }}"
+  when: item.stdout is defined and item.item.name == 'root'
+
+- name: set grub menu timeout
+  lineinfile:
+    path: /etc/default/grub
+    regexp: '^GRUB_TIMEOUT='
+    line: "GRUB_TIMEOUT=1"
+
+- name: install GRUB bootloader for UEFI
+  command: grub-install --recheck
+  when: firmware.stdout == 'UEFI'
+
+# - name: install GRUB bootloader for BIOS
+#   command: "grub-install --recheck {{ drive.device }}"
+#   when: firmware.stdout == 'BIOS'
+
+- name: configure GRUB
+  command: grub-mkconfig -o /boot/grub/grub.cfg
+
+- name: create UEFI boot entry
+  command: "efibootmgr --create --disk {{ drive.device }} --part {{ item.0 }} --loader /EFI/arch/grubx64.efi --label 'Arch Linux'"
+  when: firmware.stdout == 'UEFI' and item.1.name == 'efi'
+  with_indexed_items: "{{ drive.partitions }}"
+  ignore_errors: yes
+
+- name: write EFI entry for VirtualBox
+  lineinfile:
+    path: /boot/efi/startup.nsh
+    line: 'EFI\arch\grubx64.efi'
+    create: yes
+  when: ansible_product_name == "VirtualBox"

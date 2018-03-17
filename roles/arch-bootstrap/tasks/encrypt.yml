@@ -1,0 +1,55 @@
+---
+
+- name: create key file for encrypting non-root devices
+  command: dd if=/dev/urandom of=/{{ luks_key_name }} bs=1024 count=8
+
+- name: encrypt root device
+  shell: >
+    echo -n "{{ hostvars.localhost.luks_passphrase }}" |
+    cryptsetup -qv luksFormat /dev/disk/by-partlabel/{{ item.name }}
+  with_items:
+    - "{{ drive.partitions }}"
+  when: item.encrypt and item.name == 'root'
+
+- name: add LUKS key file to root device
+  shell: >
+    echo -n "{{ hostvars.localhost.luks_passphrase }}" |
+    cryptsetup -qv luksAddKey /dev/disk/by-partlabel/{{ item.name }} /{{ luks_key_name }}
+  with_items:
+    - "{{ drive.partitions }}"
+  when: item.encrypt and item.name == 'root'
+
+- name: encrypt non-root devices using key file
+  command: "cryptsetup -q --key-file /{{ luks_key_name }} luksFormat /dev/disk/by-partlabel/{{ item.name }}"
+  with_items:
+    - "{{ drive.partitions }}"
+  when: item.encrypt and item.name != 'root'
+
+- name: open encrypted root device
+  shell: >
+    echo -n "{{ hostvars.localhost.luks_passphrase }}" |
+    cryptsetup luksOpen /dev/disk/by-partlabel/{{ item.name }} arch-{{ item.name }}
+  with_items:
+    - "{{ drive.partitions }}"
+  when: item.encrypt and item.name == 'root'
+
+- name: open encrypted non-root devices
+  command: "cryptsetup --key-file /{{ luks_key_name }} luksOpen /dev/disk/by-partlabel/{{ item.name }} arch-{{ item.name }}"
+  with_items:
+    - "{{ drive.partitions }}"
+  when: item.encrypt and item.name != 'root'
+
+# File systems are explicitely created using mkfs command because Ansible
+# filesystem module doesn't support vfat at the moment.
+# See: https://github.com/ansible/ansible/pull/23527
+- name: create filesystems on encrypted partitions
+  command: mkfs.{{ item.filesystem }} /dev/mapper/arch-{{ item.name }}
+  with_items:
+    - "{{ drive.partitions }}"
+  when: item.filesystem is defined and item.encrypt
+
+- name: create filesystems on unencrypted partitions
+  command: mkfs.{{ item.filesystem }} /dev/disk/by-partlabel/{{ item.name }}
+  with_items:
+    - "{{ drive.partitions }}"
+  when: item.filesystem is defined and not item.encrypt
