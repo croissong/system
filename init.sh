@@ -11,7 +11,6 @@ cd /opt/host
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
-pacman -Sy --noconfirm  ansible python2-passlib
-ansible-galaxy install debops-contrib.btrfs
+pacman -Sy --noconfirm ansible python2-passlib
 
-ansible-playbook -i localhost install.yml
+ansible-playbook -i localhost install.yml --skip-tags 'role::btrfs::pkts'

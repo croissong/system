@@ -56,3 +56,13 @@ drive:
       filesystem: vfat
       mountpoint: /boot
       encrypt: false
+
+btrfs__subvolumes:
+  "{{ arch_root }}/@":
+     state: present
+  "{{ arch_root }}/@tmp":
+     state: present
+  "{{ arch_root }}/@var":
+     state: present
+  "{{ arch_root }}/@home":
+     state: present
