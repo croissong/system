@@ -43,18 +43,16 @@ drive:
   device: /dev/sda
   table: gpt
   partitions:
-
-    - name: efi
-      start: 0%
-      end: 512MiB
-      flags: [boot]
-      filesystem: vfat
-      mountpoint: /boot/efi
-      encrypt: false
-
     - name: arch
       start: 512MiB
       end: 100%
       filesystem: btrfs
       mountpoint: /
+      encrypt: false
+    - name: efi
+      start: 0%
+      end: 512MiB
+      flags: [boot]
+      filesystem: vfat
+      mountpoint: /boot
       encrypt: false

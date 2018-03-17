@@ -25,9 +25,3 @@
 
 - name: install bootctl bootloader
   command: "bootctl --path=/boot install"
-
-# - name: create UEFI boot entry
-#   command: "efibootmgr --create --disk {{ drive.device }} --part {{ item.0 }} --loader /EFI/arch/grubx64.efi --label 'Arch Linux'"
-#   when: firmware.stdout == 'UEFI' and item.1.name == 'efi'
-#   with_indexed_items: "{{ drive.partitions }}"
-#   ignore_errors: yes

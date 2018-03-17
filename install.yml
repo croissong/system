@@ -4,11 +4,6 @@
   connection: local
 
   vars_prompt:
-    - name: luks_passphrase
-      prompt: "encryption passphrase:"
-      private: yes
-      confirm: yes
-
     - name: user_password
       prompt: "user password:"
       encrypt: "sha512_crypt"
@@ -17,17 +12,13 @@
 
 
   pre_tasks:
-
-      # Make prompted vars available for all plays.
-    - set_fact:
-        luks_passphrase: "{{ luks_passphrase }}"
-
     - set_fact:
         user_password: "{{ user_password }}"
 
   tasks:
     - import_role:
         name: arch-bootstrap
+      tags: arch-bootstrap
 
   post_tasks:
 
@@ -50,6 +41,13 @@
         - sys
         - dev
         - run
+
+    - name: mount efivarfs
+      mount:
+        src: efivarfs
+        path: "{{ arch_root }}/sys/firmware/efi/efivars"
+        fstype: efivarfs
+        state: mounted
 
     - name: copy resolv.conf into chroot
       copy:

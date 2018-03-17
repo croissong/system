@@ -5,7 +5,7 @@
 
 cd /opt/host
 
-# sed -n 'p 5' init.sh
+# sed -n '5p' init.sh
 
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup

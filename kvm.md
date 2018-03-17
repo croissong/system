@@ -3,12 +3,7 @@
 # systemctl start libvirtd virtlogd.service dnsmasq.service ebtables.service
 
 
-
-http://troglobit.github.io/2013/07/05/file-system-pass-through-in-kvm-slash-qemu-slash-libvirt/
-
-<filesystem type='mount' accessmode='mapped'>
-    <source dir='/tmp/shared'/>
-    <target dir='tag'/>
-</filesystem>
+sudo qemu-img create -f qcow2 /var/lib/libvirt/images/arch.qcow2 20G
+sudo virsh create vm.xml
 
 mount -t 9p -o trans=virtio,version=9p2000.L tag /mnt/shared/
