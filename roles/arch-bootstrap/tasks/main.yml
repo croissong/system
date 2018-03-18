@@ -17,19 +17,25 @@
     state: present
   with_indexed_items:
     - "{{ drive.partitions }}"
+
+- name: create filesystems on unencrypted partitions
+  command: mkfs.{{ item.filesystem }} /dev/disk/by-partlabel/{{ item.name }}
+  with_items:
+    - "{{ drive.partitions }}"
+  when: item.filesystem is defined and not item.encrypt
  
 - name: mount partitions
   mount:
     path: "{{ arch_root }}{{ item.mountpoint }}"
     src: "{{ item.encrypt | ternary('/dev/mapper/arch-' + item.name, 'PARTLABEL=' + item.name) }}"
     fstype: "{{ item.filesystem }}"
-    state: mounted
+    state: mounted		
   with_items: "{{ drive.partitions }}"
   when: item.mountpoint is defined
 
 - name: Create btrfs subvolumes
   include_role: 
-    name: debops-contrib.btrfs
+    name: ansible-btrfs
 
 - name: Bootstrap base Arch Linux.
   command: "pacstrap {{ arch_root }} base base-devel reflector ansible btrfs-progs

@@ -61,7 +61,7 @@
 
 
   roles:
-    - arch-chroot
+    - { role: arch-chroot, tags: ['arch-chroot'] }
 
 
 - hosts: localhost
@@ -73,11 +73,6 @@
 
     - name: unmount partitions with the new system
       command: umount -Rf {{ arch_root }}
-
-    - name: close LUKS encrypted devices
-      command: "cryptsetup luksClose /dev/mapper/arch-{{ item.name }}"
-      with_items: "{{ drive.partitions }}"
-      when: item.encrypt
 
     - name: reboot
       command: reboot

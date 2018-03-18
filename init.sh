@@ -13,4 +13,4 @@ rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 pacman -Sy --noconfirm ansible python2-passlib
 
-ansible-playbook -i localhost install.yml --skip-tags 'role::btrfs::pkts'
+ansible-playbook -i localhost install.yml --skip-tags 'role::btrfs:pkts'

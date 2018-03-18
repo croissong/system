@@ -6,12 +6,6 @@
     regexp: '^HOOKS='
     line: HOOKS="{{ initramfs_hooks | join(' ') }}"
 
-- name: embed LUKS key into initramfs
-  lineinfile:
-    path: /etc/mkinitcpio.conf
-    regexp: '^FILES='
-    line: 'FILES=(/{{ luks_key_name }})'
-
 - name: rebuild initramfs
   command: mkinitcpio -p linux
 
@@ -22,6 +16,10 @@
   with_items:
     - initramfs-linux.img
     - initramfs-linux-fallback.img
+
+- name: install bootctl bootloader
+  command: "bootctl --path=/boot install"
+
 
 - name: create boot loader.conf
   template:
@@ -41,6 +39,3 @@
   template:
     src: arch-lts.conf.j2
     dest: /boot/loader/entries/arch-lts.conf
-
-- name: install bootctl bootloader
-  command: "bootctl --path=/boot install"
