@@ -49,6 +49,7 @@ drive:
       filesystem: btrfs
       mountpoint: /
       encrypt: false
+      opts: noatime,subvol=@
     - name: efi
       start: 0%
       end: 512MiB

@@ -8,8 +8,7 @@ cd /opt/host
 # sed -n '5p' init.sh
 
 
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
+# awk '/^### Germany$/ {f=1} f==0 {next} /^$/ {exit} {print "#" $0}' /etc/ pacman.d/mirrorlist	       
 
 pacman -Sy --noconfirm ansible python2-passlib
 
