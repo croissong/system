@@ -49,7 +49,7 @@
     </disk>
     <disk type='file' device='cdrom'>
       <driver name='qemu' type='raw'/>
-      <source file='/home/jm/code/arch/archlinux-2018.02.01-x86_64.iso'/>
+      <source file='/home/jm/code/arch/archlive/out/archlinux--x86_64.iso'/>
       <backingStore/>
       <target dev='hdb' bus='ide'/>
       <readonly/>

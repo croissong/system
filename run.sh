@@ -1,6 +1,6 @@
-mount() {
-    mkdir ./host
-    mount host ./host -t 9p -o trans=virtio
+mounthost() {
+    mkdir host
+    mount host host -t 9p -o trans=virtio
 }
 
 playbook() {
@@ -9,12 +9,11 @@ playbook() {
 }
 
 case "$1" in
-    'mount') mount ;;
-    'playbook') playbook "${@:2}" ;;
-    'reset') ;;
+    mount) mounthost ;;
+    playbook) playbook "${@:2}" ;;
     *)
         echo
-        echo "Usage: $0 { start | stop | restart | status }"
+        echo "Usage: $0 { mount | playbook }"
         echo
         exit 1 ;;
 esac
