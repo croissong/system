@@ -1,7 +1,7 @@
 ---
-- name: install AUR package helper yay
+- name: install AUR package helper trizen
   aur:
-    name: yay
+    name: trizen
     user: "{{ user.name }}"
     dir: /tmp
   tags: aur

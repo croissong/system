@@ -1,7 +1,7 @@
 ---
 
 - import_tasks: xorg.yml
-- import_tasks: lxdm.yml
+- import_tasks: i3.yml
 - import_tasks: themes.yml
 - import_tasks: media.yml
 - import_tasks: networkmanager.yml
@@ -17,23 +17,11 @@
 - name: install packages for desktop environment from repo
   pacman: name={{ item }}
   with_items:
-    - compton
-    - feh
+    - feh 
     - redshift
-    - stalonetray
-    - xmobar
-    - xmonad
-    - xmonad-contrib
     - dunst
-    - dmenu
-    - deepin-screenshot
-    - geeqie
-
-- name: configure compton compositor
-  copy:
-    src: compton.conf
-    dest: /etc/xdg/compton.conf
-    backup: yes
+    - rofi
+    - gscreenshot
 
 - name: enable redshift service
   command: systemctl --user enable redshift.service

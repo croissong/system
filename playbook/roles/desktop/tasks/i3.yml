@@ -1,0 +1,3 @@
+---
+- name: install i3
+  pacman: name=i3 state=present
