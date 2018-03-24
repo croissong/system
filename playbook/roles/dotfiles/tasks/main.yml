@@ -2,6 +2,7 @@
 
 - name: install stow to manage symlinks
   pacman: name=stow
+  
 - name: check if dotfiles exist
   stat:
     path: "${HOME}/dotfiles"
@@ -28,17 +29,3 @@
     path: /home/{{ user.name }}/.bashrc
     line: 'source ${HOME}/.bashrc.local'
     create: yes
-
-# Keepassxc config is installed here once instead of symlinked from dotfiles
-# repo as keepassxc constantly rewrites its config cause changed to be added
-# into Git repository.
-- name: create Keepassxc config dir
-  file:
-    path: "${HOME}/.config/keepassxc"
-    state: directory
-  become_user: "{{ user.name }}"
-
-- name: install Keepassxc config
-  copy:
-    src: keepassxc.ini
-    dest: "${HOME}/.config/keepassxc/"

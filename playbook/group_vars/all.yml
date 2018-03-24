@@ -23,6 +23,7 @@ user:
 extra_packages:
   - git
   - ripgrep
+  - zsh
 
 extra_aur_packages: []
 
@@ -30,14 +31,9 @@ dotfiles:
   repo: "https://github.com/zoresvit/dotfiles"
   install_cmd: "stow -d ${HOME}/dotfiles -S albert bash chromium conky flameshot git goldendict mime termite tmux vim xmonad xorg"
   deps:
-    - conky
     - stow
     - xclip
-    - python-jedi
-    - source-highlight
-    - hasktags
-    - ctags
-
+    
 # UEFI/GPT
 drive:
   device: /dev/sda
