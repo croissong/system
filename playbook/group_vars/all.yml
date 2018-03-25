@@ -1,7 +1,7 @@
 arch_root: /mnt
 
 hostname: bon
-
+timezone: Europe/Berlin
 country: Germany
 locales:
   - en_US
@@ -25,7 +25,9 @@ extra_packages:
   - ripgrep
   - zsh
 
-extra_aur_packages: []
+extra_aur_packages:
+  - gscreenshot
+  - emacs-git
 
 dotfiles:
   repo: "https://github.com/zoresvit/dotfiles"
@@ -63,3 +65,17 @@ btrfs__subvolumes:
      state: present
   "{{ arch_root }}/@home":
      state: present
+
+packages:
+  - arch-wiki-lite
+  - coreutils
+  - dialog
+  - glances
+  - linux-firmware
+  - lsof
+  - moreutils
+  - rsync
+  - sysstat
+  - wpa_supplicant
+  - pciutils
+  

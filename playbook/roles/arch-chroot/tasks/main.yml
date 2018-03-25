@@ -33,6 +33,11 @@
     state: present
   with_items: "{{ packages }}"
 
+- name: Enable connman
+  include_role:
+    name: desktop
+    tasks_from: connman
+
 - name: install intel microcode
   pacman:
     name: intel-ucode
