@@ -27,7 +27,7 @@ extra_packages:
 
 extra_aur_packages:
   - gscreenshot
-  - emacs-git
+  - emacs
 
 dotfiles:
   repo: "https://github.com/zoresvit/dotfiles"

@@ -1,14 +1,13 @@
 ---
-- name: install AUR package helper trizen
-  aur:
-    name: trizen
-    user: "{{ user.name }}"
-    dir: /tmp
+- name: install AUR package helper yay
+  aur: name=yay use=makepkg skip_installed=true
+  become: yes
+  become_user: "{{ user.name }}"
   tags: aur
 
 - name: install downgrade script for downgrading packages
+  become: no
   aur:
+    use: yay
     name: downgrade
-    user: "{{ user.name }}"
-    dir: /tmp
   tags: aur

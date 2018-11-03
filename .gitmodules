@@ -1,3 +1,6 @@
 [submodule "roles/ansible-btrfs"]
 	path = playbook/roles/ansible-btrfs
 	url = https://github.com/debops-contrib/ansible-btrfs.git
+[submodule "playbook/library/aur"]
+	path = playbook/library/aur
+	url = https://github.com/kewlfft/ansible-aur.git

@@ -21,18 +21,16 @@
       tags: aur
 
     - name: install extra packages from AUR
+      become: no
       aur:
         name: "{{ item }}"
-        user: "{{ user.name }}"
-        dir: /tmp
       tags: aur
       with_items: "{{ extra_aur_packages }}"
 
     - name: install host-specific packages from AUR
+      become: no
       aur:
         name: "{{ item }}"
-        user: "{{ user.name }}"
-        dir: /tmp
       tags: aur
       with_items: "{{ host_extra_aur_packages }}"
       when: host_extra_aur_packages is defined
