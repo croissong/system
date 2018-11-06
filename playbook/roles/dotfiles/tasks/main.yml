@@ -8,17 +8,20 @@
     path: "${HOME}/dotfiles"
   become_user: "{{ user.name }}"
   register: dotfiles_dir
+  tags: dotfiles
 
 - name: clone dotfiles
   command: "git clone {{ dotfiles.repo }} ${HOME}/dotfiles"
   become_user: "{{ user.name }}"
   when: not dotfiles_dir.stat.exists
+  tags: dotfiles
 
 - name: install dotfiles dependencies
   pacman:
     name: "{{ item }}"
     state: present
   with_items: "{{ dotfiles.deps }}"
+  tags: dotfiles
 
 - name: install dotfiles
   command: "{{ dotfiles.install_cmd }}"

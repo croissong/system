@@ -30,8 +30,8 @@ extra_aur_packages:
   - emacs
 
 dotfiles:
-  repo: "https://github.com/zoresvit/dotfiles"
-  install_cmd: "stow -d ${HOME}/dotfiles -S albert bash chromium conky flameshot git goldendict mime termite tmux vim xmonad xorg"
+  repo: "https://github.com/Croissong/.dotfiles"
+  install_cmd: "stow -d ${HOME}/dotfiles -S git emacs zsh gpg pass bash ssh"
   deps:
     - stow
     - xclip
@@ -78,4 +78,5 @@ packages:
   - sysstat
   - wpa_supplicant
   - pciutils
+  - flameshot
   
