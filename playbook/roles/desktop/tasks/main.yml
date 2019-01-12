@@ -27,15 +27,22 @@
   command: id -u {{ user.name }}
   register: uid
 
-- name: enable redshift service
-  systemd:
-    name: redshift.service
-    enabled: True
-    user: True
-    state: restarted
-  environment:
-    XDG_RUNTIME_DIR: /run/user/{{uid.stdout}}  
-  become: True  
-  become_user: "{{ user.name }}"
+- block:
+  - name: Delete redshift service display manager line
+    # https://wiki.archlinux.org/index.php/redshift#Redshift_works_fine_when_invoked_as_a_command_but_fails_when_run_as_a_systemd_service
+    lineinfile: dest=/usr/lib/systemd/user/redshift.service
+                state=absent
+                regexp='After=display-manager.service'
+
+  - name: enable redshift service
+    systemd:
+      name: redshift.service
+      enabled: True
+      scope: user
+      state: started
+    become: True  
+    become_user: "{{ user.name }}"
+  tags:
+    - redshift
 
 - import_tasks: extra_packages.yml

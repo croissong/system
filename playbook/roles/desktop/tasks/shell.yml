@@ -5,7 +5,7 @@
       become_user: "{{ user.name }}"
     - name: install packages
       pacman:
-        name: [zsh, antibody, tmux]
+        name: [zsh, antibody, tmux, tmuxinator]
         state: present
     - name: enable tmux
       become_user: "{{ user.name }}"
