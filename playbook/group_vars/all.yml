@@ -24,6 +24,7 @@ extra_packages:
   - git
   - ripgrep
   - zsh
+  - firefox-beta-bin
 
 extra_aur_packages:
   - gscreenshot
@@ -31,7 +32,7 @@ extra_aur_packages:
 
 dotfiles:
   repo: "https://github.com/Croissong/.dotfiles"
-  install_cmd: "stow -d ${HOME}/dotfiles -S git emacs zsh gpg pass bash ssh tmux"
+  install_cmd: "stow -d ${HOME}/dotfiles -S git emacs zsh gpg pass bash ssh tmux i3"
   deps:
     - stow
     - xclip
