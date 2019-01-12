@@ -31,7 +31,7 @@ extra_aur_packages:
 
 dotfiles:
   repo: "https://github.com/Croissong/.dotfiles"
-  install_cmd: "stow -d ${HOME}/dotfiles -S git emacs zsh gpg pass bash ssh"
+  install_cmd: "stow -d ${HOME}/dotfiles -S git emacs zsh gpg pass bash ssh tmux"
   deps:
     - stow
     - xclip
@@ -79,4 +79,5 @@ packages:
   - wpa_supplicant
   - pciutils
   - flameshot
+  - autorandr
   

@@ -33,10 +33,11 @@
     state: present
   with_items: "{{ packages }}"
 
-- name: Enable connman
+  
+- name: Configure netctl
   include_role:
     name: desktop
-    tasks_from: connman
+    tasks_from: netctl
 
 - name: install intel microcode
   pacman:

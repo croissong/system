@@ -1,0 +1,15 @@
+---
+- block:
+    - name: stow netctl dotfiles profiles
+      command: "stow -t / -d /home/{{ user.name }}/dotfiles -S netctl"
+      become_user: "root"
+    - name: start netctl wired profile
+      command: "netctl start wired"
+      become_user: "root"
+    - name: enable netctl wired profile
+      command: "netctl enable wired"
+      become_user: "root"
+  tags:
+      - netctl
+
+  

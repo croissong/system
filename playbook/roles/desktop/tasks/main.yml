@@ -4,7 +4,7 @@
 - import_tasks: i3.yml
 - import_tasks: themes.yml
 - import_tasks: media.yml
-- import_tasks: connman.yml
+- import_tasks: networkd.yml
 - import_tasks: bluetooth.yml
 - import_tasks: ssh.yml
 - import_tasks: printing.yml

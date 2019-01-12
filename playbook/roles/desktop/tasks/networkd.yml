@@ -1,0 +1,24 @@
+---
+- block:
+    - name: install iwd
+      pacman:
+        name: ["iwd"]
+        state: present
+    - name: stow iwd dotfiles profiles
+      command: "stow -t /var/lib/iwd/ -d /home/{{ user.name }}/dotfiles/.priv/network -S iwd"
+      become_user: "root"
+    - name: enable iwd
+      service: name=iwd enabled=yes state=started
+  tags:
+      - networkd
+- block:
+    - name: copy netorkd profile files
+      copy: src=networkd/ dest=/etc/systemd/network/
+
+    - name: enable networkd
+      service: name=systemd-networkd enabled=yes state=started
+    
+  tags:
+      - networkd
+
+  
