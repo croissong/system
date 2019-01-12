@@ -28,23 +28,9 @@
   register: uid
 
 - block:
-  - name: Delete redshift service display manager line
-    # https://wiki.archlinux.org/index.php/redshift#Redshift_works_fine_when_invoked_as_a_command_but_fails_when_run_as_a_systemd_service
-    lineinfile: dest=/usr/lib/systemd/user/redshift.service
-                state=absent
-                regexp='After=display-manager.service'
-
-  - name: Add redshift service delay lines
-    # https://wiki.archlinux.org/index.php/redshift#Redshift_works_fine_when_invoked_as_a_command_but_fails_when_run_as_a_systemd_service
-    lineinfile: dest=/usr/lib/systemd/user/redshift.service
-                state=present
-                insertafter="{{ item.insertafter }}"
-                regexp="{{ item.line }}"
-                line="{{ item.line }}"
-    with_items:
-    - { line: 'StartLimitIntervalSec=30s', insertafter: '^Documentation' }
-    - { line: 'StartLimitBurst=30', insertafter: '^Documentation' }
-    - { line: 'RestartSec=1s', insertafter: '^Restart' }
+  - name: stow redshift
+    command: "stow -d ${HOME}/dotfiles -S redshift"
+    become_user: "{{ user.name }}"
 
   - name: enable redshift service
     systemd:

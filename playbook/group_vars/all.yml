@@ -31,7 +31,7 @@ extra_aur_packages:
 
 dotfiles:
   repo: "https://github.com/Croissong/.dotfiles"
-  install_cmd: "stow -d ${HOME}/dotfiles -S git gpg pass ssh tmux i3 systemd"
+  install_cmd: "stow -d ${HOME}/dotfiles -S git gpg pass ssh tmux i3 perl-anyevent-i3 systemd"
   deps:
     - stow
     - xclip
