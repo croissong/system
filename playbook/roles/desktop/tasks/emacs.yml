@@ -1,0 +1,16 @@
+---
+- block:
+    - name: stow .emacs.d
+      command: "stow -d ${HOME}/dotfiles -S emacs"
+      become_user: "{{ user.name }}"
+    - name: install emacs
+      pacman:
+        name: [emacs]
+        state: present  
+    - name: enable emacs
+      become_user: "{{ user.name }}"
+      service: name=emacs scope=user enabled=yes state=started
+  tags:
+      - emacs
+
+  

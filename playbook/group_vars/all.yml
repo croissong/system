@@ -28,11 +28,10 @@ extra_packages:
 
 extra_aur_packages:
   - gscreenshot
-  - emacs
 
 dotfiles:
   repo: "https://github.com/Croissong/.dotfiles"
-  install_cmd: "stow -d ${HOME}/dotfiles -S git emacs zsh gpg pass bash ssh tmux i3"
+  install_cmd: "stow -d ${HOME}/dotfiles -S git zsh gpg pass bash ssh tmux i3"
   deps:
     - stow
     - xclip

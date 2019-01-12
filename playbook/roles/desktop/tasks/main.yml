@@ -2,6 +2,7 @@
 
 - import_tasks: xorg.yml
 - import_tasks: i3.yml
+- import_tasks: emacs.yml
 - import_tasks: themes.yml
 - import_tasks: media.yml
 - import_tasks: networkd.yml
