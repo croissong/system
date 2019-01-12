@@ -24,14 +24,18 @@ extra_packages:
   - git
   - ripgrep
   - firefox-beta-bin
+  - thunderbird-bin
 
 extra_aur_packages:
-  - gscreenshot
   - exa
+  - dunst
+  - fd
+  - slack-desktop
+  - mattermost-desktop-bin
 
 dotfiles:
   repo: "https://github.com/Croissong/.dotfiles"
-  install_cmd: "stow -d ${HOME}/dotfiles -S git gpg pass ssh tmux i3 perl-anyevent-i3 systemd"
+  install_cmd: "stow -d ${HOME}/dotfiles -S git gpg pass ssh tmux i3 perl-anyevent-i3 systemd dunst yarn"
   deps:
     - stow
     - xclip
@@ -80,4 +84,5 @@ packages:
   - pciutils
   - flameshot
   - autorandr
-  
+  - jq
+  - yq
