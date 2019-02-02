@@ -1,0 +1,6 @@
+---
+- name: nim
+  tags: nim
+  block:
+    - debug:
+        msg: "install nim via with choosenim: `curl https://nim-lang.org/choosenim/init.sh -sSf | sh`"

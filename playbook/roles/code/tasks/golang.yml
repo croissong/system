@@ -1,0 +1,12 @@
+---
+- name: golang
+  tags: golang
+  block:
+    - name: install golang pkgs
+      pacman:
+        name: ['go', 'go-tools']
+        state: present
+
+    - name: install gocode
+      become_user: "{{ user.name }}"
+      shell: go get -u github.com/stamblerre/gocode
