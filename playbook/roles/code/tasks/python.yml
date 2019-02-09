@@ -1,0 +1,12 @@
+---
+- name: python
+  tags: python
+  block:
+    - name: install python dev tools
+      pacman:
+        name: ['python-jedi', 'flake8', 'autopep8', 'yapf']
+        # What about ipython
+        state: present
+    - name: stow python configs
+      command: "stow -d ${HOME}/dotfiles -S python"
+      become_user: "{{ user.name }}"

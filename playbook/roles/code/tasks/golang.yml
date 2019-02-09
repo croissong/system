@@ -10,3 +10,7 @@
     - name: install gocode
       become_user: "{{ user.name }}"
       shell: go get -u github.com/stamblerre/gocode
+
+    - name: install shfmt
+      become_user: "{{ user.name }}"
+      shell: go get -u mvdan.cc/sh/cmd/shfmt
