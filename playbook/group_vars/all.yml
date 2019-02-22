@@ -30,6 +30,8 @@ extra_aur_packages:
   - exa
   - dunst
   - fd
+  - dtrx
+  - mitogen
   - slack-desktop
   - mattermost-desktop-bin
 
@@ -71,16 +73,13 @@ btrfs__subvolumes:
      state: present
 
 packages:
-  - arch-wiki-lite
   - coreutils
-  - dialog
   - glances
   - linux-firmware
   - lsof
   - moreutils
   - rsync
   - sysstat
-  - wpa_supplicant
   - pciutils
   - flameshot
   - autorandr
