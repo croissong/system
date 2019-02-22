@@ -1,0 +1,8 @@
+---
+- name: js
+  tags: js
+  block:
+    - name: install js dev tools
+      pacman:
+        name: ['prettier']
+        state: present
