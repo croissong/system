@@ -16,11 +16,13 @@
       with_items: "{{ overwritten_pamd_files.results }}"
       when:
         - item.stat is defined
+        - item.stat.exists == True
         - item.stat.islnk == False
     - name: Stow custom pam.d files
-      command: "stow --verbose=2 -t / -d /home/{{ user.name }}/dotfiles -S pam.d"
-      register: stow_res
-      changed_when: stow_res.stdout is search("LINK:")
+      stow:
+        package: pam.d
+        source_dir: "/home/{{ user.name }}/dotfiles"
+        target_dir: /
   tags:
     - pamd
 
