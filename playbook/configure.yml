@@ -17,4 +17,4 @@
     - import_role: {name: desktop}
     - import_role: {name: laptop}
     - import_role: {name: dotfiles}
-    - import_role: {name: code}  
+    - import_role: {name: lang}  
