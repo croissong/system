@@ -86,3 +86,4 @@ packages:
   - jq
   - pkg_scripts
   - yq
+  - gnome-keyring
