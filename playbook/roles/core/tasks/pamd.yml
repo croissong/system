@@ -1,0 +1,27 @@
+---
+- name: pam.d config
+  block:
+    - name: find overwritten original pam.d files
+      stat:
+        path: "/{{ item.path }}"
+      with_filetree: /home/{{ user.name }}/dotfiles/pam.d/
+      when:
+        - item.state == 'file'
+      register: overwritten_pamd_files
+      no_log: True
+    - name: rm overwritten original pam.d files
+      file:
+        path: "{{ item.stat.path }}"
+        state: absent
+      with_items: "{{ overwritten_pamd_files.results }}"
+      when:
+        - item.stat is defined
+        - item.stat.islnk == False
+    - name: Stow custom pam.d files
+      command: "stow --verbose=2 -t / -d /home/{{ user.name }}/dotfiles -S pam.d"
+      register: stow_res
+      changed_when: stow_res.stdout is search("LINK:")
+  tags:
+    - pamd
+
+  

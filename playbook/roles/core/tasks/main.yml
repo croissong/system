@@ -1,0 +1,6 @@
+---
+- name: core
+  tags:
+    - core
+  block:
+    - import_tasks: pamd.yml

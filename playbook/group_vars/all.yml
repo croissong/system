@@ -84,4 +84,5 @@ packages:
   - flameshot
   - autorandr
   - jq
+  - pkg_scripts
   - yq
