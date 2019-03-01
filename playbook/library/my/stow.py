@@ -11,16 +11,15 @@ import re
 
 
 changed_stdout_pattern = re.compile("^LINK.*", re.MULTILINE)
+target_dirs = {'home': '$HOME', 'root': '/'}
 
 def stow(module):
     params = module.params
-    state = params['state']
     package = params['package']
-    source_dir = params['source_dir']
-    target_dir = params['target_dir']
+    source = params['dotfiles_dir']
+    target = target_dirs[params['target']]
 
-    cmd = "stow -v 2 -d {} -t {} -S {}".format(source_dir, target_dir, package)
-
+    cmd = f'stow -v 2 -d {source} -t {target} -S {package}'
     rc, stdout, stderr = module.run_command(cmd, check_rc=False)
     
     if rc == 0:
@@ -32,11 +31,9 @@ def stow(module):
 def main():
     module = AnsibleModule(
         argument_spec = dict(
-            state=dict(default='present', choices=['present', 'absent']),
             package=dict(required=True),
-            source_dir=dict(required=True),
-            target_dir=dict(required=True),
-            use=dict(default='stow')
+            dotfiles_dir=dict(required=False, default='$HOME/dotfiles'),
+            target=dict(default='home', choices=['home', 'root'])
         )
     )
 
