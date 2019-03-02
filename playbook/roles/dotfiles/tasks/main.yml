@@ -12,10 +12,11 @@
         recursive: yes
         track_submodules: yes
       become_user: "{{ user.name }}"
+      register: warning
+      failed_when: warning.failed == True and warning.msg != "Local modifications exist in repository (force=no)."
 
     - name: install dotfiles dependencies
-      pacman: name="{{ item }}" state=present
-      with_items: "{{ dotfiles.deps }}"
+      pacman: name="{{ dotfiles.deps }}" state=present
 
     - name: install dotfiles
       stow: package="{{ item }}"

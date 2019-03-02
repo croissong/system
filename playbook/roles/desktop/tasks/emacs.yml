@@ -1,18 +1,14 @@
 ---
 - name: emacs
+  tags: ['emacs', 'dotfiles']
   block:
-    - name: stow .emacs.d
-      command: "stow -d ${HOME}/dotfiles -S emacs"
+    - name: stow emacs dotfiles
+      stow: package=emacs
       become_user: "{{ user.name }}"
     - name: install emacs
-      pacman:
-        name: [emacs]
-        state: present  
-    - name: enable emacs
+      pacman: name=emacs state=present  
+    - name: enable emacs systemd user service
       become_user: "{{ user.name }}"
       service: name=emacs scope=user enabled=yes state=started
-  tags:
-    - emacs
-    - dotfiles
 
   
