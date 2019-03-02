@@ -3,6 +3,12 @@
   tags: js
   block:
     - name: install js dev tools
-      pacman:
-        name: ['prettier']
-        state: present
+      pacman: name=js_pkgs state=present
+      vars:
+        js_pkgs:
+          - prettier
+          - yarn
+
+    - name: stow js dotfiles
+      stow: package=yarn
+      become_user: "{{ user.name }}"

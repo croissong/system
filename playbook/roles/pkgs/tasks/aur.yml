@@ -8,3 +8,6 @@
 
     - name: install downgrade script for downgrading packages
       aur: use=yay name=downgrade
+
+    - name: stow yay dotfiles config
+      stow: package=yay

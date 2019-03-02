@@ -10,27 +10,3 @@
   pacman: name=cronie state=present
   notify:
     - enable cron
-
-- name: install packages for desktop environment from repo
-  pacman: name={{ item }}
-  with_items:
-    - feh
-    - redshift
-    - dunst
-    - rofi
-
-- block:
-  - name: stow redshift
-    command: "stow -d ${HOME}/dotfiles -S redshift"
-    become_user: "{{ user.name }}"
-
-  - name: enable redshift service
-    systemd:
-      name: redshift.service
-      enabled: True
-      scope: user
-      state: started
-    become: True
-    become_user: "{{ user.name }}"
-  tags:
-    - redshift
