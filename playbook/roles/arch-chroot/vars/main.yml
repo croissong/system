@@ -1,9 +1,3 @@
-hostname: localhost
-timezone: America/Los_Angeles
-country: United States
-locales:
-  - en_US
-
 initramfs_hooks:
   - base
   - systemd
@@ -16,14 +10,11 @@ initramfs_hooks:
   - filesystems
   - fsck
 
-packages:
-  - arch-wiki-lite
+base_packages:
   - coreutils
-  - dialog
-  - glances
   - linux-firmware
   - lsof
   - moreutils
   - rsync
   - sysstat
-  - wpa_supplicant
+  - pciutils

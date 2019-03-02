@@ -21,26 +21,11 @@ user:
   shell: /bin/zsh
   email: jan.moeller0@gmail.com
 
-extra_packages:
-  - git
-  - ripgrep
-  - firefox-beta-bin
-  - thunderbird-bin
-
-extra_aur_packages:
-  - exa
-  - dunst
-  - fd
-  - dtrx
-  - mitogen
-  - slack-desktop
-  - mattermost-desktop-bin
-
 dotfiles:
   repo: "https://github.com/Croissong/.dotfiles"
   directory: &dotfiles_dir "{{ user.home }}/dotfiles"
   priv_dir: "{{ user.home }}/dotfiles/.priv"
-  generic_dotfiles:
+  standalone_dotfiles:
     - dunst
     - env
     - git
@@ -50,6 +35,7 @@ dotfiles:
     - ssh
     - tmux
     - yarn
+    - yay
   deps:
     - stow
     - xclip
@@ -83,19 +69,26 @@ btrfs__subvolumes:
      state: present
   "{{ arch_root }}/@home":
      state: present
-
-packages:
-  - coreutils
-  - glances
-  - linux-firmware
-  - lsof
-  - moreutils
-  - rsync
-  - sysstat
-  - pciutils
-  - flameshot
+     
+extra_packages:
   - autorandr
-  - jq
-  - pkg_scripts
-  - yq
+  - dunst
+  - exa
+  - fd
+  - flameshot
+  - git
+  - glances
   - gnome-keyring
+  - jq
+  - perl-anyevent-i3
+  - ripgrep
+
+extra_aur_packages:
+  - dtrx
+  - firefox-beta-bin
+  - firefox-extension-gnome-keyring
+  - mattermost-desktop-bin
+  - mitogen
+  - pkg_scripts
+  - slack-desktop
+  - yq

@@ -20,5 +20,5 @@
 
     - name: install dotfiles
       stow: package="{{ item }}"
-      with_items: "{{ dotfiles.generic_dotfiles }}"
+      with_items: "{{ dotfiles.standalone_dotfiles }}"
       become_user: "{{ user.name }}"

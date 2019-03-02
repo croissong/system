@@ -31,7 +31,7 @@
   pacman:
     name: "{{ item }}"
     state: present
-  with_items: "{{ packages }}"
+  with_items: "{{ base_packages }}"
 
   
 - name: Configure netctl
