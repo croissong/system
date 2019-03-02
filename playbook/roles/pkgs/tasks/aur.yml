@@ -1,0 +1,10 @@
+---
+- name: configure aur
+  tags: ['aur']
+  become_user: "{{ user.name }}"
+  block:
+    - name: install AUR package helper yay
+      aur: name=yay use=makepkg skip_installed=true
+
+    - name: install downgrade script for downgrading packages
+      aur: use=yay name=downgrade

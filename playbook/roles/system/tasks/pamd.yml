@@ -1,5 +1,6 @@
 ---
 - name: pam.d config
+  tags: ['pamd']
   block:
     - name: stow pam.d dotfiles
       include_role:
@@ -8,7 +9,5 @@
       vars:
         package: pam.d
         target_dir: /
-  tags:
-    - pamd
 
   

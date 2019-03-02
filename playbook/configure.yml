@@ -7,17 +7,13 @@
     USER_HOME: "{{ user.home }}"
     DOTFILES_DIR: "{{ dotfiles.directory }}"
   pre_tasks:
-
-    - name: update repository mirrors
-      command: "reflector --sort score -p https --country '{{ country }}' --save /etc/pacman.d/mirrorlist"
-
     - name: enable time sync
       command: timedatectl set-ntp true
 
   tasks:
-    - import_role: {name: pacman}
+    - import_role: {name: pkgs}
+    - import_role: {name: system}  
     - import_role: {name: desktop}
     - import_role: {name: laptop}
     - import_role: {name: dotfiles}
     - import_role: {name: lang}
-    - import_role: {name: core}  

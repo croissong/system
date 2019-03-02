@@ -41,5 +41,3 @@
     become_user: "{{ user.name }}"
   tags:
     - redshift
-
-- import_tasks: extra_packages.yml

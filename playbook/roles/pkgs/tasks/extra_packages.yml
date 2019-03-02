@@ -1,0 +1,12 @@
+---
+- name: install extra pkgs
+  tags: ['maintenance']
+  block:
+    - name: install extra packages from repo
+      pacman: name="{{ extra_packages }}"
+
+    - name: install extra packages from AUR
+      aur: name="{{ item }}"
+      with_items: "{{ extra_aur_packages }}"
+      become_user: "{{ user.name }}"
+      tags: [aur]

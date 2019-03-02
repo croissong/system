@@ -1,0 +1,28 @@
+---
+- name: get significant mirrorlist checksum
+  tags: ['utility']
+  block:
+    - name: create mirrorlist tmp file
+      tempfile: state=file
+      register: mirrorlist_copy
+      changed_when: false
+
+    - name: copy mirrorlist to tmp file
+      copy:
+        src: "/etc/pacman.d/mirrorlist"
+        dest: "{{ mirrorlist_copy.path }}"
+      changed_when: false
+
+    - name: rm metadata from mirrorlist copy
+      lineinfile:
+        path: "{{ mirrorlist_copy.path }}"
+        state: absent
+        regexp: "^#"
+      changed_when: false
+
+    - name: get mirrorlist checksum
+      stat:
+        path: "{{ mirrorlist_copy.path }}"
+        get_attributes: no
+        get_mime: no
+      register: "{{ register_var }}"

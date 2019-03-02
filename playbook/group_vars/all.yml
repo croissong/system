@@ -71,8 +71,10 @@ btrfs__subvolumes:
      state: present
      
 extra_packages:
+  - ansible-lint
   - autorandr
   - dunst
+  - evince
   - exa
   - fd
   - flameshot
@@ -80,13 +82,13 @@ extra_packages:
   - glances
   - gnome-keyring
   - jq
+  - libreoffice-fresh
   - perl-anyevent-i3
   - ripgrep
 
 extra_aur_packages:
   - dtrx
   - firefox-beta-bin
-  - firefox-extension-gnome-keyring
   - mattermost-desktop-bin
   - mitogen
   - pkg_scripts
