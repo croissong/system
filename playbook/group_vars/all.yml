@@ -31,6 +31,7 @@ dotfiles:
     - git
     - gpg
     - i3
+    - mimeapps
     - pass
     - ssh
     - tmux
@@ -90,6 +91,7 @@ extra_aur_packages:
   - dtrx
   - firefox-beta-bin
   - mattermost-desktop-bin
+  - mimeo
   - mitogen
   - pkg_scripts
   - slack-desktop
