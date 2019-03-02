@@ -8,9 +8,9 @@ locales:
   - de_DE
 
 user:
-  name: croissong
-  group: croissong
-  home: "/home/croissong"
+  name: &username croissong
+  group: *username
+  home: "/home/"*username
   uid: 1000
   comment: Jan Möller
   groups:
@@ -38,8 +38,9 @@ extra_aur_packages:
 
 dotfiles:
   repo: "https://github.com/Croissong/.dotfiles"
-  directory: "{{ user.home }}/dotfiles"
-  install_cmd: "stow -d {{ user.home }}/dotfiles -S git gpg pass ssh tmux i3 perl-anyevent-i3 systemd dunst yarn"
+  directory:  &dotfiles_dir "{{ user.home }}/dotfiles"
+  priv_dir: *dotfiles_dir"/.priv"
+  generic_dotfiles: git gpg pass ssh tmux i3 perl-anyevent-i3 dunst yarn env shell"
   deps:
     - stow
     - xclip

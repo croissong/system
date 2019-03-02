@@ -6,7 +6,7 @@
     - name: stow systemd dotfiles
       include_role:
         name: dotfiles
-        tasks_from: stow_force_override
+        tasks_from: util__stow_force_override
       vars:
         package: systemd
-        target_dir: root
+        target_dir: /

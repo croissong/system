@@ -1,35 +1,41 @@
 ---
-- block:
-    - name: install iwd
-      pacman:
-        name: ["iwd"]
-        state: present
-    - name: stow iwd dotfiles profiles
-      stow:
-        package: iwd
-        source_dir: "/home/{{ user.name }}/dotfiles/.priv/network"
-        target_dir: /var/lib/iwd/
-    - name: enable iwd
-      service: name=iwd enabled=yes state=started
+- name: configure networking
   tags:
-      - networkd
-- block:
-    - name: copy netorkd profile files
-      copy: src=networkd/ dest=/etc/systemd/network/
+    - network
+  block:
+    - name: configure iwd
+      tags:
+        - iwd
+      block:
+        - name: install iwd
+          pacman: name=["iwd"] state=present
+        - name: stow iwd dotfiles profiles
+          stow:
+            package: iwd
+            source_dir: "{{ dotfiles.priv_dir }}/network"
+            target_dir: /var/lib/iwd/
+        - name: enable iwd
+          service: name=iwd enabled=yes state=started
 
-    - name: enable networkd
-      service: name=systemd-networkd enabled=yes state=started
+    - name: networkd
+      tags:
+        - networkd
+      block:
+        - name: copy netorkd profile files
+          copy: src=networkd/ dest=/etc/systemd/network/
 
-    - name: enable systemd-resolved
-      service: name=systemd-resolved enabled=yes state=started
+        - name: enable networkd
+          service: name=systemd-networkd enabled=yes state=started
 
-    - name: symlink resolve.conf
-      file:
-        src: "/run/systemd/resolve/resolv.conf"
-        dest: "/etc/resolv.conf"
-        state: link
+        - name: enable systemd-resolved
+          service: name=systemd-resolved enabled=yes state=started
+
+        - name: symlink resolve.conf
+          file:
+            src: "/run/systemd/resolve/resolv.conf"
+            dest: "/etc/resolv.conf"
+            state: link
     
-  tags:
-      - networkd
+ 
 
   

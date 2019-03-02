@@ -9,13 +9,12 @@ short_description: Manage links to dotfiles
 '''
 
 changed_stdout_pattern = re.compile("^LINK.*", re.MULTILINE)
-target_dirs = {'home': '$USER_HOME', 'root': '/'}
 
 def stow(module):
     params = module.params
     package = params['package']
     source_dir = params['source_dir']
-    target_dir = target_dirs[params['target_dir']]
+    target_dir = params['target_dir']
 
     cmd = f'stow -v 2 -d {source_dir} -t {target_dir} -S {package}'
     rc, stdout, stderr = module.run_command(cmd, check_rc=False)
@@ -31,7 +30,7 @@ def main():
         argument_spec = dict(
             package=dict(required=True),
             source_dir=dict(required=False, default='$DOTFILES_DIR'),
-            target_dir=dict(default='home', choices=['home', 'root'])
+            target_dir=dict(required=False, default='$USER_HOME')
         )
     )
 
