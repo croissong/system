@@ -3,7 +3,9 @@
   name: configure Arch Linux system
   connection: local
   become: yes
-
+  environment:
+    USER_HOME: "{{ user.home }}"
+    DOTFILES_DIR: "{{ dotfiles.directory }}"
   pre_tasks:
 
     - name: update repository mirrors

@@ -18,6 +18,3 @@
 
 - name: Enable TLP sleep service
   service: name=tlp-sleep.service enabled=yes state=restarted
-
-- name: configure systemd logind.conf
-  copy: src=logind.conf dest=/etc/systemd/logind.conf

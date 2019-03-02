@@ -5,3 +5,4 @@
   block:
     - import_tasks: pamd.yml
     - import_tasks: networkd.yml
+    - import_tasks: systemd.yml

@@ -1,4 +1,3 @@
 ---
-dotfiles_repo: "https://github.com/zoresvit/dotfiles"
-dotfiles_install_cmd: "stow -S bash"
-dotfiles_deps: []
+target_dir: "{{ user.home }}"
+source_dir: "{{ dotfiles.directory }}"

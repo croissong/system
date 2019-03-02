@@ -1,4 +1,6 @@
 #!/usr/bin/python
+from ansible.module_utils.basic import AnsibleModule
+import re
 
 DOCUMENTATION = '''
 ---
@@ -6,34 +8,30 @@ module: stow
 short_description: Manage links to dotfiles
 '''
 
-from ansible.module_utils.basic import *
-import re
-
-
 changed_stdout_pattern = re.compile("^LINK.*", re.MULTILINE)
-target_dirs = {'home': '$HOME', 'root': '/'}
+target_dirs = {'home': '$USER_HOME', 'root': '/'}
 
 def stow(module):
     params = module.params
     package = params['package']
-    source = params['dotfiles_dir']
-    target = target_dirs[params['target']]
+    source_dir = params['source_dir']
+    target_dir = target_dirs[params['target_dir']]
 
-    cmd = f'stow -v 2 -d {source} -t {target} -S {package}'
+    cmd = f'stow -v 2 -d {source_dir} -t {target_dir} -S {package}'
     rc, stdout, stderr = module.run_command(cmd, check_rc=False)
     
     if rc == 0:
         changed = changed_stdout_pattern.search(stderr) is not None
         module.exit_json(changed=changed, stderr=stderr)
     else:
-        module.fail_json(msg="failed to stow ( {} ) {}: {}".format(cmd, name, stderr))
+        module.fail_json(msg=f'failed to stow ( {cmd} ) {stderr}')
 
 def main():
     module = AnsibleModule(
         argument_spec = dict(
             package=dict(required=True),
-            dotfiles_dir=dict(required=False, default='$HOME/dotfiles'),
-            target=dict(default='home', choices=['home', 'root'])
+            source_dir=dict(required=False, default='$DOTFILES_DIR'),
+            target_dir=dict(default='home', choices=['home', 'root'])
         )
     )
 

@@ -1,0 +1,12 @@
+---
+- name: systemd
+  tags:
+    - systemd
+  block:
+    - name: stow systemd dotfiles
+      include_role:
+        name: dotfiles
+        tasks_from: stow_force_override
+      vars:
+        package: systemd
+        target_dir: root

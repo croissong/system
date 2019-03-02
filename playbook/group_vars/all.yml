@@ -10,6 +10,7 @@ locales:
 user:
   name: croissong
   group: croissong
+  home: "/home/croissong"
   uid: 1000
   comment: Jan Möller
   groups:
@@ -37,7 +38,8 @@ extra_aur_packages:
 
 dotfiles:
   repo: "https://github.com/Croissong/.dotfiles"
-  install_cmd: "stow -d ${HOME}/dotfiles -S git gpg pass ssh tmux i3 perl-anyevent-i3 systemd dunst yarn"
+  directory: "{{ user.home }}/dotfiles"
+  install_cmd: "stow -d {{ user.home }}/dotfiles -S git gpg pass ssh tmux i3 perl-anyevent-i3 systemd dunst yarn"
   deps:
     - stow
     - xclip
