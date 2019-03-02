@@ -3,10 +3,9 @@
   tags: ['maintenance']
   block:
     - name: install extra packages from repo
-      pacman: name="{{ extra_packages }}"
+      pacman: name={{ extra_packages }} state=latest
 
     - name: install extra packages from AUR
-      aur: name="{{ item }}"
-      with_items: "{{ extra_aur_packages }}"
+      aur: name={{ extra_aur_packages }} use=yay
       become_user: "{{ user.name }}"
       tags: [aur]

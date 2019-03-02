@@ -26,7 +26,6 @@ dotfiles:
   directory: &dotfiles_dir "{{ user.home }}/dotfiles"
   priv_dir: "{{ user.home }}/dotfiles/.priv"
   standalone_dotfiles:
-    - dunst
     - env
     - git
     - gpg
@@ -74,7 +73,6 @@ btrfs__subvolumes:
 extra_packages:
   - ansible-lint
   - autorandr
-  - dunst
   - evince
   - exa
   - fd

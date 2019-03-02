@@ -1,0 +1,9 @@
+---
+- name: dunst notification daemon
+  tags: ['dunst', 'notification']
+  block:
+    - name: install dunst
+      pacman: name=dunst state=present
+
+    - name: stow dotfile config
+      stow: package=dunst

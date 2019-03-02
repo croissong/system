@@ -1,0 +1,21 @@
+---
+- name: theme and fonts
+  tags: ['theme', 'fonts']
+  block:
+    - name: install fonts
+      pacman: name={{ fonts }} state=present
+      vars:
+        fonts:
+          - ttf-hack
+          - ttf-dejavu
+          - ttf-ubraille
+          # Fonts to use asian characters
+          - ttf-freefont
+          - ttf-arphic-uming
+          - ttf-baekmuk
+          - ttf-indic-otf
+          # Emoji
+          - noto-fonts
+          - ttf-hannom  # Vietnamese
+          # Math
+          - font-mathematica
