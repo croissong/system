@@ -7,7 +7,7 @@
       aur: name=yay use=makepkg skip_installed=true
 
     - name: install downgrade script for downgrading packages
-      aur: use=yay name=downgrade
+      aur: name=downgrade use=yay
 
     - name: stow yay dotfiles config
       stow: package=yay

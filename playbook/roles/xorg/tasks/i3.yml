@@ -1,0 +1,16 @@
+---
+- name: i3 config
+  tags: ['i3']
+  become_user: "{{ user.name }}"
+  block:
+    - name: install i3 and extensions
+      aur: name={{ i3_pkgs }} use=yay
+      vars:
+        i3_pkgs:
+          - i3-wm
+          - i3lock
+          - i3status-rust-git
+          - perl-anyevent-i3
+
+    - name: stow i3 dotfiles configs
+      stow: package=i3

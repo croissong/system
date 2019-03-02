@@ -29,7 +29,6 @@ dotfiles:
     - env
     - git
     - gpg
-    - i3
     - mimeapps
     - pass
     - ssh
@@ -79,7 +78,6 @@ extra_packages:
   - gnome-keyring
   - jq
   - libreoffice-fresh
-  - perl-anyevent-i3
   - ripgrep
   - rofi
 
