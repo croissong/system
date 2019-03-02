@@ -12,5 +12,3 @@
       service: name=tmux scope=user enabled=yes state=started
   tags:
       - shell
-
-  

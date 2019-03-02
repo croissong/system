@@ -1,6 +1,6 @@
 ---
 - name: install CUPS printing system
-  pacman: 
+  pacman:
     name: "{{ item }}"
     state: present
   with_items:
@@ -12,7 +12,7 @@
     - hplip
 
 - name: add user to lp group
-  user: 
+  user:
     name: "{{ user.name }}"
     groups: lp
     append: yes

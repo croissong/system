@@ -8,10 +8,10 @@
       - smartmontools
 
 - name: mask systemd radio service
-  command: systemctl mask systemd-rfkill.service
+  systemd: name=systemd-rfkill.service masked=true
 
 - name: mask systemd radio socket
-  command: systemctl mask systemd-rfkill.socket
+  systemd: name=systemd-rfkill.socket masked=true
 
 - name: Enable TLP service
   service: name=tlp.service enabled=yes state=restarted

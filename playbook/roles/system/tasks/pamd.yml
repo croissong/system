@@ -9,5 +9,3 @@
       vars:
         package: pam.d
         target_dir: /
-
-  

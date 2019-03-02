@@ -4,16 +4,17 @@
   block:
     - name: install stow to manage symlinks
       pacman: name=stow
-      
+
     - name: clone dotfiles
       git:
         repo: "{{ dotfiles.repo }}"
         dest: "{{ dotfiles.directory }}"
+        version: master
         recursive: yes
         track_submodules: yes
       become_user: "{{ user.name }}"
       register: warning
-      failed_when: warning.failed == True and warning.msg != "Local modifications exist in repository (force=no)."
+      failed_when: warning.failed and warning.msg != "Local modifications exist in repository (force=no)."
 
     - name: install dotfiles dependencies
       pacman: name="{{ dotfiles.deps }}" state=present

@@ -3,16 +3,19 @@
   name: configure Arch Linux system
   connection: local
   become: yes
+
   environment:
     USER_HOME: "{{ user.home }}"
     DOTFILES_DIR: "{{ dotfiles.directory }}"
+
   pre_tasks:
-    - name: enable time sync
-      command: timedatectl set-ntp true
+    - include_role:
+        name: system
+        tasks_from: timedate
 
   tasks:
     - import_role: {name: pkgs}
-    - import_role: {name: system}  
+    - import_role: {name: system}
     - import_role: {name: desktop}
     - import_role: {name: laptop}
     - import_role: {name: dotfiles}

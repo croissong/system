@@ -17,14 +17,10 @@
 - name: install packages for desktop environment from repo
   pacman: name={{ item }}
   with_items:
-    - feh 
+    - feh
     - redshift
     - dunst
     - rofi
-
-- name: Register uid
-  command: id -u {{ user.name }}
-  register: uid
 
 - block:
   - name: stow redshift
@@ -37,7 +33,7 @@
       enabled: True
       scope: user
       state: started
-    become: True  
+    become: True
     become_user: "{{ user.name }}"
   tags:
     - redshift

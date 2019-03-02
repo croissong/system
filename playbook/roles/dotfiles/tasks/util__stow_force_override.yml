@@ -14,8 +14,8 @@
   with_items: "{{ original_files.results }}"
   when:
     - item.stat is defined
-    - item.stat.exists == True
-    - item.stat.islnk == False
+    - item.stat.exists
+    - not item.stat.islnk
 - name: Stow dotfiles
   stow:
     package: "{{ package }}"

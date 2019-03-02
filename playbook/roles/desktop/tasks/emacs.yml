@@ -6,9 +6,7 @@
       stow: package=emacs
       become_user: "{{ user.name }}"
     - name: install emacs
-      pacman: name=emacs state=present  
+      pacman: name=emacs state=present
     - name: enable emacs systemd user service
       become_user: "{{ user.name }}"
       service: name=emacs scope=user enabled=yes state=started
-
-  

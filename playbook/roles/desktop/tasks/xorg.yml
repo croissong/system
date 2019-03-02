@@ -6,15 +6,18 @@
     - xorg-xinit
     - xterm
     - xf86-input-libinput
-    - xf86-video-intel 
+    - xf86-video-intel
     - arandr
 
 - name: configure input devices
   copy: src=xorg/30-input.conf dest=/etc/X11/xorg.conf.d/30-input.conf
 
 - name: identify video adapter vendor
-  shell: "lspci | grep VGA"
+  shell: "set -o pipefail && lspci | grep VGA"
+  args:
+    executable: /bin/bash
   register: graphics
+  changed_when: False
 
 - name: configure video driver
   copy: src=xorg/30-video.conf dest=/etc/X11/xorg.conf.d/30-video.conf
