@@ -3,9 +3,11 @@
   tags: golang
   block:
     - name: install golang pkgs
-      pacman:
-        name: ['go', 'go-tools']
-        state: present
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - go
+          - go-tools
 
     - name: install gocode
       become_user: "{{ user.name }}"

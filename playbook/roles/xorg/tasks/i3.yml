@@ -3,10 +3,11 @@
   tags: ['i3']
   become_user: "{{ user.name }}"
   block:
+
     - name: install i3 and extensions
-      aur: name={{ i3_pkgs }} use=yay
+      import_role: name=pkgs tasks_from=util__install_packages
       vars:
-        i3_pkgs:
+        packages:
           - i3-wm
           - i3lock
           - i3status-rust-git

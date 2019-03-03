@@ -2,6 +2,7 @@
 - name: pam.d config
   tags: ['pamd']
   block:
+
     - name: stow pam.d dotfiles
       include_role:
         name: dotfiles

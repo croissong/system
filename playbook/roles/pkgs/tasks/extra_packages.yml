@@ -2,10 +2,9 @@
 - name: install extra pkgs
   tags: ['maintenance']
   block:
-    - name: install extra packages from repo
-      pacman: name={{ extra_packages }} state=latest
 
-    - name: install extra packages from AUR
-      aur: name={{ extra_aur_packages }} use=yay
-      become_user: "{{ user.name }}"
-      tags: [aur]
+    - name: install extra packages
+      import_tasks: util__install_packages.yml
+      vars:
+        packages: "{{ extra_packages }}"
+        aur_packages: "{{ extra_aur_packages }}"

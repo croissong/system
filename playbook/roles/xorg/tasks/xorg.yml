@@ -1,10 +1,11 @@
 ---
 - name: xorg config
   block:
+
     - name: install Xorg server and extensions
-      pacman: name={{ x_packages }} state=present
+      import_role: name=pkgs tasks_from=util__install_packages
       vars:
-        x_packages:
+        packages:
           - xorg
           - xorg-xinit
           - xterm

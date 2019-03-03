@@ -1,0 +1,15 @@
+---
+- name: cleanup obsolete resources
+  tags: ['pacman', 'maintenance']
+  block:
+
+    - name: Clean orphan packages
+      command: yay -Yc
+
+    - name: Clean paccache.
+      command: paccache -rk1
+      register: output
+      changed_when: output.stdout.find('packages removed') != -1
+
+    # - name: find explicitely installed packages
+    #   pacman -Qet

@@ -3,12 +3,16 @@
   tags: python
   block:
     - name: install python dev tools
-      pacman:
-        name: ['python-jedi', 'flake8', 'autopep8', 'yapf']
-        # What about ipython
-        state: present
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - python-jedi
+          - flake8
+          - autopep8
+          - yapf
+          # What about ipython
+
     - name: stow python dotfiles
       stow:
         package: python
-      become: yes
       become_user: "{{ user.name }}"

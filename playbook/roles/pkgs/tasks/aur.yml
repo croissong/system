@@ -3,11 +3,20 @@
   tags: ['aur']
   become_user: "{{ user.name }}"
   block:
-    - name: install AUR package helper yay
-      aur: name=yay use=makepkg skip_installed=true
-
-    - name: install downgrade script for downgrading packages
-      aur: name=downgrade use=yay
 
     - name: stow yay dotfiles config
       stow: package=yay
+
+    - name: install AUR package helper yay
+      import_tasks: util__install_packages.yml
+      vars:
+        use: makepkg
+        skip_installed: True
+        aur_packages:
+          - yay
+
+    - name: install downgrade script for downgrading packages
+      import_tasks: util__install_packages.yml
+      vars:
+        aur_packages:
+          - downgrade

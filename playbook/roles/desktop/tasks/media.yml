@@ -1,29 +1,36 @@
-- name: install media codecs
-  pacman: name={{ item }} state=present
-  with_items:
-    - flac
-    - lame
-    - opus
-    - gstreamer
-    - gst-libav
-    - gstreamer-vaapi
-    - gst-plugins-good
-    - gst-plugins-ugly
-    - gst-plugins-bad
+---
+- name: media configs
+  tags: ['media']
+  block:
 
-- name: install pulseaudio
-  pacman: name={{ item }} state=present
-  with_items:
-    - alsa-utils
-    - pulseaudio
-    - pulseaudio-alsa
-    - pulseaudio-jack
-    - pavucontrol
-    - pamixer
-    - paprefs
+    - name: install media codecs
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - flac
+          - lame
+          - opus
+          - gstreamer
+          - gst-libav
+          - gstreamer-vaapi
+          - gst-plugins-good
+          - gst-plugins-ugly
+          - gst-plugins-bad
 
-- name: configure to switch audio output to newly connected devices
-  lineinfile:
-    dest: /etc/pulse/default.pa
-    state: present
-    line: "load-module module-switch-on-connect"
+    - name: install pulseaudio
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - alsa-utils
+          - pulseaudio
+          - pulseaudio-alsa
+          - pulseaudio-jack
+          - pavucontrol
+          - pamixer
+          - paprefs
+
+    - name: configure to switch audio output to newly connected devices
+      lineinfile:
+        dest: /etc/pulse/default.pa
+        state: present
+        line: "load-module module-switch-on-connect"

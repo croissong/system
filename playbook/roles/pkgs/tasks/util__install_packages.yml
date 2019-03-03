@@ -1,0 +1,23 @@
+---
+- name: install packages helper utility
+  tags: ['always']
+  vars:
+    aur_pkgmanager: yay
+    aur_skip_installed: False
+    aur_packages: []
+    packages: []
+  block:
+
+    - name: install packages from repo
+      pacman: name={{ packages }} state=latest
+      when: (packages | length) > 0
+
+    - name: install packages from aur
+      aur:
+        name: "{{ aur_packages }}"
+        use: "{{ aur_pkgmanager }}"
+        aur_only: true
+        skip_installed: "{{ aur_skip_installed }}"
+
+      become_user: "{{ user.name }}"
+      when: (aur_packages | length) > 0

@@ -2,6 +2,7 @@
 - name: configure pacman
   tags: ['pacman']
   block:
+
     - name: stow pacman system dotfiles
       include_role:
         name: dotfiles
@@ -21,7 +22,7 @@
       tags: ['maintenance']
 
     - name: install pacman utils
-      pacman: name upgrade=yes
+      import_tasks: util__install_packages.yml
       vars:
-        util_pkgs:
+        aur_packages:
           - pkg_scripts

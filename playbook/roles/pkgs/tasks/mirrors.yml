@@ -2,6 +2,7 @@
 - name: pkg repo mirrors
   tags: ['maintenance', 'mirrors']
   block:
+
     - include_tasks: util__mirrorlist_checksum.yml
       vars:
         register_var: mirrorlist_pre

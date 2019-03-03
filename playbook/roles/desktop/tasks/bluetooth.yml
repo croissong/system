@@ -1,9 +1,8 @@
 ---
 - name: install bluetooth packages
-  pacman:
-    name: "{{ item }}"
-    state: present
-  with_items:
+  import_role: name=pkgs tasks_from=util__install_packages
+  vars:
+    packages:
     - blueman
     - bluez
     - bluez-firmware

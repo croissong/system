@@ -2,13 +2,14 @@
 - name: js
   tags: js
   block:
-    - name: install js dev tools
-      pacman: name=js_pkgs state=present
-      vars:
-        js_pkgs:
-          - prettier
-          - yarn
 
     - name: stow js dotfiles
       stow: package=yarn
       become_user: "{{ user.name }}"
+
+    - name: install js dev tools
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - prettier
+          - yarn

@@ -32,7 +32,6 @@ dotfiles:
     - mimeapps
     - pass
     - ssh
-    - tmux
   deps:
     - stow
     - xclip

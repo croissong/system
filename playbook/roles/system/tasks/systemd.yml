@@ -1,8 +1,8 @@
 ---
 - name: systemd
-  tags:
-    - systemd
+  tags: ['systemd']
   block:
+
     - name: stow systemd dotfiles
       include_role:
         name: dotfiles

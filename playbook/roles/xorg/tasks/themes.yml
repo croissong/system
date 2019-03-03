@@ -2,10 +2,11 @@
 - name: theme and fonts
   tags: ['theme', 'fonts']
   block:
+
     - name: install fonts
-      pacman: name={{ fonts }} state=present
+      import_role: name=pkgs tasks_from=util__install_packages
       vars:
-        fonts:
+        packages:
           - ttf-hack
           - ttf-dejavu
           - ttf-ubraille

@@ -1,14 +1,20 @@
 ---
-- block:
+- name: shell and terminal config
+  tags: ['shell']
+  become_user: "{{ user.name }}"
+  block:
+
     - name: stow shell configs
-      command: "stow -d ${HOME}/dotfiles -S bash zsh"
-      become_user: "{{ user.name }}"
+      stow: package="bash zsh tmux"
+
     - name: install packages
-      pacman:
-        name: [zsh, antibody, tmux, tmuxinator]
-        state: present
-    - name: enable tmux
-      become_user: "{{ user.name }}"
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - zsh
+          - antibody
+          - tmux
+          - tmuxinator
+
+    - name: enable tmux user service
       service: name=tmux scope=user enabled=yes state=started
-  tags:
-      - shell

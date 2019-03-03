@@ -1,9 +1,13 @@
 ---
 - name: bootstrap dotfiles
   tags: ['dotfiles']
+  become_user: "{{ user.name }}"
   block:
     - name: install stow to manage symlinks
-      pacman: name=stow
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - stow
 
     - name: clone dotfiles
       git:
@@ -12,7 +16,6 @@
         version: master
         recursive: yes
         track_submodules: yes
-      become_user: "{{ user.name }}"
       register: warning
       failed_when: warning.failed and warning.msg != "Local modifications exist in repository (force=no)."
 
@@ -22,4 +25,3 @@
     - name: install dotfiles
       stow: package="{{ item }}"
       with_items: "{{ dotfiles.standalone_dotfiles }}"
-      become_user: "{{ user.name }}"

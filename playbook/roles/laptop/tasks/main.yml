@@ -1,7 +1,8 @@
 ---
 - name: install TLP power management
-  pacman: name={{ item }} state=present
-  with_items:
+  import_role: name=pkgs tasks_from=util__install_packages
+  vars:
+    packages:
       - tlp
       - acpid
       - ethtool

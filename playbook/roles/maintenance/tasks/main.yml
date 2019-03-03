@@ -1,5 +1,0 @@
----
-- name: 'Clean unneeded package dependencies.'
-  command: yay -Yc
-- name: 'Clean paccache.'
-  command: paccache -rk1
