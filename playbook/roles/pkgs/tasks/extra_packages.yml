@@ -6,5 +6,4 @@
     - name: install extra packages
       import_tasks: util__install_packages.yml
       vars:
-        packages: "{{ extra_packages }}"
-        aur_packages: "{{ extra_aur_packages }}"
+        packages: "{{ extra_packages + extra_aur_packages }}"

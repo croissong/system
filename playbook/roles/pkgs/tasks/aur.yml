@@ -12,11 +12,11 @@
       vars:
         use: makepkg
         skip_installed: True
-        aur_packages:
+        packages:
           - yay
 
     - name: install downgrade script for downgrading packages
       import_tasks: util__install_packages.yml
       vars:
-        aur_packages:
+        packages:
           - downgrade
