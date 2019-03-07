@@ -22,21 +22,23 @@
           service: name=iwd enabled=yes state=started
 
     - name: networkd
-      tags: ['systemd', 'networkd']
+      tags: ['systemd', 'systemd-networkd']
       block:
-
-        - name: copy netorkd profile files
-          copy: src=network/networkd dest=/etc/systemd/network/
 
         - name: enable networkd
           service: name=systemd-networkd enabled=yes state=started
 
-    - name: resolved
-      tags: ['systemd', 'resolved']
-      block:
+        - name: copy networkd profile file
+          copy: src=network/networkd.conf dest=/etc/systemd/
+          notify: restart systemd-networkd
 
-        - name: copy netorkd profile files
-          copy: src=network/resolved dest=/etc/systemd/resolved.conf.d/
+        - name: copy networkd profile files
+          copy: src=network/networkd/ dest=/etc/systemd/network/
+          notify: restart systemd-networkd
+
+    - name: resolved
+      tags: ['systemd', 'systemd-resolved']
+      block:
 
         - name: install systemd-resolvconf
           import_role: name=pkgs tasks_from=util__install_packages
@@ -44,11 +46,19 @@
             packages:
               - systemd-resolvconf
 
-        - name: enable systemd-resolved
-          service: name=systemd-resolved enabled=yes state=started
-
         - name: symlink resolv.conf stub
           file:
             src: "/run/systemd/resolve/stub-resolv.conf"
             dest: "/etc/resolv.conf"
             state: link
+
+        - name: enable systemd-resolved
+          service: name=systemd-resolved enabled=yes state=started
+
+        - name: copy main dns profile
+          copy: src=network/resolved.conf dest=/etc/systemd/resolved.conf
+          notify: restart systemd-resolved
+
+        - name: copy additional dns profiles
+          copy: src=network/resolved.conf.d/ dest=/etc/systemd/resolved.conf.d
+          notify: restart systemd-resolved

@@ -6,3 +6,7 @@ DHCP=yes
 
 [DHCP]
 RouteMetric=20
+UseDNS=false
+
+[IPv6AcceptRA]
+UseDNS=false
