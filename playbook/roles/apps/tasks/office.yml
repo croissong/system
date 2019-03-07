@@ -1,0 +1,11 @@
+---
+- name: setup office apps
+  tags: ['office']
+  block:
+    - name: install office packages
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - evince
+          - krita
+          - libreoffice-fresh

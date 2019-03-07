@@ -1,0 +1,12 @@
+---
+- name: ansible
+  tags: ['ansible']
+  block:
+
+    - name: install ansible pkgs
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - ansible
+          - ansible-lint
+          - mitogen

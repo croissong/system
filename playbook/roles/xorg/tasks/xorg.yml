@@ -8,7 +8,6 @@
         packages:
           - xorg
           - xorg-xinit
-          - xterm
           - xf86-input-libinput
           - xf86-video-intel
           - arandr

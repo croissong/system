@@ -1,0 +1,25 @@
+---
+- name: setup development environment
+  tags: ['dev']
+  block:
+
+    - import_tasks: ansible.yml
+    - import_tasks: k8s.yml
+    - import_tasks: docker.yml
+
+    - name: install other dev pkgs
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - doctl-bin
+          - gdb
+          - mitmproxy
+          - mssql-tools
+          - nmap
+          - rtags
+          - sops
+          - terraform
+          - tcpdump
+          - traceroute
+          - wireshark-qt
+          - whois

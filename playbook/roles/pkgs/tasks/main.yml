@@ -6,3 +6,4 @@
     - import_tasks: pacman.yml
     - import_tasks: aur.yml
     - import_tasks: extra_packages.yml
+    - import_tasks: custom_packages.yml

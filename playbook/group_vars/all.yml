@@ -65,26 +65,22 @@ btrfs__subvolumes:
      state: present
   "{{ arch_root }}/@home":
      state: present
+
+core_packages:
+  - coreutils
+  - git
+  - linux-firmware
+  - lsof
+  - moreutils
+  - rsync
+  - sysstat
+  - pciutils     
      
 extra_packages:
-  - ansible-lint
-  - evince
-  - exa
-  - fd
-  - feh
+  - dtrx
   - flameshot
   - glances
   - gnome-keyring
-  - jq
-  - libreoffice-fresh
+  - mimeo
   - ripgrep
   - rofi
-
-extra_aur_packages:
-  - dtrx
-  - firefox-beta-bin
-  - mattermost-desktop-bin
-  - mimeo
-  - mitogen
-  - slack-desktop
-  - yq

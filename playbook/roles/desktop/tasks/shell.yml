@@ -11,10 +11,16 @@
       import_role: name=pkgs tasks_from=util__install_packages
       vars:
         packages:
-          - zsh
           - antibody
+          - exa
+          - fd
+          - fzf
+          - jq
+          - jp
           - tmux
           - tmuxinator
+          - yq
+          - zsh
 
     - name: enable tmux user service
       service: name=tmux scope=user enabled=yes state=started

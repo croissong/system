@@ -1,0 +1,10 @@
+---
+- name: setup custom-packages environment
+  tags: ['custom-packages']
+  block:
+
+    - name: install custom-packages tools
+      import_tasks: util__install_packages.yml
+      vars:
+        packages:
+          - nvchecker

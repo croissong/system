@@ -1,0 +1,12 @@
+---
+- name: setup k8s tooling
+  tags: ['k8s']
+  block:
+
+    - name: install k8s tools
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - kubernetes-helm
+          - helmsman-git
+          - kubectl

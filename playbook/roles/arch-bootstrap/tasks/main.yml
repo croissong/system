@@ -56,13 +56,7 @@
   with_items: "{{ drive.partitions }}"
   when: item.mountpoint is defined
 
-- name: register base packages
-  shell: echo $(pacman -Sqg base | sed 's/^\(linux\|nano\)$//') linux-zen linux-lts base-devel reflector ansible btrfs-progs
-  register: cmd_output
-  changed_when: False
-
-- set_fact:
-    base_packages: "{{ cmd_output.stdout }}"
+- import_tasks: register_base_packages.yml
 
 - name: Bootstrap base Arch Linux.
   command: "pacstrap {{ arch_root }} {{ base_packages }}"

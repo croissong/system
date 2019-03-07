@@ -1,0 +1,9 @@
+---
+- name: setup gaming apps
+  tags: ['gaming']
+  block:
+    - name: install gaming packages
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - steam

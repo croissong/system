@@ -1,0 +1,7 @@
+- name: register base packages
+  shell: echo $(pacman -Sqg base | sed 's/^\(linux\|nano\)$//') linux-zen linux-lts base-devel reflector ansible btrfs-progs
+  register: cmd_output
+  changed_when: False
+
+- set_fact:
+    base_packages: "{{ cmd_output.stdout }}"

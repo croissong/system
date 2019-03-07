@@ -4,3 +4,4 @@
   block:
     - import_tasks: xorg.yml
     - import_tasks: themes.yml
+    - import_tasks: i3.yml
