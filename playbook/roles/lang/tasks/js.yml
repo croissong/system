@@ -1,11 +1,11 @@
 ---
 - name: js
   tags: js
+  become_user: "{{ user.name }}"
   block:
 
     - name: stow js dotfiles
       stow: package=yarn
-      become_user: "{{ user.name }}"
 
     - name: install js dev tools
       import_role: name=pkgs tasks_from=util__install_packages
@@ -13,3 +13,18 @@
         packages:
           - prettier
           - yarn
+
+    - name: update global yarn packages
+      block:
+
+        - name: check outdated global yarn packages
+          command: yarn outdated
+          args:
+            chdir: "$XDG_CONFIG_HOME/yarn/global"
+          changed_when: False
+          failed_when: False
+          register: yarn_outdated_output
+
+        - name: update global yarn packages
+          command:  yarn global upgrade --latest
+          when: yarn_outdated_output.rc != 0
