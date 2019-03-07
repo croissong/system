@@ -30,10 +30,10 @@
 - name: install core packages
   import_role: name=pkgs tasks_from=core_packages
   
-- name: Configure netctl
+- name: Configure networking
   include_role:
-    name: desktop
-    tasks_from: netctl
+    name: system
+    tasks_from: network
 
 - import_tasks: user.yml
 - import_tasks: bootloader.yml

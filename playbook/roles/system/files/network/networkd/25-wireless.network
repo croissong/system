@@ -3,8 +3,6 @@ Name=wlan0
 
 [Network]
 DHCP=yes
-DNS=208.67.222.222
-DNS=208.67.220.220
 
 [DHCP]
 RouteMetric=20

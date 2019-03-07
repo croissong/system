@@ -22,20 +22,33 @@
           service: name=iwd enabled=yes state=started
 
     - name: networkd
-      tags: ['networkd']
+      tags: ['systemd', 'networkd']
       block:
 
         - name: copy netorkd profile files
-          copy: src=networkd/ dest=/etc/systemd/network/
+          copy: src=network/networkd dest=/etc/systemd/network/
 
         - name: enable networkd
           service: name=systemd-networkd enabled=yes state=started
 
+    - name: resolved
+      tags: ['systemd', 'resolved']
+      block:
+
+        - name: copy netorkd profile files
+          copy: src=network/resolved dest=/etc/systemd/resolved.conf.d/
+
+        - name: install systemd-resolvconf
+          import_role: name=pkgs tasks_from=util__install_packages
+          vars:
+            packages:
+              - systemd-resolvconf
+
         - name: enable systemd-resolved
           service: name=systemd-resolved enabled=yes state=started
 
-        - name: symlink resolve.conf
+        - name: symlink resolv.conf stub
           file:
-            src: "/run/systemd/resolve/resolv.conf"
+            src: "/run/systemd/resolve/stub-resolv.conf"
             dest: "/etc/resolv.conf"
             state: link
