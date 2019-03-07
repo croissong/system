@@ -4,4 +4,3 @@
   vars:
     packages:
       - openssh
-      - keychain

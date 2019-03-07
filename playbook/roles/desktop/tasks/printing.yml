@@ -8,7 +8,6 @@
       vars:
         packages:
           - cups
-          - cups-pdf
           - ghostscript
           - gutenprint
           - gsfonts
@@ -21,4 +20,4 @@
         append: yes
 
     - name: enable CUPS
-      service: name=org.cups.cupsd.service enabled=yes state=started
+      service: name=org.cups.cupsd.service enabled=no state=stopped
