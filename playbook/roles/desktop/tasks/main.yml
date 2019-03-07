@@ -7,8 +7,3 @@
 - import_tasks: shell.yml
 - import_tasks: dunst.yml
 - import_tasks: redshift.yml
-
-- name: install cron
-  pacman: name=cronie state=present
-  notify:
-    - enable cron

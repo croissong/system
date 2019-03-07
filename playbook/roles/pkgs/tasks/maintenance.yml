@@ -21,9 +21,10 @@
 
         - import_role: name=arch-bootstrap tasks_from=register_base_packages
 
-        - name: add base packages registered package list
+        - name: add other packages registered package list
           set_fact:
-            registered_packages: "{{ registered_packages + core_packages + base_packages.split() }}"
+            registered_packages: |
+              {{ registered_packages + core_packages + base_packages.split() + custom_packages }}
 
         - name: expand package groups
           command: "pacman -Sqg {{ registered_packages | join(' ')}}"
@@ -35,4 +36,14 @@
           set_fact:
             registered_packages: "{{ registered_packages + expanded_groups_output.stdout_lines }}"
 
-        - debug: msg="{{ installed_packages_res.stdout_lines | difference(registered_packages) }}"
+        - set_fact:
+            obsolete_packages: |
+              {{ installed_packages_res.stdout_lines | difference(registered_packages) }}
+
+        - name: remove obsolete packages
+          when: obsolete_packages | length > 0
+          pacman: state=absent name="{{ obsolete_packages }}" recurse=yes
+          register: removed_pkgs
+
+        - debug: var=obsolete_packages
+          when: obsolete_packages | length > 0
