@@ -3,7 +3,7 @@
   tags: ['package']
   vars:
     pkg_manager: yay
-    skip_installed: False
+    skip_installed: True
   block:
 
     - name: update installed package list
@@ -17,5 +17,5 @@
         name: "{{ packages }}"
         use: "{{ pkg_manager }}"
         aur_only: False
-        skip_installed: "{{ skip_installed }}"
+        skip_installed: True
       become_user: "{{ user.name }}"
