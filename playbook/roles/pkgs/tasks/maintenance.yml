@@ -36,14 +36,15 @@
           set_fact:
             registered_packages: "{{ registered_packages + expanded_groups_output.stdout_lines }}"
 
-        - set_fact:
+        - name: register obsolete packages
+          set_fact:
             obsolete_packages: |
               {{ installed_packages_res.stdout_lines | difference(registered_packages) }}
 
+
         - name: remove obsolete packages
           when: obsolete_packages | length > 0
-          pacman: state=absent name="{{ obsolete_packages }}" recurse=yes
-          register: removed_pkgs
-
-        - debug: var=obsolete_packages
-          when: obsolete_packages | length > 0
+          block:
+          - pacman: state=absent name="{{ obsolete_packages }}" recurse=yes
+            register: removed_pkgs
+          - debug: var=obsolete_packages
