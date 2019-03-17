@@ -7,3 +7,8 @@
   systemd:
     name: systemd-networkd
     state: restarted
+
+- name: restart iwd
+  systemd:
+    name: iwd
+    state: restarted

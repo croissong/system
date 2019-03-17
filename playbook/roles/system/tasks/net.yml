@@ -12,14 +12,13 @@
             packages:
               - iwd
 
-        - name: stow iwd dotfiles profiles
-          stow:
-            package: iwd
-            source_dir: "{{ dotfiles.priv_dir }}/network"
-            target_dir: /var/lib/iwd/
-
         - name: enable iwd service
           service: name=iwd enabled=yes state=started
+
+        - name: copy iwd configs
+          copy: src="{{ priv_dir }}/iwd/" dest=/var/lib/iwd/
+          notify: restart iwd
+
 
     - name: networkd
       tags: ['systemd', 'systemd-networkd']

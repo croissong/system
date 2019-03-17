@@ -13,6 +13,11 @@
         name: system
         tasks_from: timedate
 
+    - name: set priv_dir
+      tags: ['always']
+      set_fact: priv_dir="{{ lookup('env','MY_PRIV') }}"
+      become_user: "{{ user.name }}"
+
   tasks:
     - import_role: {name: pkgs}
     - import_role: {name: system}
