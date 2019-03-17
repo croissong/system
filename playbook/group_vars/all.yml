@@ -10,7 +10,6 @@ locales:
 user:
   name: &username croissong
   group: *username
-  home: /home/croissong
   uid: 1000
   comment: Jan Möller
   groups:
@@ -23,8 +22,6 @@ user:
 
 dotfiles:
   repo: "https://github.com/Croissong/.dotfiles"
-  directory: &dotfiles_dir "{{ user.home }}/dotfiles"
-  priv_dir: "{{ user.home }}/dotfiles/.priv"
   standalone_dotfiles:
     - env
     - git

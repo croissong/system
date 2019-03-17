@@ -12,7 +12,7 @@
     - name: clone dotfiles
       git:
         repo: "{{ dotfiles.repo }}"
-        dest: "{{ dotfiles.directory }}"
+        dest: "$MY_DOTFILES"
         version: master
         recursive: yes
         track_submodules: yes

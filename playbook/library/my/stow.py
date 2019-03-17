@@ -29,8 +29,8 @@ def main():
     module = AnsibleModule(
         argument_spec = dict(
             package=dict(required=True),
-            source_dir=dict(required=False, default='$DOTFILES_DIR'),
-            target_dir=dict(required=False, default='$USER_HOME')
+            source_dir=dict(required=False, default='$MY_DOTFILES'),
+            target_dir=dict(required=False, default='$HOME')
         )
     )
 

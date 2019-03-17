@@ -1,3 +1,0 @@
----
-target_dir: "{{ user.home }}"
-source_dir: "{{ dotfiles.directory }}"

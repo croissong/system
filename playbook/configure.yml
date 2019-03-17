@@ -4,10 +4,6 @@
   connection: local
   become: yes
 
-  environment:
-    USER_HOME: "{{ user.home }}"
-    DOTFILES_DIR: "{{ dotfiles.directory }}"
-
   pre_tasks:
     - include_role:
         name: system
