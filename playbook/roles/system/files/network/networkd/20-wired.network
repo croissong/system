@@ -1,8 +1,0 @@
-[Match]
-Name=enp0s31f6
-
-[Network]
-DHCP=yes
-
-[DHCP]
-RouteMetric=10

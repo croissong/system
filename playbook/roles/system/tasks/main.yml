@@ -4,5 +4,5 @@
     - core
   block:
     - import_tasks: pamd.yml
-    - import_tasks: network.yml
+    - import_tasks: net.yml
     - import_tasks: systemd.yml

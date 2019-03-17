@@ -1,0 +1,12 @@
+[Match]
+Name=eth0
+
+[Network]
+DHCP=yes
+
+[DHCP]
+RouteMetric=10
+UseDNS=false
+
+[IPv6AcceptRA]
+UseDNS=false

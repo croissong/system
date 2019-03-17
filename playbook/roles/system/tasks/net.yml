@@ -1,6 +1,6 @@
 ---
 - name: configure networking
-  tags: ['network']
+  tags: ['net']
   block:
 
     - name: configure iwd
@@ -28,12 +28,8 @@
         - name: enable networkd
           service: name=systemd-networkd enabled=yes state=started
 
-        - name: copy networkd profile file
-          copy: src=network/networkd.conf dest=/etc/systemd/
-          notify: restart systemd-networkd
-
-        - name: copy networkd profile files
-          copy: src=network/networkd/ dest=/etc/systemd/network/
+        - name: copy networkd configs
+          copy: src=net/networkd/ dest=/
           notify: restart systemd-networkd
 
     - name: resolved
@@ -55,10 +51,6 @@
         - name: enable systemd-resolved
           service: name=systemd-resolved enabled=yes state=started
 
-        - name: copy main dns profile
-          copy: src=network/resolved.conf dest=/etc/systemd/resolved.conf
-          notify: restart systemd-resolved
-
-        - name: copy additional dns profiles
-          copy: src=network/resolved.conf.d/ dest=/etc/systemd/resolved.conf.d
+        - name: copy resolved configs
+          copy: src=net/resolved/ dest=/
           notify: restart systemd-resolved
