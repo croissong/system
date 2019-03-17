@@ -3,10 +3,5 @@
   tags: ['systemd']
   block:
 
-    - name: stow systemd dotfiles
-      include_role:
-        name: dotfiles
-        tasks_from: util__stow_force_override
-      vars:
-        package: systemd
-        target_dir: /
+    - name: copy systemd configs
+      copy: src=systemd/ dest=/
