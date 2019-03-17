@@ -3,19 +3,12 @@
   tags: ['pacman']
   block:
 
-    - name: stow pacman system dotfiles
-      include_role:
-        name: dotfiles
-        tasks_from: util__stow_force_override
-      vars:
-        package: system
-        source_dir: "{{ dotfiles.directory }}/pacman"
-        target_dir: /
+    - name: copy pacman configs
+      copy: src=pacman/ dest=/
 
     - name: stow pacman user dotfiles
-      stow:
-        package: user
-        source_dir: "{{ dotfiles.directory }}/pacman"
+      become_user: "{{ user.name }}"
+      stow: package=pacman
 
     - name: refresh pacman cache and upgrade the system
       pacman: update_cache=yes upgrade=yes
