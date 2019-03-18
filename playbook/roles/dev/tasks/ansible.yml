@@ -9,3 +9,6 @@
         packages:
           - ansible-lint
           - mitogen
+
+    - name: copy ansible configs
+      copy: src=ansible/ dest=/
