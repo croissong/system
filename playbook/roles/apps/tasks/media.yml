@@ -8,5 +8,16 @@
         packages:
           - acestream-launcher
           - feh
-          - mpv
           - obs-studio
+
+    - name: setup mpv
+      block:
+        - name: install mpv
+          import_role: name=pkgs tasks_from=util__install_packages
+          vars:
+            packages:
+              - mpv
+
+        - name: symlink mpv configs
+          become_user: "{{ user.name }}"
+          stow: package=mpv

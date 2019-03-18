@@ -12,6 +12,7 @@
       vars:
         packages:
           - bind-tools
+          - dbeaver
           - doctl-bin
           - gdb
           - mitmproxy

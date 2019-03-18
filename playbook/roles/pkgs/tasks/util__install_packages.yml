@@ -1,8 +1,5 @@
 ---
 - name: install packages helper utility
-  vars:
-    pkg_manager: yay
-    skip_installed: True
   block:
 
     - name: add package to registered packages list
@@ -16,15 +13,6 @@
           loop: "{{registered_packages | intersect(packages)}}"
 
         - name: add packages to registered packages list
+          tags: ['package']
           set_fact:
             registered_packages: "{{ registered_packages + packages }}"
-
-
-    - name: install packages
-      tags: ['package']
-      aur:
-        name: "{{ packages }}"
-        use: "{{ pkg_manager }}"
-        aur_only: False
-        skip_installed: True
-      become_user: "{{ user.name }}"

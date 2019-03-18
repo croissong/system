@@ -1,0 +1,15 @@
+---
+- name: install packages helper utility
+  vars:
+    pkg_manager: yay
+  block:
+
+    - name: install packages
+      tags: ['always']
+      when: registered_packages | length > 0
+      aur:
+        name: "{{ packages }}"
+        use: "{{ pkg_manager }}"
+        aur_only: False
+        skip_installed: True
+      become_user: "{{ user.name }}"
