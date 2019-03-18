@@ -1,0 +1,7 @@
+---
+- name: configure nftables
+  tags: ['nftables']
+  block:
+    
+    - name: configure nftables
+      import_role: name=ipr-cnrs.nftables

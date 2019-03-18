@@ -1,0 +1,6 @@
+nft_pkg_list:
+  - nftables
+nft_old_pkg_manage: False
+nft_input_group_rules:
+  020 icmp:
+    - ip protocol icmp icmp type echo-request ip length <= 84 counter limit rate 1/minute accept
