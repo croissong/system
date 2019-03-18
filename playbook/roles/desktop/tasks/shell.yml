@@ -5,7 +5,7 @@
   block:
 
     - name: stow shell configs
-      stow: package="bash zsh tmux"
+      stow: package="zsh tmux"
 
     - name: install packages
       import_role: name=pkgs tasks_from=util__install_packages

@@ -1,0 +1,10 @@
+---
+- name: install base pkgs
+  tags: ['base-packages']
+  block:
+
+    - import_role: name=arch-bootstrap tasks_from=register_base_packages
+    - name: install base packages
+      import_tasks: util__install_packages.yml
+      vars:
+        packages: "{{ base_packages.split() }}"

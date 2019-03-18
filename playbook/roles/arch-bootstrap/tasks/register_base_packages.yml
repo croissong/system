@@ -1,7 +1,12 @@
+---
 - name: register base packages
-  shell: echo $(pacman -Sqg base | sed 's/^\(linux\|nano\|netctl\)$//') linux-zen linux-lts base-devel reflector ansible btrfs-progs
-  register: cmd_output
-  changed_when: False
+  tags: ['package', 'maintenace', 'pkg_maintenace']
+  block:
+    - name: list base packages
+      shell: echo $(pacman -Sqg base | sed 's/^\(linux\|nano\|netctl\)$//') linux-zen linux-lts base-devel reflector ansible btrfs-progs
+      register: cmd_output
+      changed_when: False
 
-- set_fact:
-    base_packages: "{{ cmd_output.stdout }}"
+    - name: register base packages
+      set_fact:
+        base_packages: "{{ cmd_output.stdout }}"

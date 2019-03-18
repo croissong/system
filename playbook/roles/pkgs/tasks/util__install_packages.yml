@@ -1,18 +1,27 @@
 ---
 - name: install packages helper utility
-  tags: ['package']
   vars:
     pkg_manager: yay
     skip_installed: True
   block:
 
-    - name: update installed package list
+    - name: add package to registered packages list
       tags: ['maintenace', 'pkg_maintenace']
-      set_fact:
-        registered_packages: "{{ registered_packages | default([]) + packages }}"
-      failed_when: registered_packages | count !=  registered_packages | unique | count
+      vars:
+         registered_packages: "{{custom_packages}}"
+      block:
+        - name: check duplicate packages
+          fail: msg="duplicate package {{ item }}"
+          when: item is defined
+          loop: "{{registered_packages | intersect(packages)}}"
+
+        - name: add packages to registered packages list
+          set_fact:
+            registered_packages: "{{ registered_packages + packages }}"
+
 
     - name: install packages
+      tags: ['package']
       aur:
         name: "{{ packages }}"
         use: "{{ pkg_manager }}"

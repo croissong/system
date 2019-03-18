@@ -64,14 +64,11 @@ btrfs__subvolumes:
      state: present
 
 core_packages:
-  - coreutils
   - git
-  - linux-firmware
   - lsof
   - moreutils
   - rsync
   - sysstat
-  - pciutils     
      
 extra_packages:
   - dtrx
@@ -80,4 +77,5 @@ extra_packages:
   - gnome-keyring
   - mimeo
   - ripgrep
+  - rmlint
   - rofi

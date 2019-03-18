@@ -7,3 +7,4 @@
     - import_tasks: media.yml
     - import_tasks: office.yml
     - import_tasks: web.yml
+    - import_tasks: mail.yml

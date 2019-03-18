@@ -1,50 +1,60 @@
 ---
 - name: cleanup obsolete resources
-  tags: ['pacman', 'maintenance']
+  tags: ['maintenance', 'pkg_maintenace']
   block:
 
     - name: Clean orphan packages
-      command: yay -Yc
+      command: yay -Yc --noconfirm
+      register: output
+      changed_when: output.stdout.find('removing') != -1
 
     - name: Clean paccache.
       command: paccache -rk1
       register: output
       changed_when: output.stdout.find('packages removed') != -1
 
-    - name: cleanup unlisted packages
-      tags: ['pkg_maintenace']
+
+    - name: verify registered packages
       block:
-        - name: find explicitely installed packages
-          command: pacman -qQet
-          changed_when: False
-          register: installed_packages_res
-
-        - import_role: name=arch-bootstrap tasks_from=register_base_packages
-
-        - name: add other packages registered package list
-          set_fact:
-            registered_packages: |
-              {{ registered_packages + core_packages + base_packages.split() + custom_packages }}
-
         - name: expand package groups
           command: "pacman -Sqg {{ registered_packages | join(' ')}}"
           changed_when: False
           failed_when: False
           register: expanded_groups_output
 
-        - name: add expanded groups to registered package list
+        - name: check duplicate packages
+          fail: msg="duplicate package {{ item }}"
+          when: item is defined
+          ignore_errors: yes
+          loop: "{{registered_packages | intersect(expanded_groups_output.stdout_lines)}}"
+
+        - name: add packages to registered packages list
+          when: expanded_groups_output.stdout_lines | count > 0
           set_fact:
             registered_packages: "{{ registered_packages + expanded_groups_output.stdout_lines }}"
+
+    - name: cleanup unlisted packages
+      block:
+        - name: find explicitely installed packages
+          command: pacman -qQet
+          changed_when: False
+          register: installed_packages_res
 
         - name: register obsolete packages
           set_fact:
             obsolete_packages: |
               {{ installed_packages_res.stdout_lines | difference(registered_packages) }}
 
-
         - name: remove obsolete packages
           when: obsolete_packages | length > 0
           block:
-          - pacman: state=absent name="{{ obsolete_packages }}" recurse=yes
-            register: removed_pkgs
-          - debug: var=obsolete_packages
+            - pause:
+                prompt: |
+                  Remove obsolete packages (yes/no)?
+                  {{ obsolete_packages }}
+              register: remove_obsolete_pkgs
+              delegate_to: localhost
+
+            - name: remove obsolete packages
+              when: hostvars['localhost'].remove_obsolete_pkgs.user_input | bool
+              pacman: state=absent name="{{ obsolete_packages }}" recurse=yes
