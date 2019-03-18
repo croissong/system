@@ -9,4 +9,5 @@
           - dunst
 
     - name: stow dotfile config
+      become_user: "{{ user.name }}"
       stow: package=dunst

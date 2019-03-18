@@ -1,9 +1,32 @@
 ---
 - name: setup mail client
   tags: ['mail']
+  become_user: "{{ user.name }}"
+  vars:
+    accounts:
+      - iogroup
   block:
     - name: install mail packages
       import_role: name=pkgs tasks_from=util__install_packages
       vars:
         packages:
           - offlineimap
+          - mu
+
+    - name: stow mail dotfiles
+      stow: package=offlineimap
+
+    - name: enable offlineimap service
+      systemd:
+        name: "offlineimap@{{ item }}.service"
+        enabled: True
+        scope: user
+      loop: "{{ accounts }}"
+
+    - name: enable offlineimap timer
+      systemd:
+        name: "offlineimap-oneshot@{{ item }}.timer"
+        enabled: True
+        scope: user
+        state: started
+      loop: "{{ accounts }}"
