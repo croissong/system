@@ -1,40 +1,44 @@
 ---
+- name: install minimal archlinux
+  tags: ['chroot']
+  block:
 
-- name: configure repository mirrors
-  command: "reflector --sort score -p https --country '{{ country }}' --save /etc/pacman.d/mirrorlist"
+    - name: configure locales
+      include_role: name=system tasks_from=locales
 
-- name: upgrade system to latest state
-  pacman:
-    update_cache: yes
-    upgrade: yes
+    - name: configure repository mirrors
+      command: "reflector --sort score -p https --country '{{ country }}' --save /etc/pacman.d/mirrorlist"
 
-- import_tasks: locales.yml
+    - name: upgrade system to latest state
+      pacman:
+        update_cache: yes
+        upgrade: yes
 
-- name: set console font
-  lineinfile:
-    path: /etc/vconsole.conf
-    line: "FONT=Lat2-Terminus16"
-    create: yes
+    - name: set console font
+      lineinfile:
+        path: /etc/vconsole.conf
+        line: "FONT=Lat2-Terminus16"
+        create: yes
 
-- name: configure hostname
-  lineinfile:
-    path: /etc/hostname
-    line: "{{ hostname }}"
-    create: yes
+    - name: configure hostname
+      lineinfile:
+        path: /etc/hostname
+        line: "{{ hostname }}"
+        create: yes
 
-- name: set hostname in /etc/hosts file
-  template:
-    src: hosts.j2
-    dest: /etc/hosts mode=644
+    - name: set hostname in /etc/hosts file
+      template:
+        src: hosts.j2
+        dest: /etc/hosts mode=644
 
-- name: install core packages
-  import_role: name=pkgs tasks_from=core_packages
+    - name: install core packages
+      import_role: name=pkgs tasks_from=core_packages
   
-- name: Configure networking
-  include_role:
-    name: system
-    tasks_from: network
+    - name: Configure networking
+      include_role:
+        name: system
+        tasks_from: network
 
-- import_tasks: user.yml
-- import_tasks: bootloader.yml
+    - import_tasks: user.yml
+    - import_tasks: bootloader.yml
   

@@ -1,2 +1,4 @@
 custom_packages:
   - st
+
+registered_packages: "{{custom_packages}}"

@@ -1,8 +1,8 @@
 ---
-- name: core
-  tags:
-    - core
+- name: system
+  tags: ['system']
   block:
+    - import_tasks: locales.yml
     - import_tasks: pam.yml
     - import_tasks: net.yml
     - import_tasks: systemd.yml

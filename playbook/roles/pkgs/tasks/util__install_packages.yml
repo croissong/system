@@ -4,8 +4,6 @@
 
     - name: add package to registered packages list
       tags: ['maintenace', 'pkg_maintenace']
-      vars:
-         registered_packages: "{{custom_packages}}"
       block:
         - name: check duplicate packages
           fail: msg="duplicate package {{ item }}"

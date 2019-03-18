@@ -1,0 +1,30 @@
+---
+- name: configure locales
+  tags: ['locales']
+  block:
+
+    - name: generate locales
+      locale_gen:
+        name: "{{ item }}.UTF-8"
+        state: present
+      loop: "{{ locales }}"
+
+    - name: set timezone and hardware clock
+      timezone:
+        name: "{{ timezone }}"
+        hwclock: UTC
+
+    - name: configure ntp
+      block:
+        - name: check if ntp is active
+          command: timedatectl show --value -p NTP
+          register: ntp_active
+          changed_when: False
+          
+        - name: enable time sync
+          command: timedatectl set-ntp true
+          when: not ntp_active
+
+    - name: symlink user locales confs
+      become_user: "{{ user.name }}"
+      stow: package=locales

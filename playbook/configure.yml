@@ -5,9 +5,6 @@
   become: yes
 
   pre_tasks:
-    - include_role:
-        name: system
-        tasks_from: timedate
 
     - name: set priv_dir
       tags: ['always']
