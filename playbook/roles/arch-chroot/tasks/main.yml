@@ -14,11 +14,8 @@
         update_cache: yes
         upgrade: yes
 
-    - name: set console font
-      lineinfile:
-        path: /etc/vconsole.conf
-        line: "FONT=Lat2-Terminus16"
-        create: yes
+    - name: configure console
+      include_role: name=system tasks_from=console
 
     - name: configure hostname
       lineinfile:
