@@ -25,3 +25,7 @@
           - traceroute
           - wireshark-qt
           - whois
+
+    - name: symlink doctl dotfiles
+      become_user: "{{ user.name }}"
+      stow: package=digitalocean

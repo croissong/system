@@ -8,7 +8,7 @@
       tags: ['always']
       when: registered_packages | length > 0
       aur:
-        name: "{{ packages }}"
+        name: "{{ registered_packages }}"
         use: "{{ pkg_manager }}"
         aur_only: False
         skip_installed: True

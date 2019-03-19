@@ -10,7 +10,7 @@
           - krita
           - libreoffice-fresh
           - ledger
-          - cloudcross
+          - drive-bin
 
     - name: symlink krita dotfiles
       become_user: "{{ user.name }}"
