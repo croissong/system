@@ -14,3 +14,4 @@
           tags: ['package']
           set_fact:
             registered_packages: "{{ registered_packages + packages }}"
+            excluded_packages: "{{ excluded_packages | default([]) + exclude | default([]) }}"

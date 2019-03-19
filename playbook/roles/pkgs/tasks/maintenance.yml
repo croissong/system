@@ -13,26 +13,6 @@
       register: output
       changed_when: output.stdout.find('packages removed') != -1
 
-
-    - name: verify registered packages
-      block:
-        - name: expand package groups
-          command: "pacman -Sqg {{ registered_packages | join(' ')}}"
-          changed_when: False
-          failed_when: False
-          register: expanded_groups_output
-
-        - name: check duplicate packages
-          fail: msg="duplicate package {{ item }}"
-          when: item is defined
-          ignore_errors: yes
-          loop: "{{registered_packages | intersect(expanded_groups_output.stdout_lines)}}"
-
-        - name: add packages to registered packages list
-          when: expanded_groups_output.stdout_lines | count > 0
-          set_fact:
-            registered_packages: "{{ registered_packages + expanded_groups_output.stdout_lines }}"
-
     - name: cleanup unlisted packages
       block:
         - name: find explicitely installed packages
