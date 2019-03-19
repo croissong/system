@@ -26,7 +26,6 @@ dotfiles:
     - env
     - git
     - gpg
-    - mimeapps
     - pass
     - ssh
   deps:
@@ -75,7 +74,6 @@ extra_packages:
   - flameshot
   - glances
   - gnome-keyring
-  - mimeo
   - ripgrep
   - rmlint
   - rofi

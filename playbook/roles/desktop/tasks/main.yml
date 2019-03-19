@@ -1,9 +1,14 @@
 ---
-- import_tasks: emacs.yml
-- import_tasks: media.yml
-- import_tasks: bluetooth.yml
-- import_tasks: ssh.yml
-- import_tasks: printing.yml
-- import_tasks: shell.yml
-- import_tasks: dunst.yml
-- import_tasks: redshift.yml
+- name: desktop configs
+  tags: ['desktop']
+  block:
+
+    - import_tasks: emacs.yml
+    - import_tasks: media.yml
+    - import_tasks: bluetooth.yml
+    - import_tasks: ssh.yml
+    - import_tasks: printing.yml
+    - import_tasks: shell.yml
+    - import_tasks: dunst.yml
+    - import_tasks: redshift.yml
+    - import_tasks: xdg.yml
