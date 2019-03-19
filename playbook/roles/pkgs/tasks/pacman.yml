@@ -19,3 +19,4 @@
       vars:
         packages:
           - pkg_scripts
+          - lzop # used in makepkg.conf

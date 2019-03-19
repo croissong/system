@@ -4,3 +4,9 @@ nft_old_pkg_manage: False
 nft_input_group_rules:
   020 icmp:
     - ip protocol icmp icmp type echo-request ip length <= 84 counter limit rate 1/minute accept
+nft_output_rules:
+  220 smtp:
+    - tcp dport 587 ct state new accept
+    - tcp dport 25 ct state new accept
+  221 imap:
+    - tcp dport 993 ct state new accept
