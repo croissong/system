@@ -1,0 +1,40 @@
+---
+- name: setup google drive docs sync
+  tags: ['gdrive']
+  become_user: "{{ user.name }}"
+  vars:
+    drive_dir: "$HOME/docs/sync"
+  block:
+
+    - name: install google drive client
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages:
+          - drive-bin
+
+    - name: ensure directory exists
+      file: path="{{ drive_dir }}" state=directory
+
+    - name: symlink gdrive configs
+      stow: package=gdrive
+
+    - name: check if directory initialized
+      stat: path="{{ drive_dir }}/.gd"
+      register: stat_output
+
+    - name: init drive directory
+      when: stat_output.stat.exists == False
+      expect:
+        command: drive init
+        chdir: "{{ drive_dir }}"
+        responses:
+          oauth_code:
+            - oauth_code
+
+    - name: sync drive directory
+      tags: ['maintenance']
+      command: drive push -no-prompt
+      args:
+        chdir: "{{ drive_dir }}"
+      register: output
+      changed_when: output.stdout.find('Everything is up-to-date') == -1

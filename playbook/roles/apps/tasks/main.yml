@@ -8,3 +8,4 @@
     - import_tasks: office.yml
     - import_tasks: web.yml
     - import_tasks: mail.yml
+    - import_tasks: gdrive.yml
