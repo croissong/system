@@ -11,3 +11,7 @@
           - libreoffice-fresh
           - ledger
           - cloudcross
+
+    - name: symlink krita dotfiles
+      become_user: "{{ user.name }}"
+      stow: package=krita

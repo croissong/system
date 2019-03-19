@@ -12,3 +12,7 @@
           - slack-desktop
           - zoiper
           - zoom
+
+    - name: symlink mumble dotfiles
+      become_user: "{{ user.name }}"
+      stow: package=mumble

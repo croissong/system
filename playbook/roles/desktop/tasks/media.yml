@@ -30,8 +30,6 @@
           - pamixer
           - paprefs
 
-    - name: configure to switch audio output to newly connected devices
-      lineinfile:
-        dest: /etc/pulse/default.pa
-        state: present
-        line: "load-module module-switch-on-connect"
+    - name: symlink pulseaudio dotfiles
+      stow: package=pulseaudio
+      become_user: "{{ user.name }}"
