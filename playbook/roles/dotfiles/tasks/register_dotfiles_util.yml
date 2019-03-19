@@ -1,7 +1,12 @@
----
-- name: "register dotfiles {{ package }}"
-  tags: ['stow']
-  when: package is defined
-  set_fact:
-    registered_dotfiles: |
-      {{ registered_dotfiles | default(dotfiles.standalone_dotfiles) + [package] }}
+- tags: ['stow']
+  vars:
+    registered_dotfiles: "{{ dotfiles_vars.standalone_dotfiles }}"
+  block:
+
+    - name: force list
+      set_fact:
+        dotfile_list: "{{ [dotfiles] if dotfiles is string else dotfiles | flatten }}"
+
+    - name: "register dotfiles {{ dotfile_list | join(' ') | truncate(15) }}"
+      set_fact:
+        registered_dotfiles: "{{ registered_dotfiles + dotfile_list }}"

@@ -15,7 +15,7 @@
 
     - import_role: name=dotfiles tasks_from=register_dotfiles_util
       vars:
-        package: offlineimap
+        dotfiles: offlineimap
 
     - name: enable offlineimap service
       systemd:

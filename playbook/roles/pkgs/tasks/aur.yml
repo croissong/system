@@ -6,7 +6,7 @@
 
     - import_role: name=dotfiles tasks_from=register_dotfiles_util
       vars:
-        package: yay
+        dotfiles: yay
 
     - name: install AUR package helper yay
       import_tasks: util__install_packages.yml

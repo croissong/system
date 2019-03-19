@@ -6,7 +6,7 @@
 
     - import_role: name=dotfiles tasks_from=register_dotfiles_util
       vars:
-        package: "zsh tmux"
+        dotfiles: ['zsh', 'tmux']
 
     - name: install packages
       import_role: name=pkgs tasks_from=util__install_packages

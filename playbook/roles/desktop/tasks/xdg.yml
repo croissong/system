@@ -6,7 +6,7 @@
 
     - import_role: name=dotfiles tasks_from=register_dotfiles_util
       vars:
-        package: xdg
+        dotfiles: xdg
 
     # via https://wiki.archlinux.org/index.php/XDG_MIME_Applications
     - name: symlink mimeapps to deprecated location

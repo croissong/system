@@ -6,7 +6,7 @@
 
     - import_role: name=dotfiles tasks_from=register_dotfiles_util
       vars:
-        package: emacs
+        dotfiles: emacs
 
 
     - name: install emacs

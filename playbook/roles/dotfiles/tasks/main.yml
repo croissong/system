@@ -7,17 +7,15 @@
       import_role: name=pkgs tasks_from=util__install_packages
       vars:
         packages:
+          - "{{ dotfiles_vars.deps }}"
           - stow
 
     - name: clone dotfiles
       git:
-        repo: "{{ dotfiles.repo }}"
+        repo: "{{ dotfiles_vars.repo }}"
         dest: "$MY_DOTFILES"
         version: master
         recursive: yes
         track_submodules: yes
       register: warning
       failed_when: warning.failed and warning.msg != "Local modifications exist in repository (force=no)."
-
-    - name: install dotfiles dependencies
-      pacman: name="{{ dotfiles.deps }}" state=present

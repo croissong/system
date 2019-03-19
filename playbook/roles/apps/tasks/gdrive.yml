@@ -17,7 +17,7 @@
 
     - import_role: name=dotfiles tasks_from=register_dotfiles_util
       vars:
-        package: gdrive
+        dotfiles: gdrive
 
     - name: check if directory initialized
       stat: path="{{ drive_dir }}/.gd"

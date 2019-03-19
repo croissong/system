@@ -6,7 +6,7 @@
 
     - import_role: name=dotfiles tasks_from=register_dotfiles_util
       vars:
-        package: yarn
+        dotfiles: yarn
 
     - name: install js dev tools
       import_role: name=pkgs tasks_from=util__install_packages

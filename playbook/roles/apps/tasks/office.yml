@@ -13,4 +13,4 @@
 
     - import_role: name=dotfiles tasks_from=register_dotfiles_util
       vars:
-        package: krita
+        dotfiles: krita
