@@ -4,8 +4,9 @@
   become_user: "{{ user.name }}"
   block:
 
-    - name: stow dotfile config
-      stow: package=redshift
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: redshift
 
     - name: install redshift
       import_role: name=pkgs tasks_from=util__install_packages

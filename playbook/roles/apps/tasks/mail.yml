@@ -13,8 +13,9 @@
           - offlineimap
           - mu
 
-    - name: stow mail dotfiles
-      stow: package=offlineimap
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: offlineimap
 
     - name: enable offlineimap service
       systemd:

@@ -18,6 +18,6 @@
             packages:
               - mpv
 
-        - name: symlink mpv configs
-          become_user: "{{ user.name }}"
-          stow: package=mpv
+        - import_role: name=dotfiles tasks_from=register_dotfiles_util
+          vars:
+            package: mpv

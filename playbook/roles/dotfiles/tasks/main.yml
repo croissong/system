@@ -21,7 +21,3 @@
 
     - name: install dotfiles dependencies
       pacman: name="{{ dotfiles.deps }}" state=present
-
-    - name: install dotfiles
-      stow: package="{{ item }}"
-      with_items: "{{ dotfiles.standalone_dotfiles }}"

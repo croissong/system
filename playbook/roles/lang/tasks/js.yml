@@ -4,8 +4,9 @@
   become_user: "{{ user.name }}"
   block:
 
-    - name: stow js dotfiles
-      stow: package=yarn
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: yarn
 
     - name: install js dev tools
       import_role: name=pkgs tasks_from=util__install_packages

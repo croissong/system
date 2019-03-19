@@ -13,5 +13,6 @@
           - i3status-rust-git
           - perl-anyevent-i3
 
-    - name: stow i3 dotfiles configs
-      stow: package=i3
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: i3

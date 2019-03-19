@@ -39,7 +39,7 @@
             registered_packages: "{{ registered_packages + expanded_groups_output.stdout_lines }}"
 
         - name: filter excluded packages
-          when: excluded_packages | length > 0
+          when: excluded_packages | default([]) | length > 0
           set_fact:
             registered_packages: "{{ registered_packages | difference(excluded_packages) }}"
 

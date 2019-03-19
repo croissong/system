@@ -1,0 +1,5 @@
+- name: stow registered dotfiles
+  tags: ['always']
+  become_user: "{{ user.name }}"
+  stow: package="{{ registered_dotfiles | join(' ') }}"
+  when: registered_dotfiles | length > 0

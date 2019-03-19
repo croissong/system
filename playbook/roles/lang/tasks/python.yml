@@ -12,7 +12,6 @@
           - yapf
           # What about ipython
 
-    - name: stow python dotfiles
-      stow:
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
         package: python
-      become_user: "{{ user.name }}"

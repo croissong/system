@@ -30,6 +30,6 @@
           - pamixer
           - paprefs
 
-    - name: symlink pulseaudio dotfiles
-      stow: package=pulseaudio
-      become_user: "{{ user.name }}"
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: pulseaudio

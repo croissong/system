@@ -4,8 +4,9 @@
   become_user: "{{ user.name }}"
   block:
 
-    - name: stow yay dotfiles config
-      stow: package=yay
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: yay
 
     - name: install AUR package helper yay
       import_tasks: util__install_packages.yml

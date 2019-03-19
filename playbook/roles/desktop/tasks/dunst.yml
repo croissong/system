@@ -8,6 +8,6 @@
         packages:
           - dunst
 
-    - name: stow dotfile config
-      become_user: "{{ user.name }}"
-      stow: package=dunst
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: dunst

@@ -4,8 +4,10 @@
   become_user: "{{ user.name }}"
   block:
 
-    - name: stow emacs dotfiles
-      stow: package=emacs
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: emacs
+
 
     - name: install emacs
       import_role: name=pkgs tasks_from=util__install_packages

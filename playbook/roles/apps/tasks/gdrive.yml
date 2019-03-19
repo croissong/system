@@ -15,8 +15,9 @@
     - name: ensure directory exists
       file: path="{{ drive_dir }}" state=directory
 
-    - name: symlink gdrive configs
-      stow: package=gdrive
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: gdrive
 
     - name: check if directory initialized
       stat: path="{{ drive_dir }}/.gd"

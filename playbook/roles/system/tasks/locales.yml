@@ -25,6 +25,6 @@
           command: timedatectl set-ntp true
           when: not ntp_active
 
-    - name: symlink user locales confs
-      become_user: "{{ user.name }}"
-      stow: package=locales
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: locales

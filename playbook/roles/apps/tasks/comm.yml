@@ -13,6 +13,6 @@
           - zoiper
           - zoom
 
-    - name: symlink mumble dotfiles
-      become_user: "{{ user.name }}"
-      stow: package=mumble
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: mumble

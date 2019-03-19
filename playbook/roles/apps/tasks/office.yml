@@ -11,6 +11,6 @@
           - libreoffice-fresh
           - ledger
 
-    - name: symlink krita dotfiles
-      become_user: "{{ user.name }}"
-      stow: package=krita
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: krita

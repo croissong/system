@@ -1,0 +1,7 @@
+---
+- name: "register dotfiles {{ package }}"
+  tags: ['stow']
+  when: package is defined
+  set_fact:
+    registered_dotfiles: |
+      {{ registered_dotfiles | default(dotfiles.standalone_dotfiles) + [package] }}

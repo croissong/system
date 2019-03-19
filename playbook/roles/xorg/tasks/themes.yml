@@ -35,6 +35,6 @@
             - { src: '/etc/fonts/conf.avail/10-sub-pixel-rgb.conf', dest: '/etc/fonts/conf.d/10-sub-pixel-rgb.conf' }
             - { src: '/etc/fonts/conf.avail/11-lcdfilter-default.conf', dest: '/etc/fonts/conf.d/11-lcdfilter-default.conf' }
 
-        - name: stow font dotfiles
-          become_user: "{{ user.name }}"
-          stow: package=fontconfig
+        - import_role: name=dotfiles tasks_from=register_dotfiles_util
+          vars:
+            package: fontconfig

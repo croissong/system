@@ -36,6 +36,6 @@
     - name: add user to audio group
       user: name={{ user.name }} groups=audio append=yes
 
-    - name: stow xorg dotfiles
-      become_user: "{{ user.name }}"
-      stow: package=xorg
+    - import_role: name=dotfiles tasks_from=register_dotfiles_util
+      vars:
+        package: xorg
