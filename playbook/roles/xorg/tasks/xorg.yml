@@ -2,16 +2,23 @@
 - name: xorg config
   block:
 
+    - name: filter xorg group packages
+      shell: pacman -Sqg xorg | grep -v xorg-xsetroot
+      register: filtered_xorg_packages_output
+      changed_when: False
+
     - name: install Xorg server and extensions
       import_role: name=pkgs tasks_from=util__install_packages
       vars:
-        packages:
-          - xorg
+        packages: "{{ tmp_list + filtered_xorg_packages_output.stdout_lines }}"
+        tmp_list:
           - xorg-xinit
           - xf86-input-libinput
           - xf86-video-intel
           - arandr
           - autorandr
+          - compton
+          - hsetroot
 
     - name: configure input devices
       copy: src=xorg/etc/X11/xorg.conf.d/30-input.conf dest=/etc/X11/xorg.conf.d/30-input.conf
@@ -34,4 +41,5 @@
       user: name={{ user.name }} groups=audio append=yes
 
     - name: stow xorg dotfiles
+      become_user: "{{ user.name }}"
       stow: package=xorg

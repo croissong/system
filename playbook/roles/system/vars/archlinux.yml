@@ -10,3 +10,5 @@ nft_output_rules:
     - tcp dport 25 ct state new accept
   221 imap:
     - tcp dport 993 ct state new accept
+  222 web:
+    - tcp dport 8443 ct state new accept
