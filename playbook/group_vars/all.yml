@@ -28,10 +28,7 @@ dotfiles_vars:
     - gpg
     - pass
     - ssh
-  deps:
-    - stow
-    - xclip
-    
+      
 # UEFI/GPT
 drive:
   device: /dev/sda

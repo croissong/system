@@ -1,0 +1,53 @@
+---
+- name: normalize packages
+  block:
+
+    - name: get package groups
+      command: "yay -Si {{ packages | join(' ') }}"
+      failed_when: False
+      changed_when: False
+      become_user: "{{ user.name }}"
+      register: package_groups_output
+
+    - set_fact:
+        package_groups: "{{ pkg_groups }}"
+        non_group_packages: "{{ packages | reject('in', pkg_groups) | list }}"
+      vars:
+        pkg_groups: |
+          {{ package_groups_output.stderr_lines |
+          map('regex_replace', "^error: package '(.*)' was not found$", '\1') |
+          list }} tes: "{{ combined_packages | reduce(get_counts) | reduce_dict(get_duplicates, []) }}"
+      vars:
+        get_counts: >
+          lambda total,current,i,arr:
+          total.update({current: total.get(current, 0) + 1}) or total
+        get_duplicates: >
+          lambda total,key,val,arr:
+          total + [key] if val > 1 else total
+
+
+    - fail: msg="duplicate packages {{ duplicates | difference(unique) }}"
+      when: duplicates | difference(unique) | length > 0
+      vars:
+        unique: []
+
+
+
+    - name: get group packages
+      when: package_groups | length > 0
+      command: "yay -Sqg {{ package_groups | join(' ')}}"
+      become_user: "{{ user.name }}"
+      changed_when: False
+      register: group_package_output
+
+    - set_fact:
+        combined_packages: |
+          {{ non_group_packages + group_packages | reject('in', exclude) | list | sort }}
+      vars:
+        group_packages: "{{group_package_output.stdout_lines | default([]) }}"
+
+    - set_fact:
+        duplica b
+    - name: set normalized_packages
+      set_fact:
+        normalized_packages: "{{ combined_packages | unique }}"

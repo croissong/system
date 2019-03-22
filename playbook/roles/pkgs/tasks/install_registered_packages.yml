@@ -5,43 +5,13 @@
   tags: ['always']
   block:
 
-    - name: expand and filter package groups
-      block:
+    - include_tasks: normalize_packages.yml
+      vars:
+        packages: "{{ registered_packages }}"
+        exclude: "{{ excluded_packages }}"
 
-        - name: get package groups
-          command: "pacman -Si {{ registered_packages | join(' ') }}"
-          failed_when: False
-          changed_when: False
-          register: package_groups_output
-
-        - set_fact:
-            package_groups: "{{ package_groups }}"
-            registered_packages: "{{ registered_packages | difference(package_groups) }}"
-          vars:
-            package_groups: |
-              {{ package_groups_output.stderr_lines | map('regex_replace',
-              "^error: package '(.*)' was not found$", '\1') | list  }}
-
-        - name: expand package groups
-          command: "pacman -Sqg {{ package_groups | join(' ')}}"
-          changed_when: False
-          failed_when: False
-          register: expanded_groups_output
-
-        - name: check duplicate packages
-          fail: msg="duplicate package {{ item }}"
-          when: item is defined
-          loop: "{{registered_packages | intersect(expanded_groups_output.stdout_lines)}}"
-
-        - name: add packages to registered packages list
-          when: expanded_groups_output.stdout_lines | count > 0
-          set_fact:
-            registered_packages: "{{ registered_packages + expanded_groups_output.stdout_lines }}"
-
-        - name: filter excluded packages
-          when: excluded_packages | default([]) | length > 0
-          set_fact:
-            registered_packages: "{{ registered_packages | difference(excluded_packages) }}"
+    - set_fact:
+        registered_packages: "{{ normalized_packages }}"
 
     - name: install packages
       when: registered_packages | length > 0

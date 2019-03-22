@@ -2,6 +2,10 @@
 - name: configure nftables
   tags: ['nftables']
   block:
+
+    - import_role: name=pkgs tasks_from=util__install_packages
+      vars:
+        packages: nftables
     
     - name: configure nftables
       import_role: name=ipr-cnrs.nftables

@@ -5,18 +5,11 @@
   tags: ['maintenace', 'pkg_maintenace']
   block:
 
-    - name: force list
-      set_fact:
-        exclude_list: "{{ [exclude] if exclude is string else exclude | flatten }}"
-        package_list: "{{ [packages] if packages is string else packages | flatten }}"
-
-    - name: check duplicate packages
-      fail: msg="duplicate package {{ item }}"
-      when: item is defined
-      loop: "{{ registered_packages | intersect(package_list) }}"
-
     - name: "register packages {{ package_list | join(' ') | truncate(15) }}"
       tags: ['package']
       set_fact:
         registered_packages: "{{ registered_packages + package_list }}"
         excluded_packages: "{{ excluded_packages + exclude_list }}"
+      vars:
+        exclude_list: "{{ [exclude] if exclude is string else exclude | flatten }}"
+        package_list: "{{ [packages] if packages is string else packages | flatten }}"

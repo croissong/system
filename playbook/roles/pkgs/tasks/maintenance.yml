@@ -24,6 +24,8 @@
           set_fact:
             obsolete_packages: |
               {{ installed_packages_res.stdout_lines | difference(registered_packages) }}
+          vars:
+            registered_packages: "{{ registered_packages + custom_packages }}"
 
         - name: remove obsolete packages
           when: obsolete_packages | length > 0

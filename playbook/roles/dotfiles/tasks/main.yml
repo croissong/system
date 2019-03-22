@@ -7,8 +7,8 @@
       import_role: name=pkgs tasks_from=util__install_packages
       vars:
         packages:
-          - "{{ dotfiles_vars.deps }}"
           - stow
+          - xclip
 
     - name: clone dotfiles
       git:
