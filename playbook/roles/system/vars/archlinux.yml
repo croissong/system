@@ -12,3 +12,16 @@ nft_output_rules:
     - tcp dport 993 ct state new accept
   222 web:
     - tcp dport 8443 ct state new accept
+    - tcp dport 8080 ct state new accept
+  223 ssh:
+    - tcp dport 22 ct state new accept
+    - tcp dport 30022 ct state new accept
+  224 vpn:
+    - udp dport 500 ct state new accept
+    - udp dport 4500 ct state new accept
+    - udp dport 1701 ct state new accept
+nft_input_rules:
+  225 vpn:
+    - udp dport 500 ct state new accept
+    - udp dport 4500 ct state new accept
+    - udp dport 1701 ct state new accept
