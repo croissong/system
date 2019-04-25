@@ -16,22 +16,7 @@
         pkg_groups: |
           {{ package_groups_output.stderr_lines |
           map('regex_replace', "^error: package '(.*)' was not found$", '\1') |
-          list }} tes: "{{ combined_packages | reduce(get_counts) | reduce_dict(get_duplicates, []) }}"
-      vars:
-        get_counts: >
-          lambda total,current,i,arr:
-          total.update({current: total.get(current, 0) + 1}) or total
-        get_duplicates: >
-          lambda total,key,val,arr:
-          total + [key] if val > 1 else total
-
-
-    - fail: msg="duplicate packages {{ duplicates | difference(unique) }}"
-      when: duplicates | difference(unique) | length > 0
-      vars:
-        unique: []
-
-
+          list }}
 
     - name: get group packages
       when: package_groups | length > 0
@@ -42,12 +27,26 @@
 
     - set_fact:
         combined_packages: |
-          {{ non_group_packages + group_packages | reject('in', exclude) | list | sort }}
+          {{ non_group_packages + group_packages | reject('in', excluded_packages) | list | sort }}
       vars:
         group_packages: "{{group_package_output.stdout_lines | default([]) }}"
 
     - set_fact:
-        duplica b
+        duplicates: "{{ combined_packages | reduce(get_counts) | reduce_dict(get_duplicates, []) }}"
+      vars:
+        get_counts: >
+          lambda total,current,i,arr:
+          total.update({current: total.get(current, 0) + 1}) or total
+        get_duplicates: >
+          lambda total,key,val,arr:
+          total + [key] if val > 1 else total
+
+    - fail: msg="duplicate packages {{ duplicates | difference(unique) }}"
+      when: duplicates | difference(unique) | length > 0
+      vars:
+        unique: []
+
+
     - name: set normalized_packages
       set_fact:
         normalized_packages: "{{ combined_packages | unique }}"

@@ -10,14 +10,17 @@
         packages: "{{ registered_packages }}"
         exclude: "{{ excluded_packages }}"
 
-    - set_fact:
-        registered_packages: "{{ normalized_packages }}"
+    - name: install registered packages
+      when: normalized_packages | length > 0
+      block:
 
-    - name: install packages
-      when: registered_packages | length > 0
-      aur:
-        name: "{{ registered_packages }}"
-        use: "{{ pkg_manager }}"
-        aur_only: False
-        skip_installed: True
-      become_user: "{{ user.name }}"
+        - set_fact:
+            registered_packages: "{{ normalized_packages }}"
+        - debug: var=registered_packages
+        - name: install registered packages
+          aur:
+            name: "{{ registered_packages }}"
+            use: "{{ pkg_manager }}"
+            aur_only: False
+            skip_installed: True
+          become_user: "{{ user.name }}"
