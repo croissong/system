@@ -8,7 +8,6 @@
     - import_tasks: bluetooth.yml
     - import_tasks: ssh.yml
     - import_tasks: printing.yml
-    - import_tasks: shell.yml
     - import_tasks: dunst.yml
     - import_tasks: redshift.yml
     - import_tasks: xdg.yml

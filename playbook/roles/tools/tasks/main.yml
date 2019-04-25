@@ -3,6 +3,7 @@
   tags: ['tools']
   block:
 
+    - import_tasks: shell.yml
     - import_tasks: vpn.yml
 
     - name: install other tools pkgs
