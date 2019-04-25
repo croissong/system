@@ -12,7 +12,7 @@
       import_role: name=pkgs tasks_from=util__install_packages
       vars:
         packages:
-          - antibody
+          - antibody-bin
           - exa
           - fd
           - fzf
