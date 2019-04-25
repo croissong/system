@@ -3,6 +3,11 @@
   tags: ['physlock']
   block:
 
+    - name: symlink physlock configs
+      import_role: name=dotfiles tasks_from=register_dotfiles_util
+      tags: alias
+      vars: {dotfiles: physlock}
+
     - name: install physlock
       import_role: name=pkgs tasks_from=util__install_packages
       vars:

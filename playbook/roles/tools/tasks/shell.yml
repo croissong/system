@@ -1,46 +1,33 @@
 ---
-- name: shell and terminal config
+- name: setup shell and terminal
   tags: ['shell']
   become_user: "{{ user.name }}"
   block:
 
-    - name: setup exa
-      block:
-        - name: symlink exa configs
-          import_role: name=dotfiles tasks_from=register_dotfiles_util
-          vars: {dotfiles: exa}
-        - name: install exa
-          import_role: name=pkgs tasks_from=util__install_packages
-          vars: {packages: exa}
+    - name: create shell dir
+      file:
+        path: $HOME/.my/.shell
+        state: directory
 
-    - name: setup tmux
-      block:
-        - name: symlink tmux configs
-          import_role: name=dotfiles tasks_from=register_dotfiles_util
-          vars: {dotfiles: tmux}
-        - name: install tmux packages
-          import_role: name=pkgs tasks_from=util__install_packages
-          vars: {packages: ['tmux', 'tmuxinator']}
-        - name: enable tmux user service
-          service: name=tmux scope=user enabled=yes state=started
+    - name: symlink shell configs
+      import_role: name=dotfiles tasks_from=register_dotfiles_util
+      tags: alias
+      vars: {dotfiles: shell}
 
-    - name: setup zsh
-      block:
-        - name: symlink zsh configs
-          import_role: name=dotfiles tasks_from=register_dotfiles_util
-          vars: {dotfiles: zsh}
-        - name: install zsh
-          import_role: name=pkgs tasks_from=util__install_packages
-          vars: {packages: zsh}
+    - import_tasks: dtrx.yml
+    - import_tasks: exa.yml
+    - import_tasks: fd.yml
+    - import_tasks: glances.yml
+    - import_tasks: ripgrep.yml
+    - import_tasks: tmux.yml
+    - import_tasks: zsh.yml
 
     - name: install other shell packages
       import_role: name=pkgs tasks_from=util__install_packages
       vars:
         packages:
           - antibody-bin
-          - fd
           - fzf
           - jq
           - jp
           - yq
-

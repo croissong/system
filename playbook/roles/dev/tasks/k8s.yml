@@ -3,6 +3,11 @@
   tags: ['k8s']
   block:
 
+    - name: symlink k8s configs
+      import_role: name=dotfiles tasks_from=register_dotfiles_util
+      tags: alias
+      vars: {dotfiles: k8s}
+
     - name: install k8s tools
       import_role: name=pkgs tasks_from=util__install_packages
       vars:

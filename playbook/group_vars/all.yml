@@ -67,11 +67,8 @@ core_packages:
   - sysstat
      
 extra_packages:
-  - dtrx-git
   - flameshot
-  - glances
   - gnome-keyring
-  - ripgrep
   - rmlint
   - rofi
   - nzbget
