@@ -1,6 +1,6 @@
 ---
 - name: setup office apps
-  tags: ['office']
+  tags: office
   block:
     - name: install office packages
       import_role: name=pkgs tasks_from=util__install_packages
@@ -10,8 +10,15 @@
           - krita
           - libreoffice-fresh
           - ledger
-          - task
+
+    - name: symlink taskwarrior configs
+      import_role: name=dotfiles tasks_from=register_dotfiles_util
+      tags: alias
+      vars: {dotfiles: taskwarrior}
+    - name: install taskwarrior
+      import_role: name=pkgs tasks_from=util__install_packages
+      vars: {packages: task}
+
 
     - import_role: name=dotfiles tasks_from=register_dotfiles_util
-      vars:
-        dotfiles: krita
+      vars: {dotfiles: krita}
