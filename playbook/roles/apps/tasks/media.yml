@@ -17,7 +17,7 @@
           vars:
             packages:
               - mpv
+              - youtube-dl
 
         - import_role: name=dotfiles tasks_from=register_dotfiles_util
-          vars:
-            dotfiles: mpv
+          vars: {dotfiles: mpv}
