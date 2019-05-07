@@ -17,7 +17,10 @@
       vars: {dotfiles: taskwarrior}
     - name: install taskwarrior
       import_role: name=pkgs tasks_from=util__install_packages
-      vars: {packages: task}
+      vars:
+        packages:
+          - task
+          - timew
 
 
     - import_role: name=dotfiles tasks_from=register_dotfiles_util
