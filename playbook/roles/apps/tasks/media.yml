@@ -18,6 +18,8 @@
             packages:
               - mpv
               - youtube-dl
+              - libva
+              - libva-intel-driver
 
         - import_role: name=dotfiles tasks_from=register_dotfiles_util
           vars: {dotfiles: mpv}
