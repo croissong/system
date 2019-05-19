@@ -31,3 +31,5 @@
           - jq
           - jp
           - yq
+          # https://wiki.archlinux.org/index.php/Dash
+          - dashbinsh
