@@ -14,6 +14,7 @@
       tags: alias
       vars: {dotfiles: shell}
 
+    - import_tasks: alacritty.yml
     - import_tasks: dtrx.yml
     - import_tasks: exa.yml
     - import_tasks: fd.yml
@@ -33,4 +34,3 @@
           - yq
           # https://wiki.archlinux.org/index.php/Dash
           - dashbinsh
-          - alacritty
