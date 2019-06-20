@@ -6,6 +6,9 @@
     - name: configure iwd
       tags: ['iwd']
       block:
+        - name: copy iwd main config
+          copy: src=net/iwd/main.conf dest=/etc/iwd/main.conf
+
         - name: install iwd
           import_role: name=pkgs tasks_from=util__install_packages
           vars:
