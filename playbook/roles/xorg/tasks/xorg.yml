@@ -12,7 +12,6 @@
           - xf86-video-intel
           - arandr
           - autorandr
-          - compton
           - hsetroot
         exclude: ['xorg-xsetroot']
 
