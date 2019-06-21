@@ -12,7 +12,3 @@
           - slack-desktop
           - zoiper
           - zoom
-
-    - import_role: name=dotfiles tasks_from=register_dotfiles_util
-      vars:
-        dotfiles: mumble
