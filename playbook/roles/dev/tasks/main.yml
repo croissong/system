@@ -26,6 +26,10 @@
           - wireshark-qt
           - whois
 
-    - import_role: name=dotfiles tasks_from=register_dotfiles_util
-      vars:
-        dotfiles: digitalocean
+    - name: stow digitalocean priv dotfiles
+      become_user: "{{ user.name }}"
+      stow: package="digitalocean" source_dir="{{ priv_dir }}"
+
+    - name: stow giantswarm priv dotfiles
+      become_user: "{{ user.name }}"
+      stow: package="giantswarm" source_dir="{{ priv_dir }}"
