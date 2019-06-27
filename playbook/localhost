@@ -2,4 +2,4 @@
 localhost ansible_python_interpreter=/usr/bin/python ansible_become_pass="{{lookup('passwordstore', 'croi')}}"
 
 [chroot]
-/mnt ansible_python_interpreter=/usr/bin/python2
+/mnt ansible_python_interpreter=/usr/bin/python

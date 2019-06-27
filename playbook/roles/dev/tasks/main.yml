@@ -33,3 +33,9 @@
     - name: stow giantswarm priv dotfiles
       become_user: "{{ user.name }}"
       stow: package="giantswarm" source_dir="{{ priv_dir }}"
+
+    - name: install jwt-cli
+      unarchive:
+        src: https://github.com/mike-engel/jwt-cli/releases/download/2.5.0/jwt-cli-2.5.0-linux.tar.gz
+        dest: "$HOME/.local/bin"
+        remote_src: yes
