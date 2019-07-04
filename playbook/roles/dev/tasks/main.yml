@@ -25,6 +25,7 @@
           - traceroute
           - wireshark-qt
           - whois
+          - lftp
 
     - name: stow digitalocean priv dotfiles
       become_user: "{{ user.name }}"
