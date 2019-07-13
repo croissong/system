@@ -27,7 +27,6 @@
           - whois
           - lftp
           - k9s-bin
-          - kube-ps1
 
     - name: stow digitalocean priv dotfiles
       become_user: "{{ user.name }}"
