@@ -27,6 +27,7 @@
           - whois
           - lftp
           - k9s-bin
+          - apache-tools
 
     - name: stow digitalocean priv dotfiles
       become_user: "{{ user.name }}"
