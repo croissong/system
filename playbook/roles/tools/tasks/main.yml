@@ -13,6 +13,7 @@
           - electrum
           - pandoc
           - pass
+          - gopass
           - sshfs
           - rdesktop
           - vagrant
@@ -26,3 +27,7 @@
         packages:
           - oath-toolkit
           - zbar
+
+    - name: stow gopass priv dotfiles
+      become_user: "{{ user.name }}"
+      stow: package="gopass" source_dir="{{ priv_dir }}"
