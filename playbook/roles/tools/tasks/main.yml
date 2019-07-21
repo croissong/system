@@ -10,16 +10,17 @@
       import_role: name=pkgs tasks_from=util__install_packages
       vars:
         packages:
+          - cyberark-summon
           - electrum
+          - gopass
+          - minetime
           - pandoc
           - pass
-          - gopass
-          - sshfs
           - rdesktop
+          - s3cmd
+          - sshfs
           - vagrant
           - virt-manager
-          - s3cmd
-          - minetime
           
     - name: install TwoFactorAuth pkgs
       import_role: name=pkgs tasks_from=util__install_packages
