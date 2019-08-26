@@ -10,6 +10,7 @@
           - flake8
           - autopep8
           - yapf
+          - python-virtualenv
           # What about ipython
 
     - import_role: name=dotfiles tasks_from=register_dotfiles_util

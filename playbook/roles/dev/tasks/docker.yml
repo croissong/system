@@ -8,4 +8,4 @@
       vars:
         packages:
           - docker
-          - docker-compose
+          - docker-compose-bin
