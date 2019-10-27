@@ -3,9 +3,11 @@
   tags: ['nftables']
   block:
 
-    - import_role: name=pkgs tasks_from=util__install_packages
-      vars:
-        packages: nftables
+    - name: copy nftables configs
+      copy: src=net/nftables/ dest=/
+      notify: restart nftables
     
-    - name: configure nftables
-      import_role: name=ipr-cnrs.nftables
+    - name: enable nftables service
+      service: name=nftables enabled=yes state=started
+
+    

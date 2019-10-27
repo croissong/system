@@ -12,3 +12,8 @@
   systemd:
     name: iwd
     state: restarted
+
+- name: restart nftables
+  systemd:
+    name: nftables
+    state: restarted
