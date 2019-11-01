@@ -6,9 +6,8 @@
     - name: copy pacman configs
       copy: src=pacman/ dest=/
 
-    - import_role: name=dotfiles tasks_from=register_dotfiles_util
-      vars:
-        dotfiles: pacman
+    - name: copy pacman templates
+      template: src=pacman/etc/pacman.d/hooks/pkglist.hook dest=/etc/pacman.d/hooks
 
     - name: refresh pacman cache and upgrade the system
       pacman: update_cache=yes upgrade=yes
