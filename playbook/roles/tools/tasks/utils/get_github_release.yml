@@ -1,0 +1,33 @@
+---
+- name: download github release
+  tags: ['releases']
+  block:
+    - name: get latest version
+      uri:
+        url: https://api.github.com/repos/{{ repo }}/releases/latest
+        return_content: true
+      register: json_response
+
+    - name: download
+      when: json_response.json.tag_name != current_tag
+      block:
+
+      - name: create temporary dir
+        tempfile:
+          state: directory
+        register: tmpdir
+
+      - get_url:
+          url: "{{ json_response.json | json_query(\"assets[?name=='\" + asset + \"'].browser_download_url | [0]\") }}"
+          dest: "{{ tmpdir.path }}/"
+        register: download
+
+
+      # - unarchive:
+      #     src: "{{ download.dest }}"
+      #     dest: /tmp/
+
+      - copy:
+          src: "{{ download.dest }}"
+          dest: "$HOME/.local/bin/{{ binary }}"
+          mode: "u+rwx"

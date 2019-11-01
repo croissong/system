@@ -4,6 +4,7 @@
   block:
 
     - include_tasks: utils/mirrorlist_checksum.yml
+
     - set_fact:
         mirrorlist_pre: "{{ mirrorlist_file }}"
 
