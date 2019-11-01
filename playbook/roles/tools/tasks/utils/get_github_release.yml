@@ -1,7 +1,14 @@
 ---
 - name: download github release
   tags: ['releases']
+  become_user: "{{ user.name }}"
   block:
+
+    - name: get current version
+      shell: "{{ get_tag_cmd }}"
+      changed_when: False
+      register: current_tag
+
     - name: get latest version
       uri:
         url: https://api.github.com/repos/{{ repo }}/releases/latest
@@ -9,7 +16,7 @@
       register: json_response
 
     - name: download
-      when: json_response.json.tag_name != current_tag
+      when: json_response.json.tag_name != current_tag.stdout
       block:
 
       - name: create temporary dir

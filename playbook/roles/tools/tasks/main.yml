@@ -11,14 +11,9 @@
       tags: ['helmfile']
       block:
 
-        - name: get current version
-          shell: "helmfile -v | sed -n -e 's/^.*v.* //p'"
-          changed_when: False
-          register: helmfile_version
-
         - include_tasks: utils/get_github_release.yml
           vars:
             binary: helmfile
             repo: roboll/helmfile
             asset: helmfile_linux_amd64
-            current_tag: "{{ helmfile_version.stdout }}"
+            get_tag_cmd: "helmfile -v | sed -n -e 's/^.*v.* //p'"
