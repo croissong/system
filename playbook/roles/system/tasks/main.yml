@@ -9,3 +9,7 @@
     - import_tasks: systemd.yml
     - import_tasks: nftables.yml
     - import_tasks: physlock.yml
+
+    - name: enable earlyoom service
+      tags: ['earlyoom']
+      service: name=earlyoom enabled=yes state=started
