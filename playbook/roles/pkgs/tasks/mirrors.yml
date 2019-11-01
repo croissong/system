@@ -3,18 +3,19 @@
   tags: ['maintenance', 'mirrors']
   block:
 
-    - include_tasks: util__mirrorlist_checksum.yml
-      vars:
-        register_var: mirrorlist_pre
+    - include_tasks: utils/mirrorlist_checksum.yml
+    - set_fact:
+        mirrorlist_pre: "{{ mirrorlist_file }}"
 
     - name: update repository mirrors
       command: |
         reflector --sort score -p https --country '{{ country }}' --save /etc/pacman.d/mirrorlist
       changed_when: false
 
-    - include_tasks: util__mirrorlist_checksum.yml
-      vars:
-        register_var: mirrorlist_post
+    - include_tasks: utils/mirrorlist_checksum.yml
+
+    - set_fact:
+        mirrorlist_post: "{{ mirrorlist_file }}"
 
     - name: compare mirrorlist checksums
       debug: msg="mirrorlist changed"

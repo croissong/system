@@ -25,4 +25,4 @@
         path: "{{ mirrorlist_copy.path }}"
         get_attributes: no
         get_mime: no
-      register: "{{ register_var }}"
+      register: mirrorlist_file
