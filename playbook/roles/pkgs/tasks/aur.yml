@@ -4,19 +4,9 @@
   become_user: "{{ user.name }}"
   block:
 
-    - import_role: name=dotfiles tasks_from=register_dotfiles_util
-      vars:
-        dotfiles: yay
-
     - name: install AUR package helper yay
-      import_tasks: util__install_packages.yml
-      vars:
+      aur:
+        name: yay
         use: makepkg
-        packages:
-          - yay
-
-    - name: install downgrade script for downgrading packages
-      import_tasks: util__install_packages.yml
-      vars:
-        packages:
-          - downgrade
+        aur_only: False
+        skip_installed: True

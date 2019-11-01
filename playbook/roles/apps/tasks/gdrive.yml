@@ -6,18 +6,8 @@
     drive_dir: "$HOME/docs/sync"
   block:
 
-    - name: install google drive client
-      import_role: name=pkgs tasks_from=util__install_packages
-      vars:
-        packages:
-          - drive-bin
-
     - name: ensure directory exists
       file: path="{{ drive_dir }}" state=directory
-
-    - import_role: name=dotfiles tasks_from=register_dotfiles_util
-      vars:
-        dotfiles: gdrive
 
     - name: check if directory initialized
       stat: path="{{ drive_dir }}/.gd"

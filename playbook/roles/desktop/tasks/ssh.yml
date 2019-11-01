@@ -1,6 +1,0 @@
----
-- name: install SSH related packages
-  import_role: name=pkgs tasks_from=util__install_packages
-  vars:
-    packages:
-      - openssh

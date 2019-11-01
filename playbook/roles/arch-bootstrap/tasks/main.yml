@@ -56,8 +56,7 @@
   with_items: "{{ drive.partitions }}"
   when: item.mountpoint is defined
 
-- include_role: name=pkgs tasks_from=register_base_packages
-
+  # TODO base_packages from pkglist
 - name: Bootstrap base Arch Linux.
   command: "pacstrap {{ arch_root }} {{ base_packages }}"
 

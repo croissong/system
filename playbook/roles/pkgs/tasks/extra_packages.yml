@@ -1,9 +1,0 @@
----
-- name: install extra pkgs
-  tags: ['maintenance', 'extra-packages']
-  block:
-
-    - name: install extra packages
-      import_tasks: util__install_packages.yml
-      vars:
-        packages: "{{ extra_packages }}"

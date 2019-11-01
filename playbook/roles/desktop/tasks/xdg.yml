@@ -4,22 +4,10 @@
   become_user: "{{ user.name }}"
   block:
 
-    - import_role: name=dotfiles tasks_from=register_dotfiles_util
-      vars:
-        dotfiles: xdg
-
     # via https://wiki.archlinux.org/index.php/XDG_MIME_Applications
+    # TODO -> do with chezmoi
     - name: symlink mimeapps to deprecated location
       file:
         src: "$MY_DOTFILES/xdg/.config/mimeapps.list"
         dest: "$HOME/.local/share/applications/mimeapps.list"
         state: link
-
-    - name: symlink mimeo configs
-      import_role: name=dotfiles tasks_from=register_dotfiles_util
-      tags: alias
-      vars: {dotfiles: mimeo}
-
-    - name: install mimeo
-      import_role: name=pkgs tasks_from=util__install_packages
-      vars: {packages: mimeo}

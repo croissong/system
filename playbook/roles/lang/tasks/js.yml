@@ -4,17 +4,6 @@
   become_user: "{{ user.name }}"
   block:
 
-    - import_role: name=dotfiles tasks_from=register_dotfiles_util
-      vars:
-        dotfiles: yarn
-
-    - name: install js dev tools
-      import_role: name=pkgs tasks_from=util__install_packages
-      vars:
-        packages:
-          - prettier
-          - yarn
-
     - name: update global yarn packages
       block:
 

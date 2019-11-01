@@ -58,17 +58,3 @@ btrfs__subvolumes:
      state: present
   "{{ arch_root }}/@home":
      state: present
-
-core_packages:
-  - git
-  - lsof
-  - moreutils
-  - rsync
-  - sysstat
-     
-extra_packages:
-  - flameshot
-  - gnome-keyring
-  - rmlint
-  - rofi
-  - nzbget

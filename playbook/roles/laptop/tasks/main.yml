@@ -1,13 +1,4 @@
 ---
-- name: install TLP power management
-  import_role: name=pkgs tasks_from=util__install_packages
-  vars:
-    packages:
-      - tlp
-      - acpid
-      - ethtool
-      - smartmontools
-
 - name: mask systemd radio service
   systemd: name=systemd-rfkill.service masked=true
 

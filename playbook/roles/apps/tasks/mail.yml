@@ -7,16 +7,6 @@
       - iogroup
       - gmail
   block:
-    - name: install mail packages
-      import_role: name=pkgs tasks_from=util__install_packages
-      vars:
-        packages:
-          - offlineimap
-          - mu
-
-    - import_role: name=dotfiles tasks_from=register_dotfiles_util
-      vars:
-        dotfiles: offlineimap
 
     - name: enable offlineimap service
       systemd:

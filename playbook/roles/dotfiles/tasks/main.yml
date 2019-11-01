@@ -3,12 +3,6 @@
   tags: ['dotfiles']
   become_user: "{{ user.name }}"
   block:
-    - name: install stow to manage symlinks
-      import_role: name=pkgs tasks_from=util__install_packages
-      vars:
-        packages:
-          - stow
-          - xclip
 
     - name: clone dotfiles
       git:

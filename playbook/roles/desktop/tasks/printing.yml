@@ -3,16 +3,6 @@
   tags: ['printing']
   block:
 
-    - name: install CUPS printing system
-      import_role: name=pkgs tasks_from=util__install_packages
-      vars:
-        packages:
-          - cups
-          - ghostscript
-          - gutenprint
-          - gsfonts
-          - hplip
-
     - name: add user to lp group
       user:
         name: "{{ user.name }}"

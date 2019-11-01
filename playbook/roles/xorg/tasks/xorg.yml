@@ -2,19 +2,6 @@
 - name: xorg config
   block:
 
-    - name: install Xorg server and extensions
-      import_role: name=pkgs tasks_from=util__install_packages
-      vars:
-        packages:
-          - xorg
-          - xorg-xinit
-          - xf86-input-libinput
-          - xf86-video-intel
-          - arandr
-          - autorandr
-          - hsetroot
-        exclude: ['xorg-xsetroot']
-
     - name: configure input devices
       copy: src=xorg/etc/X11/xorg.conf.d/30-input.conf dest=/etc/X11/xorg.conf.d/30-input.conf
 
@@ -34,7 +21,3 @@
 
     - name: add user to audio group
       user: name={{ user.name }} groups=audio append=yes
-
-    - import_role: name=dotfiles tasks_from=register_dotfiles_util
-      vars:
-        dotfiles: xorg

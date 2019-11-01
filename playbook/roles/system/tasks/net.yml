@@ -9,12 +9,6 @@
         - name: copy iwd main config
           copy: src=net/iwd/main.conf dest=/etc/iwd/main.conf
 
-        - name: install iwd
-          import_role: name=pkgs tasks_from=util__install_packages
-          vars:
-            packages:
-              - iwd
-
         - name: enable iwd service
           service: name=iwd enabled=yes state=started
 
@@ -37,12 +31,6 @@
     - name: resolved
       tags: ['systemd', 'systemd-resolved']
       block:
-
-        - name: install systemd-resolvconf
-          import_role: name=pkgs tasks_from=util__install_packages
-          vars:
-            packages:
-              - systemd-resolvconf
 
         - name: symlink resolv.conf stub
           file:

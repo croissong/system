@@ -24,13 +24,6 @@
     - import_role: {name: tools}
 
   post_tasks:
-    - import_role:
-        name: pkgs
-        tasks_from: install_registered_packages
-
-    - import_role:
-        name: dotfiles
-        tasks_from: stow_registered_dotfiles
 
     - import_role:
         name: pkgs

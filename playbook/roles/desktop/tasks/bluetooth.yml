@@ -1,17 +1,3 @@
 ---
-- name: install bluetooth packages
-  import_role: name=pkgs tasks_from=util__install_packages
-  vars:
-    packages:
-    - blueman
-    - bluez
-    - bluez-firmware
-    - bluez-libs
-    - bluez-utils
-    - pulseaudio-bluetooth
-
 - name: enable bluetooth
   systemd: name=bluetooth.service enabled=yes state=started
-
-- name: add user to lp group
-  user: name={{ user.name }} groups=lp append=yes

@@ -2,10 +2,5 @@
 - name: setup applications
   tags: ['apps']
   block:
-    - import_tasks: comm.yml
-    - import_tasks: gaming.yml
-    - import_tasks: media.yml
-    - import_tasks: office.yml
-    - import_tasks: web.yml
     - import_tasks: mail.yml
     - import_tasks: gdrive.yml

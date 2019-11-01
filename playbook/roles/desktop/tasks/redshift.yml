@@ -4,16 +4,6 @@
   become_user: "{{ user.name }}"
   block:
 
-    - import_role: name=dotfiles tasks_from=register_dotfiles_util
-      vars:
-        dotfiles: redshift
-
-    - name: install redshift
-      import_role: name=pkgs tasks_from=util__install_packages
-      vars:
-        packages:
-          - redshift
-
     - name: enable redshift user service
       systemd:
         name: redshift.service

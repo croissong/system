@@ -4,16 +4,5 @@
   become_user: "{{ user.name }}"
   block:
 
-    - import_role: name=dotfiles tasks_from=register_dotfiles_util
-      vars:
-        dotfiles: emacs
-
-
-    - name: install emacs
-      import_role: name=pkgs tasks_from=util__install_packages
-      vars:
-        packages:
-          - emacs
-
     - name: enable emacs systemd user service
       service: name=emacs scope=user enabled=yes state=started

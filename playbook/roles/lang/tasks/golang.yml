@@ -3,12 +3,6 @@
   tags: ['golang']
   become_user: "{{ user.name }}"
   block:
-    - name: install golang pkgs
-      import_role: name=pkgs tasks_from=util__install_packages
-      vars:
-        packages:
-          - go
-          - go-tools
 
     - name: install gocode
       command: go get -u github.com/stamblerre/gocode
