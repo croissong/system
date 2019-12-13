@@ -1,0 +1,8 @@
+---
+- name: python
+  tags: ['python']
+  become_user: "{{ user.name }}"
+  block:
+
+    - name: install python language server packages
+      command: pip install --user python-language-server[all] black
