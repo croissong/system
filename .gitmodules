@@ -1,0 +1,3 @@
+[submodule "playbook/library/aur"]
+	path = playbook/library/aur
+	url = https://github.com/kewlfft/ansible-aur.git

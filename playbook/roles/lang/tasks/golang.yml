@@ -12,3 +12,6 @@
 
     - name: install gopls
       command: go get golang.org/x/tools/gopls@latest
+
+    - name: install delve
+      command: go get -u github.com/go-delve/delve/cmd/dlv
