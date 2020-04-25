@@ -10,6 +10,16 @@
     - import_tasks: nftables.yml
     - import_tasks: physlock.yml
 
+    - name: copy configs
+      tags: ['config', 'debug']
+      template:
+        src: '{{ item.src }}'
+        dest: '/{{ item.path }}'
+        owner: root
+      with_filetree: '../templates'
+      when: item.state == 'file'
+
+
     - name: enable earlyoom service
-      tags: ['earlyoom']
+      tags: ['systemd']
       service: name=earlyoom enabled=yes state=started
