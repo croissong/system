@@ -1,11 +1,11 @@
-configure-arch : TAGS = --tags=$(tags)
-configure-arch : ARGS = $(args)
-
-configure:
+init:
 	ansible-galaxy install -r requirements.yml
 
-configure-arch:
-	ansible-playbook -i localhost configure.yml $(TAGS) $(ARGS)
+configure-dry:
+	ansible-playbook -i localhost configure.yml --check --diff $(args)
+
+configure:
+	ansible-playbook -i localhost configure.yml $(args)
 
 lint:
 	ansible-lint configure.yml
