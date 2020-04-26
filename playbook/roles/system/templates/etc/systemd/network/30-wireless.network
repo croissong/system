@@ -1,0 +1,9 @@
+[Match]
+Name=wlan0
+
+[Network]
+DHCP=yes
+Bond=bond
+
+[DHCP]
+RouteMetric=30

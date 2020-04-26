@@ -1,0 +1,10 @@
+[NetDev]
+Name=bond
+Kind=bond
+
+[Bond]
+Mode=active-backup
+PrimaryReselectPolicy=always
+TransmitHashPolicy=layer3+4
+MIIMonitorSec=1s
+LACPTransmitRate=fast

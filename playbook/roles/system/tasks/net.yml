@@ -16,18 +16,6 @@
           copy: src="{{ priv_dir }}/iwd/" dest=/var/lib/iwd/
           notify: restart iwd
 
-
-    - name: networkd
-      tags: ['systemd', 'systemd-networkd']
-      block:
-
-        - name: enable networkd
-          service: name=systemd-networkd enabled=yes state=started
-
-        - name: copy networkd configs
-          copy: src=net/networkd/ dest=/
-          notify: restart systemd-networkd
-
     - name: resolved
       tags: ['systemd', 'systemd-resolved']
       block:
@@ -37,10 +25,3 @@
             src: "/run/systemd/resolve/stub-resolv.conf"
             dest: "/etc/resolv.conf"
             state: link
-
-        - name: enable systemd-resolved
-          service: name=systemd-resolved enabled=yes state=started
-
-        - name: copy resolved configs
-          copy: src=net/resolved/ dest=/
-          notify: restart systemd-resolved

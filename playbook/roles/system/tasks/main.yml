@@ -19,7 +19,10 @@
       with_filetree: '../templates'
       when: item.state == 'file'
 
-
-    - name: enable earlyoom service
+    - name: enable services
       tags: ['systemd']
-      service: name=earlyoom enabled=yes state=started
+      service: name={{ item }} enabled=yes state=started
+      with_items:
+      - systemd-networkd
+      - systemd-resolved
+      - earlyoom

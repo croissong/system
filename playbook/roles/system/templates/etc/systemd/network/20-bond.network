@@ -1,11 +1,10 @@
 [Match]
-Name=eth0
+Name=bond
 
 [Network]
 DHCP=yes
 
 [DHCP]
-RouteMetric=10
 UseDNS=false
 
 [IPv6AcceptRA]
