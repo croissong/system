@@ -2,10 +2,6 @@
 - name: system
   tags: ['system']
   block:
-    - import_tasks: pam.yml
-    - import_tasks: systemd.yml
-    - import_tasks: physlock.yml
-
     - name: copy configs
       tags: ['debug']
       template:
@@ -27,6 +23,7 @@
       - earlyoom
       - iwd
       - nftables
+      - physlock
       - systemd-networkd
       - systemd-resolved
 

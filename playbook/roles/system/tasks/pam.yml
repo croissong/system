@@ -1,7 +1,0 @@
----
-- name: pam
-  tags: ['pam']
-  block:
-
-    - name: copy pam configs
-      copy: src=pam/ dest=/

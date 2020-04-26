@@ -1,4 +1,5 @@
 # source https://salsa.debian.org/mika/physlock/blob/master/debian/local-physlock.service
+
 # This service files serves as example for the integration of physlock
 # in sleep/suspend/resume using systemd.
 

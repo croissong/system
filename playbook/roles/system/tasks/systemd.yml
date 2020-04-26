@@ -1,7 +1,0 @@
----
-- name: systemd
-  tags: ['systemd']
-  block:
-
-    - name: copy systemd configs
-      copy: src=systemd/ dest=/
