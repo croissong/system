@@ -5,7 +5,7 @@ configure-dry:
 	ansible-playbook -i localhost configure.yml --check --diff $(args)
 
 configure:
-	ansible-playbook -i localhost configure.yml $(args)
+	ansible-playbook -i localhost configure.yml --diff $(args)
 
 lint:
 	ansible-lint configure.yml
