@@ -1,0 +1,69 @@
+---
+- name: user
+  tags: ['user']
+  become_user: "{{ user.name }}"
+  block:
+    - name: clone dotfiles
+      git:
+        repo: "{{ dotfiles_vars.repo }}"
+        dest: "$MY_DOTFILES"
+        version: master
+        recursive: yes
+        track_submodules: yes
+      register: warning
+      failed_when: warning.failed and warning.msg != "Local modifications exist in repository (force=no)."
+
+    - name: enable user services
+      service: name={{ item }} scope=user enabled=yes state=started
+      with_items:
+      - tmux
+
+
+    - name: setup mail client
+      tags: ['mail']
+      vars:
+        accounts:
+        - iogroup
+        - gmail
+      block:
+      - name: enable offlineimap service
+        systemd:
+          name: "offlineimap@{{ item }}.service"
+          enabled: True
+          scope: user
+        loop: "{{ accounts }}"
+      - name: enable offlineimap timer
+        systemd:
+          name: "offlineimap-oneshot@{{ item }}.timer"
+          enabled: True
+          scope: user
+          state: started
+        loop: "{{ accounts }}"
+
+
+    - name: setup google drive docs sync
+      tags: ['gdrive']
+      vars:
+        drive_dir: "$HOME/docs/sync"
+      block:
+      - name: ensure directory exists
+        file: path="{{ drive_dir }}" state=directory
+      - name: check if directory initialized
+        stat: path="{{ drive_dir }}/.gd"
+        register: stat_output
+
+      - name: init drive directory
+        when: stat_output.stat.exists == False
+        expect:
+          command: drive init
+          chdir: "{{ drive_dir }}"
+          responses:
+            oauth_code:
+              - oauth_code
+      - name: sync drive directory
+        tags: ['maintenance']
+        command: drive push -no-prompt
+        args:
+          chdir: "{{ drive_dir }}"
+        register: output
+        changed_when: output.stdout.find('Everything is up-to-date') == -1

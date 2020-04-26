@@ -1,6 +1,0 @@
----
-- name: setup applications
-  tags: ['apps']
-  block:
-    - import_tasks: mail.yml
-    - import_tasks: gdrive.yml

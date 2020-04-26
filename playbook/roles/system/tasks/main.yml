@@ -3,7 +3,6 @@
   tags: ['system']
   block:
     - name: copy configs
-      tags: ['debug']
       template:
         src: '{{ item.src }}'
         dest: '/{{ item.path }}'
