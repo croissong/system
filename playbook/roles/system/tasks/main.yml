@@ -2,15 +2,12 @@
 - name: system
   tags: ['system']
   block:
-    - import_tasks: locales.yml
     - import_tasks: console.yml
     - import_tasks: pam.yml
     - import_tasks: systemd.yml
-    - import_tasks: nftables.yml
     - import_tasks: physlock.yml
 
     - name: copy configs
-      tags: ['config', 'debug']
       template:
         src: '{{ item.src }}'
         dest: '/{{ item.path }}'
@@ -25,10 +22,31 @@
         state: link
 
     - name: enable services
-      tags: ['systemd']
       service: name={{ item }} enabled=yes state=started
       with_items:
       - earlyoom
       - iwd
+      - nftables
       - systemd-networkd
       - systemd-resolved
+
+    - name: configure locales
+      block:
+        - name: generate locales
+          locale_gen:
+            name: "{{ item }}.UTF-8"
+            state: present
+          loop: "{{ locales }}"
+
+        - name: set timezone and hardware clock
+          timezone:
+            name: "{{ timezone }}"
+            hwclock: UTC
+
+        - name: check if ntp is active
+          command: timedatectl show --value -p NTP
+          register: ntp_active
+          changed_when: False
+        - name: enable time sync
+          command: timedatectl set-ntp true
+          when: not ntp_active

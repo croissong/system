@@ -1,3 +1,4 @@
+# pacdiff
 ---
 - name: cleanup obsolete resources
   tags: ['maintenance', 'pkg_maintenace']
