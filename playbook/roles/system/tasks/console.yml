@@ -1,7 +1,0 @@
----
-- name: configure console and keyboard
-  tags: ['console', 'kbd']
-  block:
-
-    - name: copy console configs
-      copy: src=console/ dest=/
