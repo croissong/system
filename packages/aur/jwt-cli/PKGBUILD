@@ -1,0 +1,16 @@
+# Maintainer: Jan Möller <jan.moeller protonmail com>
+pkgname=jwt-cli
+pkgver=3.1.0
+pkgrel=1
+pkgdesc="A super fast CLI tool to decode and encode JWTs built in Rust "
+url="https://github.com/mike-engel/jwt-cli"
+license=('MIT')
+arch=('x86_64')
+
+source=("jwt-cli-$pkgver-linux.tar.gz::https://github.com/mike-engel/jwt-cli/releases/download/$pkgver/jwt-cli-$pkgver-linux.tar.gz")
+sha256sums=('dd6bb19b79cf6ddf30c6e9f1a7091df29cb8d40882fa1772ae0e2cd144990393')
+package() {
+  cd "$srcdir"
+  install -d "$pkgdir/usr/bin"
+  install -m755 target/release/jwt "$pkgdir/usr/bin/jwt"
+}
