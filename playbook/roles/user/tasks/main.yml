@@ -16,6 +16,8 @@
     - name: enable user services
       service: name={{ item }} scope=user enabled=yes state=started
       with_items:
+      - mako
+      - redshift
       - tmux
 
 
@@ -41,29 +43,29 @@
         loop: "{{ accounts }}"
 
 
-    - name: setup google drive docs sync
-      tags: ['gdrive']
-      vars:
-        drive_dir: "$HOME/docs/sync"
-      block:
-      - name: ensure directory exists
-        file: path="{{ drive_dir }}" state=directory
-      - name: check if directory initialized
-        stat: path="{{ drive_dir }}/.gd"
-        register: stat_output
+    # - name: setup google drive docs sync
+    #   tags: ['gdrive']
+    #   vars:
+    #     drive_dir: "$HOME/docs/sync"
+    #   block:
+    #   - name: ensure directory exists
+    #     file: path="{{ drive_dir }}" state=directory
+    #   - name: check if directory initialized
+    #     stat: path="{{ drive_dir }}/.gd"
+    #     register: stat_output
 
-      - name: init drive directory
-        when: stat_output.stat.exists == False
-        expect:
-          command: drive init
-          chdir: "{{ drive_dir }}"
-          responses:
-            oauth_code:
-              - oauth_code
-      - name: sync drive directory
-        tags: ['maintenance']
-        command: drive push -no-prompt
-        args:
-          chdir: "{{ drive_dir }}"
-        register: output
-        changed_when: output.stdout.find('Everything is up-to-date') == -1
+    #   - name: init drive directory
+    #     when: stat_output.stat.exists == False
+    #     expect:
+    #       command: drive init
+    #       chdir: "{{ drive_dir }}"
+    #       responses:
+    #         oauth_code:
+    #           - oauth_code
+    #   - name: sync drive directory
+    #     tags: ['maintenance']
+    #     command: drive push -no-prompt
+    #     args:
+    #       chdir: "{{ drive_dir }}"
+    #     register: output
+    #     changed_when: output.stdout.find('Everything is up-to-date') == -1

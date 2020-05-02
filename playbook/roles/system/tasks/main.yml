@@ -26,7 +26,7 @@
     - systemd-resolved
 
   - name: enable services
-    service: name={{ item }} enabled=yes state=started
+    service: name={{ item }} enabled=yes
     with_items:
     - physlock
 
