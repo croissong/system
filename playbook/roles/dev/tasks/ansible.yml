@@ -1,7 +1,0 @@
----
-- name: ansible
-  tags: ['ansible']
-  block:
-
-    - name: copy ansible configs
-      copy: src=ansible/ dest=/
