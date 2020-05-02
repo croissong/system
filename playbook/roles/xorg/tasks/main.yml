@@ -1,6 +1,0 @@
----
-- name: xorg
-  tags: ['xorg', 'x']
-  block:
-    - import_tasks: xorg.yml
-    - import_tasks: themes.yml

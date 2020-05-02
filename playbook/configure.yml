@@ -14,7 +14,6 @@
   tasks:
     - import_role: {name: pkgs}
     - import_role: {name: system}
-    - import_role: {name: xorg}
     - import_role: {name: desktop}
     - import_role: {name: laptop}
     - import_role: {name: user}
