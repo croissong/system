@@ -3,8 +3,6 @@
   name: configure Arch Linux system
   connection: local
   become: yes
-  roles:
-  - kewlfft.aur
 
   tasks:
     - import_role: {name: pkgs}

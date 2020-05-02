@@ -1,5 +1,13 @@
 arch_root: /mnt
 
+ansible_become_pass: !vault |
+  $ANSIBLE_VAULT;1.1;AES256
+  31656533313762323636393839623433613464653134643532313133656332613730376139663165
+  3935376439376336393462326338313764643266666365300a613833643538306635636435623063
+  62316262316536663138366166393766383664653434313161616439313765333230383435326165
+  3063636134626364660a393038336362383962343436353761346534333237336133363336643661
+  3137
+
 hostname: bon
 timezone: Europe/Berlin
 country: Germany
@@ -23,6 +31,8 @@ user:
 repos:
   emacs: 'git@github.com:Croissong/.emacs.d.git'
   dotfiles: 'git@github.com:Croissong/dotfiles.git'
+  pass: 'git@gitlab.com:Croissong/password-store.git'
+  passOtp: 'git@gitlab.com:Croissong/pass-otp.git'
         
 # UEFI/GPT
 drive:

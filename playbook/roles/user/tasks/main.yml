@@ -3,25 +3,21 @@
   tags: user
   become_user: "{{ user.name }}"
   block:
-  - name: clone dotfiles
+  - name: clone repos
     git:
-      repo: "{{ repos.dotfiles }}"
-      dest: "$DOTFILES"
+      repo: "{{ item.repo }}"
+      dest: "{{ item.dest }}"
       version: master
       recursive: yes
       track_submodules: yes
     register: warning
     failed_when: warning.failed and warning.msg != "Local modifications exist in repository (force=no)."
+    with_items:
+    - { repo: "{{ repos.dotfiles }}", dest: "$DOTFILES"}
+    - { repo: "{{ repos.emacs }}", dest: "$XDG_CONFIG_HOME/emacs"}
+    - { repo: "{{ repos.pass }}", dest: "$HOME/Pass/password-store"}
+    - { repo: "{{ repos.passOtp }}", dest: "$HOME/Pass/pass-otp"}
 
-  - name: clone emacs
-    git:
-      repo: "{{ repos.emacs }}"
-      dest: "$XDG_CONFIG_HOME/emacs"
-      version: master
-      recursive: yes
-      track_submodules: yes
-    register: warning
-    failed_when: warning.failed and warning.msg != "Local modifications exist in repository (force=no)."
 
   - name: enable user services
     service: name={{ item }} scope=user enabled=yes state=started
@@ -89,6 +85,7 @@
       changed_when: False
       failed_when: False
       register: yarn_outdated_output
+      check_mode: no
 
     - name: update global yarn packages
       command:  yarn global upgrade --latest

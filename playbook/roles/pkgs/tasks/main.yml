@@ -4,4 +4,3 @@
   block:
     - import_tasks: mirrors.yml
     - import_tasks: pacman.yml
-    - import_tasks: aur.yml

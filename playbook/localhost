@@ -1,5 +1,5 @@
 [host]
-localhost ansible_python_interpreter=/usr/bin/python ansible_become_pass="{{lookup('passwordstore', 'croi')}}"
+localhost ansible_python_interpreter=/usr/bin/python
 
 [chroot]
 /mnt ansible_python_interpreter=/usr/bin/python
