@@ -13,29 +13,3 @@
       command: paccache -rk1
       register: output
       changed_when: output.stdout.find('packages removed') != -1
-
-    - name: cleanup unlisted packages
-      block:
-        - name: find explicitely installed packages
-          command: pacman -qQet
-          changed_when: False
-          register: installed_packages_res
-
-        - name: register obsolete packages
-          set_fact:
-            obsolete_packages: |
-              {{ installed_packages_res.stdout_lines | difference(registered_packages + custom_packages) }}
-
-        - name: remove obsolete packages
-          when: obsolete_packages | length > 0
-          block:
-            - pause:
-                prompt: |
-                  Remove obsolete packages (yes/no)?
-                  {{ obsolete_packages }}
-              register: remove_obsolete_pkgs
-              delegate_to: localhost
-
-            - name: remove obsolete packages
-              when: hostvars['localhost'].remove_obsolete_pkgs.user_input | bool
-              pacman: state=absent name="{{ obsolete_packages }}" recurse=yes
