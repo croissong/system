@@ -1,8 +1,0 @@
----
-- name: emacs
-  tags: ['emacs', 'dotfiles']
-  become_user: "{{ user.name }}"
-  block:
-
-    - name: enable emacs systemd user service
-      service: name=emacs scope=user enabled=yes state=started

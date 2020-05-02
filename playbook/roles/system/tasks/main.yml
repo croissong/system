@@ -19,9 +19,11 @@
   - name: start services
     service: name={{ item }} enabled=yes state=started
     with_items:
+    - bluetooth
     - earlyoom
     - iwd
     - nftables
+    - org.cups.cupsd.socket
     - systemd-networkd
     - systemd-resolved
 
@@ -50,3 +52,9 @@
     - name: enable time sync
       command: timedatectl set-ntp true
       when: not ntp_active
+
+  - name: add user to cups group
+    user:
+      name: "{{ user.name }}"
+      groups: cups
+      append: yes

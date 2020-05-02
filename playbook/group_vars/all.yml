@@ -20,15 +20,10 @@ user:
   shell: /bin/zsh
   email: jan.moeller0@gmail.com
 
-dotfiles_vars:
-  repo: "https://github.com/Croissong/.dotfiles"
-  standalone_dotfiles:
-    - env
-    - git
-    - gpg
-    - pass
-    - ssh
-      
+repos:
+  emacs: 'git@github.com:Croissong/.emacs.d.git'
+  dotfiles: 'git@github.com:Croissong/dotfiles.git'
+        
 # UEFI/GPT
 drive:
   device: /dev/sda

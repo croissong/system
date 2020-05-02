@@ -5,8 +5,18 @@
   block:
   - name: clone dotfiles
     git:
-      repo: "{{ dotfiles_vars.repo }}"
+      repo: "{{ repos.dotfiles }}"
       dest: "$MY_DOTFILES"
+      version: master
+      recursive: yes
+      track_submodules: yes
+    register: warning
+    failed_when: warning.failed and warning.msg != "Local modifications exist in repository (force=no)."
+
+  - name: clone emacs
+    git:
+      repo: "{{ repos.emacs }}"
+      dest: "$XDG_CONFIG_HOME/emacs"
       version: master
       recursive: yes
       track_submodules: yes
@@ -16,6 +26,7 @@
   - name: enable user services
     service: name={{ item }} scope=user enabled=yes state=started
     with_items:
+    - emacs
     - mako
     - redshift
     - tmux

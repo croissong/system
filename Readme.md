@@ -1,5 +1,6 @@
 # Usage
 ## Run configuration playbook
 ```
-make configure-arch tags=$TAG1,$TAG2
+make configure-dry args='--tags user'
+make configure args='--tags debug'
 ```
