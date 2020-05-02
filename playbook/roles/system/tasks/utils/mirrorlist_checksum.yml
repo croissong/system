@@ -6,12 +6,14 @@
       tempfile: state=file
       register: mirrorlist_copy
       changed_when: false
+      check_mode: no
 
     - name: copy mirrorlist to tmp file
       copy:
         src: "/etc/pacman.d/mirrorlist"
         dest: "{{ mirrorlist_copy.path }}"
       changed_when: false
+      check_mode: no
 
     - name: rm metadata from mirrorlist copy
       lineinfile:
@@ -19,6 +21,7 @@
         state: absent
         regexp: "^#"
       changed_when: false
+      check_mode: no
 
     - name: get mirrorlist checksum
       stat:
@@ -26,3 +29,4 @@
         get_attributes: no
         get_mime: no
       register: mirrorlist_file
+      check_mode: no

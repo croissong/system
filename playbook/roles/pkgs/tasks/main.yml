@@ -1,6 +1,0 @@
----
-- name: configure package mgmt
-  tags: pkgs
-  block:
-    - import_tasks: mirrors.yml
-    - import_tasks: pacman.yml

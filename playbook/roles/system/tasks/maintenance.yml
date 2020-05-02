@@ -1,0 +1,42 @@
+---
+- name: maintenance tasks
+  tags: maintenance
+  block:
+  - name: update repo mirrors
+    block:
+    - include_tasks: utils/mirrorlist_checksum.yml
+    - set_fact:
+        mirrorlist_pre: "{{ mirrorlist_file }}"
+
+    - name: update repository mirrors
+      command: |
+        reflector --sort score -p https --country '{{ country }}' --save /etc/pacman.d/mirrorlist
+      changed_when: false
+
+    - include_tasks: utils/mirrorlist_checksum.yml
+    - set_fact:
+        mirrorlist_post: "{{ mirrorlist_file }}"
+
+    - name: compare mirrorlist checksums
+      debug: msg="mirrorlist changed"
+      changed_when: True
+      when: mirrorlist_pre.stat.checksum != mirrorlist_post.stat.checksum
+
+  - name: refresh pacman cache and upgrade the system
+    tags: maintenance
+    pacman: update_cache=yes upgrade=yes
+
+  - name: Clean orphan packages
+    command: yay -Yc --noconfirm
+    register: output
+    changed_when: output.stdout.find('removing') != -1
+
+  - name: Clean paccache.
+    command: paccache -rk1
+    register: output
+    changed_when: output.stdout.find('packages removed') != -1
+
+  - name: pacdiff
+    command: pacdiff --output
+    register: output
+    changed_when: output.stdout_lines | length > 0
