@@ -2,47 +2,51 @@
 - name: system
   tags: ['system']
   block:
-    - name: copy configs
-      template:
-        src: '{{ item.src }}'
-        dest: '/{{ item.path }}'
-        owner: root
-      with_filetree: '../templates'
-      when: item.state == 'file'
+  - name: copy configs
+    template:
+      src: '{{ item.src }}'
+      dest: '/{{ item.path }}'
+      owner: root
+    with_filetree: '../templates'
+    when: item.state == 'file'
 
-    - name: symlink resolv.conf stub
-      file:
-        src: "/run/systemd/resolve/stub-resolv.conf"
-        dest: "/etc/resolv.conf"
-        state: link
+  - name: symlink resolv.conf stub
+    file:
+      src: "/run/systemd/resolve/stub-resolv.conf"
+      dest: "/etc/resolv.conf"
+      state: link
 
-    - name: enable services
-      service: name={{ item }} enabled=yes state=started
-      with_items:
-      - earlyoom
-      - iwd
-      - nftables
-      - physlock
-      - systemd-networkd
-      - systemd-resolved
+  - name: start services
+    service: name={{ item }} enabled=yes state=started
+    with_items:
+    - earlyoom
+    - iwd
+    - nftables
+    - systemd-networkd
+    - systemd-resolved
 
-    - name: configure locales
-      block:
-        - name: generate locales
-          locale_gen:
-            name: "{{ item }}.UTF-8"
-            state: present
-          loop: "{{ locales }}"
+  - name: enable services
+    service: name={{ item }} enabled=yes state=started
+    with_items:
+    - physlock
 
-        - name: set timezone and hardware clock
-          timezone:
-            name: "{{ timezone }}"
-            hwclock: UTC
+  - name: configure locales
+    block:
+    - name: generate locales
+      locale_gen:
+        name: "{{ item }}.UTF-8"
+        state: present
+      loop: "{{ locales }}"
 
-        - name: check if ntp is active
-          command: timedatectl show --value -p NTP
-          register: ntp_active
-          changed_when: False
-        - name: enable time sync
-          command: timedatectl set-ntp true
-          when: not ntp_active
+    - name: set timezone and hardware clock
+      timezone:
+        name: "{{ timezone }}"
+        hwclock: UTC
+
+    - name: check if ntp is active
+      command: timedatectl show --value -p NTP
+      register: ntp_active
+      changed_when: False
+    - name: enable time sync
+      command: timedatectl set-ntp true
+      when: not ntp_active
