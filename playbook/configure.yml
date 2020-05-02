@@ -19,7 +19,6 @@
     - import_role: {name: user}
     - import_role: {name: dev}
     - import_role: {name: lang}
-    - import_role: {name: apps}
 
   post_tasks:
 

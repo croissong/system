@@ -1,8 +1,0 @@
----
-- name: install connman
-  pacman: name={{ item }} state=present
-  with_items:
-      - connman
-
-- name: enable connman
-  service: name=connman.service enabled=yes state=started
