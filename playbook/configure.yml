@@ -3,13 +3,14 @@
   name: configure Arch Linux system
   connection: local
   become: yes
-
   pre_tasks:
 
     - name: set priv_dir
       tags: ['always']
       set_fact: priv_dir="{{ lookup('env','MY_PRIV') }}"
       become_user: "{{ user.name }}"
+  roles:
+  - kewlfft.aur
 
   tasks:
     - import_role: {name: pkgs}
