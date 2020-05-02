@@ -18,7 +18,6 @@
     - import_role: {name: laptop}
     - import_role: {name: user}
     - import_role: {name: dev}
-    - import_role: {name: lang}
 
   post_tasks:
 
