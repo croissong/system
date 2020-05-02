@@ -6,7 +6,7 @@
   - name: clone dotfiles
     git:
       repo: "{{ repos.dotfiles }}"
-      dest: "$MY_DOTFILES"
+      dest: "$DOTFILES"
       version: master
       recursive: yes
       track_submodules: yes
