@@ -24,6 +24,3 @@
     comment: "{{ user.comment }}"
     password: "{{ hostvars.localhost.user_password }}"
     update_password: on_create
-
-- name: lock root account
-  command: passwd -l root

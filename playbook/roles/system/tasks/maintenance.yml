@@ -40,3 +40,8 @@
     command: pacdiff --output
     register: output
     changed_when: output.stdout_lines | length > 0
+
+  - name: update antibody plugins
+    command: antibody update
+    register: output
+    changed_when: output.stdout.find('updated') != -1
