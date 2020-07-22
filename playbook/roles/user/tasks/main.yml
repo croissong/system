@@ -24,7 +24,7 @@
     with_items:
     - emacs
     - mako
-    - redshift
+    - gammastep
     - tmux
 
 
