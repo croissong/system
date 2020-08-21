@@ -34,18 +34,20 @@
       - iogroup
       - gmail
     block:
+    # Disabled for now
     - name: enable offlineimap service
       systemd:
         name: "offlineimap@{{ item }}.service"
-        enabled: True
+        enabled: False
+        state: stopped
         scope: user
       loop: "{{ accounts }}"
     - name: enable offlineimap timer
       systemd:
         name: "offlineimap-oneshot@{{ item }}.timer"
-        enabled: True
+        enabled: False
         scope: user
-        state: started
+        state: stopped
       loop: "{{ accounts }}"
 
 
