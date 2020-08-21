@@ -3,24 +3,8 @@
   tags: maintenance
   block:
   - name: update repo mirrors
-    block:
-    - include_tasks: utils/mirrorlist_checksum.yml
-    - set_fact:
-        mirrorlist_pre: "{{ mirrorlist_file }}"
-
-    - name: update repository mirrors
-      command: |
-        reflector --sort score -p https --country '{{ country }}' --save /etc/pacman.d/mirrorlist
-      changed_when: false
-
-    - include_tasks: utils/mirrorlist_checksum.yml
-    - set_fact:
-        mirrorlist_post: "{{ mirrorlist_file }}"
-
-    - name: compare mirrorlist checksums
-      debug: msg="mirrorlist changed"
-      changed_when: True
-      when: mirrorlist_pre.stat.checksum != mirrorlist_post.stat.checksum
+    service: name=reflector enabled=no state=started
+    changed_when: false
 
   - name: refresh pacman cache and upgrade the system
     tags: maintenance

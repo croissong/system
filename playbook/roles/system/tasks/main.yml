@@ -2,13 +2,22 @@
 - name: system
   tags: ['system']
   block:
-  - name: copy configs
-    template:
-      src: '{{ item.src }}'
-      dest: '/{{ item.path }}'
-      owner: root
-    with_filetree: '../templates'
-    when: item.state == 'file'
+  - name: create configs
+    block:
+    - name: ensure config dirs
+      file:
+        path: "/{{ item.path }}"
+        state: directory
+      with_filetree: '../templates'
+      when: item.state == 'directory'
+
+    - name: copy configs
+      template:
+        src: '{{ item.src }}'
+        dest: '/{{ item.path }}'
+        owner: root
+      with_filetree: '../templates'
+      when: item.state == 'file'
 
   - name: symlink resolv.conf stub
     file:
