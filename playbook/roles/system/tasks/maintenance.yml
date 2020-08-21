@@ -36,11 +36,6 @@
     register: output
     changed_when: output.stdout.find('packages removed') != -1
 
-  - name: pacdiff
-    command: pacdiff --output
-    register: output
-    changed_when: output.stdout_lines | length > 0
-
   - name: update antibody plugins
     become_user: "{{ user.name }}"
     command: antibody update
