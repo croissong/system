@@ -1,6 +1,6 @@
 #%PAM-1.0
 
-auth       sufficient                  pam_timestamp.so     verbose timestamp_timeout=600
+auth       sufficient                  pam_timestamp.so     timestamp_timeout=600
 auth       required                    pam_unix.so          try_first_pass nullok nodelay
 auth       optional                    pam_permit.so
 auth       required                    pam_env.so
