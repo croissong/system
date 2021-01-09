@@ -11,7 +11,7 @@
     pacman: update_cache=yes upgrade=yes
 
   - name: Clean orphan packages
-    command: yay -Yc --noconfirm
+    command: paru -c --noconfirm
     register: output
     changed_when: output.stdout.find('removing') != -1
 
