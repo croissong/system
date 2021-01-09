@@ -32,7 +32,7 @@
     - earlyoom
     - iwd
     - nftables
-    - org.cups.cupsd.socket
+    - cups.socket
     - systemd-networkd
     - systemd-resolved
 
