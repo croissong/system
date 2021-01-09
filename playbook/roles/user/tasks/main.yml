@@ -93,9 +93,9 @@
       command:  yarn global upgrade --latest
       when: yarn_outdated_output.rc != 0
 
-  - name: install AUR package helper yay
+  - name: install AUR package helper paru
     aur:
-      name: yay
+      name: paru-bin
       use: makepkg
       aur_only: False
       skip_installed: True
