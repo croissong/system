@@ -1,0 +1,19 @@
+# Maintainer: Terin Stock <terinjokes@gmail.com>
+
+pkgname=archiver
+pkgver=3.5.0
+_tagcommit="c7eae9dcbcb1f0a0ce965184868097babf73d415"
+_tagdate="29 Sept 2020"
+pkgrel=2
+pkgdesc="A multi-format archive utility written in Go"
+arch=("x86_64")
+url="https://github.com/mholt/archiver"
+license=("MIT")
+makedepends=("go-pie")
+depends=("glibc")
+source=("${pkgname}-${pkgver}.bin::https://github.com/mholt/archiver/releases/download/v3.5.0/arc_${pkgver}_linux_amd64")
+sha256sums=('e21493b147bebbdcb9b6158be7d260cf62984fe4eb4587d55554a993094fc57f')
+
+package() {
+  install -Dm755 ${pkgname}-${pkgver} "$pkgdir/usr/bin/archiver"
+}
