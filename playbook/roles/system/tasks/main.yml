@@ -33,6 +33,7 @@
     - iwd
     - nftables
     - cups.socket
+    - reflector.timer
     - systemd-networkd
     - systemd-resolved
 
