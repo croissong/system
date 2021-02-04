@@ -38,10 +38,10 @@
 - set_fact:
     root_partuuid: "{{ cmd_output.stdout }}"
 
-- name: create boot entry arch
+- name: create boot entry arch-zen
   template:
-    src: arch.conf.j2
-    dest: /boot/loader/entries/arch.conf
+    src: arch-zen.conf.j2
+    dest: /boot/loader/entries/arch-zen.conf
 
 - name: create boot entry arch-lts
   template:
