@@ -8,7 +8,7 @@ license=('MIT')
 arch=('x86_64')
 
 source=("jwt-cli-$pkgver-linux.tar.gz::https://github.com/mike-engel/jwt-cli/releases/download/$pkgver/jwt-linux.tar.gz")
-sha256sums=('2cd1a4a01d091f57cc55e4b73600bc4ce194ecd7dc74ede431817a074691302b')
+sha256sums=('6b0740c3f4c7134a0cbcf802b95b033bd2246d592ad16aa2ee2d80e5b289b4d6')
 package() {
   cd "$srcdir"
   install -d "$pkgdir/usr/bin"
