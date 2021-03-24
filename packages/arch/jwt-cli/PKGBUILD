@@ -1,6 +1,6 @@
 # Maintainer: Jan Möller <jan.moeller protonmail com>
 pkgname=jwt-cli
-pkgver=3.3.0
+pkgver=4.0.0
 pkgrel=2
 pkgdesc="A super fast CLI tool to decode and encode JWTs built in Rust "
 url="https://github.com/mike-engel/jwt-cli"
