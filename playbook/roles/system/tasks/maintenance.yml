@@ -2,9 +2,6 @@
 - name: maintenance tasks
   tags: maintenance
   block:
-  - name: update repo mirrors
-    service: name=reflector enabled=no state=started
-    changed_when: false
 
   - name: refresh pacman cache and upgrade the system
     tags: maintenance

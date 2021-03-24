@@ -6,8 +6,9 @@
     - name: configure locales
       include_role: name=system tasks_from=locales
 
-    - name: configure repository mirrors
-      command: "reflector --sort score -p https --country '{{ country }}' --save /etc/pacman.d/mirrorlist"
+    - name: update repo mirrors
+      service: name=reflector enabled=no state=started
+      changed_when: false
 
     - name: upgrade system to latest state
       pacman:
