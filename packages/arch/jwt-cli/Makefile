@@ -1,2 +1,3 @@
-build:
-	PKGDEST=../ PKGEXT=.pkg.tar makepkg
+install:
+	makepkg --printsrcinfo > .SRCINFO
+	paru -Ui

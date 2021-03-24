@@ -1,6 +1,1 @@
-*.pkg
-*.tar*
-*pkg/
-*src/
-my*
-*.bin
+.SRCINFO
