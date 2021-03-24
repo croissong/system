@@ -23,7 +23,6 @@
     service: name={{ item }} scope=user enabled=yes state=started
     with_items:
     - emacs
-    - mako
     - gammastep
     - tmux
 
