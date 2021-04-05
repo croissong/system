@@ -28,26 +28,13 @@
 
 
   - name: setup mail client
-    vars:
-      accounts:
-      - iogroup
-      - gmail
     block:
-    # Disabled for now
-    - name: enable offlineimap service
+    - name: enable mbsync on boot timer
       systemd:
-        name: "offlineimap@{{ item }}.service"
-        enabled: False
-        state: stopped
+        name: "mbsync.timer"
+        enabled: true
         scope: user
-      loop: "{{ accounts }}"
-    - name: enable offlineimap timer
-      systemd:
-        name: "offlineimap-oneshot@{{ item }}.timer"
-        enabled: False
-        scope: user
-        state: stopped
-      loop: "{{ accounts }}"
+        state: started
 
 
     # - name: setup google drive docs sync
