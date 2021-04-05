@@ -15,6 +15,7 @@
       template:
         src: '{{ item.src }}'
         dest: '/{{ item.path }}'
+        mode: '{{ item.mode }}'
         owner: root
       with_filetree: '../templates'
       when: item.state == 'file'

@@ -1,0 +1,34 @@
+## sudoers file.
+##
+## This file MUST be edited with the 'visudo' command as root.
+### visudo -f ~/System/playbook/roles/arch-chroot/templates/sudoers.j2
+##
+## See the sudoers man page for the details on how to write a sudoers file.
+##
+
+## Avoid showing sudo responsibility lecture.
+Defaults lecture=never
+
+## Locale settings
+Defaults env_keep += "LANG LANGUAGE LINGUAS LC_* _XKB_CHARSET"
+
+## Allow sudo-run commands to inherit the callers' ConsoleKit session
+# Defaults env_keep += "XDG_SESSION_COOKIE"
+
+### For pacdiff
+Defaults env_keep += "DIFFPROG"
+
+
+##
+## User privilege specification
+##
+root ALL=(ALL) ALL
+
+## Uncomment to allow members of group wheel to execute any command
+%wheel ALL=(ALL) ALL
+
+
+## Read drop-in files from /etc/sudoers.d
+## (the '#' here does not indicate a comment)
+#includedir /etc/sudoers.d
+croissong ALL=(root) NOPASSWD: /usr/bin/pacman
