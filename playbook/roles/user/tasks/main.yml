@@ -74,24 +74,11 @@
     #     register: output
     #     changed_when: output.stdout.find('Everything is up-to-date') == -1
 
-  - name: update global yarn packages
-    block:
-    - name: check outdated global yarn packages
-      command: yarn outdated
-      args:
-        chdir: "$XDG_CONFIG_HOME/yarn/global"
-      changed_when: False
-      failed_when: False
-      register: yarn_outdated_output
-      check_mode: no
-
-    - name: update global yarn packages
-      command:  yarn global upgrade --latest
-      when: yarn_outdated_output.rc != 0
-
   - name: install AUR package helper paru
     aur:
       name: paru-bin
       use: makepkg
       aur_only: False
       skip_installed: True
+
+  - import_tasks: npm.yml

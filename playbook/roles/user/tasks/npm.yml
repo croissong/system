@@ -1,0 +1,27 @@
+- name: install global npm packages
+  tags: npm
+  block:
+  - name: "npm install @angular/cli"
+    community.general.npm:
+      name: "@angular/cli"
+      global: yes
+  - name: "npm install create-react-app"
+    community.general.npm:
+      name: "create-react-app"
+      global: yes
+  - name: "npm install gatsby-cli"
+    community.general.npm:
+      name: "gatsby-cli"
+      global: yes
+  - name: "npm install http-server"
+    community.general.npm:
+      name: "http-server"
+      global: yes
+  - name: "npm install npm-check"
+    community.general.npm:
+      name: "npm-check"
+      global: yes
+  - name: "npm install typescript-language-server"
+    community.general.npm:
+      name: "typescript-language-server"
+      global: yes
