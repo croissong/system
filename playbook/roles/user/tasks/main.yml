@@ -28,6 +28,9 @@
 
 
   - name: setup mail client
+    vars:
+      accounts:
+      - iogroup
     block:
     - name: enable mbsync on boot timer
       systemd:
@@ -35,6 +38,13 @@
         enabled: true
         scope: user
         state: started
+    - name: enable imapnotify services
+      systemd:
+        name: "goimapnotify@{{ item }}.service"
+        enabled: true
+        scope: user
+        state: started
+      loop: "{{ accounts }}"
 
 
     # - name: setup google drive docs sync
