@@ -25,21 +25,16 @@
     - emacs
     - gammastep
     - tmux
+    - mbsync.timer
 
 
-  - name: setup mail client
+  - name: setup mail accounts
     vars:
       accounts:
       - iogroup
     block:
-    - name: enable mbsync on boot timer
-      systemd:
-        name: "mbsync.timer"
-        enabled: true
-        scope: user
-        state: started
     - name: enable imapnotify services
-      systemd:
+      service:
         name: "goimapnotify@{{ item }}.service"
         enabled: true
         scope: user
