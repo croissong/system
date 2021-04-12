@@ -17,6 +17,8 @@
     - { repo: "{{ repos.emacs }}", dest: "$XDG_CONFIG_HOME/emacs"}
     - { repo: "{{ repos.pass }}", dest: "$HOME/Pass/password-store"}
     - { repo: "{{ repos.passOtp }}", dest: "$HOME/Pass/pass-otp"}
+    - { repo: "https://github.com/zdharma/zinit.git", dest: "$XDG_CONFIG_HOME/zsh/.zinit/bin"}
+
 
 
   - name: enable user services
@@ -24,7 +26,6 @@
     with_items:
     - emacs
     - gammastep
-    - tmux
     - mbsync.timer
 
 
