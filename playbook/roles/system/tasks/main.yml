@@ -26,23 +26,6 @@
       dest: "/etc/resolv.conf"
       state: link
 
-  - name: start services
-    service: name={{ item }} enabled=yes state=started
-    with_items:
-    - bluetooth
-    - earlyoom
-    - iwd
-    - nftables
-    - cups.socket
-    - reflector.timer
-    - systemd-networkd
-    - systemd-resolved
-
-  - name: enable services
-    service: name={{ item }} enabled=yes
-    with_items:
-    - physlock
-
   - name: configure locales
     block:
     - name: generate locales
