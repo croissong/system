@@ -1,0 +1,10 @@
+<volume type='file'>
+  <name>archlinux.qcow2</name>
+  <key>/var/lib/libvirt/images/archlinux.qcow2</key>
+  <capacity unit='bytes'>21474836480</capacity>
+  <target>
+    <path>/var/lib/libvirt/images/archlinux.qcow2</path>
+    <format type='qcow2'/>
+  </target>
+</volume>
+
