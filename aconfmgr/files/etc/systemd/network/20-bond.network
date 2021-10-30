@@ -1,0 +1,11 @@
+[Match]
+Name=bond
+
+[Network]
+DHCP=yes
+
+[DHCP]
+UseDNS=false
+
+[IPv6AcceptRA]
+UseDNS=false
