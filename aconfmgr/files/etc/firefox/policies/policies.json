@@ -20,6 +20,14 @@
       "{12cf650b-1822-40aa-bff0-996df6948878}": {
         "installation_mode": "force_installed",
         "install_url": "https://addons.mozilla.org/firefox/downloads/latest/cookies-txt/latest.xpi"
+      },
+      "treestyletab@piro.sakura.ne.jp": {
+        "installation_mode": "force_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/tree-style-tab/latest.xpi"
+      },
+      "jid1-xUfzOsOFlzSOXg@jetpack": {
+        "installation_mode": "force_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/reddit-enhancement-suite/latest.xpi"
       }
     },
     "PasswordManagerEnabled": false,
@@ -50,6 +58,10 @@
       },
       "mousewheel.with_control.action": {
         "Value": 1,
+        "Status": "locked"
+      },
+      "security.ssl.enable_ocsp_stapling": {
+        "Value": false,
         "Status": "locked"
       }
     },
