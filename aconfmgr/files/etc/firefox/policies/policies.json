@@ -61,7 +61,11 @@
         "Status": "locked"
       },
       "security.ssl.enable_ocsp_stapling": {
-        "Value": false,
+        "Value": true,
+        "Status": "locked"
+      },
+      "toolkit.legacyUserProfileCustomizations.stylesheets": {
+        "Value": true,
         "Status": "locked"
       }
     },
