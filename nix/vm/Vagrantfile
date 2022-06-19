@@ -1,0 +1,6 @@
+Vagrant.configure("2") do |config|
+  config.vm.define :nix do |nix|
+    nix.vm.box = "nix.box"
+    # nix.vm.synced_folder ".", "/vagrant", :mount_options => ["ro"]
+  end
+end

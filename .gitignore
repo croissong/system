@@ -3,3 +3,7 @@
 .#*
 \#*
 /vm/arch/
+/nix/vm/.vagrant
+/nix/vm/packer-nix-out
+/nix/vm/nix.box
+/nix/nix-iso-out/

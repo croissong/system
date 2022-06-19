@@ -1,0 +1,2 @@
+collections:
+  - name: 'git+https://github.com/debops/debops#/ansible/,master'

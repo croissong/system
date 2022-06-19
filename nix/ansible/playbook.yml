@@ -1,0 +1,70 @@
+- hosts: localhost
+  name: bootstrap
+  connection: local
+  become: true
+
+  collections:
+    - debops.debops
+
+  vars:
+    btrfs__subvolumes:
+      "/mnt/@":
+         state: present
+      "/mnt/@tmp":
+         state: present
+      "/mnt/@var":
+         state: present
+      "/mnt/@home":
+         state: present
+
+
+  tasks:
+    - name: root partition
+      parted:
+        name: nix
+        label: gpt
+        device: /dev/sda
+        number: 1
+        state: present
+        part_start: 512MiB
+
+    - name: boot partition
+      community.general.parted:
+        name: efi
+        label: gpt
+        device: /dev/sda
+        number: 2
+        state: present
+        flags: [boot]
+        part_end: 512MiB
+
+    - name: boot filesystem
+      filesystem:
+        dev: /dev/sda2
+        fstype: vfat
+
+    - name: nix filesystem
+      filesystem:
+        dev: /dev/sda1
+        fstype: btrfs
+
+    - name: mount root partition
+      mount:
+        path: "/mnt"
+        src: "PARTLABEL=nix"
+        fstype: btrfs
+        state: mounted
+        fstab: /tmp/tmp.fstab
+
+
+    - name: Create btrfs subvolumes
+      import_role:
+        name: btrfs
+
+    - name: mount boot partition
+      mount:
+        path: "/mnt/boot"
+        src: "PARTLABEL=efi"
+        fstype: vfat
+        state: mounted
+        fstab: /tmp/tmp.fstab

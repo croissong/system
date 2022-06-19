@@ -1,0 +1,21 @@
+* run
+#+begin_src shell
+nixos-generate --format iso --configuration ./iso.nix -o nix-iso-out && \
+    packer build vm
+#+end_src
+
+#+begin_src shell
+vagrant box add nixbox nix.box
+vagrant up --provider=libvirt
+#+end_src
+
+
+#+begin_src shell
+systemctl start libvirtd virtlogd
+#+end_src
+* notes
+- https://github.com/quickemu-project/quickemu/issues/127
+- https://github.com/nix-community/nixbox
+- https://github.com/vagrant-libvirt/vagrant-libvirt#installation
+- https://www.reddit.com/r/NixOS/comments/rhkrwj/is_there_a_declarative_tool_for_partitioning_and/
+- https://mattwidmann.net/notes/running-nixos-in-a-vm/
