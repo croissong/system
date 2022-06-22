@@ -1,17 +1,35 @@
 * run
 #+begin_src shell
 nixos-generate --format iso --configuration ./iso.nix -o nix-iso-out && \
-    packer build vm
+    PACKER_LOG=1 packer build vm
 #+end_src
 
 #+begin_src shell
-vagrant box add nixbox nix.box
-vagrant up --provider=libvirt
+cd vm
+vagrant box add nixbox nix.box --force && VAGRANT_LOG=debug vagrant up --provider=libvirt
+
+vncviewer  -Shared 127.0.0.1:5962
 #+end_src
 
 
 #+begin_src shell
 systemctl start libvirtd virtlogd
+
+
+
+qemu-system-x86_64 -boot c -drive format=raw,file=/home/croissong/.vagrant.d/boxes/nix.box/0/libvirt/box.img -m 512
+
+
+
+sudo virsh undefine --nvram "vm_nix" && vagrant destroy
+
+virt-install \
+  --boot uefi \
+  --disk path=output-nix/packer-nix \
+  --ram 2048 \
+  --os-variant nixos-21.11 \
+  --vcpus 2 \
+  --virt-type kvm
 #+end_src
 * notes
 - https://github.com/quickemu-project/quickemu/issues/127
@@ -19,3 +37,6 @@ systemctl start libvirtd virtlogd
 - https://github.com/vagrant-libvirt/vagrant-libvirt#installation
 - https://www.reddit.com/r/NixOS/comments/rhkrwj/is_there_a_declarative_tool_for_partitioning_and/
 - https://mattwidmann.net/notes/running-nixos-in-a-vm/
+- https://github.com/misterio77/nix-config
+* todo
+https://wiki.archlinux.org/title/Data-at-rest_encryption

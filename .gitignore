@@ -6,4 +6,5 @@
 /nix/vm/.vagrant
 /nix/vm/packer-nix-out
 /nix/vm/nix.box
-/nix/nix-iso-out/
+/nix/nix-iso-out
+/nix/output-nix/

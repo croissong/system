@@ -19,36 +19,37 @@
 
 
   tasks:
-    - name: root partition
-      parted:
-        name: nix
-        label: gpt
-        device: /dev/sda
-        number: 1
-        state: present
-        part_start: 512MiB
-
     - name: boot partition
       community.general.parted:
         name: efi
         label: gpt
         device: /dev/sda
-        number: 2
+        number: 1
         state: present
         flags: [boot]
         part_end: 512MiB
 
+
+    - name: root partition
+      parted:
+        name: nix
+        label: gpt
+        device: /dev/sda
+        number: 2
+        state: present
+        part_start: 512MiB
+
     - name: boot filesystem
       filesystem:
-        dev: /dev/sda2
+        dev: /dev/sda1
         fstype: vfat
 
     - name: nix filesystem
       filesystem:
-        dev: /dev/sda1
+        dev: /dev/sda2
         fstype: btrfs
 
-    - name: mount root partition
+    - name: mount root partition for btrfs subvol creation
       mount:
         path: "/mnt"
         src: "PARTLABEL=nix"
@@ -56,10 +57,27 @@
         state: mounted
         fstab: /tmp/tmp.fstab
 
-
     - name: Create btrfs subvolumes
       import_role:
         name: btrfs
+
+    - name: unmount root partition
+      mount:
+        path: "/mnt"
+        src: "PARTLABEL=nix"
+        fstype: btrfs
+        state: unmounted
+        fstab: /tmp/tmp.fstab
+
+    - name: mount root partition with opts
+      mount:
+        path: "/mnt"
+        src: "PARTLABEL=nix"
+        fstype: btrfs
+        state: mounted
+        fstab: /tmp/tmp.fstab
+        opts: 'noatime,subvol=@'
+
 
     - name: mount boot partition
       mount:

@@ -8,6 +8,7 @@
   isoImage.contents = [
     { source = ./ansible; target = "ansible"; }
     { source = ./config; target = "config"; }
+    { source = ./provision.sh; target = "provision.sh"; }
   ];
 
   services.xserver.xkbOptions = "ctrl:swapcaps";
@@ -15,6 +16,7 @@
 
   services.openssh.enable = true;
   boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # use the latest Linux kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;

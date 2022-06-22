@@ -24,7 +24,7 @@ data "sshkey" "install" {}
 
 source "qemu" "nix" {
   boot_wait = "40s"
-  iso_url = "file:file://../nix-iso-out/iso/nixos-22.11pre385916.103a4c0ae46-x86_64-linux.iso"
+  iso_url = "file:file://../nix-iso-out/iso/nixos-22.11pre386147.e0a42267f73-x86_64-linux.iso"
   iso_checksum = "none"
   shutdown_command = "sudo shutdown -h now"
   # shutdown_command = "echo hi"
@@ -37,18 +37,22 @@ source "qemu" "nix" {
   ssh_clear_authorized_keys = true
   http_content = {
     "/public_key.pub" = data.sshkey.install.public_key
-    }
+  }
 
-  headless = false
+  headless = true
   boot_key_interval = "25ms"
+  vnc_port_min = 5962
+  vnc_port_max = 5962
+
+  firmware = "/usr/share/edk2-ovmf/x64/OVMF.fd"
+  use_pflash = true
+
+  accelerator = "kvm"
 
   disk_size = var.disk_size
   disk_interface = "virtio-scsi"
   qemuargs = [
-        [
-          "-m",
-          "${var.memory}"
-        ]
+    ["-m", "${var.memory}"]
   ]
 
 
@@ -64,12 +68,13 @@ build {
   sources = ["sources.qemu.nix"]
 
   provisioner "shell" {
-    script = "${path.root}/provision.sh"
+    inline = ["/iso/provision.sh"]
   }
 
   post-processors {
     post-processor "vagrant" {
       output = "${path.root}/nix.box"
+      vagrantfile_template = "${path.root}/Vagrantfile"
     }
   }
 }
