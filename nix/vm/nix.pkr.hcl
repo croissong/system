@@ -24,7 +24,7 @@ data "sshkey" "install" {}
 
 source "qemu" "nix" {
   boot_wait = "40s"
-  iso_url = "file:file://../nix-iso-out/iso/nixos-22.11pre386147.e0a42267f73-x86_64-linux.iso"
+  iso_url = "file:file://../nix-iso-out/iso/nixos-22.11pre388097.9a17f325397-x86_64-linux.iso"
   iso_checksum = "none"
   shutdown_command = "sudo shutdown -h now"
   # shutdown_command = "echo hi"
@@ -40,7 +40,7 @@ source "qemu" "nix" {
   }
 
   headless = true
-  boot_key_interval = "25ms"
+  boot_key_interval = "50ms"
   vnc_port_min = 5962
   vnc_port_max = 5962
 

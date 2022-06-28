@@ -1,14 +1,17 @@
 * run
 #+begin_src shell
+# PACKER_LOG=1
 nixos-generate --format iso --configuration ./iso.nix -o nix-iso-out && \
-    PACKER_LOG=1 packer build vm
+    packer build vm
+
+vncviewer -Shared 127.0.0.1:5962
 #+end_src
 
 #+begin_src shell
+# VAGRANT_LOG=debug
 cd vm
-vagrant box add nixbox nix.box --force && VAGRANT_LOG=debug vagrant up --provider=libvirt
-
-vncviewer  -Shared 127.0.0.1:5962
+sudo virsh undefine --nvram "vm_nix" && vagrant destroy && vagrant box remove nixbox && sudo virsh vol-delete --pool default nixbox_vagrant_box_image_0_box.img
+vagrant box add nixbox nix.box --force && vagrant up --provider=libvirt
 #+end_src
 
 
@@ -17,11 +20,7 @@ systemctl start libvirtd virtlogd
 
 
 
-qemu-system-x86_64 -boot c -drive format=raw,file=/home/croissong/.vagrant.d/boxes/nix.box/0/libvirt/box.img -m 512
-
-
-
-sudo virsh undefine --nvram "vm_nix" && vagrant destroy
+# qemu-system-x86_64 -boot c -drive format=raw,file=/home/croissong/.vagrant.d/boxes/nix.box/0/libvirt/box.img -m 512
 
 virt-install \
   --boot uefi \
