@@ -44,7 +44,7 @@
                     device: /dev/disk/by-partlabel/root
                     name: root
                     state: opened
-                    passphrase: test123
+                    passphrase: test
 
             - name: filesystem
               filesystem:
