@@ -3,6 +3,7 @@ all: iso packer vagrant
 iso:
   cd {{justfile_directory()}}
   nixos-generate --format iso --configuration ./iso.nix -o nix-iso-out
+  sudo mv nix-iso-out/iso/nixos-*.iso nix-iso-out/iso/nixos.iso
 
 packer:
   # PACKER_LOG=1
@@ -33,7 +34,7 @@ vagrant-up:
   # VAGRANT_LOG=debug
   cd {{justfile_directory()}}/vm
   vagrant box add nixbox nix.box --force
-  sudo nft flush ruleset
+  # sudo nft flush ruleset
   vagrant up --provider=libvirt
   vagrant rsync-auto
 
@@ -43,6 +44,9 @@ vagrant-view:
 
 vagrant: vagrant-init vagrant-clean vagrant-up
 
+
+journal:
+  journalctl -u libvirtd -u virtlogd
 
 prep:
   systemctl start libvirtd virtlogd

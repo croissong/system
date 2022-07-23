@@ -73,16 +73,23 @@
       links = {
         eth = {
           linkConfig = {
+            Name = "eth0";
+          };
+          matchConfig = {
             MACAddress = "c0:0c:cc:c0:00:0c";
           };
-          matchConfig = {Name = "eth0";};
         };
       };
 
       networks = {
         wired = {
-          matchConfig = {Name = "eth0";};
+          matchConfig = {
+            Name = "eth0";
+          };
           DHCP = "yes";
+          networkConfig = {
+            IPForward = "yes";
+          };
         };
       };
     };
@@ -95,6 +102,7 @@
     emacs
     git
     spice-vdagent
+    mtr
     python310
 
     # vagrant / tmp

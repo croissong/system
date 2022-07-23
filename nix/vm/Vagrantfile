@@ -3,17 +3,7 @@ Vagrant.configure("2") do |config|
   config.ssh.password = "test"
   config.vm.define :nix do |nix|
     nix.vm.box = "nixbox"
-    nix.vm.synced_folder ".", "/mnt/vagrant", :mount_options => ["ro"]
-    # config.vm.network :public_network, bridge: 'en4: AX88179 USB 3.0 to Gigabit Ethernet'
-
-     # config.vm.network :public_network,
-     #  :dev => "wlan0"
-     #  :mode => "bridge",
-    #  :type => "bridge"
-    config.vm.network :private_network,
-                      :mac => "c0:0c:cc:c0:00:0c",
-                      :libvirt__network_name => "vagrant-libvirt",
-                      :autostart => true
+    nix.vm.synced_folder "..", "/mnt/nix", :mount_options => ["ro"]
   end
   config.vm.provider :libvirt do |libvirt|
     libvirt.loader = "/usr/share/edk2-ovmf/x64/OVMF.fd"

@@ -1,4 +1,3 @@
-# nixos-generate --format iso --configuration ./iso.nix -o result
 {
   pkgs,
   modulesPath,

@@ -24,7 +24,7 @@ data "sshkey" "install" {}
 
 source "qemu" "nix" {
   boot_wait = "40s"
-  iso_url = "file:file://../nix-iso-out/iso/nixos-22.11pre391829.65fae659e31-x86_64-linux.iso"
+  iso_url = "file:file://../nix-iso-out/iso/nixos.iso"
   iso_checksum = "none"
   shutdown_command = "sudo shutdown -h now"
   # shutdown_command = "echo hi"

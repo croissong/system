@@ -2,6 +2,10 @@
 
 cd /iso/ansible || exit
 {
+
+  # validate
+  NIXOS_CONFIG=$PWD/../config/configuration.nix nix-instantiate '<nixpkgs/nixos>' -A system
+
   ansible-galaxy install --no-deps -r requirements.yml
   ansible-playbook playbook.yml
 
