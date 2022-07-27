@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./vagrant.nix
+    ./vm.nix
   ];
   system = {
     stateVersion = "22.11";
@@ -24,18 +24,18 @@
     efi.canTouchEfiVariables = true;
   };
 
+  # just for console layout
   services.xserver = {
     layout = "de";
     xkbOptions = "ctrl:nocaps";
     xkbVariant = "nodeadkeys";
-    # exportConfiguration = true;
   };
   console.useXkbConfig = true;
 
   users.mutableUsers = false;
   users.users.root.password = "test";
 
-  users.users.croissong = {
+  users.users.moi = {
     isNormalUser = true;
     password = "test";
     extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
@@ -73,7 +73,7 @@
       links = {
         eth = {
           linkConfig = {
-            Name = "eth0";
+            Name = "eth";
           };
           matchConfig = {
             MACAddress = "c0:0c:cc:c0:00:0c";
@@ -84,11 +84,36 @@
       networks = {
         wired = {
           matchConfig = {
-            Name = "eth0";
+            Name = "eth";
+          };
+          bond = ["bond"];
+          networkConfig = {
+            PrimarySlave = true;
+          };
+        };
+
+        bond = {
+          matchConfig = {
+            Name = "bond";
           };
           DHCP = "yes";
           networkConfig = {
-            IPForward = "yes";
+            # TODO: Maybe required for libvirt inet
+            # IPForward = "yes";
+          };
+        };
+      };
+
+      netdevs = {
+        bond = {
+          netdevConfig = {
+            Name = "bond";
+            Kind = "bond";
+          };
+          bondConfig = {
+            Mode = "active-backup";
+            PrimaryReselectPolicy = "always";
+            MIIMonitorSec = "1s";
           };
         };
       };

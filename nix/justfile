@@ -1,52 +1,24 @@
-all: iso packer vagrant
+all: iso lxd-create
 
 iso:
+  #!/usr/bin/env bash
+  set -euxo pipefail
   cd {{justfile_directory()}}
   nixos-generate --format iso --configuration ./iso.nix -o nix-iso-out
   sudo mv nix-iso-out/iso/nixos-*.iso nix-iso-out/iso/nixos.iso
 
-packer:
-  # PACKER_LOG=1
-  packer build vm
-
-packer-viewer:
-  vncviewer -Shared 127.0.0.1:5962
-
-
-vagrant-init:
-  systemctl restart libvirtd virtlogd
-  sudo virsh net-start vagrant-libvirt || true
-
-vagrant-clean:
+lxd-create:
   #!/usr/bin/env bash
   set -euxo pipefail
   cd {{justfile_directory()}}/vm
-  sudo virsh undefine --nvram "vm_nix" || true
-  vagrant destroy || true
-  vagrant box remove nixbox || true
-  sudo virsh vol-delete --pool default nixbox_vagrant_box_image_0_box.img || true
-  systemctl restart libvirtd virtlogd
+  sudo -E lxc launch nix nix --console=vga --vm < lxc-vm.yml
+  # lxc config edit nix
+
+lxd-provision:
 
 
-vagrant-up:
-  #!/usr/bin/env bash
-  set -euxo pipefail
-  # VAGRANT_LOG=debug
-  cd {{justfile_directory()}}/vm
-  vagrant box add nixbox nix.box --force
-  # sudo nft flush ruleset
-  vagrant up --provider=libvirt
-  vagrant rsync-auto
 
-
-vagrant-view:
-  sudo -E virt-viewer -- vm_nix
-
-vagrant: vagrant-init vagrant-clean vagrant-up
-
-
-journal:
-  journalctl -u libvirtd -u virtlogd
-
-prep:
-  systemctl start libvirtd virtlogd
+view:
+  lxc start nix
+  # cat 3lxc exec nix --
+  sudo -E lxc console --type=vga nix

@@ -4,18 +4,14 @@
   ...
 }: {
   imports = [
-    # ./vagrant-hostname.nix
-    # ./vagrant-network.nix
+    ./vm-lxd-agent.nix
   ];
 
-  virtualisation.libvirtd.enable = true;
+  virtualisation.lxd.enable = true;
   virtualisation.libvirtd.qemu.package = pkgs.qemu;
   # networking.interfaces.enp4s0.useDHCP = true;
 
+  # TODO
   services.spice-vdagentd.enable = true;
-  services.openssh = {
-    enable = true;
-    permitRootLogin = "yes";
-  };
   services.qemuGuest.enable = true;
 }

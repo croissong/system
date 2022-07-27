@@ -1,0 +1,27 @@
+# https://linuxcontainers.org/lxd/docs/master/instances/
+architecture: x86_64
+config:
+  security.secureboot: false
+devices:
+  eth0:
+    name: eth0
+    network: lxdbr0
+    type: nic
+  root:
+    path: /
+    pool: default
+    type: disk
+    size: 15GB
+  iso:
+    source: /home/croissong/System/nix/nix-iso-out/iso/nixos.iso
+    type: disk
+    boot.priority: 2
+  shared:
+    path: /mnt/share
+    type: disk
+    source: /home/croissong/System/nix/
+ephemeral: false
+profiles:
+  - default
+stateful: false
+description: ""

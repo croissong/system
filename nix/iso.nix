@@ -6,6 +6,7 @@
 }: {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
+    ./config/vm-lxd-agent.nix
   ];
 
   isoImage.contents = [
@@ -26,7 +27,6 @@
   services.xserver.xkbOptions = "ctrl:swapcaps";
   console.useXkbConfig = true;
 
-  services.openssh.enable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -37,6 +37,7 @@
     ansible
     git
     spice-vdagent
+    lxd
   ];
 
   services.spice-vdagentd.enable = true;
