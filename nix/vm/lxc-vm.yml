@@ -17,7 +17,7 @@ devices:
     type: disk
     boot.priority: 2
   shared:
-    path: /mnt/share
+    path: /tmp/share
     type: disk
     source: /home/croissong/System/nix/
 ephemeral: false
