@@ -19,6 +19,8 @@
     };
   };
 
+  nix.settings.auto-optimise-store = true;
+
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
