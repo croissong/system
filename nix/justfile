@@ -11,14 +11,23 @@ lxd-create:
   #!/usr/bin/env bash
   set -euxo pipefail
   cd {{justfile_directory()}}/vm
-  sudo -E lxc launch nix nix --console=vga --vm < lxc-vm.yml
+  sudo -E lxc launch nix nix --vm < lxc-vm.yml
   # lxc config edit nix
 
 lxd-provision:
-
+  #!/usr/bin/env bash
+  set -euxo pipefail
+  lxc exec nix --cwd /home/nixos -- \
+  /run/current-system/sw/bin/bash -c \
+  'source /etc/profile; su nixos -s /tmp/share/provision.sh'
 
 
 view:
-  lxc start nix
-  # cat 3lxc exec nix --
+  lxc start nix || true
   sudo -E lxc console --type=vga nix
+
+
+debug:
+  lxc exec nix --cwd /home/nixos -- \
+  /run/current-system/sw/bin/bash -c \
+  'source /etc/profile; su nixos -s /run/current-system/sw/bin/bash -c "sudo lsof | grep mnt"'

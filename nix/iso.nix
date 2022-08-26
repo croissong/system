@@ -24,7 +24,12 @@
     }
   ];
 
-  services.xserver.xkbOptions = "ctrl:swapcaps";
+  # just for console layout
+  services.xserver = {
+    layout = "de";
+    xkbOptions = "ctrl:nocaps";
+    xkbVariant = "nodeadkeys";
+  };
   console.useXkbConfig = true;
 
   boot.loader.systemd-boot.enable = true;
@@ -34,7 +39,9 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   environment.systemPackages = with pkgs; [
+    lsof
     ansible
+    util-linux
     git
     spice-vdagent
     lxd

@@ -5,9 +5,6 @@
   lib,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    # modprobe
-  ];
   virtualisation.lxd.enable = true;
   # https://discuss.linuxcontainers.org/t/install-lxd-agent-manually-on-custom-os/11826/2
 
@@ -26,8 +23,6 @@
     '';
 
     path = with pkgs; [
-      # Not working (in iso)?
-      # config.system.sbin.modprobe
       kmod
       mount
       # chmod
@@ -50,46 +45,4 @@
 
     path = with pkgs; [mount];
   };
-
-  # systemd.services.lxd-agent = {
-  #   enable = true;
-  #   script = "lxd-agent";
-  #   path = with pkgs; [
-  #     lxd
-  #     # https://github.com/stevenewey/lxd-vms-on-nixos/blob/master/etc/nixos/lxd-agent.nix
-  #     (stdenv.mkDerivation buildGoPackage rec {
-  #       name = "lxd-agent";
-  #       version = "5.4"; # modify the version if using newer LXD
-
-  #       goPackagePath = "github.com/lxc/lxd";
-
-  #       ldflags = ["-extldflags=-static" "-s" "-w"];
-  #       tags = ["libsqlite3"];
-
-  #       src = fetchurl {
-  #         url = "https://github.com/lxc/lxd/releases/download/lxd-${version}/lxd-${version}.tar.gz";
-  #         sha256 = "sha256-4jS2fFB30F4i+VjjJWvZHyYkUFRZk9Cq8bTOK9uZOTo="; # update this when changing LXD version
-  #       };
-
-  #       subPackages = ["lxd-agent"];
-
-  #       preConfigure = ''
-  #         export CGO_ENABLED=0
-  #       '';
-
-  #       postPatch = ''
-  #         substituteInPlace shared/usbid/load.go \
-  #           --replace "/usr/share/misc/usb.ids" "${hwdata}/share/hwdata/usb.ids"
-  #       '';
-
-  #       # preBuild = ''
-  #       #   # unpack vendor
-  #       #   pushd go/src/github.com/lxc/lxd
-  #       #   rm _dist/src/github.com/lxc/lxd
-  #       #   cp -r _dist/src/* ../../..
-  #       #   popd
-  #       # '';
-  #     })
-  #   ];
-  # };
 }

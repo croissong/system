@@ -13,5 +13,5 @@ popd || exit
 # sudo nixos-generate-config --root /mnt
 # sudo mv /mnt/etc/nixos/configuration.nix /mnt/etc/nixos/configuration.generated.nix
 sudo mkdir -p /mnt/etc/nixos/
-sudo cp -r config/* /mnt/etc/nixos/
+sudo cp -r "$SCRIPT_DIR"/config/* /mnt/etc/nixos/
 sudo nixos-install --no-root-passwd --verbose | tee /tmp/nixos-install.log

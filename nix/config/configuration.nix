@@ -50,7 +50,7 @@
 
   services.resolved = {
     enable = true;
-    dnssec = "yes";
+    dnssec = "true";
     fallbackDns = [
       "8.8.8.8"
       "8.8.4.4"
