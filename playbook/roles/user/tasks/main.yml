@@ -29,20 +29,6 @@
     - mbsync.timer
 
 
-  - name: setup mail accounts
-    vars:
-      accounts:
-      - iogroup
-    block:
-    - name: enable imapnotify services
-      service:
-        name: "goimapnotify@{{ item }}.service"
-        enabled: true
-        scope: user
-        state: started
-      loop: "{{ accounts }}"
-
-
     # - name: setup google drive docs sync
     #   tags: ['gdrive']
     #   vars:
