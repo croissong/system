@@ -19,7 +19,17 @@
     };
   };
 
-  nix.settings.auto-optimise-store = true;
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+    };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+  };
 
   boot.loader = {
     systemd-boot.enable = true;
