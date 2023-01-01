@@ -5,9 +5,6 @@ just
 
 
 * notes
-- https://github.com/quickemu-project/quickemu/issues/127
-- https://github.com/nix-community/nixbox
-- https://github.com/vagrant-libvirt/vagrant-libvirt#installation
 - https://www.reddit.com/r/NixOS/comments/rhkrwj/is_there_a_declarative_tool_for_partitioning_and/
 - https://mattwidmann.net/notes/running-nixos-in-a-vm/
 - https://github.com/misterio77/nix-config

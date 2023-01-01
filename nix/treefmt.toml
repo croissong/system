@@ -1,0 +1,12 @@
+[formatter.nix]
+command = "alejandra"
+includes = ["*.nix"]
+
+[formatter.shell]
+command = "shfmt"
+includes = ["*.sh"]
+
+[formatter.xml]
+command = "xmlformat"
+options = ["--blanks", "--indent", "4", "--selfclose", "-"]
+includes = ["*.xml"]

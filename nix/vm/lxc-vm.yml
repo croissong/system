@@ -2,6 +2,7 @@
 architecture: x86_64
 config:
   security.secureboot: false
+  limits.memory: 4GB
 devices:
   eth0:
     name: eth0
@@ -12,10 +13,11 @@ devices:
     pool: default
     type: disk
     size: 15GB
+    boot.priority: 2
   iso:
     source: /home/croissong/System/nix/nix-iso-out/iso/nixos.iso
     type: disk
-    boot.priority: 2
+    boot.priority: 1
   shared:
     path: /tmp/share
     type: disk

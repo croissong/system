@@ -11,16 +11,30 @@ lxd-create:
   #!/usr/bin/env bash
   set -euxo pipefail
   cd {{justfile_directory()}}/vm
-  sudo -E lxc launch nix nix --vm < lxc-vm.yml
+  lxc launch nix nix --vm < lxc-vm.yml
   # lxc config edit nix
 
 lxd-provision:
   #!/usr/bin/env bash
   set -euxo pipefail
-  lxc exec nix --cwd /home/nixos -- \
-  /run/current-system/sw/bin/bash -c \
-  'source /etc/profile; su nixos -s /tmp/share/provision.sh'
+  lxc exec nix -t --user 1000 -- \
+  /run/current-system/sw/bin/bash  --login -c \
+  'sudo /tmp/share/provision.sh'
 
+lxd-rebuild:
+  #!/usr/bin/env bash
+  set -euxo pipefail
+  lxc exec nix -t --user 1000 -- \
+    /run/current-system/sw/bin/bash --login -c \
+    'sudo cp -r /tmp/share/config/* /etc/nixos/; sudo nixos-rebuild switch'
+
+lxd-recreate:
+  lxc delete nix --force
+  @just lxd-create
+  viddy lxc list
+
+lxd-shell:
+  lxc exec nix --user 1000 -- /run/current-system/sw/bin/bash
 
 view:
   lxc start nix || true
@@ -28,6 +42,6 @@ view:
 
 
 debug:
-  lxc exec nix --cwd /home/nixos -- \
+  lxc exec nix -- \
   /run/current-system/sw/bin/bash -c \
-  'source /etc/profile; su nixos -s /run/current-system/sw/bin/bash -c "sudo lsof | grep mnt"'
+  'source /etc/profile; su nixos -s /run/current-system/sw/bin/bash -c "sudo lsof | grep
