@@ -9,7 +9,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
 nix run github:nix-community/disko -- -m create ./disk-config.nix
 nix run github:nix-community/disko -- -m mount ./disk-config.nix
 
-nixos-generate-config --root /mnt
+nixos-generate-config --no-filesystems --root /mnt
 mv /mnt/etc/nixos/configuration.nix /mnt/etc/nixos/configuration.generated.nix
 cp -r config/* /mnt/etc/nixos/
 nixos-install --no-root-passwd --verbose | tee /tmp/nixos-install.log

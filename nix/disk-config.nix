@@ -60,7 +60,7 @@ in {
                     mountpoint = "/var/tmp";
                     mountOptions = mountOptions;
                   };
-                  "@snapshot" = {
+                  "@snapshots" = {
                     mountpoint = "/.snapshots";
                     mountOptions = mountOptions;
                   };
