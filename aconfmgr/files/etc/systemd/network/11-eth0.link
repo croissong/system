@@ -1,6 +1,0 @@
-[Match]
-MACAddress=8c:16:45:48:7f:71
-
-[Link]
-Description=eth
-Name=eth0

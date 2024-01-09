@@ -25,6 +25,7 @@ user:
     - video
     - wheel
     - systemd-journal
+    - nix-users
   shell: /bin/zsh
   email: jan.moeller0@gmail.com
 

@@ -47,10 +47,13 @@
       command: timedatectl set-ntp true
       when: not ntp_active
 
-  - name: add user to cups group
+  - name: add user to groups
     user:
       name: "{{ user.name }}"
-      groups: cups
+      groups: {{ item }}
       append: yes
+    with_items:
+    - cups
+    - libvirt
 
   - import_tasks: maintenance.yml

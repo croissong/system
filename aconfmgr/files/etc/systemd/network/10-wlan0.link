@@ -1,6 +1,0 @@
-[Match]
-MACAddress=d4:6d:6d:38:b6:7a
-
-[Link]
-Description=wlan
-Name=wlan0
