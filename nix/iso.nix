@@ -33,7 +33,7 @@
 
   # just for console layout
   services.xserver = {
-    layout = "de";
+    layout = "us";
     xkbOptions = "ctrl:nocaps";
     xkbVariant = "nodeadkeys";
   };
