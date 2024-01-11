@@ -83,7 +83,7 @@
     emacs
     git
     mtr
-    python310
+    python3
 
     iproute2
 

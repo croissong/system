@@ -4,7 +4,7 @@ iso:
   #!/usr/bin/env bash
   set -euxo pipefail
   cd {{justfile_directory()}}
-  nixos-generate --format iso --configuration ./iso.nix -o nix-iso-out
+  nixos-generate --format iso --configuration ./iso.nix -o nix-iso-out -I nixpkgs=channel:nixos-23.11
   sudo mv nix-iso-out/iso/nixos-*.iso nix-iso-out/iso/nixos.iso
 
 lxd-create:
@@ -19,7 +19,7 @@ lxd-provision:
   set -euxo pipefail
   lxc exec nix -t --user 1000 -- \
   /run/current-system/sw/bin/bash  --login -c \
-  'sudo /tmp/share/provision.sh'
+  'sudo /tmp/share/provision.sh sda'
 
 lxd-rebuild:
   #!/usr/bin/env bash
