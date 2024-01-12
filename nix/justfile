@@ -19,7 +19,7 @@ lxd-provision:
   set -euxo pipefail
   lxc exec nix -t --user 1000 -- \
   /run/current-system/sw/bin/bash  --login -c \
-  'sudo /tmp/share/provision.sh sda'
+  'sudo /iso/system/nix/provision.sh vm'
 
 lxd-rebuild:
   #!/usr/bin/env bash

@@ -1,3 +1,4 @@
+# https://github.com/nix-community/nixos-generators
 {
   pkgs,
   lib,
@@ -6,21 +7,18 @@
   imports = [
     <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
     <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
-    ./config/vm.nix
+    ../nix-config/nixos/vm.nix
   ];
 
+  # put under /iso/
   isoImage.contents = [
     {
-      source = ./config;
-      target = "config";
+      source = /home/croissong/System;
+      target = "system";
     }
     {
-      source = ./disk-config.nix;
-      target = "disk-config.nix";
-    }
-    {
-      source = ./provision.sh;
-      target = "provision.sh";
+      source = /home/croissong/.config/age/identity.age;
+      target = "age-keys.txt";
     }
   ];
 
@@ -49,6 +47,7 @@
     lsof
     util-linux
     git
+    sops
   ];
 
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";

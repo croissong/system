@@ -19,9 +19,9 @@ devices:
     type: disk
     boot.priority: 1
   shared:
-    path: /tmp/share
+    path: /iso/system
     type: disk
-    source: /home/croissong/System/nix/
+    source: /home/croissong/System/
 ephemeral: false
 profiles:
   - default

@@ -12,6 +12,7 @@ in {
             ESP = {
               size = "500M";
               type = "EF00";
+              label = "ESP";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -19,10 +20,15 @@ in {
               };
             };
             root = {
+              label = "root";
               size = "100%";
               content = {
                 type = "luks";
                 name = "crypted";
+                passwordFile = "/tmp/luks-password.txt";
+                settings = {
+                  allowDiscards = true;
+                };
                 content = {
                   type = "btrfs";
                   extraArgs = ["-f"]; # Override existing partition

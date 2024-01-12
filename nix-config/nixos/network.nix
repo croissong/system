@@ -17,6 +17,7 @@
       DNSOverTLS=yes
     '';
   };
+
   networking = {
     hostName = "bon";
     useNetworkd = true;
@@ -26,6 +27,7 @@
       "2606:4700:4700::1111"
       "2606:4700:4700::1001"
     ];
+
     wireless.iwd = {
       enable = true;
       settings = {
