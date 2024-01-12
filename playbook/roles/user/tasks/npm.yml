@@ -1,3 +1,0 @@
-- name: install global npm packages
-  tags: npm
-  block:

@@ -1,9 +1,0 @@
-[Trigger]
-Operation = Install
-Operation = Remove
-Type = Package
-Target = *
-
-[Action]
-When = PostTransaction
-Exec = /usr/bin/sudo -u {{ user.name }} /bin/bash -c 'PACMAN_CONFDIR=$HOME/.config/pacman; /usr/bin/pacman -Qqen > $PACMAN_CONFDIR/pkgs.txt; comm -13 <(pacman -Qqdt | sort) <(pacman -Qqdtt | sort) > $PACMAN_CONFDIR/opt-pkgs.txt; pacman -Qqem > $PACMAN_CONFDIR/aur-pkgs.txt'
