@@ -19,7 +19,9 @@ devices:
     type: disk
     boot.priority: 1
   shared:
-    path: /iso/system
+    # path: /iso/system
+    # after reboot (via `lxc config edit nix`)
+    path: /etc/system/
     type: disk
     source: /home/croissong/System/
 ephemeral: false

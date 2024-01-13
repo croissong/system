@@ -33,7 +33,7 @@
     overlays = [
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.unstable-packages
+      outputs.overlays.stable-packages
     ];
     config = {
       allowUnfree = true;
@@ -59,9 +59,9 @@
 
   sops = {
     defaultSopsFile = ../secrets.yaml;
-    age.keyFile = "/iso/age-keys.txt";
+    age.keyFile = "/etc/age-keys.txt";
     secrets = {
-      password = {};
+      hashedPassword = {};
     };
   };
 }

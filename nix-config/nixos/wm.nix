@@ -27,6 +27,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     wayland
+    dbus
     dbus-sway-environment
     sway
   ];
