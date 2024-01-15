@@ -18,4 +18,12 @@
       config.allowUnfree = true;
     };
   };
+
+  emacs-overlay = final: _prev: {
+    emacs-overlay = import inputs.nixpkgs {
+      system = final.system;
+      config.allowUnfree = true;
+      overlays = [(import inputs.emacs-overlay)];
+    };
+  };
 }
