@@ -7,20 +7,33 @@
   imports = [
     <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
     <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
-    ../nix-config/nixos/vm.nix
+    ../vm/vm.nix
   ];
 
-  # put under /iso/
-  isoImage.contents = [
-    {
-      source = /home/croissong/System;
-      target = "system";
-    }
-    {
-      source = /home/croissong/.config/age/identity.age;
-      target = "age-keys.txt";
-    }
-  ];
+  isoImage = {
+    isoName = lib.mkDefault "nixos.iso";
+    squashfsCompression = "gzip -Xcompression-level 1";
+
+    # put under /iso/
+    contents = [
+      {
+        source = ../nix-config;
+        target = "nix-config";
+      }
+      {
+        source = ./.;
+        target = "nix-bootstrap";
+      }
+      {
+        source = ../vm/scripts;
+        target = "scripts";
+      }
+      {
+        source = ~/.config/age/identity.age;
+        target = "age-keys.txt";
+      }
+    ];
+  };
 
   nix = {
     package = pkgs.nixFlakes;
@@ -29,9 +42,11 @@
     '';
   };
 
+  programs.bash.shellInit = builtins.readFile ./bootstrap.sh;
+
   # just for console layout
   services.xserver = {
-    layout = "us";
+    layout = "de";
     xkbOptions = "ctrl:nocaps";
     xkbVariant = "nodeadkeys";
   };
@@ -47,10 +62,7 @@
     lsof
     util-linux
     git
-    sops
   ];
-
-  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 
   # Needed for https://github.com/NixOS/nixpkgs/issues/58959
   boot.supportedFilesystems = lib.mkForce ["btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs"];
