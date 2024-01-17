@@ -15,4 +15,4 @@ iso-vm: (_iso "iso-vm.nix")
 vm delete="false":
   pkill qemu || echo 0
   {{ if delete == "delete" { "quickemu --vm vm/qemu.conf --delete-disk" } else { ""} }}
-  quickemu --vm vm/qemu.conf --public-dir .  --display gtk
+  quickemu --vm vm/qemu.conf

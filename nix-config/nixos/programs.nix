@@ -1,7 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  programs.sway.enable = true;
+{...}: {
+  programs = {
+    zsh.enable = true;
+  };
 }

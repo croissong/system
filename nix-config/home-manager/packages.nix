@@ -21,6 +21,4 @@
 in {
   home.packages =
     builtins.concatLists (lib.attrsets.collect builtins.isList packages_dict);
-
-  systemd.user.sessionVariables.DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
 }
