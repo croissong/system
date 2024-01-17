@@ -28,8 +28,6 @@ in {
     sway
   ];
 
-  hardware.opengl.extraPackages = with pkgs; [vaapiIntel libvdpau-va-gl vaapiVdpau];
-
   # just for console layout
   services.xserver = {
     layout = "us";
