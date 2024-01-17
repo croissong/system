@@ -1,18 +1,10 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   security.pam.services = {
+    system-auth.nodelay = true;
+    systemd-user.nodelay = true;
     su.nodelay = true;
-    # not working
+    sudo.nodelay = true;
+    polkit-1.nodelay = true;
     login.nodelay = true;
-    login.logFailures = true;
-  };
-
-  environment.etc."security/faillock.conf" = {
-    text = ''
-      nodelay
-    '';
   };
 }
