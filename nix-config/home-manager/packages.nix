@@ -167,7 +167,7 @@
         delta # A syntax-highlighting pager for git
         difftastic # A syntax-aware diff
         diffsitter # A tree-sitter based AST difftool to get meaningful semantic diffs
-        python310Packages.graphtage # diff tree-like files such as JSON and XML
+        python3Packages.graphtage # diff tree-like files such as JSON and XML
         dyff #  A diff tool for YAML files, and sometimes JSON
         riffdiff # A diff filter highlighting which line parts have changed
         yamllint
@@ -266,7 +266,7 @@
         inlyne # A GPU powered browserless markdown viewer
 
         # TODO: slidev  https://sli.dev/guide/install.html#starter-template
-        python310Packages.grip # Preview GitHub Markdown files like Readme locally before committing them
+        python3Packages.grip # Preview GitHub Markdown files like Readme locally before committing them
       ];
 
       general = [
@@ -401,7 +401,7 @@
 
       python = [
         black # The uncompromising Python code formatter
-        python310Packages.flake8 # The modular source code checker
+        python3Packages.flake8 # The modular source code checker
         py-spy # Sampling profiler for Python programs
         memray
         mypy # Optional static typing for Python 2 and 3 (PEP484)
@@ -678,9 +678,9 @@
     tools = [
       ansible # Official assortment of Ansible collections
       ansible-lint # Checks playbooks for practices and behaviour that could potentially be improved.
-      python310Packages.mitogen # Python Library for writing distributed self-replicating programs
+      python3Packages.mitogen # Python Library for writing distributed self-replicating programs
 
-      python310Packages.qrcode # Quick Response code generation for Python
+      python3Packages.qrcode # Quick Response code generation for Python
 
       dhcping # Send DHCP request to find out if a DHCP server is running
 
