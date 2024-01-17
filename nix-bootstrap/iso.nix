@@ -7,7 +7,7 @@
   imports = [
     <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
     <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
-    ../vm/vm.nix
+    ../nix-config/nixos/vm.nix
   ];
 
   isoImage = {
@@ -17,20 +17,12 @@
     # put under /iso/
     contents = [
       {
-        source = ../nix-config;
-        target = "nix-config";
+        source = ./provision.sh;
+        target = "provision.sh";
       }
       {
-        source = ./.;
-        target = "nix-bootstrap";
-      }
-      {
-        source = ../vm/scripts;
-        target = "scripts";
-      }
-      {
-        source = ~/.config/age/identity.age;
-        target = "age-keys.txt";
+        source = ../iso-contents.tar.sz;
+        target = "iso-contents.tar.sz";
       }
     ];
   };
@@ -62,6 +54,8 @@
     lsof
     util-linux
     git
+    sops
+    ouch
   ];
 
   # Needed for https://github.com/NixOS/nixpkgs/issues/58959

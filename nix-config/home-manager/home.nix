@@ -1,13 +1,6 @@
 # https://nix-community.github.io/home-manager/options.html
 # https://mipmip.github.io/home-manager-option-search/
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{outputs, ...}: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -19,6 +12,7 @@
     ./emacs.nix
     ./env.nix
     ./packages.nix
+    ./services.nix
   ];
 
   nixpkgs = {
@@ -52,6 +46,7 @@
   home = {
     username = "moi";
     homeDirectory = "/home/moi";
+    enableNixpkgsReleaseCheck = false;
   };
 
   # Add stuff for your user as you see fit:

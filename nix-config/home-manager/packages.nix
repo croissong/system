@@ -15,6 +15,7 @@
     dot = [
       pkgs.emacs-overlay.emacs-pgtk
       chezmoi # Manage your dotfiles across multiple machines
+      ouch
     ];
   };
 in {

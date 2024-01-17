@@ -4,26 +4,25 @@ set -euxo pipefail
 disk="vda"
 hostname="bon"
 
-echo $BON_VM >/tmp/bon-vm.txt
-
 if [[ $BON_VM =~ "true" ]]; then
   disk="vda"
   hostname="bonVM"
 fi
 
-# validate
-# NIXOS_CONFIG="$PWD"/config/configuration.nix nix-instantiate '<nixpkgs/nixos>' -A sys
+ouch decompress -y /iso/iso-contents.tar.sz --dir /tmp
+cd /tmp/iso-contents/System
 
-cd /iso/nix-config
+SOPS_AGE_KEY_FILE=/tmp/iso-contents/identity.age sops -d --extract '["luks"]' nix-config/secrets.yaml >/tmp/luks-password.txt
+nix run github:nix-community/disko -- --mode disko nix-bootstrap/disk-config.nix --arg disks "[ \"/dev/$disk\" ]"
 
-mkdir /mnt/etc
-cp -r /iso/nix-config /mnt/etc/nix-config
-cp /iso/age-keys.txt /mnt/etc/age-keys.txt
+mkdir /mnt/etc/
+cp -r /tmp/iso-contents/identity.age /mnt/etc/identity.age
 
-SOPS_AGE_KEY_FILE=/mnt/age-keys.txt sops -d --extract '["luks"]' /mnt/etc/nix-config/secrets.yaml >/tmp/luks-password.txt
+nixos-generate-config --no-filesystems --root /mnt --dir /tmp/iso-contents/System/nix-config/nixos/
 
-nix run github:nix-community/disko -- --mode disko /mnt/etc/nix-bootstrap/disk-config.nix --arg disks "[ \"/dev/$disk\" ]"
+nixos-install --no-root-passwd --verbose --flake path:///tmp/iso-contents/System/nix-config#$hostname | tee /tmp/nixos-install.log
 
-nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nix-config/nixos/
-
-nixos-install --no-root-passwd --verbose --flake path:///mnt/nix-config#$hostname | tee /tmp/nixos-install.log
+cp -r /tmp/iso-contents/Dot /mnt/home/moi/Dot
+cp -r /tmp/iso-contents/System /mnt/home/moi/System
+chown -R moi /mnt/home/moi/System
+chown -R moi /mnt/home/moi/Dot

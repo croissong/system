@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 set -exo pipefail
 
-# journalctl -f -u provision
+# chown -R moi /home/moi/System
+# chown -R moi /home/moi/Dot
 
-cp -r /iso/nix-config /mnt/etc/nix-config
-cp /iso/age-keys.txt /mnt/etc/age-keys.txt
+home-manager switch --flake ~/System/nix-config#moi@bon
 
-nixos-generate-config --no-filesystems --root /mnt --dir /mnt/nix-config/nixos/
-nixos-install --no-root-passwd --verbose --flake path://$PWD/nix-config#bonVM
+sudo nixos-rebuid-switch --flake ~/System/nix-config#bonVM

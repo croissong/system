@@ -1,4 +1,4 @@
-# https://nixos.org/manual/nixos/stable/options.html#opt-users.mutableUsers
+# https://nixos.org/manual/nixos/stable/options.html
 # https://search.nixos.org/options
 # https://github.com/Misterio77/nix-starter-configs
 {
@@ -18,6 +18,7 @@
     ./fs.nix
     ./network.nix
     ./nix.nix
+    ./packages.nix
     ./programs.nix
     ./security.nix
     ./services.nix
@@ -58,7 +59,7 @@
 
   sops = {
     defaultSopsFile = ../secrets.yaml;
-    age.keyFile = "/etc/age-keys.txt";
+    age.keyFile = "/etc/identity.age";
     secrets = {
       hashedPassword = {};
     };
