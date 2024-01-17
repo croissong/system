@@ -15,7 +15,9 @@
 
     ./boot.nix
     ./env.nix
+    ./fonts.nix
     ./fs.nix
+    ./locale.nix
     ./network.nix
     ./nix.nix
     ./packages.nix
