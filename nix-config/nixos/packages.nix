@@ -11,5 +11,7 @@
     # vagrant / tmp
     rsync
     ckbcomp
+    coreutils
+    bash
   ];
 }
