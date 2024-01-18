@@ -14,6 +14,7 @@
     ./firefox.nix
     ./packages.nix
     ./services.nix
+    ./shell.nix
   ];
 
   nixpkgs = {
