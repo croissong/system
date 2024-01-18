@@ -1,5 +1,3 @@
 {...}: {
-  services = {
-    gpg-agent.enable = true;
-  };
+  services = {};
 }

@@ -6,6 +6,7 @@
     ./emacs.nix
     ./env.nix
     ./firefox.nix
+    ./gpg.nix
     ./packages.nix
     ./services.nix
     ./shell.nix
