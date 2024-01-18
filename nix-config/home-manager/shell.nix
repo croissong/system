@@ -15,8 +15,11 @@
         . ${config.xdg.configHome}/zsh/config.zsh
       '';
 
-      localVariables = {
-      };
+      profileExtra = ''
+        if [ "$(tty)" = "/dev/tty1" ]; then
+          exec sway
+        fi
+      '';
     };
   };
 }
