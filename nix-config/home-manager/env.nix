@@ -14,6 +14,7 @@
     PASSWORD_STORE_DIR = "$HOME/Pass/password-store";
     PATH = "$PATH:$GOPATH/bin:$NPM_CONFIG_PREFIX/bin:$KREW_ROOT/bin:$NIMBLE_BIN:$CARGO_BIN:$ZINIT_BIN:$NIX_BIN:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin";
     RIPGREP_CONFIG_PATH = "${config.xdg.configHome}/ripgrep/config";
+    SOPS_AGE_KEY_FILE = "${config.xdg.configHome}/age/identity.age";
     TF_CLI_CONFIG_FILE = "$XDG_CONFIG_HOME/terraform/terraformrc";
     WOBSOCK = "$XDG_RUNTIME_DIR/wob.sock";
   };

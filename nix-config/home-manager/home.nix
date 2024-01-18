@@ -1,13 +1,21 @@
 # https://nix-community.github.io/home-manager/options.html
 # https://mipmip.github.io/home-manager-option-search/
-{outputs, ...}: {
+{
+  inputs,
+  outputs,
+  ...
+}: {
   imports = [
+    inputs.sops-nix.homeManagerModules.sops
+
     ./dev.nix
     ./emacs.nix
     ./env.nix
     ./firefox.nix
     ./gpg.nix
     ./packages.nix
+    ./pim.nix
+    ./secrets.nix
     ./services.nix
     ./shell.nix
   ];

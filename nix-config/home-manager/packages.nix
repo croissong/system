@@ -450,7 +450,6 @@
           plugins = [rofi-calc];
         })
         wtype
-        pinentry-rofi
       ];
 
       docs = [
