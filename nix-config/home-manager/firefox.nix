@@ -1,5 +1,9 @@
-{pkgs, ...}: let
-  bookmarks = builtins.fromJSON (builtins.readFile "${builtins.getEnv "DOT"}/priv/buku-firefox-nix.json");
+{
+  config,
+  pkgs,
+  ...
+}: let
+  bookmarks = builtins.fromJSON (builtins.readFile "${config.home.sessionVariables.DOT}/priv/buku-firefox-nix.json");
 in {
   systemd.user.sessionVariables.MOZ_ENABLE_WAYLAND = 1;
 
