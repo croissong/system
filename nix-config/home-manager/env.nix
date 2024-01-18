@@ -1,6 +1,7 @@
-{...}: {
+{config, ...}: {
   systemd.user.sessionVariables = {
     DOT = "$HOME/Dot";
+    RIPGREP_CONFIG_PATH = "${config.xdg.configHome}/ripgrep/config";
     NIMBLE_BIN = "$HOME/.nimble/bin";
     CARGO_BIN = "$CARGO_HOME/bin";
     NIX_BIN = "$HOME/.nix-profile/bin";
