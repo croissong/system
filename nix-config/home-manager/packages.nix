@@ -52,7 +52,7 @@
     ];
 
     dot = [
-      # my-pkgs.updatecli # Continuously update everything
+      updatecli # Continuously update everything
       chezmoi # Manage your dotfiles across multiple machines
     ];
 
@@ -445,6 +445,7 @@
 
       wm = [
         i3status-rust
+        pango # for sway fonts
         cliphist # Wayland clipboard manager
         wob # A lightweight overlay bar for Wayland
         (rofi-wayland.override {
