@@ -44,13 +44,14 @@
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
-    packages = forAllSystems (pkgs: import ./pkgs {inherit pkgs;});
+  in rec {
+    versions = builtins.fromJSON (builtins.readFile ~/Dot/dot_config/nixpkgs/versions.json);
+    packages = forAllSystems (pkgs: import ./pkgs {inherit pkgs versions;});
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    overlays = import ./overlays {inherit inputs;};
+    overlays = import ./overlays {inherit inputs versions;};
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
 

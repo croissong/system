@@ -1,5 +1,7 @@
-# Custom packages, that can be defined similarly to ones from nixpkgs
-# You can build them using 'nix build .#example'
-{pkgs ? import <nixpkgs> {}}: {
+{
+  pkgs ? import <nixpkgs> {},
+  versions,
+}: {
+  gtrash = pkgs.callPackage ./gtrash.nix {inherit versions;};
   gitwatch = pkgs.callPackage ./gitwatch.nix {};
 }

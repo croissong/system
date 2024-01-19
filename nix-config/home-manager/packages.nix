@@ -571,8 +571,7 @@
         procs # A modern replacement for ps written in Rust
         xdg-ninja # A shell script which checks your $HOME for unwanted files and directories
 
-        # trashy # A simple, fast, and featureful alternative to rm and trash-cli
-        # my-pkgs.gtrash # trash
+        gtrash
 
         nethogs # A small 'net top' tool, grouping bandwidth by process
       ];
