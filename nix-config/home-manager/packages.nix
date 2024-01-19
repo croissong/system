@@ -151,6 +151,8 @@
         moar # Nice-to-use pager for humans
         broot # Fuzzy Search + tree + cd
         as-tree # Print a list of paths as a tree of paths
+        gitleaks
+        bfg #  cleansing bad data out of your Git repository history
         gtree # Generate directory tree and the directories folder using Markdown or Programmatically
 
         tealdeer # tldr in Rust
