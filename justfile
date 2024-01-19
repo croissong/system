@@ -1,11 +1,14 @@
 all: iso vm
 
 _iso entrypoint:
+  gpg --output /tmp/private.pgp --armor --export-secret-key jan.moeller0@gmail.com
   ouch compress -g -y \
     . \
     ~/Dot \
     ~/.config/age/identity.age \
+    /tmp/private.pgp \
     iso-contents.tar.sz
+
   nixos-generate --format iso --configuration nix-bootstrap/{{entrypoint}} -o generated -I nixpkgs=channel:nixpkgs-unstable
 
 iso: (_iso "iso.nix")

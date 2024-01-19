@@ -2,7 +2,16 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  # https://github.com/nix-community/home-manager/issues/3095
+  pinentryRofi = pkgs.writeShellApplication {
+    name = "pinentry-rofi-with-env";
+    text = ''
+      PATH="$PATH:${pkgs.coreutils}/bin:${pkgs.rofi}/bin"
+      "${pkgs.pinentry-rofi}/bin/pinentry-rofi" "$@"
+    '';
+  };
+in {
   services = {
     gpg-agent = {
       enable = true;
@@ -13,8 +22,9 @@
       enableSshSupport = true;
       sshKeys = ["497F97F130EA6713248DF7FA9C82A7887E51E82C"];
 
+      pinentryFlavor = null;
       extraConfig = ''
-        pinentry-program = ${pkgs.pinentry-rofi.outPath}/bin/pinentry-rofi
+        pinentry-program ${pinentryRofi}/bin/pinentry-rofi-with-env
       '';
     };
   };
