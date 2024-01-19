@@ -18,6 +18,7 @@
 
     ent = [
       yt-dlp
+      spotify-qt
       steamcmd
       steam-tui
       parsec-bin # Remote gaming streaming service client
