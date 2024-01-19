@@ -179,7 +179,7 @@
         just # A handy way to save and run project-specific commands
         go-task # A task runner / simpler Make alternative
 
-        mani # A CLI tool that helps you manage multiple repositories
+        git-repo-manager # A git tool to manage & sync repos
         ookla-speedtest # Internet speedtest tool
 
         ouch # Painless compression and decompression in the terminal (git version)
