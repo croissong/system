@@ -7,6 +7,7 @@
     defaultSymlinkPath = "${builtins.getEnv "XDG_RUNTIME_DIR"}/secrets";
     secrets = {
       "mail/wrk/password" = {};
+      "spotify/password" = {};
     };
   };
 }
