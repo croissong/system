@@ -26,6 +26,7 @@
       outputs.overlays.modifications
       outputs.overlays.stable-packages
       outputs.overlays.emacs-overlay
+      outputs.overlays.tree-grepper
     ];
     config = {
       # Disable if you don't want unfree packages

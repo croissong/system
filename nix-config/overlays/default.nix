@@ -63,4 +63,12 @@
       overlays = [(import inputs.emacs-overlay)];
     };
   };
+
+  tree-grepper = final: _prev: {
+    tree-grepper = import inputs.nixpkgs {
+      system = final.system;
+      config.allowUnfree = true;
+      overlays = [(import inputs.tree-grepper.overlay)];
+    };
+  };
 }

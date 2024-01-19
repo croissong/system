@@ -3,11 +3,16 @@
 
   nixConfig = {
     extra-substituters = [
+      "https://cache.nixos.org"
       "https://nix-community.cachix.org"
+      "https://tree-grepper.cachix.org"
     ];
+
+    # cachix use tree-grepper -O /tmp/cachix-conf
     trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "tree-grepper.cachix.org-1:Tm/owXM+dl3GnT8gZg+GTI3AW+yX1XFVYXspZa7ejHg="
     ];
   };
 
@@ -24,6 +29,9 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay/master";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
+    tree-grepper.url = "github:BrianHicks/tree-grepper";
+    tree-grepper.inputs.nixpkgs.follows = "nixpkgs";
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
   };
@@ -34,6 +42,7 @@
     home-manager,
     sops-nix,
     emacs-overlay,
+    tree-grepper,
     ...
   } @ inputs: let
     inherit (self) outputs;

@@ -116,8 +116,7 @@
           rnr # A command-line tool to batch rename files and directories
           # my-pkgs.desed # Debugger for Sed
           teip # A tool to bypass a partial range of standard input to any command
-          # TODO
-          # tree-grepper # Like grep, but uses tree-sitter grammars to search
+          tree-grepper # Like grep, but uses tree-sitter grammars to search
           zet # CLI utility to find the union, intersection, set difference, etc of files considered as sets of lines
         ];
       };
@@ -654,6 +653,7 @@
 
     nix = [
       alejandra # The Uncompromising Nix Code Formatter
+      cachix
       comma # Comma runs software without installing it.
       hydra-check # check hydra for the build status of a package
       nil # Yet another language server for Nix
