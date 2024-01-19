@@ -116,7 +116,8 @@
           rnr # A command-line tool to batch rename files and directories
           # my-pkgs.desed # Debugger for Sed
           teip # A tool to bypass a partial range of standard input to any command
-          tree-grepper # Like grep, but uses tree-sitter grammars to search
+          # TODO
+          # tree-grepper # Like grep, but uses tree-sitter grammars to search
           zet # CLI utility to find the union, intersection, set difference, etc of files considered as sets of lines
         ];
       };
@@ -152,7 +153,7 @@
         broot # Fuzzy Search + tree + cd
         as-tree # Print a list of paths as a tree of paths
         gitleaks
-        bfg #  cleansing bad data out of your Git repository history
+        bfg-repo-cleaner #  cleansing bad data out of your Git repository history
         gtree # Generate directory tree and the directories folder using Markdown or Programmatically
 
         tealdeer # tldr in Rust
