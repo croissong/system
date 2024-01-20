@@ -49,7 +49,6 @@
       time = "de_DE.UTF-8";
       collate = "de_DE.UTF-8";
       monetary = "de_DE.UTF-8";
-      messages = "de_DE.UTF-8";
       paper = "de_DE.UTF-8";
       name = "de_DE.UTF-8";
       address = "de_DE.UTF-8";
