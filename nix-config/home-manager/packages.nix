@@ -302,7 +302,7 @@
 
       edit = [
         pkgs.emacs-overlay.emacs-pgtk
-        # my-pkgs.commitlint-rs
+        commitlint-rs
         helix #  A post-modern modal text editor
         stylua # Code formatter for Lua
         treefmt

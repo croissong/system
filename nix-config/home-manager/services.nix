@@ -4,6 +4,8 @@
   ...
 }: {
   services = {
+    kdeconnect.enable = true;
+
     spotifyd = {
       enable = true;
       settings = {
@@ -14,6 +16,17 @@
           backend = "pulseaudio";
         };
       };
+    };
+
+    wlsunset = {
+      enable = true;
+      latitude = "51.3";
+      longitude = "9.5";
+      temperature.night = 2000;
+    };
+
+    pueue = {
+      enable = true;
     };
   };
 }
