@@ -5,7 +5,7 @@
 writeShellApplication {
   name = "service-status";
 
-  runtimeInputs = with pkgs; [jq];
+  runtimeInputs = with pkgs; [coreutils moreutils jq];
 
   text = builtins.readFile ./service-status.sh;
 }

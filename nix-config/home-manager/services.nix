@@ -27,6 +27,9 @@
 
     pueue = {
       enable = true;
+      settings = {
+        shared = {};
+      };
     };
   };
 }

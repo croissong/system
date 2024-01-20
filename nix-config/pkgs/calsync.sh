@@ -1,6 +1,6 @@
 fix=${1:-false}
 
-pueue add davmail --immediate
+davmail &
 davmailPID=$!
 while ! ncat -z localhost 1080; do
   sleep 0.5
@@ -12,6 +12,7 @@ else
   vdirsyncer sync
 fi
 
+# if intercatve
 khal list
 
 kill $davmailPID
