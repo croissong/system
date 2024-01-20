@@ -14,6 +14,8 @@
 
       # my-pkgs.kanri
       # my-pkgs.promformat
+
+      calsync
     ];
 
     ent = [

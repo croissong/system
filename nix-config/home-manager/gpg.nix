@@ -1,13 +1,14 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   # https://github.com/nix-community/home-manager/issues/3095
   pinentryRofi = pkgs.writeShellApplication {
     name = "pinentry-rofi-with-env";
     text = ''
-      PATH="$PATH:${pkgs.coreutils}/bin:${pkgs.rofi}/bin"
+      PATH="${lib.makeBinPath [pkgs.coreutils pkgs.rofi]}"
       "${pkgs.pinentry-rofi}/bin/pinentry-rofi" "$@"
     '';
   };

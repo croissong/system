@@ -1,0 +1,17 @@
+fix=${1:-false}
+
+pueue add davmail --immediate
+davmailPID=$!
+while ! ncat -z localhost 1080; do
+  sleep 0.5
+done
+
+if [ "$fix" = "fix" ]; then
+  vdirsyncer discover calendar_wrk_dw
+else
+  vdirsyncer sync
+fi
+
+khal list
+
+kill $davmailPID

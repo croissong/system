@@ -155,8 +155,8 @@
 
         Service = {
           Type = "oneshot";
-          ExecStart = "%h/.local/bin/calsync";
-          ExecStopPost = "${config.home.homeDirectory}/.local/bin/service-status.sh calsync";
+          ExecStart = "${pkgs.calsync.out}/bin/calsync";
+          ExecStopPost = "${pkgs.service-status.out}/bin/service-status calsync";
         };
       };
     };
