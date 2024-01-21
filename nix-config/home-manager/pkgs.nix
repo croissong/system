@@ -4,16 +4,9 @@
   lib,
   ...
 }: let
-  # versions = builtins.fromJSON (builtins.readFile (./. + "/versions.json"));
-  # my-pkgs = import ./# my-pkgs.nix {
-  #   inherit lib pkgs config versions;
-  # };
   packages_dict = with pkgs; {
     inbox = [
-      handlr-regex
-
       # my-pkgs.kanri
-      # my-pkgs.promformat
     ];
 
     ent = [
@@ -31,14 +24,13 @@
 
       system-config-printer
       ocrmypdf # Adds an OCR text layer to scanned PDF files
-      ocamlPackages.cpdf # PDF Command Line Tools
       # my-pkgs.sane-scan-pdf # Sane command-line scan-to-pdf script
       sane-airscan
 
-      djvulibre # for emacs doc-tools
-      mupdf # for emacs doc-tools
-
       ## maybe/on-demand/unused
+      # djvulibre # for emacs doc-tools
+      # mupdf # for emacs doc-tools
+      # ocamlPackages.cpdf # PDF Command Line Tools
       # okular # KDE document viewer
       # xournalpp # handwriting Notetaking software with PDF annotation support
     ];
@@ -271,7 +263,6 @@
       ];
 
       general = [
-        mold # A faster drop-in replacement for existing Unix linkers
         aichat
 
         ## maybe/on-demand/unused
@@ -396,16 +387,19 @@
 
     lang = {
       go = [
-        ginkgo # A Modern Testing Framework for Go
-        golangci-lint # Fast linters Runner for Go
+        go-mockery # A mock code autogenerator for golang
         gotools # Additional tools for Go development
-        gotestsum # A human friendly `go test` runner
-        delve # A debugger for the Go programming language.
-        gdlv # GUI frontend for Delve
         go # Core compiler tools for the Go programming language
         gopls # Language server for Go programming language
         go-tools # Developer tools for the Go programming language
         revive # Fast, configurable, extensible, flexible, and beautiful linter for Go
+
+        ## maybe/on-demand/unused
+        # ginkgo # A Modern Testing Framework for Go
+        # golangci-lint # Fast linters Runner for Go
+        # gotestsum # A human friendly `go test` runner
+        # delve # A debugger for the Go programming language.
+        # gdlv # GUI frontend for Delve
       ];
 
       jvm = [
@@ -421,26 +415,28 @@
         # poetry # Python dependency management and packaging made easy.
         pyright # Type checker for the Python language
         ruff # An extremely fast Python linter
-        virtualenv
 
         ## maybe/on-demand/unused
+        # virtualenv
         # py-spy # Sampling profiler for Python programs
         # memray
       ];
 
       rust = [
-        cargo-edit # Managing cargo dependencies from the command line
-        cargo-make # Rust task runner and build tool
-        cargo-generate
-        # required for topgrade cargo step
-        cargo-update # A cargo subcommand for checking and applying updates to installed executables
+        mold # A faster drop-in replacement for existing Unix linkers
 
         # TODO
-        # rust-bin.stable.latest.default
+        # https://github.com/nix-community/fenix/
+
+        ## maybe/on-demand/unused
+        # cargo-edit # Managing cargo dependencies from the command line
+        # cargo-generate
+        # cargo-make # Rust task runner and build tool
       ];
 
       shell = [
         shfmt # A shell parser and formatter
+        shellcheck # Shell script analysis tool (binary release)
         nodePackages.bash-language-server
         nushellFull # A modern shell written in Rust
       ];
@@ -492,20 +488,20 @@
         keybase
         keybase-gui
 
-        nvchecker # New version checker for software
+        ## maybe/on-demand/unused
+        # nvchecker # New version checker for software
       ];
     };
 
     bizz = {
       fin = [
-        electrum # A lightweight Bitcoin wallet
+        ## maybe/on-demand/unused
+        # electrum # A lightweight Bitcoin wallet
       ];
     };
 
     media = {
       cli = [
-        visidata # Interactive terminal multitool for tabular data
-
         # For emacs-gif-screencast
         gifsicle # Command-line tool for creating, editing, and getting information about GIF images and animations
 
@@ -517,6 +513,9 @@
         oxipng # A multithreaded lossless PNG compression optimizer
 
         # TODO: picopt instead of image_optim (create custom image)
+
+        ## maybe/on-demand/unused
+        # visidata # Interactive terminal multitool for tabular data
       ];
 
       images = [
@@ -544,9 +543,11 @@
 
       comm = [
         mumble # low-latency, high quality voice chat software
-        linphone
-        tiny # A console IRC client
         signal-desktop
+
+        ## maybe/on-demand/unused
+        # linphone
+        # tiny # A console IRC client
       ];
     };
 
@@ -564,6 +565,7 @@
       core = [
         wezterm
         atuin # Replacement for a shell history which records additional commands context
+        handlr-regex
         sheldon # Fast, configurable, shell plugin manager
       ];
     };
@@ -591,7 +593,6 @@
         inxi # A full featured CLI system information tool
         lshw
         hwinfo
-        ddcutil # Query and change Linux monitor settings using DDC/CI and USB
         procs # A modern replacement for ps written in Rust
         xdg-ninja # A shell script which checks your $HOME for unwanted files and directories
 
@@ -606,7 +607,6 @@
         erdtree # File-tree visualizer and disk usage analyzer
         dua # A tool to conveniently learn about the disk usage of directories, fast!
         duf # Disk Usage/Free Utility
-        godu # Utility helping to discover large files/folders
         czkawka # remove unnecessary files from your computer
       ];
     };
@@ -624,10 +624,10 @@
       ];
 
       productivity = [
-        blanket # Improve focus and increase your productivity by listening to different sounds
         # my-pkgs.focus
 
         ## maybe/on-demand/unused
+        # blanket # Improve focus and increase your productivity by listening to different sounds
         # minder
       ];
     };
@@ -691,21 +691,18 @@
     ];
 
     tools = [
-      python3Packages.qrcode # Quick Response code generation for Python
-
-      dhcping # Send DHCP request to find out if a DHCP server is running
-
-      rathole # A reverse proxy for NAT traversal
-      frp # A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.
-
       miniserve # CLI tool to serve files and directories over HTTP
-      ngrok # secure introspectable tunnels to localhost
       ventoy # A new multiboot USB solution (Binary)
 
       ## maybe/on-demand/unused
       # ansible # Official assortment of Ansible collections
       # ansible-lint # Checks playbooks for practices and behaviour that could potentially be improved.
+      # dhcping # Send DHCP request to find out if a DHCP server is running
+      # frp # A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.
+      # ngrok # secure introspectable tunnels to localhost
+      # rathole # A reverse proxy for NAT traversal
       # python3Packages.mitogen # Python Library for writing distributed self-replicating programs
+      # python3Packages.qrcode # Quick Response code generation for Python
     ];
 
     dev = [
@@ -717,16 +714,14 @@
 
       gh # GitHub CLI tool
       glab # GitLab CLI tool
-      go-mockery # A mock code autogenerator for golang
       google-cloud-sdk # A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
       jwt-cli # A super fast CLI tool to decode and encode JWTs
       ktlint # An anti-bikeshedding Kotlin linter with built-in formatter
       # TODO: build failure
       # mitmproxy # SSL-capable man-in-the-middle HTTP proxy
-      prometheus # An open-source systems monitoring and alerting toolkit
+      prometheus # for promtool promql format
       protobuf # Google's data interchange format
       nodePackages.prettier # An opinionated code formatter for JS, JSON, CSS, YAML and much more
-      shellcheck # Shell script analysis tool (binary release)
 
       ## maybe/on-demand/unused
       # caddy # Fast, cross-platform HTTP/2 web server with automatic HTTPS
