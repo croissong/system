@@ -13,7 +13,7 @@
     ./env.nix
     ./firefox.nix
     ./gpg.nix
-    ./packages.nix
+    ./pkgs.nix
     ./pim.nix
     ./secrets.nix
     ./services.nix

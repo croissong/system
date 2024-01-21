@@ -20,7 +20,7 @@
     ./locale.nix
     ./network.nix
     ./nix.nix
-    ./packages.nix
+    ./pkgs.nix
     ./programs.nix
     ./security.nix
     ./services.nix
