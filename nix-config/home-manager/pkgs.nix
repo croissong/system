@@ -6,7 +6,6 @@
 }: let
   packages_dict = with pkgs; {
     inbox = [
-      # my-pkgs.kanri
     ];
 
     ent = [
@@ -24,7 +23,7 @@
 
       system-config-printer
       ocrmypdf # Adds an OCR text layer to scanned PDF files
-      # my-pkgs.sane-scan-pdf # Sane command-line scan-to-pdf script
+      sane-scan-pdf # Sane command-line scan-to-pdf script
       sane-airscan
 
       ## maybe/on-demand/unused
@@ -92,7 +91,7 @@
           bcal # Storage conversion and expression calculator
           fend # Arbitrary-precision unit-aware calculator
           eva # A calculator REPL, similar to bc
-          # my-pkgs.sttr # cli to perform various operations on string
+          sttr # cli to perform various operations on string
         ];
 
         csv = [
@@ -106,7 +105,7 @@
           sd # Intuitive find & replace
           ruplacer # Find and replace text in source files
           rnr # A command-line tool to batch rename files and directories
-          # my-pkgs.desed # Debugger for Sed
+          desed # Debugger for Sed
           teip # A tool to bypass a partial range of standard input to any command
           # TODO
           # tree-grepper # Like grep, but uses tree-sitter grammars to search
@@ -198,8 +197,6 @@
 
         libqalculate # An advanced calculator library
 
-        # my-pkgs.got # CLI to download large files faster than cURL and Wget
-
         font-manager
 
         ## maybe/on-demand/unused
@@ -234,13 +231,13 @@
       ];
 
       protocols = [
-        # my-pkgs.protocurl # cURL for Protobuf
         swaks # Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 
         ## maybe/on-demand/unused
         # altair # A feature-rich GraphQL Client IDE
         # grpcurl # Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers
         # grpc-client-cli # generic gRPC command line client
+        # protocurl # cURL for Protobuf
       ];
 
       docs = [
@@ -378,7 +375,7 @@
       ];
 
       data = [
-        # my-pkgs.qsv #  CSVs sliced, diced & analyzed.
+        qsv #  CSVs sliced, diced & analyzed.
 
         ## maybe/on-demand/unused
         # dbeaver # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
@@ -442,7 +439,7 @@
       ];
 
       xml = [
-        # my-pkgs.xmlformatter
+        xmlformatter
       ];
     };
 
@@ -476,7 +473,7 @@
       docs = [
         deskew # deskewing scanned text documents
         paperwork # Personal document manager
-        # my-pkgs.wutag # CLI tool for tagging and organizing files by tags
+        wutag # CLI tool for tagging and organizing files by tags
         simple-scan
         tesseract # An OCR program
         unpaper # Post-processing tool for scanned sheets of paper
@@ -626,7 +623,7 @@
       ];
 
       productivity = [
-        # my-pkgs.focus
+        focus
 
         ## maybe/on-demand/unused
         # blanket # Improve focus and increase your productivity by listening to different sounds

@@ -15,4 +15,9 @@ stdenv.mkDerivation {
   installPhase = ''
     install -m755 -D gtrash $out/bin/gtrash
   '';
+
+  meta = {
+    homepage = "https://github.com/umlx5h/gtrash";
+    description = "A Featureful Trash CLI manager: alternative to rm and trash-cli";
+  };
 }

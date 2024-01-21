@@ -1,11 +1,11 @@
-{ lib
-, go
-, buildGoModule
-, fetchFromGitHub
-, nix-update-script
-, installShellFiles
+{
+  lib,
+  go,
+  buildGoModule,
+  fetchFromGitHub,
+  nix-update-script,
+  installShellFiles,
 }:
-
 buildGoModule rec {
   pname = "updatecli";
   version = "0.70.0";
@@ -31,9 +31,9 @@ buildGoModule rec {
     "-X github.com/updatecli/updatecli/pkg/core/version.Version=${version}"
   ];
 
-  passthru.updateScript = nix-update-script { };
+  passthru.updateScript = nix-update-script {};
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [installShellFiles];
 
   postInstall = ''
     installShellCompletion --cmd updatecli \
@@ -54,6 +54,6 @@ buildGoModule rec {
     changelog = "https://github.com/updatecli/updatecli/releases/tag/v${version}";
     license = licenses.asl20;
     mainProgram = "updatecli";
-    maintainers = with maintainers; [ croissong ];
+    maintainers = with maintainers; [croissong];
   };
 }
