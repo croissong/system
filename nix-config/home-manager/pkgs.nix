@@ -488,6 +488,8 @@
         keybase
         keybase-gui
 
+        nyxt
+
         ## maybe/on-demand/unused
         # nvchecker # New version checker for software
       ];
