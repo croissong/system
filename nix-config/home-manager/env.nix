@@ -10,6 +10,10 @@
     DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
     DOT = "${config.home.homeDirectory}/dot/dotfiles";
     MOAR = "--no-statusbar --no-linenumbers";
+
+    # https://nixos.wiki/wiki/Wayland
+    NIXOS_OZONE_WL = "1";
+
     PAGER = "moar";
     RIPGREP_CONFIG_PATH = "${config.xdg.configHome}/ripgrep/config";
     SOPS_AGE_KEY_FILE = "${config.xdg.configHome}/age/identity.age";

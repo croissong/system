@@ -21,6 +21,7 @@
     docs = [
       newsboat # A fork of Newsbeuter, an RSS/Atom feed reader for the text console
 
+      calibre # Ebook management application
       system-config-printer
       ocrmypdf # Adds an OCR text layer to scanned PDF files
       sane-scan-pdf # Sane command-line scan-to-pdf script
@@ -115,6 +116,7 @@
 
       misc = [
         espeak # Open source speech synthesizer that supports over 70 languages, based on eSpeak
+        termdown # Countdown timer and stopwatch in your terminal
         wthrr # Weather companion for the terminal
       ];
 
@@ -134,6 +136,7 @@
         snapper # A tool for managing BTRFS and LVM snapshots
         httm # Interactive, file-level Time Machine-like tool for ZFS/btrfs
         gitwatch
+        syncthing
         rclone # CLI to sync files and directories to and from major cloud storage
       ];
 
@@ -421,6 +424,7 @@
 
       rust = [
         mold # A faster drop-in replacement for existing Unix linkers
+        rust-analyzer # Experimental Rust compiler front-end for IDEs
 
         # TODO
         # https://github.com/nix-community/fenix/
@@ -522,6 +526,7 @@
         pinta # Drawing/editing program modeled after Paint.NET
         gimp # The GNU Image Manipulation Program
         epick # Color picker for creating harmonic color palettes
+        wl-color-picker
         pastel # A command-line tool to generate, analyze, convert and manipulate colors
       ];
       video = [
@@ -543,6 +548,7 @@
       comm = [
         mumble # low-latency, high quality voice chat software
         signal-desktop
+        slack
 
         ## maybe/on-demand/unused
         # linphone
