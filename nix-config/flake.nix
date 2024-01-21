@@ -54,7 +54,8 @@
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in rec {
-    versions = builtins.fromJSON (builtins.readFile ~/Dot/dot_config/nixpkgs/versions.json);
+    homeDir = builtins.getEnv "HOME";
+    versions = builtins.fromJSON (builtins.readFile ~/dot/dotfiles/dot_config/nixpkgs/versions.json);
     packages = forAllSystems (pkgs: import ./pkgs {inherit pkgs versions;});
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
@@ -64,7 +65,7 @@
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
 
-    vars = import "/home/moi/Dot/priv/vars.nix" {};
+    vars = import ~/dot/priv/vars.nix {};
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'

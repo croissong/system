@@ -29,9 +29,10 @@
 
   nix = {
     package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+    settings = {
+      experimental-features = "nix-command flakes";
+      accept-flake-config = true;
+    };
   };
 
   programs.bash.shellInit = builtins.readFile ./bootstrap.sh;

@@ -1,10 +1,13 @@
-cd ~
+#!/usr/bin/env bash
+set -euxo pipefail
+
+export DOT=$HOME/dot/dotfiles
+home-manager switch --show-trace --impure --flake path://$HOME/dot/system/nix-config#moi@bon
 
 mkdir -p ~/.config/chezmoi
-export DOT=$HOME/Dot
-chezmoi execute-template <~/Dot/dot_config/chezmoi/chezmoi.yaml.tmpl >~/.config/chezmoi/chezmoi.yaml
+chezmoi execute-template <$DOT/dot_config/chezmoi/chezmoi.yaml.tmpl >~/.config/chezmoi/chezmoi.yaml
 
-gpg --import /tmp/iso-contents/private.pgp
+gpg --import ~/private.pgp
+rm ~/private.pgp
 
-# home-manager switch --flake path://$PWD/System/nix-config#moi@bon
 # chezmoi apply

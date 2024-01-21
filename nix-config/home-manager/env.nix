@@ -8,7 +8,7 @@
     CARGO_HOME = "$XDG_DATA_HOME/cargo";
     DIFFPROG = "delta";
     DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
-    DOT = "${config.home.homeDirectory}/Dot";
+    DOT = "${config.home.homeDirectory}/dot/dotfiles";
     MOAR = "--no-statusbar --no-linenumbers";
     PAGER = "moar";
     RIPGREP_CONFIG_PATH = "${config.xdg.configHome}/ripgrep/config";

@@ -61,7 +61,7 @@
 
   sops = {
     defaultSopsFile = ../secrets.yaml;
-    age.keyFile = "/etc/identity.age";
+    age.keyFile = "${outputs.homeDir}/.config/age/identity.age";
     secrets = {
       hashedPassword = {};
     };

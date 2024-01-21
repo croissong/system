@@ -13,7 +13,7 @@
     glxinfo
   ];
 
-  fileSystems."/home/moi/System" = {
+  fileSystems."/home/moi/dot/system" = {
     device = "Public-croissong";
     fsType = "9p";
     options = [
@@ -23,7 +23,7 @@
     ];
   };
 
-  fileSystems."/home/moi/Dot" = {
+  fileSystems."/home/moi/dot/dotfiles" = {
     device = "Dot";
     fsType = "9p";
     options = [

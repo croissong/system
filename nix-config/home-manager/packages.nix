@@ -448,6 +448,7 @@
       ];
 
       wm = [
+        brightnessctl
         i3status-rust
         pango # for sway fonts
         cliphist # Wayland clipboard manager
