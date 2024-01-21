@@ -14,16 +14,16 @@
 
       # my-pkgs.kanri
       # my-pkgs.promformat
-
-      calsync
     ];
 
     ent = [
       yt-dlp
       spotify-player
       steamcmd
-      steam-tui
-      parsec-bin # Remote gaming streaming service client
+
+      ## maybe/on-demand/unused
+      # parsec-bin # Remote gaming streaming service client
+      # steam-tui
     ];
 
     docs = [
@@ -34,40 +34,39 @@
       ocamlPackages.cpdf # PDF Command Line Tools
       # my-pkgs.sane-scan-pdf # Sane command-line scan-to-pdf script
       sane-airscan
-      simple-scan
-
-      okular # KDE document viewer
 
       djvulibre # for emacs doc-tools
       mupdf # for emacs doc-tools
 
-      xournalpp # handwriting Notetaking software with PDF annotation support
+      ## maybe/on-demand/unused
+      # okular # KDE document viewer
+      # xournalpp # handwriting Notetaking software with PDF annotation support
     ];
 
     lib = [
-      geoipWithDatabase
     ];
 
     orga = [
       klog-time-tracker
-      kapow # Punch clock to track time spent on projects
     ];
 
     dot = [
-      updatecli # Continuously update everything
+      calsync
       chezmoi # Manage your dotfiles across multiple machines
+      updatecli # Continuously update everything
     ];
 
     cli = {
       dev = [
-        angle-grinder # Slice and dice logs on the command line
-        cocogitto # The Conventional Commits & semver toolbox
-        kubeconform # Tool for validating Kubernetes YAML or JSON configuration files
-        kubernetes-polaris # Validate and remediate Kubernetes resources
         step-cli # A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc.
-        skopeo # A command line utility for various operations on container images and image repositories.
-        # my-pkgs.versio # A version number manager
+        skopeo # A command line utility for various operations on container images
         grex # cli for generating regular expressions from user-provided test cases
+
+        ## maybe/on-demand/unused
+        # angle-grinder # Slice and dice logs on the command line
+        # cocogitto # The Conventional Commits & semver toolbox
+        # kubeconform # Tool for validating Kubernetes YAML or JSON configuration files
+        # kubernetes-polaris # Validate and remediate Kubernetes resources
       ];
 
       media = [
@@ -78,7 +77,6 @@
         kdenlive # video editor
         menyoki # Screen{shot,cast} and perform ImageOps on the command line
         satty #  Modern Screenshot Annotation Tool
-        ksnip # screenshot tool wihth many annotation features
         bluetuith # A TUI bluetooth manager for Linux.
       ];
 
@@ -130,8 +128,9 @@
       ];
 
       mobile = [
-        android-tools
-        scrcpy # Display and control your Android device
+        ## maybe/on-demand/unused
+        # android-tools
+        # scrcpy # Display and control your Android device
       ];
 
       pipe = [
@@ -164,7 +163,6 @@
         delta # A syntax-highlighting pager for git
         difftastic # A syntax-aware diff
         diffsitter # A tree-sitter based AST difftool to get meaningful semantic diffs
-        python3Packages.graphtage # diff tree-like files such as JSON and XML
         dyff #  A diff tool for YAML files, and sometimes JSON
         riffdiff # A diff filter highlighting which line parts have changed
         yamllint
@@ -184,15 +182,12 @@
         go-task # A task runner / simpler Make alternative
 
         git-repo-manager # A git tool to manage & sync repos
-        ookla-speedtest # Internet speedtest tool
 
         ouch # Painless compression and decompression in the terminal (git version)
 
         podman # Tool and library for running OCI-based containers in pods
         # TODO: aardvark-dns
         podman-compose # A script to run docker-compose.yml using podman
-
-        nerdctl # CLI for containerd
 
         rsync # Fast incremental file transfer utility
 
@@ -214,6 +209,11 @@
         # my-pkgs.got # CLI to download large files faster than cURL and Wget
 
         font-manager
+
+        ## maybe/on-demand/unused
+        # nerdctl # CLI for containerd
+        # ookla-speedtest # Internet speedtest tool
+        # python3Packages.graphtage # diff tree-like files such as JSON and XML
       ];
     };
 
@@ -242,16 +242,17 @@
       ];
 
       protocols = [
-        altair # A feature-rich GraphQL Client IDE
-        grpcurl # Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers
-        grpc-client-cli # generic gRPC command line client
         # my-pkgs.protocurl # cURL for Protobuf
         swaks # Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
+
+        ## maybe/on-demand/unused
+        # altair # A feature-rich GraphQL Client IDE
+        # grpcurl # Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers
+        # grpc-client-cli # generic gRPC command line client
       ];
 
       docs = [
         asciidoctor-with-extensions
-        akira-unstable # Native Linux Design application
         drawio # A desktop application for creating diagrams
         graphviz # Graph visualization tools
         plantuml # Component that allows to quickly write uml diagrams
@@ -262,30 +263,30 @@
         glow # Command-line markdown renderer
         inlyne # A GPU powered browserless markdown viewer
 
-        # TODO: slidev  https://sli.dev/guide/install.html#starter-template
         python3Packages.grip # Preview GitHub Markdown files like Readme locally before committing them
+
+        ## maybe/on-demand/unused
+        # akira-unstable # Native Linux Design application
+        # no package: slidev  https://sli.dev/guide/install.html#starter-template
       ];
 
       general = [
-        seer # A Qt gui frontend for GDB
         mold # A faster drop-in replacement for existing Unix linkers
         aichat
-        powershell
+
+        ## maybe/on-demand/unused
+        # seer # A Qt gui frontend for GDB
+        # powershell
       ];
 
       cn = [
-        argo # Container native workflow engine for Kubernetes
         argocd # Declarative continuous deployment for Kubernetes
-        # TODO: nixos
-        # azure-cli
+        azure-cli
         civo
-        humioctl
         k6 # A modern load testing tool, using Go and JavaScript
-        istioctl
         awscli2
         mimir # Grafana Mimir
         grafana
-        pulumi-bin
         minio-client
         s3cmd # Command line tool for managing Amazon S3 and CloudFront services
         sops # Mozilla sops (Secrets OPerationS) is an editor of encrypted files
@@ -293,9 +294,14 @@
         terraform # HashiCorp tool for building and updating infrastructure as code idempotently
         terraform-docs # A utility to generate documentation from Terraform modules in various output formats
         nodePackages.cdktf-cli # CDK for Terraform CLI
-        tektoncd-cli # CLI for interacting with Tekton
         terraform-ls # Terraform Language Server
         tflint # Terraform linter
+
+        ## maybe/on-demand/unused
+        # argo # Container native workflow engine for Kubernetes
+        # istioctl
+        # pulumi-bin
+        # tektoncd-cli # CLI for interacting with Tekton
       ];
 
       cicd = [
@@ -316,28 +322,34 @@
         nix-direnv-flakes # A fast, persistent use_nix implementation for direnv
         # tree-sitter-grammars.tree-sitter-toml
 
-        focuswriter # Simple, distraction-free writing environment
         nuspell
         enchant
         hunspellDicts.de-de
         hunspellDicts.en-us
+
+        ## maybe/on-demand/unused
+        # focuswriter # Simple, distraction-free writing environment
       ];
 
       lang = {
         webdev = [
-          deno # A secure runtime for JavaScript and TypeScript
           nodejs_latest
           yarn # Fast, reliable, and secure dependency management
           nodePackages.pnpm
 
           nodePackages.npm-check-updates # Find newer versions of dependencies than what your package.json allows
           nodePackages.typescript-language-server # Language Server Protocol (LSP) implementation for TypeScript using tsserver
+
+          ## maybe/on-demand/unused
+          # deno # A secure runtime for JavaScript and TypeScript
         ];
 
         java = [
-          eclipse-mat # Fast and feature-rich Java heap analyzer
           visualvm # A visual interface for viewing information about Java application
           jetbrains.idea-community # IDE by Jetbrains, community edition
+
+          ## maybe/on-demand/unused
+          # eclipse-mat # Fast and feature-rich Java heap analyzer
         ];
 
         misc = [
@@ -350,7 +362,8 @@
         ];
 
         frameworks = [
-          dioxus-cli #CLI tool for developing, testing, and publishing Dioxus apps
+          ## maybe/on-demand/unused
+          # dioxus-cli #CLI tool for developing, testing, and publishing Dioxus apps
         ];
 
         latex = [
@@ -358,12 +371,14 @@
         ];
 
         db = [
-          # my_pkgs.cqlsh # cli for interacting with Cassandra using CQL
-          mongosh # The MongoDB Shell
-          mongodb-tools
           sqlcmd # A command line tool for working with Microsoft SQL Server, Azure SQL Database
           redli # A humane alternative to the Redis-cli and TLS
           usql # A universal command-line interface for SQL databases
+
+          ## maybe/on-demand/unused
+          # mongosh # The MongoDB Shell
+          # mongodb-tools
+          # cassandra # (for cqlsh)
         ];
       };
 
@@ -372,8 +387,10 @@
       ];
 
       data = [
-        dbeaver # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
         # my-pkgs.qsv #  CSVs sliced, diced & analyzed.
+
+        ## maybe/on-demand/unused
+        # dbeaver # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
       ];
     };
 
@@ -399,15 +416,16 @@
       python = [
         black # The uncompromising Python code formatter
         python3Packages.flake8 # The modular source code checker
-        py-spy # Sampling profiler for Python programs
-        memray
         mypy # Optional static typing for Python 2 and 3 (PEP484)
         # TODO: build failure
         # poetry # Python dependency management and packaging made easy.
         pyright # Type checker for the Python language
         ruff # An extremely fast Python linter
-        twine # Collection of utilities for interacting with PyPI
         virtualenv
+
+        ## maybe/on-demand/unused
+        # py-spy # Sampling profiler for Python programs
+        # memray
       ];
 
       rust = [
@@ -436,22 +454,22 @@
       cli = [
         croc # Easily and securely send things from one computer to another
 
-        grim # Grab images from a Wayland compositor
         hydroxide # A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge
 
         topgrade # Invoke the upgrade procedure of multiple package managers
         ripgrep
         ripgrep-all # Ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, and more
         amber # A code search-and-replace tool
-        slurp # Select a region in a Wayland compositor
         tmpmail # A temporary email right from your terminal written in POSIX sh
       ];
 
       wm = [
         brightnessctl
+        grim # Grab images from a Wayland compositor
         i3status-rust
         pango # for sway fonts
         cliphist # Wayland clipboard manager
+        slurp # Select a region in a Wayland compositor
         wob # A lightweight overlay bar for Wayland
         (rofi-wayland.override {
           plugins = [rofi-calc];
@@ -509,9 +527,11 @@
         pastel # A command-line tool to generate, analyze, convert and manipulate colors
       ];
       video = [
-        obs-studio # Free, open source software for live streaming and recording
         streamlink # CLI for extracting streams from various websites to video player of your choosing
         streamlink-twitch-gui-bin # Twitch.tv browser for Streamlink
+
+        ## maybe/on-demand/unused
+        # obs-studio # Free, open source software for live streaming and recording
       ];
 
       audio = [
@@ -561,8 +581,6 @@
 
       bookmarks = [
         buku # Private cmdline bookmark manager
-        bukubrow # A WebExtension for Buku, a command-line bookmark manager
-        oil-buku # Search-as-you-type cli frontend for the buku bookmarks manager using peco
       ];
     };
 
@@ -570,7 +588,6 @@
       cli = [
         flashrom
         bottom # A cross-platform graphical process/system monitor with a customizable interface
-        clamav # Anti-virus toolkit for Unix
         inxi # A full featured CLI system information tool
         lshw
         hwinfo
@@ -596,10 +613,11 @@
 
     entertain = {
       gaming = [
-        # wine-wayland # An Open Source implementation of the Windows API on top of OpenGL and Unix
-        # bottles # An easy-to-use wineprefix manager
+        wine-wayland # An Open Source implementation of the Windows API on top of OpenGL and Unix
+        bottles # An easy-to-use wineprefix manager
 
-        lutris # Open Source gaming platform for GNU/Linux
+        ## maybe/on-demand/unused
+        # lutris # Open Source gaming platform for GNU/Linux
       ];
 
       media = [
@@ -608,7 +626,9 @@
       productivity = [
         blanket # Improve focus and increase your productivity by listening to different sounds
         # my-pkgs.focus
-        minder
+
+        ## maybe/on-demand/unused
+        # minder
       ];
     };
   };
@@ -627,16 +647,16 @@
       imagemagick
     ];
 
-    vms = [
-      libguestfs # Access and modify virtual machine disk images
-      # todo nixos
-      # quickemu # Quickly create and run optimised Windows, macOS and Linux desktop virtual machines.
-      tigervnc
-      vagrant # Build and distribute virtualized development environments
-      virt-viewer # A lightweight interface for interacting with the graphical display of virtualized guest OS.
-      incus
-      distrobuilder # System container image builder for LXC and LXD
-      x11docker # Run graphical applications with Docker
+    virtualisation = [
+      quickemu # Quickly create and run optimised Windows, macOS and Linux desktop virtual machines.
+
+      ## maybe/on-demand/unused
+      # incus
+      # distrobuilder # System container image builder for LXC and LXD
+      # libguestfs # Access and modify virtual machine disk images
+      # vagrant # Build and distribute virtualized development environments
+      # x11docker # Run graphical applications with Docker
+      # virt-viewer # A lightweight interface for interacting with the graphical display of virtualized guest OS.
     ];
 
     system = [
@@ -648,8 +668,6 @@
     backup = [
       restic
       autorestic
-
-      dura # A background process that saves uncommitted changes on git
     ];
 
     shell = [
@@ -670,14 +688,9 @@
       nix-search-cli
 
       nixos-shell
-      node2nix
     ];
 
     tools = [
-      ansible # Official assortment of Ansible collections
-      ansible-lint # Checks playbooks for practices and behaviour that could potentially be improved.
-      python3Packages.mitogen # Python Library for writing distributed self-replicating programs
-
       python3Packages.qrcode # Quick Response code generation for Python
 
       dhcping # Send DHCP request to find out if a DHCP server is running
@@ -688,16 +701,17 @@
       miniserve # CLI tool to serve files and directories over HTTP
       ngrok # secure introspectable tunnels to localhost
       ventoy # A new multiboot USB solution (Binary)
+
+      ## maybe/on-demand/unused
+      # ansible # Official assortment of Ansible collections
+      # ansible-lint # Checks playbooks for practices and behaviour that could potentially be improved.
+      # python3Packages.mitogen # Python Library for writing distributed self-replicating programs
     ];
 
     dev = [
       # TODO: build failure
       # checkov # Static code analysis tool for infrastructure-as-code
-      caddy # Fast, cross-platform HTTP/2 web server with automatic HTTPS
-      cosign # Container Signing CLI with support for ephemeral keys and Sigstore signing
-      doctl # The official command line interface for the DigitalOcean API
 
-      mob # Tool for smooth git handover
       git
       git-trim # Automatically trims your branches whose tracking remote refs are merged or gone
 
@@ -705,52 +719,55 @@
       glab # GitLab CLI tool
       go-mockery # A mock code autogenerator for golang
       google-cloud-sdk # A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
-      gsctl # The Giant Swarm command line interface
-      hexyl # A command-line hex viewer
       jwt-cli # A super fast CLI tool to decode and encode JWTs
       ktlint # An anti-bikeshedding Kotlin linter with built-in formatter
       # TODO: build failure
       # mitmproxy # SSL-capable man-in-the-middle HTTP proxy
-      packer # tool for creating identical machine images for multiple platforms from a single source configuration
-      pluto # A cli tool to help discover deprecated apiVersions in Kubernetes
       prometheus # An open-source systems monitoring and alerting toolkit
       protobuf # Google's data interchange format
       nodePackages.prettier # An opinionated code formatter for JS, JSON, CSS, YAML and much more
       shellcheck # Shell script analysis tool (binary release)
+
+      ## maybe/on-demand/unused
+      # caddy # Fast, cross-platform HTTP/2 web server with automatic HTTPS
+      # cosign # Container Signing CLI with support for ephemeral keys and Sigstore signing
+      # doctl # The official command line interface for the DigitalOcean API
+      # hexyl # A command-line hex viewer
+      # mob # Tool for smooth git handover for remote pair/mob programming
+      # packer # tool for creating identical machine images for multiple platforms from a single source configuration
+      # pluto # A cli tool to help discover deprecated apiVersions in Kubernetes
     ];
 
     k8s = [
       helmfile # Deploy Kubernetes Helm Charts
-      vals # Helm-like configuration values loader with support for various sources
       krew # Krew is the package manager for kubectl plugins.
       kubectl # Kubernetes.io client binary
       kubelogin # A Kubernetes credential plugin implementing Azure authentication
       kubeswitch
       stern # Multi pod and container log tailing for Kubernetes
-      kubeshark # The API traffic viewer for Kubernetes. Think TCPDump and
       kubernetes-helm # The Kubernetes Package Manager
       kustomize # Template-free customization of Kubernetes YAML manifests
-      telepresence2 # Local development against a remote Kubernetes or OpenShift cluster
+
+      ## maybe/on-demand/unused
+      # kubeshark # The API traffic viewer for Kubernetes. Think TCPDump and
+      # telepresence2 # Local development against a remote Kubernetes or OpenShift cluster
+      # vals # Helm-like configuration values loader with support for various sources
     ];
 
     apps = [
-      gnome-podcasts # Podcast application for GNOME
       inkscape # Professional vector graphics editor
       libreoffice-fresh # LibreOffice branch which contains new features and program enhancements
-
       mpv # a free, open source, and cross-platform media player
-
       tenacity # FLOSS Audacity Fork. No telemetry, crash reports and other shenanigans like that!
 
-      # TODO: nixos
-      # zoom-us # Video Conferencing and Web Conferencing Service
+      zoom-us # Video Conferencing and Web Conferencing Service
 
       # https://nixos.wiki/wiki/Accelerated_Video_Playback
       intel-media-driver
     ];
 
     unused = [
-      ugrep # ultra fast grep with interactive TUI, fuzzy search, boolean queries, hexdumps and more
+      # ugrep # ultra fast grep with interactive TUI, fuzzy search, boolean queries, hexdumps and more
     ];
   };
 in {
@@ -762,7 +779,7 @@ in {
     ++ packages.dev
     ++ packages.pers
     ++ packages.shell
-    ++ packages.vms
+    ++ packages.virtualisation
     ++ packages.nix
     ++ packages.tools
     ++ packages.backup
