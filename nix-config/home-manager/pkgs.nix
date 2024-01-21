@@ -466,7 +466,6 @@
         pango # for sway fonts
         cliphist # Wayland clipboard manager
         slurp # Select a region in a Wayland compositor
-        wob # A lightweight overlay bar for Wayland
         (rofi-wayland.override {
           plugins = [rofi-calc];
         })
