@@ -136,7 +136,6 @@
         snapper # A tool for managing BTRFS and LVM snapshots
         httm # Interactive, file-level Time Machine-like tool for ZFS/btrfs
         gitwatch
-        syncthing
         rclone # CLI to sync files and directories to and from major cloud storage
       ];
 
@@ -785,6 +784,4 @@ in {
     ++ packages.backup
     ++ packages.k8s
     ++ builtins.concatLists (lib.attrsets.collect builtins.isList packages_dict);
-
-  systemd.user.sessionVariables.DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
 }
