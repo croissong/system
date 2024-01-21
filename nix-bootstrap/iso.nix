@@ -35,7 +35,9 @@
     };
   };
 
-  programs.bash.shellInit = builtins.readFile ./bootstrap.sh;
+  environment.shellAliases = {
+    provision = "sudo /iso/provision.sh";
+  };
 
   # just for console layout
   services.xserver = {
@@ -45,20 +47,18 @@
   };
   console.useXkbConfig = true;
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # use the latest Linux kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_zen;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    # Needed for https://github.com/NixOS/nixpkgs/issues/58959
+    supportedFilesystems = lib.mkForce ["btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs"];
+  };
 
   environment.systemPackages = with pkgs; [
-    lsof
-    util-linux
-    git
     sops
     ouch
   ];
-
-  # Needed for https://github.com/NixOS/nixpkgs/issues/58959
-  boot.supportedFilesystems = lib.mkForce ["btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs"];
 }
