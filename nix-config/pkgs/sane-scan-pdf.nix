@@ -1,6 +1,6 @@
 {
   stdenv,
-  fetchurl,
+  fetchFromGitHub,
   versions,
 }:
 stdenv.mkDerivation rec {

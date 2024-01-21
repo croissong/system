@@ -1,6 +1,7 @@
 {
   stdenv,
   fetchurl,
+  installShellFiles,
   versions,
 }:
 stdenv.mkDerivation {

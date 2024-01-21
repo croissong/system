@@ -10,4 +10,4 @@ chezmoi execute-template <$DOT/dot_config/chezmoi/chezmoi.yaml.tmpl >~/.config/c
 gpg --import ~/private.pgp
 rm ~/private.pgp
 
-# chezmoi apply
+chezmoi apply

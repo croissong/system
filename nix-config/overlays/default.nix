@@ -27,7 +27,7 @@
       doCheck = false;
     });
 
-    termdown = prev.overrideAttrs (oldAttrs: rec {
+    termdown = prev.termdown.overrideAttrs (oldAttrs: rec {
       version = "1.18.0";
       src = final.fetchFromGitHub {
         rev = version;

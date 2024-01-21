@@ -1,6 +1,6 @@
 {
   stdenv,
-  fetchurl,
+  fetchzip,
   versions,
 }:
 stdenv.mkDerivation {

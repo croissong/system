@@ -4,7 +4,7 @@
   versions,
 }:
 stdenv.mkDerivation rec {
-  name = "gitwatch";
+  pname = "gitwatch";
   version = versions.gitwatch.version;
   src = fetchFromGitHub {
     owner = "gitwatch";

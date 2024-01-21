@@ -16,7 +16,6 @@
   };
 
   home.sessionVariables = {
-    JAVA_HOME = "${pkgs.temurin-bin}/lib/openjdk";
-    JAVA_11_HOME = "${pkgs.temurin-bin-11}/lib/openjdk";
+    JAVA_11_HOME = pkgs.temurin-bin-11;
   };
 }
