@@ -13,18 +13,20 @@ ouch decompress -y /iso/iso-contents.tar.sz --dir /tmp
 cd /tmp/iso-contents/System
 
 SOPS_AGE_KEY_FILE=/tmp/iso-contents/identity.age sops -d --extract '["luks"]' nix-config/secrets.yaml >/tmp/luks-password.txt
-nix run github:nix-community/disko -- --mode disko nix-bootstrap/disk-config.nix --arg disks "[ \"/dev/$disk\" ]"
+nix run github:nix-community/disko -- --mode disko bootstrap/disk-config.nix --arg disks "[ \"/dev/$disk\" ]"
 
 mkdir -p /mnt/tmp/home/dot
 mkdir -p /mnt/tmp/home/.config/age
 cp -r /tmp/iso-contents/System /mnt/tmp/home/dot/system
 cp -r /tmp/iso-contents/Dot /mnt/tmp/home/dot/dotfiles
 cp -r /tmp/iso-contents/Dot/priv /mnt/tmp/home/dot/priv
-cp -r /tmp/iso-contents/identity.age /mnt/tmp/home/.config/age/identity.age
+cp /tmp/iso-contents/identity.age /mnt/tmp/home/.config/age/identity.age
+mkdir -p /mnt/etc/age/
+cp /tmp/iso-contents/identity.age /mnt/etc/age/identity.age
 
 nixos-generate-config --no-filesystems --root /mnt --dir /tmp/iso-contents/System/nix-config/nixos/
 
-HOME=/tmp/home nixos-install --no-root-passwd --impure --verbose \
+nixos-install --no-root-passwd --impure --verbose \
   --flake path:///tmp/iso-contents/System/nix-config#$hostname 2>&1 |
   tee /tmp/nixos-install.log
 

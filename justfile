@@ -9,7 +9,7 @@ _iso entrypoint:
     /tmp/private.pgp \
     iso-contents.tar.sz
 
-  nixos-generate --format iso --configuration nix-bootstrap/{{entrypoint}} -o generated -I nixpkgs=channel:nixpkgs-unstable
+  nixos-generate --format iso --configuration bootstrap/{{entrypoint}} -o generated -I nixpkgs=channel:nixpkgs-unstable
 
 iso: (_iso "iso.nix")
 

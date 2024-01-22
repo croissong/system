@@ -54,7 +54,6 @@
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in rec {
-    homeDir = builtins.getEnv "HOME";
     versions = builtins.fromJSON (builtins.readFile ./versions.json);
     packages = forAllSystems (pkgs: import ./pkgs {inherit pkgs versions;});
     # Formatter for your nix files, available through 'nix fmt'

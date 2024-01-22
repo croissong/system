@@ -14,6 +14,7 @@
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
+    # TODO: PR for https://github.com/NixOS/nixpkgs/issues/237886
     kubeswitch = prev.kubeswitch.overrideAttrs (oldAttrs: {
       nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [final.installShellFiles];
 
