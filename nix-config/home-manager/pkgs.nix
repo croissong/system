@@ -230,11 +230,10 @@
         curlie # Frontend to curl that adds the ease of use of httpie, without compromising on features and performance
         httpie # A command line HTTP client whose goal is to make CLI human-friendly
         http-prompt # An interactive HTTP command-line client
+        hurl # Command line tool that performs HTTP requests defined in a simple plain text format
       ];
 
       protocols = [
-        swaks # Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
-
         ## maybe/on-demand/unused
         # altair # A feature-rich GraphQL Client IDE
         # grpcurl # Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers
@@ -583,6 +582,9 @@
         mailctl # Provide IMAP/SMTP clients with OAuth2 credentials
         mu # A collection of utilities for indexing and searching Maildirs
         mblaze #  maildir utils
+
+        ## maybe/on-demand/unused
+        # swaks # Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
       ];
 
       bookmarks = [
