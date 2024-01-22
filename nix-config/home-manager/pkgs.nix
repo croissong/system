@@ -271,7 +271,7 @@
 
       cn = [
         argocd # Declarative continuous deployment for Kubernetes
-        azure-cli
+        pkgs.stable.azure-cli
         civo
         k6 # A modern load testing tool, using Go and JavaScript
         awscli2
@@ -283,13 +283,13 @@
         opentofu
         terraform # HashiCorp tool for building and updating infrastructure as code idempotently
         terraform-docs # A utility to generate documentation from Terraform modules in various output formats
-        nodePackages.cdktf-cli # CDK for Terraform CLI
         terraform-ls # Terraform Language Server
         tflint # Terraform linter
 
         ## maybe/on-demand/unused
         # argo # Container native workflow engine for Kubernetes
         # istioctl
+        # nodePackages.cdktf-cli # CDK for Terraform CLI
         # pulumi-bin
         # tektoncd-cli # CLI for interacting with Tekton
       ];
@@ -377,7 +377,8 @@
       ];
 
       data = [
-        qsv #  CSVs sliced, diced & analyzed.
+        # TODO
+        # qsv #  CSVs sliced, diced & analyzed.
 
         ## maybe/on-demand/unused
         # dbeaver # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
@@ -487,7 +488,7 @@
         keybase
         keybase-gui
 
-        nyxt
+        pkgs.stable.nyxt
 
         ## maybe/on-demand/unused
         # nvchecker # New version checker for software
