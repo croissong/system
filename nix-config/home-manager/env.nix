@@ -14,7 +14,9 @@
     PAGER = "moar";
     PASSWORD_STORE_DIR = "$HOME/Pass/password-store";
     RIPGREP_CONFIG_PATH = "${config.xdg.configHome}/ripgrep/config";
-    SOPS_AGE_KEY_FILE = "${config.xdg.configHome}/age/identity.age";
+    AGE_IDENTITY_FILE = "${config.xdg.configHome}/age/identity.age";
+    AGE_RECIPIENTS_FILE = "${config.xdg.configHome}/age/public-key.txt";
+    SOPS_AGE_KEY_FILE = AGE_IDENTITY_FILE;
     SUMMON_PROVIDER = "${pkgs.gopass-summon-provider.outPath}/bin/gopass-summon-provider";
     TF_CLI_CONFIG_FILE = "$XDG_CONFIG_HOME/terraform/terraformrc";
     VISUAL = "emacsclient -c";
