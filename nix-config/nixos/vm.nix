@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ./hardware-configuration-vm.nix
-  ];
   environment.sessionVariables = {
     "BON_VM" = "true";
   };

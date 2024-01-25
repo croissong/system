@@ -1,9 +1,10 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     git
-    gpg
+    gnupg
     home-manager
     coreutils
+    emacs
     bash
   ];
 }

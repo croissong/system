@@ -13,6 +13,7 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
+    ./base.nix
     ./boot.nix
     ./env.nix
     ./fonts.nix

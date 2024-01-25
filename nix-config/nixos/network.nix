@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   services.resolved = {
     enable = true;
     dnssec = "true";
@@ -49,49 +45,14 @@
   systemd = {
     network = {
       enable = true;
-      wait-online.anyInterface = true;
-      links = {
-        eth = {
-          linkConfig = {
-            Name = "eth";
-          };
-          matchConfig = {
-            Type = "ether";
-          };
-        };
-      };
-
       networks = {
-        wired = {
+        wireless = {
           matchConfig = {
-            # Name = "eth";
-            Name = "en*";
-          };
-          bond = ["bond"];
-          DHCP = "yes";
-          networkConfig = {
-            PrimarySlave = true;
-          };
-        };
-
-        bond = {
-          matchConfig = {
-            Name = "bond";
+            Name = "wlan*";
           };
           DHCP = "yes";
-        };
-      };
-
-      netdevs = {
-        bond = {
-          netdevConfig = {
-            Name = "bond";
-            Kind = "bond";
-          };
-          bondConfig = {
-            Mode = "active-backup";
-            PrimaryReselectPolicy = "always";
-            MIIMonitorSec = "1s";
+          dhcpV4Config = {
+            UseDNS = false;
           };
         };
       };

@@ -2,7 +2,7 @@ all: iso vm
 
 _iso entrypoint:
   gpg --output /tmp/private.pgp --armor --export-secret-key jan.moeller0@gmail.com
-  ouch compress -g -y \
+  ouch compress -y \
     . \
     ~/Dot \
     ~/.config/age/identity.age \
