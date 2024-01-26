@@ -17,5 +17,9 @@
     # syncthing = {
     #   enable = true;
     # };
+
+    upower = {
+      enable = true;
+    };
   };
 }
