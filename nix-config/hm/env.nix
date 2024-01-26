@@ -12,7 +12,6 @@
     MOAR = "--no-statusbar --no-linenumbers";
     NIXOS_OZONE_WL = "1"; # https://nixos.wiki/wiki/Wayland
     PAGER = "moar";
-    PASSWORD_STORE_DIR = "$HOME/Pass/password-store";
     RIPGREP_CONFIG_PATH = "${config.xdg.configHome}/ripgrep/config";
     AGE_IDENTITY_FILE = "${config.xdg.configHome}/age/identity.age";
     AGE_RECIPIENTS_FILE = "${config.xdg.configHome}/age/public-key.txt";
