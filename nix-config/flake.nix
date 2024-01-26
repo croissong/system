@@ -56,8 +56,7 @@
   in rec {
     versions = builtins.fromJSON (builtins.readFile ./versions.json);
     packages = forAllSystems (pkgs: import ./pkgs {inherit pkgs versions;});
-    # Formatter for your nix files, available through 'nix fmt'
-    # Other options beside 'alejandra' include 'nixpkgs-fmt'
+
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     overlays = import ./overlays {inherit inputs versions;};
@@ -66,13 +65,11 @@
 
     vars = import ~/dot/priv/vars.nix {};
 
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       bon = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos/configuration.nix
+          ./os/configuration.nix
           sops-nix.nixosModules.sops
         ];
       };
@@ -80,9 +77,9 @@
       bonVM = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos/configuration.nix
+          ./os/configuration.nix
           sops-nix.nixosModules.sops
-          ./nixos/vm.nix
+          ./os/vm.nix
         ];
       };
     };
@@ -94,7 +91,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home-manager/home.nix
+          ./hm/home.nix
         ];
       };
     };
