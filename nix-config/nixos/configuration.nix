@@ -18,6 +18,7 @@
     ./env.nix
     ./fonts.nix
     ./fs.nix
+    ./fwupd.nix
     ./locale.nix
     ./network.nix
     ./nix.nix

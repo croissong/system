@@ -8,7 +8,7 @@
     CARGO_HOME = "$XDG_DATA_HOME/cargo";
     DIFFPROG = "delta";
     DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
-    DOT = "${config.home.homeDirectory}/dot/dotfiles";
+    DOT = "${config.home.homeDirectory}/dot";
     MOAR = "--no-statusbar --no-linenumbers";
     NIXOS_OZONE_WL = "1"; # https://nixos.wiki/wiki/Wayland
     PAGER = "moar";
