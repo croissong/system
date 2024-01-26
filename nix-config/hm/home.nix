@@ -3,6 +3,7 @@
 {
   inputs,
   outputs,
+  pkgs,
   ...
 }: {
   imports = [
@@ -42,6 +43,11 @@
     username = "moi";
     homeDirectory = "/home/moi";
     enableNixpkgsReleaseCheck = false;
+
+    pointerCursor = {
+      package = pkgs.vanilla-dmz;
+      name = "Vanilla-DMZ";
+    };
 
     language = {
       base = "en_US.UTF-8";
