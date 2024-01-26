@@ -19,6 +19,7 @@
     ./fonts.nix
     ./fs.nix
     ./fwupd.nix
+    ./hardware.nix
     ./locale.nix
     ./network.nix
     ./nix.nix

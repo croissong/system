@@ -763,9 +763,6 @@
       tenacity # FLOSS Audacity Fork. No telemetry, crash reports and other shenanigans like that!
 
       zoom-us # Video Conferencing and Web Conferencing Service
-
-      # https://nixos.wiki/wiki/Accelerated_Video_Playback
-      intel-media-driver
     ];
 
     unused = [
