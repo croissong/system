@@ -2,3 +2,4 @@
 /vm/qemu/
 /iso-contents.tar.sz
 /nix-config/versions.json
+/nix-config/os/hardware-configuration.nix
