@@ -669,6 +669,7 @@
       batsignal # A lightweight battery monitor daemon
       mako # Lightweight notification daemon for Wayland
       pamixer # Pulseaudio command-line mixer like amixer
+      pavucontrol
     ];
 
     backup = [

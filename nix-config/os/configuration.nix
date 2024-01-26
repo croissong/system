@@ -26,6 +26,7 @@
     ./programs.nix
     ./security.nix
     ./services.nix
+    ./sound.nix
     ./users.nix
     ./virtualisation.nix
     ./wm.nix
