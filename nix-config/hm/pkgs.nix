@@ -270,7 +270,7 @@
 
       cn = [
         argocd # Declarative continuous deployment for Kubernetes
-        pkgs.stable.azure-cli
+        azure-cli
         civo
         k6 # A modern load testing tool, using Go and JavaScript
         awscli2
@@ -487,7 +487,7 @@
         keybase
         keybase-gui
 
-        pkgs.stable.nyxt
+        nyxt
 
         ## maybe/on-demand/unused
         # nvchecker # New version checker for software

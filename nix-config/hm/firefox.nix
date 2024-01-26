@@ -24,6 +24,8 @@ in {
         "browser.urlbar.suggest.topsites" = false;
         "browser.urlbar.suggest.remotetab" = false;
         "browser.urlbar.suggest.searches" = false;
+        "browser.urlbar.suggest.openpage" = true;
+
         "browser.search.region" = "DE";
 
         # disable mouse pinch zoom
@@ -168,9 +170,9 @@ in {
         #   ];
         # };
 
-        # "*" = {
-        #   installation_mode = "blocked";
-        # };
+        "*" = {
+          installation_mode = "blocked";
+        };
       };
     };
   };
