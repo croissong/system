@@ -28,12 +28,6 @@
       enable = true;
       settings = {
         Scan.DisablePeriodicScan = true;
-        General.EnableNetworkConfiguration = true;
-        Network = {
-          EnableIPv6 = true;
-          RoutePriorityOffset = 300;
-          NameResolvingService = "systemd";
-        };
       };
     };
     nftables.enable = true;
@@ -44,16 +38,14 @@
 
   systemd = {
     network = {
+      wait-online.timeout = 5;
       enable = true;
       networks = {
         wireless = {
           matchConfig = {
             Name = "wlan*";
           };
-          DHCP = "yes";
-          dhcpV4Config = {
-            UseDNS = false;
-          };
+          networkConfig.DHCP = "yes";
         };
       };
     };
