@@ -1,1 +1,0 @@
-maybe switch to https://github.com/Frzk/ansible-role-nftables/tree/master/vars
