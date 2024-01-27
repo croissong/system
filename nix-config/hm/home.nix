@@ -21,6 +21,7 @@
     ./secrets.nix
     ./services.nix
     ./shell.nix
+    ./wm.nix
   ];
 
   nixpkgs = {
