@@ -44,4 +44,13 @@
       enable = true;
     };
   };
+
+  # make all env variables available in systemd user services
+  # e.g. required to get correct SSH_AUTH_SOCK & GNUPGHOME in emacs
+  systemd.user.sessionVariables =
+    config.home.sessionVariables
+    // {
+      EDITOR = toString config.home.sessionVariables.EDITOR;
+      JAVA_11_HOME = toString config.home.sessionVariables.JAVA_11_HOME;
+    };
 }

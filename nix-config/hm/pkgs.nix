@@ -298,7 +298,6 @@
       ];
 
       edit = [
-        pkgs.emacs-overlay.emacs-pgtk
         commitlint-rs
         helix #  A post-modern modal text editor
         stylua # Code formatter for Lua

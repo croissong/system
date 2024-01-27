@@ -1,8 +1,19 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  package = with pkgs;
+    (emacsPackagesFor emacs-overlay.emacs-pgtk).emacsWithPackages (
+      epkgs:
+        with epkgs; [
+          jinx
+          treesit-grammars.with-all-grammars
+        ]
+    );
+in {
   services.emacs = {
     enable = true;
-    package = pkgs.emacs-overlay.emacs-pgtk;
+    package = package;
     client.enable = true;
     defaultEditor = true;
   };
+
+  home.packages = [package];
 }
