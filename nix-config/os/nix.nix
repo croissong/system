@@ -1,5 +1,7 @@
-{...}: {
+{pkgs, ...}: {
   nix = {
+    package = pkgs.nixVersions.unstable;
+
     settings = {
       experimental-features = "nix-command flakes";
       accept-flake-config = true;
