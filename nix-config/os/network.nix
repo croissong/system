@@ -26,9 +26,6 @@
 
     wireless.iwd = {
       enable = true;
-      settings = {
-        Scan.DisablePeriodicScan = true;
-      };
     };
     nftables.enable = true;
     firewall.enable = false;
