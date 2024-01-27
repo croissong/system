@@ -9,7 +9,7 @@
     DIFFPROG = "delta";
     DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
     DOT = "${config.home.homeDirectory}/dot";
-    MOAR = "--no-statusbar --no-linenumbers";
+    MOAR = "--no-statusbar --no-linenumbers --quit-if-one-screen";
     NIXOS_OZONE_WL = "1"; # https://nixos.wiki/wiki/Wayland
     PAGER = "moar";
     RIPGREP_CONFIG_PATH = "${config.xdg.configHome}/ripgrep/config";
