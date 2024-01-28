@@ -1,4 +1,14 @@
 {pkgs, ...}: {
+  wayland.windowManager.sway = {
+    enable = true;
+    config = null;
+
+    # managed in dotfiles
+    extraConfigEarly = ''
+      include ./main.conf
+    '';
+  };
+
   programs = {
     swaylock = {
       enable = true;
@@ -26,6 +36,7 @@
         {
           timeout = 1200;
           command = "${pkgs.sway}/bin/swaymsg 'output * power off'";
+          resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on";
         }
         {
           timeout = 2400;

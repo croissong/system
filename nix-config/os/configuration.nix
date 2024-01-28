@@ -30,7 +30,6 @@
     ./sound.nix
     ./users.nix
     ./virtualisation.nix
-    ./wm.nix
 
     ./hardware-configuration.nix
   ];
