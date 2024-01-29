@@ -36,7 +36,7 @@
         {
           timeout = 1200;
           command = "${pkgs.sway}/bin/swaymsg 'output * power off'";
-          resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on";
+          resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on'";
         }
         {
           timeout = 2400;
