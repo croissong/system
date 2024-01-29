@@ -17,6 +17,11 @@
         sopsFile = ../secrets/vpn.key.pem;
         path = "/etc/swanctl/private/vpn-wrk.key.pem";
       };
+      "wrk/vpn/dns-forwarding-rules" = {
+        format = "binary";
+        sopsFile = ../secrets/vpn-dns-forwarding-rules.txt;
+        mode = "444";
+      };
     };
   };
 }
