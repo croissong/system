@@ -25,12 +25,13 @@
     ./nix.nix
     ./pkgs.nix
     ./programs.nix
+    ./secrets.nix
     ./security.nix
     ./services.nix
     ./sound.nix
     ./users.nix
     ./virtualisation.nix
-
+    ./vpn.nix
     ./hardware-configuration.nix
   ];
 
@@ -61,12 +62,4 @@
     config.nix.registry;
 
   system.stateVersion = "23.11";
-
-  sops = {
-    defaultSopsFile = ../secrets.yaml;
-    age.keyFile = "/etc/age/identity.age";
-    secrets = {
-      hashedPassword = {};
-    };
-  };
 }
