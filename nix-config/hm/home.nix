@@ -18,6 +18,7 @@
     ./gpg.nix
     ./pkgs.nix
     ./pim.nix
+    ./programs.nix
     ./secrets.nix
     ./services.nix
     ./shell.nix
