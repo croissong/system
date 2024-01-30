@@ -1,4 +1,10 @@
-{config, ...}: {
+{
+  config,
+  outputs,
+  pkgs,
+  ...
+}: {
+  services.resolved.enable = false;
   services.dnscrypt-proxy2 = {
     enable = true;
     settings = {
@@ -7,6 +13,7 @@
 
       server_names = ["cloudflare" "google"];
       forwarding_rules = config.sops.secrets."wrk/vpn/dns-forwarding-rules".path;
+      cloaking_rules = pkgs.writeText "cloaking-rules.txt" outputs.vars.wrk.cloakingRules;
     };
   };
 
@@ -22,7 +29,6 @@
     };
     nftables.enable = true;
     firewall.enable = false;
-
     useDHCP = false;
   };
 
