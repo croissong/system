@@ -42,6 +42,7 @@ in {
         "browser.aboutConfig.showWarning" = false;
         "browser.startup.page" = 3;
         "browser.toolbars.bookmarks.visibility" = "never";
+        "browser.translations.automaticallyPopup" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "intl.accept_languages" = "en";
 
