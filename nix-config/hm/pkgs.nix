@@ -9,9 +9,10 @@
     ];
 
     ent = [
-      yt-dlp
+      playerctl
       spotify-player
       steamcmd
+      yt-dlp
 
       ## maybe/on-demand/unused
       # parsec-bin # Remote gaming streaming service client
@@ -273,15 +274,11 @@
         azure-cli
         civo
         k6 # A modern load testing tool, using Go and JavaScript
-        awscli2
-        mimir # Grafana Mimir
-        grafana
         minio-client
         s3cmd # Command line tool for managing Amazon S3 and CloudFront services
         sops # Mozilla sops (Secrets OPerationS) is an editor of encrypted files
         opentofu
         terraform # HashiCorp tool for building and updating infrastructure as code idempotently
-        terraform-docs # A utility to generate documentation from Terraform modules in various output formats
         terraform-ls # Terraform Language Server
         tflint # Terraform linter
 
@@ -291,6 +288,10 @@
         # nodePackages.cdktf-cli # CDK for Terraform CLI
         # pulumi-bin
         # tektoncd-cli # CLI for interacting with Tekton
+        # mimir # Grafana Mimir
+        # grafana
+        # terraform-docs # A utility to generate documentation from Terraform modules in various output formats
+        # awscli2
       ];
 
       cicd = [
@@ -468,6 +469,7 @@
         (rofi-wayland.override {
           plugins = [rofi-calc];
         })
+        wl-clipboard
         wtype
       ];
 
@@ -598,6 +600,7 @@
         inxi # A full featured CLI system information tool
         lshw
         hwinfo
+        lm_sensors
         procs # A modern replacement for ps written in Rust
         xdg-ninja # A shell script which checks your $HOME for unwanted files and directories
 
