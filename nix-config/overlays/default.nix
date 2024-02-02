@@ -48,6 +48,22 @@
         sha256 = "sha256-Kn9d7/xtdhDACANU4NlS+Ap8boHGbZfN6yAfPcRs0tA=";
       };
     });
+
+    systemctl-tui = prev.systemctl-tui.override (oldAttrs: {
+      rustPlatform.buildRustPackage = args:
+        final.rustPlatform.buildRustPackage (
+          args
+          // rec {
+            cargoHash = "sha256-X9+zbNJYma7pbXVWdF+poeFTPXRRWcAvQsqiO4dRt58=";
+            version = "0.3.1";
+            src = final.fetchCrate {
+              pname = args.pname;
+              version = version;
+              hash = "sha256-kioQvtHpKg4/oY5IWQd29dGkRnXNjvE0wKea1s7i5MA=";
+            };
+          }
+        );
+    });
   };
 
   stable-packages = final: _prev: {
