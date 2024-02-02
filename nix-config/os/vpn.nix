@@ -4,9 +4,12 @@
   pkgs,
   ...
 }: {
+  # view packet counts: sudo swanctl --list-sas
+
   services = {
     strongswan-swanctl = {
       enable = true;
+
       strongswan.extraConfig = ''
         charon {
           plugins {
@@ -16,6 +19,7 @@
           }
         }
       '';
+
       swanctl = {
         connections = {
           vpn-wrk = {
