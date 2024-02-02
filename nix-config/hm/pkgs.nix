@@ -687,7 +687,6 @@
     nix = [
       alejandra # The Uncompromising Nix Code Formatter
       cachix
-      comma # Comma runs software without installing it.
       hydra-check # check hydra for the build status of a package
       nil # Yet another language server for Nix
       nixos-generators

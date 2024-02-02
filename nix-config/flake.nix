@@ -20,17 +20,30 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    emacs-overlay.url = "github:nix-community/emacs-overlay/master";
-    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay/27805ccec0cd57b4dd2e6768f9df769d3e62ca77";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    tree-grepper.url = "github:BrianHicks/tree-grepper";
-    tree-grepper.inputs.nixpkgs.follows = "nixpkgs";
+    tree-grepper = {
+      url = "github:BrianHicks/tree-grepper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
@@ -39,6 +52,7 @@
   outputs = {
     self,
     nixpkgs,
+    nix-index-database,
     home-manager,
     sops-nix,
     emacs-overlay,
@@ -76,11 +90,11 @@
 
       bonVM = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./os/configuration.nix
-          sops-nix.nixosModules.sops
-          ./os/vm.nix
-        ];
+        modules =
+          nixosConfigurations
+          + [
+            ./os/vm.nix
+          ];
       };
     };
 
@@ -92,6 +106,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./hm/home.nix
+          nix-index-database.hmModules.nix-index
         ];
       };
     };
