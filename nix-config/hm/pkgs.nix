@@ -12,7 +12,6 @@
       playerctl
       spotify-player
       steamcmd
-      yt-dlp
 
       ## maybe/on-demand/unused
       # parsec-bin # Remote gaming streaming service client
@@ -760,7 +759,6 @@
     apps = [
       inkscape # Professional vector graphics editor
       libreoffice-fresh # LibreOffice branch which contains new features and program enhancements
-      mpv # a free, open source, and cross-platform media player
       tenacity # FLOSS Audacity Fork. No telemetry, crash reports and other shenanigans like that!
 
       zoom-us # Video Conferencing and Web Conferencing Service

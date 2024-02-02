@@ -16,6 +16,7 @@
     ./env.nix
     ./firefox.nix
     ./gpg.nix
+    ./mpv.nix
     ./pkgs.nix
     ./pim.nix
     ./programs.nix

@@ -16,4 +16,6 @@
   sttr = pkgs.callPackage ./sttr.nix {inherit versions;};
   updatecli = pkgs.callPackage ./updatecli.nix {};
   wutag = pkgs.callPackage ./wutag.nix {inherit versions;};
+
+  mpv-simple-history = pkgs.callPackage ./mpv-simple-history.nix {};
 }
