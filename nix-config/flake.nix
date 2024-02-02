@@ -77,7 +77,7 @@
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
 
-    vars = import ~/dot/priv/vars.nix {};
+    vars = import /home/moi/dot/priv/vars.nix {};
 
     nixosConfigurations = {
       bon = nixpkgs.lib.nixosSystem {
