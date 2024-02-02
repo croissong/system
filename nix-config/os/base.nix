@@ -1,9 +1,11 @@
 {...}: {
   # for console layout
   services.xserver = {
-    layout = "us";
-    xkbOptions = "ctrl:nocaps";
-    xkbVariant = "nodeadkeys";
+    xkb = {
+      layout = "us";
+      options = "ctrl:nocaps";
+      variant = "nodeadkeys";
+    };
   };
   console.useXkbConfig = true;
 }
