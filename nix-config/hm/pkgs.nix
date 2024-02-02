@@ -561,7 +561,7 @@
         fd # A simple, fast and user-friendly alternative to find
         pueue # A daemon for managing long running shell commands
         fzf # Command-line fuzzy finder
-        sysz # A fzf terminal UI for systemctl
+        systemctl-tui
         xplr # A hackable, minimal, fast TUI file explorer
         nnn # file browser forked from noice
       ];
