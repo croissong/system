@@ -19,6 +19,13 @@
     };
   };
 
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = [pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk];
+    configPackages = [pkgs.sway];
+  };
+
   services = {
     swayidle = {
       enable = true;
