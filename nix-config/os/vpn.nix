@@ -7,6 +7,15 @@
   services = {
     strongswan-swanctl = {
       enable = true;
+      strongswan.extraConfig = ''
+        charon {
+          plugins {
+            resolve {
+              load = false
+            }
+          }
+        }
+      '';
       swanctl = {
         connections = {
           vpn-wrk = {
