@@ -12,6 +12,7 @@
       playerctl
       spotify-player
       steamcmd
+      tor
 
       ## maybe/on-demand/unused
       # parsec-bin # Remote gaming streaming service client
@@ -51,7 +52,6 @@
     cli = {
       dev = [
         step-cli # A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc.
-        skopeo # A command line utility for various operations on container images
         grex # cli for generating regular expressions from user-provided test cases
 
         ## maybe/on-demand/unused
@@ -59,6 +59,7 @@
         # cocogitto # The Conventional Commits & semver toolbox
         # kubeconform # Tool for validating Kubernetes YAML or JSON configuration files
         # kubernetes-polaris # Validate and remediate Kubernetes resources
+        # skopeo # A command line utility for various operations on container images
       ];
 
       media = [
@@ -178,8 +179,8 @@
 
         ouch # Painless compression and decompression in the terminal (git version)
 
+        ookla-speedtest # Internet speedtest tool
         podman # Tool and library for running OCI-based containers in pods
-        # TODO: aardvark-dns
         podman-compose # A script to run docker-compose.yml using podman
 
         rsync # Fast incremental file transfer utility
@@ -203,7 +204,6 @@
 
         ## maybe/on-demand/unused
         # nerdctl # CLI for containerd
-        # ookla-speedtest # Internet speedtest tool
         # python3Packages.graphtage # diff tree-like files such as JSON and XML
       ];
     };
@@ -602,6 +602,7 @@
         lm_sensors
         procs # A modern replacement for ps written in Rust
         xdg-ninja # A shell script which checks your $HOME for unwanted files and directories
+        xdg-utils
 
         gtrash
 
