@@ -343,6 +343,7 @@
         misc = [
           go-jsonnet
           xxHash # Extremely fast hash algorithm
+          nim
         ];
 
         c = [

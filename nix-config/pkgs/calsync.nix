@@ -1,11 +1,9 @@
-{
-  pkgs,
-  writeShellApplication,
-}:
-writeShellApplication {
+{buildNimPackage}:
+buildNimPackage {
   name = "calsync";
 
-  runtimeInputs = with pkgs; [vdirsyncer davmail khal coreutils nmap];
-
-  text = builtins.readFile ./calsync.sh;
+  unpackPhase = ''
+    cp $src/* .
+  '';
+  src = ./calsync;
 }
