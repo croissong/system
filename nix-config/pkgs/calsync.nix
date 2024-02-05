@@ -14,6 +14,6 @@ buildNimPackage {
   nativeBuildInputs = [makeWrapper];
   postInstall = ''
     wrapProgram $out/bin/calsync \
-      --suffix PATH : ${with pkgs; lib.makeBinPath [vdirsyncer davmail khal]}
+      --suffix PATH : ${with pkgs; lib.makeBinPath [vdirsyncer davmail khal coreutils]}
   '';
 }
