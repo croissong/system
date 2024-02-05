@@ -155,7 +155,7 @@
 
         Service = {
           Type = "oneshot";
-          ExecStart = "${pkgs.calsync.out}/bin/calsync";
+          ExecStart = "${pkgs.calsync.out}/bin/calsync --noninteractive";
           ExecStopPost = "${pkgs.service-status.out}/bin/service-status calsync";
         };
       };
