@@ -2,9 +2,13 @@
   config,
   outputs,
   pkgs,
+  lib,
   ...
 }: {
   # view packet counts: sudo swanctl --list-sas
+
+  # don't auto start at boot
+  systemd.services.strongswan-swanctl.wantedBy = lib.mkForce [];
 
   services = {
     strongswan-swanctl = {
