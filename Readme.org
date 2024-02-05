@@ -1,0 +1,2 @@
+- nix-config based on https://github.com/Misterio77/nix-starter-configs
+- complementary dotfiles: https://github.com/Croissong/dotfiles
