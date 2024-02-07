@@ -302,13 +302,9 @@
         helix #  A post-modern modal text editor
         stylua # Code formatter for Lua
         treefmt
-        dprint # Code formatting platform written in Rust
-        tokei # A program that allows you to count your code, quickly
-        tree-sitter-grammars.tree-sitter-yaml
         devbox # Instant, easy, predictable shells and containers.
         direnv # A shell extension that manages your environment
         nix-direnv-flakes # A fast, persistent use_nix implementation for direnv
-        # tree-sitter-grammars.tree-sitter-toml
 
         nuspell
         enchant
@@ -317,6 +313,8 @@
 
         ## maybe/on-demand/unused
         # focuswriter # Simple, distraction-free writing environment
+        # dprint # Code formatting platform written in Rust
+        # tokei # A program that allows you to count your code, quickly
       ];
 
       lang = {
@@ -333,11 +331,11 @@
         ];
 
         java = [
-          visualvm # A visual interface for viewing information about Java application
           jetbrains.idea-community # IDE by Jetbrains, community edition
 
           ## maybe/on-demand/unused
           # eclipse-mat # Fast and feature-rich Java heap analyzer
+          # visualvm # A visual interface for viewing information about Java application
         ];
 
         misc = [
@@ -347,7 +345,8 @@
         ];
 
         c = [
-          rtags # C/C++ client-server indexer based on clang
+          ## maybe/on-demand/unused
+          # rtags # C/C++ client-server indexer based on clang
         ];
 
         frameworks = [
