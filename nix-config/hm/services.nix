@@ -15,6 +15,7 @@
           password_cmd = "cat ${config.sops.secrets."spotify/password".path}";
           device_name = "nix";
           backend = "pulseaudio";
+          initial_volume = "75";
         };
       };
     };
