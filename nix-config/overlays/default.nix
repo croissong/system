@@ -10,9 +10,6 @@
       versions = versions;
     };
 
-  # This one contains whatever you want to overlay
-  # You can change versions, add patches, set compilation flags, anything really.
-  # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
     # TODO: PR for https://github.com/NixOS/nixpkgs/issues/237886
     kubeswitch = prev.kubeswitch.overrideAttrs (oldAttrs: {
@@ -20,9 +17,7 @@
 
       postInstall = ''
         mv $out/bin/main $out/bin/switcher
-        mkdir $out/share
-        $out/bin/switcher init zsh > $out/share/switch.zsh
-        installShellCompletion --cmd switch --zsh <($out/bin/switcher completion --cmd switch zsh)
+        installShellCompletion --cmd switch --fish <($out/bin/switcher completion --cmd switch fish)
       '';
 
       doCheck = false;

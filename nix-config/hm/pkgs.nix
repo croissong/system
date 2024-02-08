@@ -303,8 +303,6 @@
         stylua # Code formatter for Lua
         treefmt
         devbox # Instant, easy, predictable shells and containers.
-        direnv # A shell extension that manages your environment
-        nix-direnv-flakes # A fast, persistent use_nix implementation for direnv
 
         nuspell
         enchant

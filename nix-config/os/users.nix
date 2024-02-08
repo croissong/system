@@ -5,6 +5,11 @@
 }: {
   sops.secrets.hashedPassword.neededForUsers = true;
 
+  programs = {
+    zsh.enable = true;
+    fish.enable = true;
+  };
+
   users = {
     mutableUsers = false;
 
@@ -17,7 +22,7 @@
         isNormalUser = true;
         hashedPasswordFile = config.sops.secrets.hashedPassword.path;
         extraGroups = ["wheel"];
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
       };
     };
   };

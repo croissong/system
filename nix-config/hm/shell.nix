@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs = {
     zsh = {
       enable = true;
@@ -21,5 +25,48 @@
         fi
       '';
     };
+
+    fish = {
+      enable = true;
+      interactiveShellInit = ''
+        source $__fish_config_dir/conf.d/config.fish
+      '';
+      plugins = with pkgs.fishPlugins; [
+        {
+          name = "fzf-fish";
+          src = fzf-fish.src;
+        }
+      ];
+    };
+
+    starship = {
+      enable = true;
+      enableTransience = true;
+      enableZshIntegration = false;
+    };
+
+    atuin = {
+      enable = true;
+      enableZshIntegration = false;
+      flags = ["--disable-up-arrow"];
+    };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = false;
+      options = ["--cmd" "c"];
+    };
+
+    direnv = {
+      enable = true;
+      enableZshIntegration = false;
+      nix-direnv.enable = true;
+    };
+
+    broot = {
+      enable = true;
+    };
+
+    # TODO: yazi?
   };
 }
