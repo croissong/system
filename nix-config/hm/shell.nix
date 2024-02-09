@@ -28,6 +28,7 @@
 
     fish = {
       enable = true;
+      functions = import ./fish-functions.nix;
       plugins = with pkgs.fishPlugins; [
         {
           name = "fzf-fish";
