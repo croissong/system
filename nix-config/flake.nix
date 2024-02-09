@@ -31,8 +31,8 @@
     };
 
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/27805ccec0cd57b4dd2e6768f9df769d3e62ca77";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/emacs-overlay/master";
+      # no input overrides to use binary cache
     };
 
     tree-grepper = {
