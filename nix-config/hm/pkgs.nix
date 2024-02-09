@@ -357,11 +357,11 @@
         ];
 
         db = [
-          sqlcmd # A command line tool for working with Microsoft SQL Server, Azure SQL Database
-          redli # A humane alternative to the Redis-cli and TLS
           usql # A universal command-line interface for SQL databases
 
           ## maybe/on-demand/unused
+          # sqlcmd # A command line tool for working with Microsoft SQL Server, Azure SQL Database
+          # redli # A humane alternative to the Redis-cli and TLS
           # mongosh # The MongoDB Shell
           # mongodb-tools
           # cassandra # (for cqlsh)
@@ -572,19 +572,6 @@
     };
 
     pim = {
-      all = [
-        davmail # A Java application which presents a Microsoft Exchange server as local CALDAV, IMAP and SMTP servers
-
-        khal # CLI calendar application build around CalDAV
-        khard # Console carddav client
-        mailctl # Provide IMAP/SMTP clients with OAuth2 credentials
-        mu # A collection of utilities for indexing and searching Maildirs
-        mblaze #  maildir utils
-
-        ## maybe/on-demand/unused
-        # swaks # Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
-      ];
-
       bookmarks = [
         buku # Private cmdline bookmark manager
       ];

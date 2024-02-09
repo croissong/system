@@ -6,8 +6,22 @@
 }: {
   nixpkgs.overlays = [
     (self: super: {
-      isync = super.isync.override {withCyrusSaslXoauth2 = true;};
+      isync = super.isync.override {
+        withCyrusSaslXoauth2 = true;
+      };
     })
+  ];
+
+  home.packages = with pkgs; [
+    davmail
+    khal
+    khard
+    mailctl
+
+    ## maybe/on-demand/unused
+    # swaks # Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
+    # mu # A collection of utilities for indexing and searching Maildirs
+    # mblaze #  maildir utils
   ];
 
   programs = {
@@ -21,7 +35,9 @@
 
     himalaya = {
       enable = true;
-      # package = pkgs.himalaya.override {withNotmuch = true;};
+      package = pkgs.himalaya.override {
+        buildFeatures = ["notmuch"];
+      };
     };
 
     notmuch = {
@@ -38,7 +54,7 @@
   };
 
   accounts = {
-    email = {
+    email = rec {
       maildirBasePath = ".local/share/mail";
 
       accounts = {
@@ -47,7 +63,7 @@
           primary = true;
           flavor = "outlook.office365.com";
           realName = "Jan Möller";
-          passwordCommand = "mailctl access ${outputs.vars.mail.wrk.username}";
+          passwordCommand = "${pkgs.mailctl}/bin/mailctl access ${outputs.vars.mail.wrk.username}";
           gpg = {
             signByDefault = true;
             key = "jan.moeller0@gmail.com";
