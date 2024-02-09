@@ -28,9 +28,6 @@
 
     fish = {
       enable = true;
-      interactiveShellInit = ''
-        source $__fish_config_dir/conf.d/config.fish
-      '';
       plugins = with pkgs.fishPlugins; [
         {
           name = "fzf-fish";

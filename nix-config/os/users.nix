@@ -1,13 +1,18 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   sops.secrets.hashedPassword.neededForUsers = true;
 
   programs = {
     zsh.enable = true;
-    fish.enable = true;
+    fish = {
+      enable = true;
+      # unset default 'ls' aliases, which take precedence over custom fish functions...
+      shellAliases = lib.mkForce {};
+    };
   };
 
   users = {
