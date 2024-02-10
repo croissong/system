@@ -7,5 +7,10 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+
+    kernelParams = [
+      # Allow flashrom to work
+      "iomem=relaxed"
+    ];
   };
 }

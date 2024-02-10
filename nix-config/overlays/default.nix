@@ -11,6 +11,8 @@
     };
 
   modifications = final: prev: {
+    flashrom = import ./flashrom.nix {inherit final prev;};
+
     # TODO: PR for https://github.com/NixOS/nixpkgs/issues/237886
     kubeswitch = prev.kubeswitch.overrideAttrs (oldAttrs: {
       nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [final.installShellFiles];
