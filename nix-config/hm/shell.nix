@@ -2,7 +2,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  fish = import ./fish.nix;
+in {
   programs = {
     zsh = {
       enable = true;
@@ -28,7 +30,8 @@
 
     fish = {
       enable = true;
-      functions = import ./fish-functions.nix;
+      functions = fish.functions;
+      shellAbbrs = fish.abbreviations;
       plugins = with pkgs.fishPlugins; [
         {
           name = "fzf-fish";
