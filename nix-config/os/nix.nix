@@ -6,6 +6,7 @@
       experimental-features = "nix-command flakes";
       accept-flake-config = true;
       auto-optimise-store = true;
+      use-xdg-base-directories = true;
 
       substituters = [
         "https://nix-community.cachix.org"

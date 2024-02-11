@@ -1,7 +1,16 @@
-{pkgs, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   fish = import ./fish.nix;
 in {
   programs = {
+    bash = {
+      enable = true;
+      historyFile = "${config.xdg.stateHome}/bash/history";
+    };
+
     fish = {
       enable = true;
       functions = fish.functions;

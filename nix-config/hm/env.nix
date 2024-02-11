@@ -29,13 +29,15 @@
 
     # dot overrides sponsored by xdg-ninja
     AZURE_CONFIG_DIR = "${config.xdg.dataHome}/azure";
+    ELECTRUMDIR = "${config.xdg.dataHome}/electrum";
+    DOCKER_CONFIG = "${config.xdg.configHome}/docker";
     GRADLE_USER_HOME = "${config.xdg.dataHome}/gradle";
     GRIPHOME = "${config.xdg.configHome}/grip";
-    DOCKER_CONFIG = "${config.xdg.configHome}/docker";
-    ELECTRUMDIR = "${config.xdg.dataHome}/electrum";
+    NIMBLE_DIR = "${config.xdg.dataHome}/nimble";
+    LESSHISTFILE = "${config.xdg.stateHome}/less/history";
+    PSQL_HISTORY = "${config.xdg.dataHome}/psql_history";
     RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
     VAGRANT_HOME = "${config.xdg.dataHome}/vagrant";
-    PSQL_HISTORY = "${config.xdg.dataHome}/psql_history";
   };
 
   xdg = {
