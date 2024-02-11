@@ -27,7 +27,6 @@
         isNormalUser = true;
         hashedPasswordFile = config.sops.secrets.hashedPassword.path;
         extraGroups = ["wheel"];
-        shell = pkgs.fish;
       };
     };
   };

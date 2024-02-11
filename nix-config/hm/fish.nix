@@ -125,7 +125,7 @@
     };
 
     rt = {
-      wraps = "gtrash";
+      wraps = "gtrash put";
       body = "gtrash put $argv";
     };
 

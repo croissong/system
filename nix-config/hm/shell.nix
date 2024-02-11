@@ -1,37 +1,16 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   fish = import ./fish.nix;
 in {
   programs = {
-    zsh = {
-      enable = true;
-      dotDir = ".config/zsh";
-      history = {
-        path = "${config.xdg.dataHome}/zsh/zsh_history";
-        ignoreAllDups = true;
-        ignorePatterns = ["ls *" "pwd"];
-      };
-
-      defaultKeymap = "emacs";
-
-      initExtra = ''
-        . ${config.xdg.configHome}/zsh/config.zsh
-      '';
-
-      profileExtra = ''
-        if [ "$(tty)" = "/dev/tty1" ]; then
-          exec sway
-        fi
-      '';
-    };
-
     fish = {
       enable = true;
       functions = fish.functions;
       shellAbbrs = fish.abbreviations;
+      loginShellInit = ''
+        if test (tty) = "/dev/tty1"
+          exec sway
+        end
+      '';
       plugins = with pkgs.fishPlugins; [
         {
           name = "fzf-fish";
