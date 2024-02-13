@@ -71,7 +71,11 @@
       body = "handlr open $argv";
     };
 
-    history = "history --show-time $argv";
+    history = {
+      wraps = "history";
+      body = "history --show-time $argv";
+    };
+
     tree = {
       wraps = "eza";
       body = "eza --tree $argv";
@@ -136,7 +140,11 @@
       body = "pueue $argv";
     };
 
-    topgrade = "topgrade --show-skipped $argv";
+    topgrade = {
+      wraps = "topgrade";
+      body = "topgrade --show-skipped $argv";
+    };
+
     rename = {
       wraps = "vidir";
       body = "vidir $argv";
@@ -170,8 +178,8 @@
     };
 
     sysu = {
-      wraps = "systemctl";
-      body = "sys --user $argv";
+      wraps = "systemctl --user";
+      body = "systemctl --user $argv";
     };
 
     susp = "systemctl suspend";
