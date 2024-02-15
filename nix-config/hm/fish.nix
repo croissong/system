@@ -71,10 +71,7 @@
       body = "handlr open $argv";
     };
 
-    history = {
-      wraps = "history";
-      body = "history --show-time $argv";
-    };
+    history = "command history --show-time $argv";
 
     tree = {
       wraps = "eza";
@@ -140,10 +137,7 @@
       body = "pueue $argv";
     };
 
-    topgrade = {
-      wraps = "topgrade";
-      body = "topgrade --show-skipped $argv";
-    };
+    topgrade = "command topgrade --show-skipped $argv";
 
     rename = {
       wraps = "vidir";
