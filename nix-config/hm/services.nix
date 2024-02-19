@@ -5,12 +5,13 @@
   pkgs,
   ...
 }: {
+  # don't auto start at boot
+  systemd.user.services.keybase.Install.WantedBy = lib.mkForce [];
+
   services = {
     kdeconnect.enable = true;
 
     keybase.enable = true;
-    # don't auto start at boot
-    systemd.user.services.keybase.Install.WantedBy = lib.mkForce [];
 
     spotifyd = {
       enable = true;
