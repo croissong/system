@@ -21,7 +21,17 @@
     StateDirectory = "dnscrypt-proxy";
   };
 
+  # apparently not automatically written, when not using one of the "dns managers"
+  environment.etc = {
+    "resolv.conf".text = ''
+      nameserver 127.0.0.1
+      options edns0
+    '';
+  };
   networking = {
+    resolvconf.enable = false;
+    nameservers = ["127.0.0.1" "::1"];
+
     hostName = "bon";
     useNetworkd = true;
     wireless.iwd = {
