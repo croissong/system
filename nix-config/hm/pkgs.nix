@@ -318,11 +318,11 @@
       lang = {
         webdev = [
           nodejs_latest
-          yarn # Fast, reliable, and secure dependency management
-          nodePackages.pnpm
+          bun # JavaScript runtime, bundler, transpiler and package manager
 
-          nodePackages.npm-check-updates # Find newer versions of dependencies than what your package.json allows
           nodePackages.typescript-language-server # Language Server Protocol (LSP) implementation for TypeScript using tsserver
+
+          nodePackages.prettier # An opinionated code formatter for JS, JSON, CSS, YAML and much more
 
           ## maybe/on-demand/unused
           # deno # A secure runtime for JavaScript and TypeScript
@@ -714,7 +714,6 @@
       # mitmproxy # SSL-capable man-in-the-middle HTTP proxy
       prometheus # for promtool promql format
       protobuf # Google's data interchange format
-      nodePackages.prettier # An opinionated code formatter for JS, JSON, CSS, YAML and much more
 
       ## maybe/on-demand/unused
       # caddy # Fast, cross-platform HTTP/2 web server with automatic HTTPS
