@@ -70,6 +70,13 @@
     };
   };
 
+  nixpkgs-pr = final: _prev: {
+    nixpkgs-pr = import inputs.nixpkgs-pr {
+      system = final.system;
+      config.allowUnfree = true;
+    };
+  };
+
   emacs-overlay = final: _prev: {
     emacs-overlay = import inputs.nixpkgs {
       system = final.system;

@@ -19,6 +19,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-pr.url = "github:r-ryantm/nixpkgs/auto-update/updatecli";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";

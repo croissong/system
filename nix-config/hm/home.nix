@@ -31,6 +31,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.stable-packages
+      outputs.overlays.nixpkgs-pr
       outputs.overlays.emacs-overlay
       outputs.overlays.tree-grepper
     ];
