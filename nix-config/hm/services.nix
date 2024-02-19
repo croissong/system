@@ -1,11 +1,14 @@
 {
   config,
+  lib,
   outputs,
   pkgs,
   ...
 }: {
   services = {
     kdeconnect.enable = true;
+
+    keybase.enable = true;
 
     spotifyd = {
       enable = true;
@@ -29,8 +32,11 @@
   };
 
   systemd.user = {
-    # https://github.com/francma/wob/tree/master/contrib/systemd
     services = {
+      # don't auto start at boot
+      keybase.Install.WantedBy = lib.mkForce [];
+
+      # https://github.com/francma/wob/tree/master/contrib/systemd
       wob = {
         Unit = {
           Description = "A lightweight overlay volume/backlight/progress/anything bar for Wayland";
