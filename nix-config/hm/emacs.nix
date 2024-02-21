@@ -4,6 +4,7 @@
       epkgs:
         with epkgs; [
           jinx
+          auctex
           treesit-grammars.with-all-grammars
         ]
     );
