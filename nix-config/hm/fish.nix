@@ -103,7 +103,7 @@
       body = "viddy $argv";
     };
 
-    pkill = "pkill -f -e $argv";
+    pkill = "command pkill -f -e $argv";
 
     df = {
       wraps = "duf";
