@@ -600,7 +600,9 @@
         erdtree # File-tree visualizer and disk usage analyzer
         dua # A tool to conveniently learn about the disk usage of directories, fast!
         duf # Disk Usage/Free Utility
-        czkawka # remove unnecessary files from your computer
+
+        ## maybe/on-demand/unused
+        # czkawka # remove unnecessary files from your computer
       ];
     };
 
