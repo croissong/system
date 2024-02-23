@@ -12,6 +12,7 @@
   sane-scan-pdf = pkgs.callPackage ./sane-scan-pdf.nix {inherit versions;};
   xmlformatter = pkgs.callPackage ./xmlformatter.nix {inherit versions;};
   service-status = pkgs.callPackage ./service-status.nix {};
+  spotify-backup = pkgs.callPackage ./spotify-backup.nix {};
   sttr = pkgs.callPackage ./sttr.nix {inherit versions;};
   wutag = pkgs.callPackage ./wutag.nix {inherit versions;};
 
