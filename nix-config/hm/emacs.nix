@@ -16,5 +16,5 @@ in {
     defaultEditor = true;
   };
 
-  home.packages = [package];
+  home.packages = [package pkgs.emacs-lsp-booster];
 }
