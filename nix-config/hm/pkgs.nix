@@ -10,6 +10,8 @@
 
     ent = [
       playerctl
+      spotify
+      spotify-backup
       spotify-player
       steamcmd
       tor
@@ -53,6 +55,7 @@
       dev = [
         step-cli # A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc.
         grex # cli for generating regular expressions from user-provided test cases
+        oauth2c # User-friendly OAuth2 CLI
 
         ## maybe/on-demand/unused
         # angle-grinder # Slice and dice logs on the command line
