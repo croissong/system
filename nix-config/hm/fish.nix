@@ -268,7 +268,7 @@
       body = "podman $argv";
     };
 
-    summon = "summon -f summon.yml";
+    summon = "command summon -f summon.yml";
 
     mvnpkg = "mvn package -DskipTests";
     mvndep = "mvn dependency:resolve -Dclassifier=sources";
