@@ -9,8 +9,7 @@
   imports = [
     inputs.sops-nix.homeManagerModules.sops
 
-    # TODO
-    # ./backup.nix
+    ./backup.nix
     ./dev.nix
     ./emacs.nix
     ./env.nix

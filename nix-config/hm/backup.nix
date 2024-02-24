@@ -13,7 +13,7 @@
         Service = {
           Type = "oneshot";
           ExecStart = "${pkgs.autorestic}/bin/autorestic --ci cron";
-          ExecStopPost = "${config.home.homeDirectory}/.local/bin/service-status.sh backup";
+          ExecStopPost = "${pkgs.service-status.out}/bin/service-status backup";
         };
       };
 
@@ -23,7 +23,7 @@
         };
         Service = {
           ExecStart = ''
-            ${config.home.homeDirectory}/.nix-profile/bin/gitwatch -s 30 -m "chore: update docs" ${config.home.homeDirectory}/Docs/org/
+            ${config.home.homeDirectory}/.nix-profile/bin/gitwatch -s 30 -m "chore: update docs" ${config.home.homeDirectory}/dot/notes/
           '';
           ExecStop = "/bin/true";
         };
