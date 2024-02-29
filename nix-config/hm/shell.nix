@@ -9,17 +9,15 @@ in {
     bash = {
       enable = true;
       historyFile = "${config.xdg.stateHome}/bash/history";
+      profileExtra = ''
+        [ "$(tty)" = "/dev/tty1" ] && exec sway
+      '';
     };
 
     fish = {
       enable = true;
       functions = fish.functions;
       shellAbbrs = fish.abbreviations;
-      loginShellInit = ''
-        if test (tty) = "/dev/tty1"
-          exec sway
-        end
-      '';
       plugins = with pkgs.fishPlugins; [
         {
           name = "fzf-fish";
