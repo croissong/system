@@ -55,7 +55,7 @@
       dev = [
         step-cli # A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc.
         grex # cli for generating regular expressions from user-provided test cases
-        oauth2c # User-friendly OAuth2 CLI
+        oauth2c # (step-cli fallback...) User-friendly OAuth2 CLI
 
         ## maybe/on-demand/unused
         # angle-grinder # Slice and dice logs on the command line
@@ -222,6 +222,7 @@
         rustscan # Faster Nmap Scanning with Rust
         socat # Utility for bidirectional data transfer between two independent data channels
         sshuttle # Transparent proxy server that works as a poor man's VPN
+        sshfs
         upterm # Secure terminal-session sharing
         sslscan # Tests SSL/TLS services and discover supported cipher suites
         websocat # Command-line client for WebSockets (like netcat/socat)
@@ -649,7 +650,6 @@
       quickemu # Quickly create and run optimised Windows, macOS and Linux desktop virtual machines.
 
       ## maybe/on-demand/unused
-      # incus
       # distrobuilder # System container image builder for LXC and LXD
       # libguestfs # Access and modify virtual machine disk images
       # vagrant # Build and distribute virtualized development environments
