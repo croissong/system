@@ -1,0 +1,13 @@
+## Minimal VM
+
+#+begin_src shell
+incus launch images:nixos/unstable nix --vm -c security.secureboot=false
+incus exec nix bash
+# incus console nix
+
+
+incus file pull nix/etc/nixos/configuration.nix ~/tmp/nixos/configuration.nix
+chmod +w ~/tmp/nixos/configuration.nix
+incus file push ~/tmp/nixos/configuration.nix nix/etc/nixos/configuration.nix
+
+#+end_src

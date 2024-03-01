@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }: {
@@ -26,7 +25,7 @@
       moi = {
         isNormalUser = true;
         hashedPasswordFile = config.sops.secrets.hashedPassword.path;
-        extraGroups = ["wheel"];
+        extraGroups = ["wheel" "incus-admin"];
       };
     };
   };
