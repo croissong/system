@@ -19,7 +19,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixpkgs-pr.url = "github:r-ryantm/nixpkgs/auto-update/updatecli";
+    # nixpkgs-pr.url = "github:r-ryantm/nixpkgs/auto-update/updatecli";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -53,15 +53,9 @@
   outputs = {
     self,
     nixpkgs,
-    nix-index-database,
-    home-manager,
-    sops-nix,
-    emacs-overlay,
-    tree-grepper,
     ...
   } @ inputs: let
     inherit (self) outputs;
-    # Supported systems for your flake packages, shell, etc.
     systems = [
       "x86_64-linux"
     ];
@@ -85,7 +79,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./os/configuration.nix
-          sops-nix.nixosModules.sops
+          inputs.sops-nix.nixosModules.sops
         ];
       };
 
@@ -102,12 +96,12 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "moi@bon" = home-manager.lib.homeManagerConfiguration {
+      "moi@bon" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./hm/home.nix
-          nix-index-database.hmModules.nix-index
+          inputs.nix-index-database.hmModules.nix-index
         ];
       };
     };
