@@ -678,6 +678,7 @@
       alejandra # The Uncompromising Nix Code Formatter
       cachix
       hydra-check # check hydra for the build status of a package
+      nh # Yet another nix cli helper
       nil # Yet another language server for Nix
       nixos-generators
       nix-prefetch-git #  Script used to obtain source hashes for fetchgit
