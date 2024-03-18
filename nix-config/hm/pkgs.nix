@@ -164,6 +164,8 @@
         dig
         dogdns # Command-line DNS client like dig
 
+        gnumake
+
         oath-toolkit # oathtool
         gopass # The slightly more awesome standard unix password manager for teams.
         gopass-summon-provider # summon provider for gopass
