@@ -12,6 +12,7 @@
       # unset default 'ls' aliases, which take precedence over custom fish functions...
       shellAliases = lib.mkForce {};
     };
+    command-not-found.enable = false;
   };
 
   users = {
