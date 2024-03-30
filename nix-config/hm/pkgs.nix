@@ -217,10 +217,12 @@
       net = [
         checkip # CLI tool that checks an IP address using various public services
         gping # Ping, but with a graph
+        inetutils # telnet
         xh # Friendly and fast tool for sending HTTP requests
         mtr # Combines the functionality of traceroute and ping
         rustcat # Port listener and reverse shell (netcat clone)
         nmap # A free and open source utility for network discovery and security auditing
+        openssl
         rustscan # Faster Nmap Scanning with Rust
         socat # Utility for bidirectional data transfer between two independent data channels
         sshuttle # Transparent proxy server that works as a poor man's VPN
@@ -375,7 +377,7 @@
       };
 
       util = [
-        dtool # CLI tool collection to assist development
+        stable.dtool # CLI tool collection to assist development
       ];
 
       data = [

@@ -42,7 +42,7 @@
         owner = "~ayushnix";
         repo = oldAttrs.pname;
         rev = "master";
-        sha256 = "sha256-Kn9d7/xtdhDACANU4NlS+Ap8boHGbZfN6yAfPcRs0tA=";
+        sha256 = "sha256-mVGsI1JBG7X8J7gqocdfxWuTVSZpxS23QPGHCUofvV8=";
       };
     });
 
