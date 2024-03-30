@@ -6,6 +6,5 @@
     git
     gnupg
     home-manager
-    nvramtool
   ];
 }

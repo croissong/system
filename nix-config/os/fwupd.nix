@@ -5,7 +5,9 @@
       package = pkgs.fwupd.override {
         enableFlashrom = true;
       };
-      extraRemotes = ["lvfs-testing"];
+      extraRemotes = [
+        # "lvfs-testing"
+      ];
     };
   };
 

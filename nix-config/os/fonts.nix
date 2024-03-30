@@ -10,7 +10,7 @@
     fontconfig = {
       defaultFonts = {
         serif = ["Noto Serif"];
-        sansSerif = ["Noto San"];
+        sansSerif = ["Noto Sans"];
         monospace = ["Hack"];
       };
     };
