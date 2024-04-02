@@ -22,7 +22,7 @@
       loop-file = "inf";
       force-window = "";
       deband = "";
-      ytdl-format = "bestvideo+bestaudio";
+      ytdl-format = "bestvideo[height<=?1080]+bestaudio/best";
       sub = "no";
       fs = "yes";
       no-resume-playback = "";
