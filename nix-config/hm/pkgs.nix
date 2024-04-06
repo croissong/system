@@ -2,6 +2,7 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   packages_dict = with pkgs; {
@@ -48,6 +49,7 @@
     dot = [
       calsync
       chezmoi # Manage your dotfiles across multiple machines
+      inputs.esplanade.packages.${pkgs.system}.default
       updatecli # Continuously update everything
     ];
 

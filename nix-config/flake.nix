@@ -46,6 +46,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    esplanade.url = "git+ssh://git@github.com/croissong/hieroglyph";
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
   };
