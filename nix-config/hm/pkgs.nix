@@ -330,9 +330,10 @@
           nodejs_latest
           bun # JavaScript runtime, bundler, transpiler and package manager
 
-          nodePackages.typescript-language-server # Language Server Protocol (LSP) implementation for TypeScript using tsserver
+          nodePackages.typescript-language-server
 
-          nodePackages.prettier # An opinionated code formatter for JS, JSON, CSS, YAML and much more
+          nodePackages.prettier
+          nodePackages.prettier-plugin-toml
 
           ## maybe/on-demand/unused
           # deno # A secure runtime for JavaScript and TypeScript
