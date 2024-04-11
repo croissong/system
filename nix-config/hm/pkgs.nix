@@ -562,10 +562,7 @@
       ];
 
       core = [
-        wezterm
-        atuin # Replacement for a shell history which records additional commands context
         handlr-regex
-        sheldon # Fast, configurable, shell plugin manager
       ];
     };
 

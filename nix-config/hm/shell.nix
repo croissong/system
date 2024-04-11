@@ -26,6 +26,11 @@ in {
       ];
     };
 
+    wezterm = {
+      enable = true;
+      extraConfig = builtins.readFile ./wezterm.lua;
+    };
+
     starship = {
       enable = true;
       enableTransience = true;
