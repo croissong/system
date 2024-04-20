@@ -16,6 +16,7 @@
       spotify-player
       steamcmd
       tor
+      tor-browser
 
       ## maybe/on-demand/unused
       # parsec-bin # Remote gaming streaming service client
@@ -466,6 +467,7 @@
         })
         wl-clipboard
         wtype
+        wev # Wayland event viewer & key events
       ];
 
       docs = [
@@ -689,7 +691,7 @@
       # ansible-lint # Checks playbooks for practices and behaviour that could potentially be improved.
       # dhcping # Send DHCP request to find out if a DHCP server is running
       # frp # A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.
-      # ngrok # secure introspectable tunnels to localhost
+      ngrok # secure introspectable tunnels to localhost
       # rathole # A reverse proxy for NAT traversal
       # python3Packages.mitogen # Python Library for writing distributed self-replicating programs
       # python3Packages.qrcode # Quick Response code generation for Python
