@@ -1,6 +1,4 @@
 {
-  description = "Your new nix config";
-
   nixConfig = {
     extra-substituters = [
       "https://cache.nixos.org"
@@ -46,10 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    esplanade.url = "git+ssh://git@github.com/croissong/hieroglyph";
-
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
+    esplanade.url = "git+ssh://git@github.com/croissong/esplanade";
   };
 
   outputs = {
@@ -61,8 +56,6 @@
     systems = [
       "x86_64-linux"
     ];
-    # This is a function that generates an attribute by calling a function you
-    # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in rec {
     versions = builtins.fromJSON (builtins.readFile ./versions.json);
