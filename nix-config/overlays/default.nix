@@ -13,18 +13,6 @@
   modifications = final: prev: {
     flashrom = import ./flashrom.nix {inherit final prev;};
 
-    # TODO: PR for https://github.com/NixOS/nixpkgs/issues/237886
-    kubeswitch = prev.kubeswitch.overrideAttrs (oldAttrs: {
-      nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [final.installShellFiles];
-
-      postInstall = ''
-        mv $out/bin/main $out/bin/switcher
-        installShellCompletion --cmd switch --fish <($out/bin/switcher completion --cmd switch fish)
-      '';
-
-      doCheck = false;
-    });
-
     termdown = prev.termdown.overrideAttrs (oldAttrs: rec {
       version = "1.18.0";
       src = final.fetchFromGitHub {
@@ -33,33 +21,6 @@
         repo = "termdown";
         owner = "trehn";
       };
-    });
-
-    tessen = prev.tessen.overrideAttrs (oldAttrs: {
-      version = "2.2.1-next";
-
-      src = final.fetchFromSourcehut {
-        owner = "~ayushnix";
-        repo = oldAttrs.pname;
-        rev = "master";
-        sha256 = "sha256-mVGsI1JBG7X8J7gqocdfxWuTVSZpxS23QPGHCUofvV8=";
-      };
-    });
-
-    systemctl-tui = prev.systemctl-tui.override (oldAttrs: {
-      rustPlatform.buildRustPackage = args:
-        final.rustPlatform.buildRustPackage (
-          args
-          // rec {
-            cargoHash = "sha256-X9+zbNJYma7pbXVWdF+poeFTPXRRWcAvQsqiO4dRt58=";
-            version = "0.3.1";
-            src = final.fetchCrate {
-              pname = args.pname;
-              version = version;
-              hash = "sha256-kioQvtHpKg4/oY5IWQd29dGkRnXNjvE0wKea1s7i5MA=";
-            };
-          }
-        );
     });
   };
 
