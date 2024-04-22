@@ -31,7 +31,6 @@
 
   functions = {
     fish_user_key_bindings = ''
-      bind --preset \\ pager-toggle-search
       bind --preset \t complete-and-search
       bind --preset \cw backward-kill-word
     '';
