@@ -67,7 +67,7 @@
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
 
-    vars = import /home/moi/dot/priv/vars.nix;
+    vars = builtins.fromTOML (builtins.readFile /home/moi/dot/priv/vars.toml);
 
     nixosConfigurations = {
       bon = nixpkgs.lib.nixosSystem {
