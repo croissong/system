@@ -110,22 +110,22 @@ local keys = { -- Turn off the default CMD-m Hide action on macOS by making it
     }),
   },
   {
-    key = "\\",
+    key = "RightArrow",
     mods = "CTRL|ALT",
     action = wezterm.action({ ActivatePaneDirection = "Right" }),
   },
   {
-    key = ";",
+    key = "LeftArrow",
     mods = "CTRL|ALT",
     action = wezterm.action({ ActivatePaneDirection = "Left" }),
   },
   {
-    key = "[",
+    key = "UpArrow",
     mods = "CTRL|ALT",
     action = wezterm.action({ ActivatePaneDirection = "Up" }),
   },
   {
-    key = "'",
+    key = "DownArrow",
     mods = "CTRL|ALT",
     action = wezterm.action({ ActivatePaneDirection = "Down" }),
   },
