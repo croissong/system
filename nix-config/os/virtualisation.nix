@@ -1,5 +1,6 @@
 {...}: {
   virtualisation = {
+    containers.enable = true;
     podman = {
       # https://nixos.wiki/wiki/Podman
       enable = true;
