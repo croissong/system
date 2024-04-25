@@ -262,11 +262,6 @@
 
     godeps = "go get -u all && go mod tidy";
 
-    docker = {
-      wraps = "podman";
-      body = "podman $argv";
-    };
-
     summon = "command summon -f summon.yml";
 
     mvnpkg = "mvn package -DskipTests";
