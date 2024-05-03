@@ -250,6 +250,7 @@
     };
 
     kcc = "kc h";
+    kce = "open .kube/config";
     kk = ''
       kubectl config view --minify -o jsonpath='{.contexts[0].context.cluster} {.contexts[0].context.namespace}{"\n"}'
     '';
