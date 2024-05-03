@@ -7,11 +7,23 @@
   additions = final: _prev:
     import ../pkgs {
       pkgs = final;
-      versions = versions;
+      system = final.system;
+      inherit inputs versions;
     };
 
   modifications = final: prev: {
     flashrom = import ./flashrom.nix {inherit final prev;};
+
+    gitwatch = final.writeShellApplication {
+      name = "gitwatch";
+      runtimeInputs = with final.pkgs; [git inotify-tools openssh coreutils gnugrep gnused];
+
+      bashOptions = ["errexit" "pipefail"];
+      checkPhase = "";
+      text = builtins.readFile (builtins.fetchurl {
+        url = "https://raw.githubusercontent.com/gitwatch/gitwatch/master/gitwatch.sh";
+      });
+    };
 
     termdown = prev.termdown.overrideAttrs (oldAttrs: rec {
       version = "1.18.0";

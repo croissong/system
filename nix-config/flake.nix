@@ -45,6 +45,11 @@
     };
 
     esplanade.url = "git+ssh://git@github.com/croissong/esplanade";
+
+    gitwatch = {
+      url = "github:gitwatch/gitwatch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -59,7 +64,8 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in rec {
     versions = builtins.fromJSON (builtins.readFile ./versions.json);
-    packages = forAllSystems (pkgs: import ./pkgs {inherit pkgs versions;});
+    packages =
+      forAllSystems (system: import ./pkgs {inherit system inputs versions;});
 
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
@@ -88,11 +94,9 @@
       };
     };
 
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
       "moi@bon" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./hm/home.nix

@@ -23,7 +23,7 @@
         };
         Service = {
           ExecStart = ''
-            ${config.home.homeDirectory}/.nix-profile/bin/gitwatch -s 30 -m "chore: update docs" ${config.home.homeDirectory}/dot/notes/
+            ${pkgs.gitwatch}/bin/gitwatch -s 30 -m "chore: update docs" ${config.home.homeDirectory}/dot/notes/org/
           '';
           ExecStop = "/bin/true";
         };
