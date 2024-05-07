@@ -57,12 +57,12 @@ local keys = { -- Turn off the default CMD-m Hide action on macOS by making it
     action = wezterm.action({ PasteFrom = "Clipboard" }),
   },
   {
-    key = "[",
+    key = "DownArrow",
     mods = "CTRL",
     action = wezterm.action({ ScrollByPage = -0.5 }),
   },
   {
-    key = "'",
+    key = "UpArrow",
     mods = "CTRL",
     action = wezterm.action({ ScrollByPage = 0.5 }),
   },
