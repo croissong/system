@@ -233,7 +233,9 @@
       body = "ouch decompress $argv";
     };
 
-    man = ''emacsclient -que '(progn (man "$argv") (select-frame-set-input-focus (selected-frame)))'';
+    man = ''
+      emacsclient -c -e "(let ((Man-notify-method 'bully)) (man \"$argv\"))"
+    '';
 
     #
     # Kubectl
