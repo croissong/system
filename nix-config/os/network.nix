@@ -36,6 +36,15 @@
     useNetworkd = true;
     wireless.iwd = {
       enable = true;
+      settings = {
+        General = {
+          # https://wiki.archlinux.org/title/iwd#iwd_keeps_roaming
+          # https://www.metageek.com/training/resources/understanding-rssi/
+          # iwctl station wlan0 show | grep RSSI
+          RoamThreshold = "-75";
+          RoamThreshold5G = "-80";
+        };
+      };
     };
     nftables.enable = true;
     firewall.enable = false;
