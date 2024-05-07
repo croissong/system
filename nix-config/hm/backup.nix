@@ -17,13 +17,13 @@
         };
       };
 
-      "gitwatch-org" = {
+      "gitwatch-notes" = {
         Unit = {
-          Description = "Gitwatch org docs";
+          Description = "Gitwatch notes";
         };
         Service = {
           ExecStart = ''
-            ${pkgs.gitwatch}/bin/gitwatch -s 30 -m "chore: update docs" ${config.home.homeDirectory}/dot/notes/org/
+            ${pkgs.gitwatch}/bin/gitwatch -s 30 -m "chore: update docs" ${config.home.homeDirectory}/dot/notes/
           '';
           ExecStop = "/bin/true";
         };
