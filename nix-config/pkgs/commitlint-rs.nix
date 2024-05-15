@@ -12,7 +12,7 @@ rustPlatform.buildRustPackage rec {
     rev = "v${version}";
     sha256 = versions.commitlint-rs.sha;
   };
-  cargoSha256 = "sha256-QxdG5BfIUDBWMfpFLMldZfmlvqnAurxiXKQmOQSrx94=";
+  cargoSha256 = "sha256-W6HkLCUoylgQQc2fFprmJeLH8KtpVUD4+BXWbNECVZ4=";
 
   meta = {
     homepage = "https://github.com/KeisukeYamashita/commitlint-rs";
