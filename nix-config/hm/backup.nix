@@ -23,7 +23,7 @@
         };
         Service = {
           ExecStart = ''
-            ${pkgs.gitwatch}/bin/gitwatch -s 30 -m "chore: update docs" ${config.home.homeDirectory}/dot/notes/
+            ${pkgs.gitwatch}/bin/gitwatch -s 600 -m "chore: update docs" ${config.home.homeDirectory}/dot/notes/
           '';
           ExecStop = "/bin/true";
         };
