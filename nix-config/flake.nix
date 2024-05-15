@@ -12,6 +12,8 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "tree-grepper.cachix.org-1:Tm/owXM+dl3GnT8gZg+GTI3AW+yX1XFVYXspZa7ejHg="
     ];
+
+    sandbox = "relaxed"; # esplanade (rust-skia)
   };
 
   inputs = {
