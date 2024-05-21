@@ -1,4 +1,4 @@
-{...}: {
+{outputs, ...}: {
   services = {
     fwupd.enable = true;
 
@@ -6,11 +6,29 @@
     # see https://nixos.wiki/wiki/Laptop
     tlp.enable = true;
 
-    # TODO: use nixos services + declarative config
     # https://nixos.wiki/wiki/Syncthing
-    # syncthing = {
-    #   enable = true;
-    # };
+    syncthing = {
+      enable = true;
+      user = "moi";
+      dataDir = "/home/moi/dot";
+      overrideDevices = true;
+      overrideFolders = true;
+      settings = {
+        devices = {
+          "phone" = {id = outputs.vars.syncthing.phoneDeviceId;};
+        };
+        folders = {
+          docs = {
+            path = "~/dot/docs";
+            devices = ["phone"];
+          };
+          notes = {
+            path = "~/dot/notes";
+            devices = ["phone"];
+          };
+        };
+      };
+    };
 
     upower = {
       enable = true;
