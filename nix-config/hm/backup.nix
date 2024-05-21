@@ -23,7 +23,23 @@
         };
         Service = {
           ExecStart = ''
-            ${pkgs.gitwatch}/bin/gitwatch -s 600 -m "chore: update docs" ${config.home.homeDirectory}/dot/notes/
+            ${pkgs.gitwatch}/bin/gitwatch -s 600 -m "chore: update notes" ${config.home.homeDirectory}/dot/notes/
+          '';
+          ExecStop = "/bin/true";
+        };
+
+        Install = {
+          WantedBy = ["default.target"];
+        };
+      };
+
+      "gitwatch-docs" = {
+        Unit = {
+          Description = "Gitwatch docs";
+        };
+        Service = {
+          ExecStart = ''
+            ${pkgs.gitwatch}/bin/gitwatch -s 600 -m "chore: update docs" ${config.home.homeDirectory}/dot/docs/
           '';
           ExecStop = "/bin/true";
         };
