@@ -48,6 +48,8 @@
 
     esplanade.url = "git+ssh://git@github.com/croissong/esplanade";
 
+    priv.url = "git+file:///home/moi/dot/priv";
+
     gitwatch = {
       url = "github:gitwatch/gitwatch";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -75,7 +77,7 @@
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
 
-    vars = builtins.fromTOML (builtins.readFile /home/moi/dot/priv/vars.toml);
+    vars = inputs.priv.vars;
 
     nixosConfigurations = {
       bon = nixpkgs.lib.nixosSystem {
