@@ -19,15 +19,17 @@
     kcrm = "k --kubeconfig ~/.kube/config config delete-context";
     kcmv = "k --kubeconfig ~/.kube/config config rename-context";
     kg = "k get -o yaml";
-    kgn = "k neat get -o yaml";
+    kgn = "k neat get";
     kd = "k describe";
-    kdf = "kf describe";
     kroll = "k rollout restart";
     kl = "stern --timestamps=short ";
     klj = "stern --template-file ~/.config/stern/stern.tpl";
-    kx = "k exec -ti";
+    kx = "k iexec";
     kfwd = "k port-forward";
-    kw = "k get po -w -owide | rg";
+    kw = {
+      expansion = "k get po -w -owide | rg '%'";
+      setCursor = true;
+    };
     kgs = "k get -owide --sort-by=.metadata.creationTimestamp ";
   };
 
