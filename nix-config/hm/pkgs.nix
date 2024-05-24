@@ -135,7 +135,7 @@
       ];
 
       pipe = [
-        choose # A human-friendly and fast alternative to cut and (sometimes) awk
+        tuc # When cut doesn't cut it
         sad # CLI tool to search and replace
       ];
 

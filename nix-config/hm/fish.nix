@@ -9,6 +9,8 @@
 
     curl = "curlie";
 
+    cut = "tuc";
+
     b64e = "sttr base64-encode";
     b64d = "sttr base64-decode";
 
