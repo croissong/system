@@ -16,7 +16,18 @@
 
     gitwatch = final.writeShellApplication {
       name = "gitwatch";
-      runtimeInputs = with final.pkgs; [git inotify-tools openssh coreutils gnugrep gnused];
+      runtimeInputs = with final.pkgs; [
+        git
+        inotify-tools
+        openssh
+        coreutils
+        gnugrep
+        gnused
+
+        # for custom pre-commit hook
+        bash
+        eza
+      ];
 
       bashOptions = ["errexit" "pipefail"];
       checkPhase = "";
