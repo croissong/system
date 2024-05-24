@@ -97,10 +97,10 @@
         ];
 
         tools = [
-          bcal # Storage conversion and expression calculator
           fend # Arbitrary-precision unit-aware calculator
-          eva # A calculator REPL, similar to bc
+
           sttr # cli to perform various operations on string
+          stable.dtool # CLI tool collection to assist development
         ];
 
         csv = [
@@ -203,8 +203,6 @@
         yq-go # Portable command-line YAML processor
 
         zbar # Application and library for reading bar codes from various sources
-
-        libqalculate # An advanced calculator library
 
         font-manager
 
@@ -379,10 +377,6 @@
           # cassandra # (for cqlsh)
         ];
       };
-
-      util = [
-        stable.dtool # CLI tool collection to assist development
-      ];
 
       data = [
         # TODO

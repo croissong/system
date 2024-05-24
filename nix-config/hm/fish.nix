@@ -12,6 +12,8 @@
     b64e = "sttr base64-encode";
     b64d = "sttr base64-decode";
 
+    calc = "fend";
+
     cert = "step certificate inspect";
 
     kcrm = "k --kubeconfig ~/.kube/config config delete-context";
