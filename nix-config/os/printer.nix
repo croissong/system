@@ -8,6 +8,12 @@
     avahi = {
       enable = true;
       openFirewall = true;
+      nssmdns = true;
     };
+  };
+
+  hardware.sane = {
+    enable = true;
+    extraBackends = [pkgs.sane-airscan];
   };
 }

@@ -24,7 +24,7 @@
     ./network.nix
     ./nix.nix
     ./pkgs.nix
-    ./printing.nix
+    ./printer.nix
     ./programs.nix
     ./secrets.nix
     ./security.nix
