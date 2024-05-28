@@ -36,6 +36,7 @@
       # djvulibre # for emacs doc-tools
       # mupdf # for emacs doc-tools
       # ocamlPackages.cpdf # PDF Command Line Tools
+      # pdftk # Command-line tool for working with PDFs
       # okular # KDE document viewer
       # xournalpp # handwriting Notetaking software with PDF annotation support
     ];
@@ -100,12 +101,15 @@
           fend # Arbitrary-precision unit-aware calculator
 
           sttr # cli to perform various operations on string
-          stable.dtool # CLI tool collection to assist development
+          dtool # CLI tool collection to assist development
         ];
 
         csv = [
           csvlens # Command line csv viewer
           tidy-viewer # CLI csv pretty printer
+
+          ## maybe/on-demand/unused
+          # qsv #  CSVs sliced, diced & analyzed.
         ];
 
         pipe = [
@@ -192,6 +196,8 @@
         rsync # Fast incremental file transfer utility
 
         summon # CLI that provides on-demand secrets access for common DevOps tools
+
+        tomb # File encryption on GNU/Linux
 
         termscp # A feature rich terminal UI file transfer and explorer
         termshark # Terminal UI for tshark, inspired by Wireshark
@@ -370,6 +376,7 @@
           usql # A universal command-line interface for SQL databases
 
           ## maybe/on-demand/unused
+          # dbeaver # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
           # sqlcmd # A command line tool for working with Microsoft SQL Server, Azure SQL Database
           # redli # A humane alternative to the Redis-cli and TLS
           # mongosh # The MongoDB Shell
@@ -377,14 +384,6 @@
           # cassandra # (for cqlsh)
         ];
       };
-
-      data = [
-        # TODO
-        # qsv #  CSVs sliced, diced & analyzed.
-
-        ## maybe/on-demand/unused
-        # dbeaver # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
-      ];
     };
 
     lang = {
@@ -582,6 +581,7 @@
         gtrash
 
         nethogs # A small 'net top' tool, grouping bandwidth by process
+        sniffnet
       ];
 
       disk = [
