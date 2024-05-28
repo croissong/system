@@ -24,10 +24,20 @@
     kgn = "k neat get";
     kd = "k describe";
     kroll = "k rollout restart";
-    kl = "stern --timestamps=short ";
+
+    kl = {
+      expansion = "stern --timestamps=short svc/%";
+      setCursor = true;
+    };
+
     klj = "stern --template-file ~/.config/stern/stern.tpl";
     kx = "k iexec";
-    kfwd = "k port-forward";
+
+    kfwd = {
+      expansion = "k port-forward svc/%";
+      setCursor = true;
+    };
+
     kw = {
       expansion = "k get po -w -owide | rg '%'";
       setCursor = true;
@@ -76,7 +86,7 @@
       body = "handlr open $argv";
     };
 
-    history = "command history --show-time $argv";
+    history = "builtin history --show-time='%h/%d - %H:%M:%S ' | moar";
 
     tree = {
       wraps = "eza";
