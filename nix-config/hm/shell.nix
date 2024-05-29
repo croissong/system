@@ -28,7 +28,10 @@ in {
 
     wezterm = {
       enable = true;
-      extraConfig = builtins.readFile ./wezterm.lua;
+      extraConfig = ''
+        local config = require 'main'
+        return config
+      '';
     };
 
     starship = {
