@@ -227,6 +227,7 @@
         inetutils # telnet
         xh # Friendly and fast tool for sending HTTP requests
         mtr # Combines the functionality of traceroute and ping
+        trippy # A network diagnostic tool (traceroute, ping; Rust)
         rustcat # Port listener and reverse shell (netcat clone)
         nmap # A free and open source utility for network discovery and security auditing
         openssl
@@ -662,6 +663,7 @@
 
     nix = [
       alejandra # The Uncompromising Nix Code Formatter
+      nixfmt-rfc-style # for nixpkgs
       cachix
       hydra-check # check hydra for the build status of a package
       nh # Yet another nix cli helper
