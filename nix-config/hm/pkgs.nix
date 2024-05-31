@@ -7,6 +7,7 @@
 }: let
   packages_dict = with pkgs; {
     inbox = [
+      keyboard-chattering-fix
     ];
 
     ent = [
