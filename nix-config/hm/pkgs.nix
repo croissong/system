@@ -88,7 +88,8 @@
         ];
 
         json = [
-          jless # A command-line pager for JSON data
+          fx # Terminal JSON viewer
+          # jless # A command-line pager for JSON data
           jq # Command-line JSON processor
           gojq # Pure Go implementation of jq
           ijq # Interactive wrapper for jq
@@ -268,8 +269,7 @@
 
         glow # Command-line markdown renderer
         inlyne # A GPU powered browserless markdown viewer
-
-        python3Packages.grip # Preview GitHub Markdown files like Readme locally before committing them
+        # python3Packages.grip # Preview GitHub Markdown files like Readme locally before committing them
 
         ## maybe/on-demand/unused
         # akira-unstable # Native Linux Design application
