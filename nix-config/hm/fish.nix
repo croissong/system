@@ -250,7 +250,7 @@
     };
 
     man = ''
-      emacsclient -c -e "(let ((Man-notify-method 'bully)) (man \"$argv\"))"
+      emacsclient -que "(man \"$argv\")"
     '';
 
     #
