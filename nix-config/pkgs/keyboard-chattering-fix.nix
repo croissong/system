@@ -1,8 +1,6 @@
 {
   python3Packages,
-  lib,
   pkgs,
-  fetchFromGitHub,
 }:
 python3Packages.buildPythonPackage {
   pname = "keyboard-chattering-fix";

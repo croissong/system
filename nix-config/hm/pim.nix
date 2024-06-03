@@ -5,7 +5,7 @@
   ...
 }: {
   nixpkgs.overlays = [
-    (self: super: {
+    (_: super: {
       isync = super.isync.override {
         withCyrusSaslXoauth2 = true;
       };
@@ -54,7 +54,7 @@
   };
 
   accounts = {
-    email = rec {
+    email = {
       maildirBasePath = ".local/share/mail";
 
       accounts = {

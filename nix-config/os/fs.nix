@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{...}: let
   mountOptions = ["compress-force=zstd" "noatime" "discard=async"];
 in {
   boot.initrd.luks.devices."crypted".device = "/dev/disk/by-partlabel/root";
