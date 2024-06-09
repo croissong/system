@@ -9,6 +9,7 @@
         with epkgs; [
           jinx
           auctex
+          pdf-tools
           treesit-grammars.with-all-grammars
         ]
     );
