@@ -163,6 +163,7 @@
 
         tealdeer # tldr in Rust
         the-way # Terminal code snippets manager
+        hoard #  CLI command organizer
 
         delta # A syntax-highlighting pager for git
         difftastic # A syntax-aware diff
@@ -740,7 +741,10 @@
     apps = [
       inkscape # Professional vector graphics editor
       libreoffice-fresh # LibreOffice branch which contains new features and program enhancements
-      tenacity # FLOSS Audacity Fork. No telemetry, crash reports and other shenanigans like that!
+      tenacity # FLOSS Audacity Fork
+
+      blender
+      freecad # General purpose Open Source 3D modeler
 
       zoom-us # Video Conferencing and Web Conferencing Service
     ];
