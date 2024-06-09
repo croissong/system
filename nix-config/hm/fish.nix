@@ -325,7 +325,7 @@
       end
     '';
 
-    j = "just --unstable --justfile ~/.user.justfile --working-directory . $argv";
+    j = "just -g --choose";
 
     ts-from-unix = "date --utc -Iseconds -d @$argv";
     ts-to-unix = "date -d '$argv' +'%s'";
