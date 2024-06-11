@@ -269,6 +269,7 @@
 
         d2 # A modern diagram scripting language that turns text to diagrams
 
+        vale # Syntax-aware linter for prose built with speed and extensibility in mind
         glow # Command-line markdown renderer
         inlyne # A GPU powered browserless markdown viewer
         # python3Packages.grip # Preview GitHub Markdown files like Readme locally before committing them
@@ -372,6 +373,7 @@
         ];
 
         latex = [
+          typst # New markup-based typesetting system that is powerful and easy to learn
           tectonic # Modernized, complete, self-contained TeX/LaTeX engine
         ];
 
