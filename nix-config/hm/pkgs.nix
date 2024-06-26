@@ -62,11 +62,11 @@
         grex # cli for generating regular expressions from user-provided test cases
         oauth2c # (step-cli fallback...) User-friendly OAuth2 CLI
         pwgen
+        kubeconform # Tool for validating Kubernetes YAML or JSON configuration files
 
         ## maybe/on-demand/unused
         # angle-grinder # Slice and dice logs on the command line
         # cocogitto # The Conventional Commits & semver toolbox
-        # kubeconform # Tool for validating Kubernetes YAML or JSON configuration files
         # kubernetes-polaris # Validate and remediate Kubernetes resources
         # skopeo # A command line utility for various operations on container images
       ];
@@ -124,7 +124,9 @@
           teip # A tool to bypass a partial range of standard input to any command
           # TODO
           # tree-grepper # Like grep, but uses tree-sitter grammars to search
-          zet # CLI utility to find the union, intersection, set difference, etc of files considered as sets of lines
+
+          ## maybe/on-demand/unused
+          # zet # CLI utility to find the union, intersection, set difference, etc of files considered as sets of lines
         ];
       };
 
@@ -268,6 +270,7 @@
         pandoc
 
         d2 # A modern diagram scripting language that turns text to diagrams
+        mermaid-cli # Generation of diagrams from text in a similar manner as markdown
 
         vale # Syntax-aware linter for prose built with speed and extensibility in mind
         glow # Command-line markdown renderer
@@ -379,6 +382,7 @@
 
         db = [
           usql # A universal command-line interface for SQL databases
+          mongodb-compass
 
           ## maybe/on-demand/unused
           # dbeaver # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
@@ -431,7 +435,7 @@
       shell = [
         shfmt # A shell parser and formatter
         shellcheck # Shell script analysis tool (binary release)
-        nodePackages.bash-language-server
+        bash-language-server
         nushellFull # A modern shell written in Rust
       ];
 
