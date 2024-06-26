@@ -46,9 +46,15 @@
   };
 
   functions = {
+    # https://fishshell.com/docs/current/cmds/bind.html
+    # watch https://github.com/fish-shell/fish-shell/issues/1671
     fish_user_key_bindings = ''
-      bind --preset \t complete-and-search
-      bind --preset \cw backward-kill-word
+      bind \t complete-and-search
+      bind \cw backward-kill-word
+
+      # Alt+left
+      bind \e\[1\;3D backward-kill-bigword
+      bind \ek kill-whole-line
     '';
 
     ls = {
