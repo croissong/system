@@ -7,7 +7,6 @@
   gitwatch = inputs.gitwatch.packages.${system}.gitwatch;
 
   calsync = pkgs.callPackage ./calsync.nix {};
-  commitlint-rs = pkgs.callPackage ./commitlint-rs.nix {inherit versions;};
   desed = pkgs.callPackage ./desed.nix {inherit versions;};
   focus = pkgs.callPackage ./focus.nix {inherit versions;};
   git-repo-manager = pkgs.callPackage ./git-repo-manager.nix {};
