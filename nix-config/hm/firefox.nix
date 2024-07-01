@@ -37,16 +37,11 @@ in {
 
         "browser.aboutConfig.showWarning" = false;
         "browser.startup.page" = 3;
+        "browser.startup.homepage" = "about:firefoxview#opentabs";
         "browser.toolbars.bookmarks.visibility" = "never";
         "browser.translations.automaticallyPopup" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "intl.accept_languages" = "en";
-
-        # TODO: not sure if nix sets this automatically when 'userChrome' is confgured
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-
-        # probably not needed with auto-tab-discard
-        "browser.tabs.unloadOnLowMemory" = false;
       };
 
       search = {
@@ -119,7 +114,7 @@ in {
         SkipOnboarding = true;
       };
 
-      # https://github.com/mozilla/policy-templates/blob/master/README.md#extensionsettings
+      # https://mozilla.github.io/policy-templates/#extensionsettings
       # about:support
       ExtensionSettings = {
         "uBlock0@raymondhill.net" = {
@@ -139,14 +134,9 @@ in {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/auto-tab-discard/latest.xpi";
         };
 
-        "{23aee10d-1130-4694-80ef-428e287ba83d}" = {
+        "brotab_mediator@example.org" = {
           installation_mode = "force_installed";
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/grasshopper-urls/latest.xpi";
-        };
-
-        "extension@one-tab.com" = {
-          installation_mode = "force_installed";
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/onetab/latest.xpi";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/brotab/latest.xpi";
         };
 
         "duplicate-tab@firefox.stefansundin.com" = {
@@ -154,19 +144,9 @@ in {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/duplicate-tab-shortcut/latest.xpi";
         };
 
+        # "*" = {
+        #   installation_mode = "blocked";
         # };
-        # "spookfox@bitspook.in" = {
-        #   installation_mode = "force_installed";
-        #   install_url = "https://github.com/bitspook/spookfox/releases/download/v0.2.5/spookfox-firefox.xpi";
-        #   install_sources = [
-        #     "https://github.com/bitspook/spookfox/releases/download/*"
-        #     "https://objects.githubusercontent.com/*"
-        #   ];
-        # };
-
-        "*" = {
-          installation_mode = "blocked";
-        };
       };
     };
   };

@@ -489,6 +489,8 @@
 
         nyxt
 
+        brotab # Control your browser's tabs from the command line
+
         ## maybe/on-demand/unused
         # nvchecker # New version checker for software
       ];
