@@ -294,7 +294,6 @@
         argocd # Declarative continuous deployment for Kubernetes
         azure-cli
         civo
-        k6 # A modern load testing tool, using Go and JavaScript
         minio-client
         s3cmd # Command line tool for managing Amazon S3 and CloudFront services
         sops # Mozilla sops (Secrets OPerationS) is an editor of encrypted files
@@ -305,6 +304,7 @@
 
         ## maybe/on-demand/unused
         # argo # Container native workflow engine for Kubernetes
+        # k6 # A modern load testing tool, using Go and JavaScript
         # istioctl
         # nodePackages.cdktf-cli # CDK for Terraform CLI
         # pulumi-bin
@@ -421,7 +421,7 @@
 
       rust = [
         mold # A faster drop-in replacement for existing Unix linkers
-        rust-analyzer # Experimental Rust compiler front-end for IDEs
+        # rust-analyzer # Experimental Rust compiler front-end for IDEs
 
         # TODO
         # https://github.com/nix-community/fenix/
