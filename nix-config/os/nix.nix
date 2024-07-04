@@ -2,6 +2,7 @@
   nix = {
     package = pkgs.nixVersions.latest;
 
+    # https://nix.dev/manual/nix/2.22/command-ref/conf-file
     settings = {
       experimental-features = "nix-command flakes";
       accept-flake-config = true;
@@ -17,6 +18,8 @@
         "tree-grepper.cachix.org-1:Tm/owXM+dl3GnT8gZg+GTI3AW+yX1XFVYXspZa7ejHg="
       ];
       trusted-users = ["root" "@wheel"];
+
+      keep-going = true;
     };
 
     gc = {
