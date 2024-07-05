@@ -19,36 +19,36 @@
     };
   };
 
-  xdg.portal = {
+  xdg.portal = with pkgs; {
     enable = true;
     xdgOpenUsePortal = false;
-    extraPortals = [pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk];
-    configPackages = [pkgs.sway];
+    extraPortals = [xdg-desktop-portal-wlr xdg-desktop-portal-gtk];
+    configPackages = [sway];
   };
 
   services = {
-    swayidle = {
+    swayidle = with pkgs; {
       enable = true;
       extraArgs = ["-w"];
       events = [
         {
           event = "before-sleep";
-          command = "${pkgs.swaylock}/bin/swaylock -f";
+          command = "${lib.getExe swaylock} -f";
         }
         {
           event = "after-resume";
-          command = "${pkgs.sway}/bin/swaymsg 'output * power on'";
+          command = "${sway}/bin/swaymsg 'output * power on'";
         }
       ];
       timeouts = [
         {
           timeout = 1200;
-          command = "${pkgs.sway}/bin/swaymsg 'output * power off'";
-          resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on'";
+          command = "${sway}/bin/swaymsg 'output * power off'";
+          resumeCommand = "${sway}/bin/swaymsg 'output * power on'";
         }
         {
           timeout = 2400;
-          command = "${pkgs.systemd}/bin/systemctl suspend";
+          command = "${systemd}/bin/systemctl suspend";
         }
       ];
     };
