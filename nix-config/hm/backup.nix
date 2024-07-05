@@ -45,38 +45,24 @@
     };
   };
 
-  gitwatch = {
-    notes = {
+  gitwatch = let
+    mkService = dir: {
       Unit = {
-        Description = "Gitwatch notes";
+        Description = "Gitwatch ${dir}";
       };
       Service = {
         ExecStart = ''
-          ${pkgs.gitwatch}/bin/gitwatch -s 600 -m "chore: update notes" ${config.home.homeDirectory}/dot/notes/
+          ${pkgs.gitwatch}/bin/gitwatch -s 600 -m "chore: update ${dir}" ${config.home.homeDirectory}/dot/${dir}/
         '';
         ExecStop = "/bin/true";
       };
-
       Install = {
         WantedBy = ["default.target"];
       };
     };
-
-    docs = {
-      Unit = {
-        Description = "Gitwatch docs";
-      };
-      Service = {
-        ExecStart = ''
-          ${pkgs.gitwatch}/bin/gitwatch -s 600 -m "chore: update docs" ${config.home.homeDirectory}/dot/docs/
-        '';
-        ExecStop = "/bin/true";
-      };
-
-      Install = {
-        WantedBy = ["default.target"];
-      };
-    };
+  in {
+    notes = mkService "notes";
+    docs = mkService "docs";
   };
 in {
   systemd.user = {
