@@ -9,6 +9,7 @@
   calsync = pkgs.callPackage ./calsync.nix {};
   desed = pkgs.callPackage ./desed.nix {inherit versions;};
   focus = pkgs.callPackage ./focus.nix {inherit versions;};
+  redu = pkgs.callPackage ./redu.nix {inherit versions;};
   git-repo-manager = pkgs.callPackage ./git-repo-manager.nix {};
   qsv = pkgs.callPackage ./qsv.nix {inherit versions;};
   sane-scan-pdf = pkgs.callPackage ./sane-scan-pdf.nix {inherit versions;};

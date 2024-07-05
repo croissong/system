@@ -665,6 +665,7 @@
       restic
       autorestic
       nixpkgs-pr-2.resticprofile
+      redu
     ];
 
     shell = [
