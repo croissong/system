@@ -1,18 +1,29 @@
 {
-  pkgs,
   config,
+  lib,
+  pkgs,
   ...
 }: {
   systemd.user = {
     services = {
       backup = {
         Unit = {
-          Description = "autorestic backup";
+          Description = "resticprofile backup";
+          After = "network-online.target";
+          Wants = "network-online.target";
         };
 
         Service = {
           Type = "oneshot";
-          ExecStart = "${pkgs.autorestic}/bin/autorestic --ci cron";
+          ExecStart = "${lib.getExe pkgs.nixpkgs-pr-2.resticprofile} backup";
+          Environment = "PATH=$PATH:${with pkgs;
+            lib.makeBinPath [
+              bash
+              coreutils
+              fd
+              git
+              ripgrep
+            ]}";
           ExecStopPost = "${pkgs.service-status.out}/bin/service-status backup";
         };
       };
@@ -53,13 +64,14 @@
     timers = {
       backup = {
         Unit = {
-          Description = "autorestic backup";
+          Description = "resticprofile backup";
         };
 
         Timer = {
           Unit = "backup.service";
-          OnCalendar = "0/2:00:00";
+          OnCalendar = "0/8:00:00";
           AccuracySec = "10min";
+          Persistent = true;
         };
 
         Install = {
