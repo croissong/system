@@ -29,10 +29,11 @@
   services = {
     swayidle = {
       enable = true;
+      extraArgs = ["-w"];
       events = [
         {
           event = "before-sleep";
-          command = "${pkgs.swaylock}/bin/swaylock";
+          command = "${pkgs.swaylock}/bin/swaylock -f";
         }
         {
           event = "after-resume";
