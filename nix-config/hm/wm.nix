@@ -66,8 +66,7 @@
 
     cliphist = {
       enable = true;
-      # TODO: `-max-items 10`
-      # https://github.com/NixOS/nixpkgs/issues/46464
+      extraOptions = ["-max-items 10"];
     };
   };
 }
