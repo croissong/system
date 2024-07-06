@@ -23,7 +23,7 @@
             git
             ripgrep
           ]}";
-        ExecStopPost = "${pkgs.service-status.out}/bin/service-status backup";
+        ExecStopPost = "${lib.getExe pkgs.service-status} backup";
       };
     };
 

@@ -1,11 +1,13 @@
-{
-  pkgs,
-  writeShellApplication,
-}:
-writeShellApplication {
+{buildNimPackage}:
+buildNimPackage {
   name = "service-status";
+  src = ./service-status;
 
-  runtimeInputs = with pkgs; [coreutils moreutils jq];
+  unpackPhase = ''
+    cp $src/* .
+  '';
 
-  text = builtins.readFile ./service-status.sh;
+  meta = {
+    mainProgram = "service_status";
+  };
 }
