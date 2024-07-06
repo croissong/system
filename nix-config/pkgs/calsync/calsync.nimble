@@ -1,12 +1,7 @@
-# Package
-
 version       = "0.1.0"
 author        = "Jan Moeller"
-description   = "A new awesome nimble package"
+description   = "Sync calendar"
 license       = "MIT"
 bin           = @["calsync"]
 
-
-# Dependencies
-
-requires "nim >= 2.0.2"
+requires "nim >= 2.0.4"

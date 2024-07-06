@@ -1,7 +1,8 @@
 {
-  pkgs,
   config,
+  lib,
   outputs,
+  pkgs,
   ...
 }: {
   nixpkgs.overlays = [
@@ -171,8 +172,8 @@
 
         Service = {
           Type = "oneshot";
-          ExecStart = "${pkgs.calsync.out}/bin/calsync --noninteractive";
-          ExecStopPost = "${pkgs.service-status.out}/bin/service-status calsync";
+          ExecStart = "${lib.getExe pkgs.calsync} --noninteractive";
+          ExecStopPost = "${lib.getExe pkgs.service-status} calsync";
         };
       };
     };
