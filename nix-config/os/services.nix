@@ -11,6 +11,7 @@
       enable = true;
       user = "moi";
       dataDir = "/home/moi/dot";
+      configDir = "/home/moi/.local/state/syncthing";
       overrideDevices = true;
       overrideFolders = true;
       settings = {
