@@ -1,4 +1,5 @@
 import os, json, strformat, times
+import notify
 
 let service = paramStr(1)
 let cacheDir = getEnv("XDG_CACHE_HOME") / "service-status"
@@ -14,11 +15,21 @@ try:
 except: discard
 
 
-# update the status from systemd-provided env vars
+# https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#Environment%20Variables%20Set%20or%20Propagated%20by%20the%20Service%20Manager
+let exitStatus = getEnv("EXIT_STATUS")
+let result = getEnv("SERVICE_RESULT")
+
+if exitStatus != "0":
+  let n = newNotifyClient("foo")
+  n.send_new_notification(service & " failed", "", "",
+      urgency = NotificationUrgency.Critical, timeout = 5000)
+  n.uninit()
+
+
 statusJson[service] = %*{
   "time": getTime().format("ddd MM-dd HH:mm"),
-  "status": getEnv("EXIT_STATUS"),
-  "result": getEnv("SERVICE_RESULT"),
+  "status": exitStatus,
+  "result": result,
 }
 
 

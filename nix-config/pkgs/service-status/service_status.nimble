@@ -1,4 +1,4 @@
-version       = "0.1.0"
+version       = "0.0.1"
 author        = "Jan Moeller"
 description   = "Write Systemd service status files"
 license       = "MIT"

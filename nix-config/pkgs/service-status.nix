@@ -1,11 +1,16 @@
-{buildNimPackage}:
+{
+  buildNimPackage,
+  pkgs,
+}:
 buildNimPackage {
-  name = "service-status";
+  pname = "service-status";
+  version = "0.0.1";
+
   src = ./service-status;
 
-  unpackPhase = ''
-    cp $src/* .
-  '';
+  buildInputs = with pkgs; [
+    libnotify
+  ];
 
   meta = {
     mainProgram = "service_status";
