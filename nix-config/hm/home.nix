@@ -55,7 +55,6 @@
 
       ctype = "de_DE.UTF-8";
       numeric = "de_DE.UTF-8";
-      time = "de_DE.UTF-8";
       collate = "de_DE.UTF-8";
       monetary = "de_DE.UTF-8";
       paper = "de_DE.UTF-8";
