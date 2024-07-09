@@ -16,4 +16,8 @@ buildNimPackage {
     wrapProgram $out/bin/calsync \
       --suffix PATH : ${with pkgs; lib.makeBinPath [vdirsyncer davmail khal coreutils]}
   '';
+
+  meta = {
+    mainProgram = "calsync";
+  };
 }
