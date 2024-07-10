@@ -67,7 +67,7 @@
 
     cliphist = {
       enable = true;
-      extraOptions = ["-max-items 10"];
+      extraOptions = ["-max-items" "10"];
     };
   };
 }
