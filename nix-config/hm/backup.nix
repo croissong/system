@@ -38,7 +38,7 @@
 
       Timer = {
         Unit = "backup.service";
-        OnCalendar = "0/8:00:00";
+        OnCalendar = "0/4:00:00";
         AccuracySec = "10min";
         Persistent = true;
       };
