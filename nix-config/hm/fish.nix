@@ -26,7 +26,7 @@
     kroll = "k rollout restart";
 
     kl = {
-      expansion = "stern --timestamps=short svc/%";
+      expansion = "stern svc/%";
       setCursor = true;
     };
 
