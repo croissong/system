@@ -27,6 +27,10 @@
             path = "~/dot/notes";
             devices = ["phone"];
           };
+          media = {
+            path = "~/dot/media";
+            devices = ["phone"];
+          };
         };
       };
     };
