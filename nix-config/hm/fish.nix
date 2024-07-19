@@ -74,7 +74,7 @@
 
     find = {
       wraps = "fd";
-      body = "fd -H $argv";
+      body = "fd --follow --hidden $argv";
     };
 
     cat = {
@@ -149,6 +149,11 @@
     rt = {
       wraps = "gtrash put";
       body = "gtrash put $argv";
+    };
+
+    rmff = {
+      wraps = "rm";
+      body = "command rm $argv";
     };
 
     rm = "echo -e 'use rt'; false";
@@ -336,5 +341,18 @@
     ts-from-unix = "date --utc -Iseconds -d @$argv";
     ts-to-unix = "date -d '$argv' +'%s'";
     ts-now-s = "date +'%s'";
+
+    passs = ''
+      # Perform a fuzzy search with gopass ls --flat and pipe to fzf for selection
+      set match (gopass ls --flat | grep -i $argv[1] | fzf --prompt="")
+
+      # Check if a match was selected
+      if test -z "$match"
+          exit 1
+      end
+
+      # always show in pager
+      gopass show -f $match | less
+    '';
   };
 }
