@@ -252,6 +252,7 @@
         httpie # A command line HTTP client whose goal is to make CLI human-friendly
         http-prompt # An interactive HTTP command-line client
         hurl # Command line tool that performs HTTP requests defined in a simple plain text format
+        openapi-generator-cli
       ];
 
       protocols = [
@@ -330,6 +331,8 @@
         enchant
         hunspellDicts.de-de
         hunspellDicts.en-us
+
+        vim
 
         ## maybe/on-demand/unused
         # focuswriter # Simple, distraction-free writing environment
@@ -721,11 +724,11 @@
       # mitmproxy # SSL-capable man-in-the-middle HTTP proxy
       prometheus # for promtool promql format
       protobuf # Google's data interchange format
+      doctl # The official command line interface for the DigitalOcean API
 
       ## maybe/on-demand/unused
       # caddy # Fast, cross-platform HTTP/2 web server with automatic HTTPS
       # cosign # Container Signing CLI with support for ephemeral keys and Sigstore signing
-      # doctl # The official command line interface for the DigitalOcean API
       # hexyl # A command-line hex viewer
       # mob # Tool for smooth git handover for remote pair/mob programming
       # packer # tool for creating identical machine images for multiple platforms from a single source configuration
