@@ -477,12 +477,14 @@
 
       docs = [
         deskew # deskewing scanned text documents
-        paperwork # Personal document manager
         wutag # CLI tool for tagging and organizing files by tags
         simple-scan
         tesseract # An OCR program
         unpaper # Post-processing tool for scanned sheets of paper
         zathura # A highly customizable and functional PDF viewer
+
+        ## maybe/on-demand/unused
+        # paperwork # Personal document manager
       ];
 
       odre = [
@@ -540,11 +542,10 @@
       ];
 
       audio = [
-        cozy # A modern audio book player for Linux using GTK 3
-
         # TODO: collision with gotools
         # https://github.com/NixOS/nixpkgs/issues/275392
         # sox # The Swiss Army knife of sound processing tools
+        # cozy # A modern audio book player for Linux using GTK 3
       ];
 
       comm = [
@@ -691,6 +692,7 @@
       nix-search-cli
 
       nixos-shell
+      steam-run # run commands in the same FHS environment that is used for Steam
     ];
 
     tools = [
