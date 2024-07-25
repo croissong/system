@@ -20,9 +20,6 @@
     # hydra-check blender
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    # nixpkgs-prev.url = "github:nixos/nixpkgs/458b097d81f90275b3fdf03796f0563844926708";
-    # nixpkgs-pr.url = "github:croissong/nixpkgs/init-commitlint-rs";
-    # nixpkgs-pr-2.url = "github:croissong/nixpkgs/updatecli-improve-package-quality";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
