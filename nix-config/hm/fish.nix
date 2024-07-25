@@ -15,6 +15,7 @@
     b64d = "sttr base64-decode";
 
     calc = "fend";
+    pwdc = "pwd | clip";
 
     cert = "step certificate inspect";
 
