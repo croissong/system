@@ -73,6 +73,7 @@
 
       media = [
         swayimg # Image viewer for Sway/Wayland
+        imv # Command line image viewer for tiling window managers
         oculante #  minimalistic crossplatform image viewer written in Rust
         vhs # A tool for generating terminal GIFs with code
         termshot # Creates screenshots based on terminal command output
@@ -181,6 +182,7 @@
         oath-toolkit # oathtool
         gopass # The slightly more awesome standard unix password manager for teams.
         gopass-summon-provider # summon provider for gopass
+        _1password #  1Password command-line tool
         tessen # An interactive menu to autotype and copy Pass and GoPass data
 
         gpg-tui # A terminal user interface for GnuPG
@@ -649,6 +651,7 @@
 
     virtualisation = [
       quickemu # Quickly create and run optimised Windows, macOS and Linux desktop virtual machines.
+      distrobox # Use any Linux distribution inside your terminal.
 
       ## maybe/on-demand/unused
       # distrobuilder # System container image builder for LXC and LXD
@@ -685,6 +688,7 @@
       hydra-check # check hydra for the build status of a package
       nh # Yet another nix cli helper
       nil # Yet another language server for Nix
+      nixd # Feature-rich Nix language server interoperating with C++ nix
       nixos-generators
       nix-prefetch-git #  Script used to obtain source hashes for fetchgit
       nix-tree
