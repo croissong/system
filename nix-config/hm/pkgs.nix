@@ -671,7 +671,7 @@
     backup = [
       restic
       autorestic
-      nixpkgs-pr-2.resticprofile
+      resticprofile
       redu
     ];
 

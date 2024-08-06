@@ -14,7 +14,7 @@
 
       Service = {
         Type = "oneshot";
-        ExecStart = "${lib.getExe pkgs.nixpkgs-pr-2.resticprofile} backup";
+        ExecStart = "${lib.getExe pkgs.resticprofile} backup";
         Environment = "PATH=$PATH:${with pkgs;
           lib.makeBinPath [
             bash

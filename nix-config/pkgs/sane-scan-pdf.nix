@@ -13,7 +13,7 @@ stdenv.mkDerivation rec {
     owner = "rocketraman";
     repo = "sane-scan-pdf";
     rev = "v${version}";
-    sha256 = versions.sane-scan-pdf.sha;
+    hash = "sha256-WGtg+B11lKjTwTVICldz16UfjAk4l7pftukbfXb3S3c=";
   };
 
   nativeBuildInputs = [makeWrapper];

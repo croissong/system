@@ -39,7 +39,7 @@ in
           owner = "danielfoehrKn";
           repo = "kubeswitch";
           rev = "master";
-          hash = "sha256-RYu61UJPDeLs7e51fC4c5sMwmjCTQ9Iw5hAEaBRsuPQ=";
+          hash = "sha256-Nh7ejnXGrLtxbjdH6nCxp+yLRfExhA1wQYBc6l0UB4A=";
         };
 
         doCheck = false;
