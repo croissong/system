@@ -64,10 +64,8 @@
           routes = [
             {
               # https://wiki.archlinux.org/title/systemd-networkd#Speeding_up_TCP_slow-start
-              routeConfig = {
-                InitialCongestionWindow = 30;
-                InitialAdvertisedReceiveWindow = 30;
-              };
+              InitialCongestionWindow = 30;
+              InitialAdvertisedReceiveWindow = 30;
             }
           ];
         };
