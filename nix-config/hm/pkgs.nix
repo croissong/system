@@ -28,6 +28,7 @@
       newsboat # A fork of Newsbeuter, an RSS/Atom feed reader for the text console
 
       calibre # Ebook management application
+      libation # Audible audiobook manager
       system-config-printer
       ocrmypdf # Adds an OCR text layer to scanned PDF files
       sane-scan-pdf # Sane command-line scan-to-pdf script
@@ -278,7 +279,7 @@
         vale # Syntax-aware linter for prose built with speed and extensibility in mind
         glow # Command-line markdown renderer
         inlyne # A GPU powered browserless markdown viewer
-        # python3Packages.grip # Preview GitHub Markdown files like Readme locally before committing them
+        python3Packages.grip # Preview GitHub Markdown files like Readme locally before committing them
 
         ## maybe/on-demand/unused
         # akira-unstable # Native Linux Design application
@@ -410,6 +411,7 @@
       ];
 
       python = [
+        python3Minimal
         black # The uncompromising Python code formatter
         python3Packages.flake8 # The modular source code checker
         mypy # Optional static typing for Python 2 and 3 (PEP484)

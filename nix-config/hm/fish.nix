@@ -230,7 +230,10 @@
       body = "spotify_player $argv";
     };
 
-    steam = "steam -nofriendsui -no-browser +open 'steam://open/minigameslist' $argv";
+    steam = {
+      wraps = "steam";
+      body = "command steam -nofriendsui -no-browser +open 'steam://open/minigameslist' $argv";
+    };
 
     weather = {
       wraps = "wthrr";
