@@ -34,6 +34,10 @@
             path = "~/dot/media";
             devices = [ "phone" ];
           };
+          cam = {
+            path = "~/dot/cam";
+            devices = [ "phone" ];
+          };
         };
       };
     };
