@@ -375,7 +375,8 @@
         "nixpkgs-stable": "nixpkgs-stable_2",
         "priv": "priv",
         "sops-nix": "sops-nix",
-        "tree-grepper": "tree-grepper"
+        "tree-grepper": "tree-grepper",
+        "treefmt-nix": "treefmt-nix"
       }
     },
     "rust-analyzer-src": {
@@ -772,6 +773,26 @@
       "original": {
         "owner": "tree-sitter",
         "repo": "tree-sitter-typescript",
+        "type": "github"
+      }
+    },
+    "treefmt-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1723454642,
+        "narHash": "sha256-S0Gvsenh0II7EAaoc9158ZB4vYyuycvMGKGxIbERNAM=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "349de7bc435bdff37785c2466f054ed1766173be",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
         "type": "github"
       }
     }

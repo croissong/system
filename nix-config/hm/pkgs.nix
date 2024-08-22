@@ -325,9 +325,8 @@
 
       edit = [
         commitlint-rs
-        helix #  A post-modern modal text editor
-        stylua # Code formatter for Lua
-        treefmt
+        helix # A post-modern modal text editor
+        (inputs.treefmt-nix.lib.mkWrapper pkgs ./treefmt.nix)
         devbox # Instant, easy, predictable shells and containers.
 
         nuspell
@@ -444,10 +443,6 @@
         shellcheck # Shell script analysis tool (binary release)
         bash-language-server
         nushell # A modern shell written in Rust
-      ];
-
-      xml = [
-        xmlformatter
       ];
     };
 
