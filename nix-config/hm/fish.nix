@@ -40,10 +40,9 @@
     };
 
     kw = {
-      expansion = "k get po -w -owide | rg '%'";
+      expansion = "k get po -w -owide --sort-by=.metadata.creationTimestamp | rg '%'";
       setCursor = true;
     };
-    kgs = "k get -owide --sort-by=.metadata.creationTimestamp ";
   };
 
   functions = {
