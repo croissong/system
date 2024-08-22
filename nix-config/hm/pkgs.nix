@@ -4,11 +4,10 @@
   lib,
   inputs,
   ...
-}: let
+}:
+let
   packages_dict = with pkgs; {
-    inbox = [
-      keyboard-chattering-fix
-    ];
+    inbox = [ keyboard-chattering-fix ];
 
     ent = [
       playerctl
@@ -43,12 +42,9 @@
       # xournalpp # handwriting Notetaking software with PDF annotation support
     ];
 
-    lib = [
-    ];
+    lib = [ ];
 
-    orga = [
-      klog-time-tracker
-    ];
+    orga = [ klog-time-tracker ];
 
     dot = [
       calsync
@@ -75,12 +71,12 @@
       media = [
         swayimg # Image viewer for Sway/Wayland
         imv # Command line image viewer for tiling window managers
-        oculante #  minimalistic crossplatform image viewer written in Rust
+        oculante # minimalistic crossplatform image viewer written in Rust
         vhs # A tool for generating terminal GIFs with code
         termshot # Creates screenshots based on terminal command output
         kdenlive # video editor
         menyoki # Screen{shot,cast} and perform ImageOps on the command line
-        satty #  Modern Screenshot Annotation Tool
+        satty # Modern Screenshot Annotation Tool
         bluetuith # A TUI bluetooth manager for Linux.
       ];
 
@@ -167,12 +163,12 @@
 
         tealdeer # tldr in Rust
         the-way # Terminal code snippets manager
-        hoard #  CLI command organizer
+        hoard # CLI command organizer
 
         delta # A syntax-highlighting pager for git
         difftastic # A syntax-aware diff
         diffsitter # A tree-sitter based AST difftool to get meaningful semantic diffs
-        dyff #  A diff tool for YAML files, and sometimes JSON
+        dyff # A diff tool for YAML files, and sometimes JSON
         riffdiff # A diff filter highlighting which line parts have changed
         yamllint
         dig
@@ -183,7 +179,7 @@
         oath-toolkit # oathtool
         gopass # The slightly more awesome standard unix password manager for teams.
         gopass-summon-provider # summon provider for gopass
-        _1password #  1Password command-line tool
+        _1password # 1Password command-line tool
         tessen # An interactive menu to autotype and copy Pass and GoPass data
 
         gpg-tui # A terminal user interface for GnuPG
@@ -401,8 +397,7 @@
     };
 
     lang = {
-      go = [
-      ];
+      go = [ ];
 
       jvm = [
         gradle # Powerful build system for the JVM
@@ -466,9 +461,7 @@
         pango # for sway fonts
         cliphist # Wayland clipboard manager
         slurp # Select a region in a Wayland compositor
-        (rofi-wayland.override {
-          plugins = [rofi-calc];
-        })
+        (rofi-wayland.override { plugins = [ rofi-calc ]; })
         wl-clipboard
         wtype
         wev # Wayland event viewer & key events
@@ -569,9 +562,7 @@
         nnn # file browser forked from noice
       ];
 
-      core = [
-        handlr-regex
-      ];
+      core = [ handlr-regex ];
     };
 
     pim = {
@@ -619,8 +610,7 @@
         # lutris # Open Source gaming platform for GNU/Linux
       ];
 
-      media = [
-      ];
+      media = [ ];
 
       productivity = [
         focus
@@ -633,8 +623,7 @@
   };
 
   packages = with pkgs; {
-    cli = [
-    ];
+    cli = [ ];
 
     pers = [
       ledger # Double-entry accounting system with a command-line reporting interface
@@ -687,7 +676,7 @@
       nil # Yet another language server for Nix
       nixd # Feature-rich Nix language server interoperating with C++ nix
       nixos-generators
-      nix-prefetch-git #  Script used to obtain source hashes for fetchgit
+      nix-prefetch-git # Script used to obtain source hashes for fetchgit
       nix-tree
       nix-init # Generate Nix packages from URLs
       nix-search-cli
@@ -769,7 +758,8 @@
       # ugrep # ultra fast grep with interactive TUI, fuzzy search, boolean queries, hexdumps and more
     ];
   };
-in {
+in
+{
   home.packages =
     packages.cli
     ++ packages.system

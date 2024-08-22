@@ -1,10 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{ config, pkgs, ... }:
+let
   fish = import ./fish.nix;
-in {
+in
+{
   programs = {
     bash = {
       enable = true;
@@ -43,13 +41,16 @@ in {
     atuin = {
       enable = true;
       enableZshIntegration = false;
-      flags = ["--disable-up-arrow"];
+      flags = [ "--disable-up-arrow" ];
     };
 
     zoxide = {
       enable = true;
       enableZshIntegration = false;
-      options = ["--cmd" "c"];
+      options = [
+        "--cmd"
+        "c"
+      ];
     };
 
     direnv = {

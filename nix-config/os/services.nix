@@ -1,4 +1,5 @@
-{outputs, ...}: {
+{ outputs, ... }:
+{
   services = {
     fwupd.enable = true;
 
@@ -16,20 +17,22 @@
       overrideFolders = true;
       settings = {
         devices = {
-          "phone" = {id = outputs.vars.syncthing.phoneDeviceId;};
+          "phone" = {
+            id = outputs.vars.syncthing.phoneDeviceId;
+          };
         };
         folders = {
           docs = {
             path = "~/dot/docs";
-            devices = ["phone"];
+            devices = [ "phone" ];
           };
           notes = {
             path = "~/dot/notes";
-            devices = ["phone"];
+            devices = [ "phone" ];
           };
           media = {
             path = "~/dot/media";
-            devices = ["phone"];
+            devices = [ "phone" ];
           };
         };
       };
