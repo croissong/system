@@ -63,66 +63,70 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    systems = [
-      "x86_64-linux"
-    ];
-    forAllSystems = nixpkgs.lib.genAttrs systems;
+  outputs =
+    { self, nixpkgs, ... }@inputs:
+    let
+      inherit (self) outputs;
+      systems = [ "x86_64-linux" ];
+      forAllSystems = nixpkgs.lib.genAttrs systems;
 
-    treefmtEval = forAllSystems (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
-  in rec {
-    versions = builtins.fromJSON (builtins.readFile ./versions.json);
-    packages =
-      forAllSystems (system: import ./pkgs {inherit system inputs versions;});
+      treefmtEval = forAllSystems (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+    in
+    rec {
+      versions = builtins.fromJSON (builtins.readFile ./versions.json);
+      packages = forAllSystems (system: import ./pkgs { inherit system inputs versions; });
 
-    ### treefmt-nix
-    formatter = forAllSystems (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-    checks = forAllSystems (pkgs: {
-      formatting = treefmtEval.${pkgs.system}.config.build.check self;
-    });
-    ### treefmt-nix end
+      ### treefmt-nix
+      formatter = forAllSystems (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+      checks = forAllSystems (pkgs: {
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+      });
+      ### treefmt-nix end
 
-    overlays = import ./overlays {inherit inputs versions;};
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
+      overlays = import ./overlays { inherit inputs versions; };
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
 
-    vars = inputs.priv.vars;
+      vars = inputs.priv.vars;
 
-    nixosConfigurations = {
-      bon = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./os/configuration.nix
-          inputs.sops-nix.nixosModules.sops
-        ];
-      };
-
-      bonVM = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules =
-          nixosConfigurations
-          + [
-            ./os/vm.nix
+      nixosConfigurations = {
+        bon = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./os/configuration.nix
+            inputs.sops-nix.nixosModules.sops
+            inputs.lix-module.nixosModules.default
           ];
-      };
-    };
+        };
 
-    homeConfigurations = {
-      "moi@bon" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hm/home.nix
-          inputs.nix-index-database.hmModules.nix-index
-        ];
+        bonVM = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = nixosConfigurations + [ ./os/vm.nix ];
+        };
+      };
+
+      homeConfigurations = {
+        "moi@bon" = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hm/home.nix
+            inputs.nix-index-database.hmModules.nix-index
+          ];
+        };
       };
     };
-  };
 }

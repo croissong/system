@@ -1,7 +1,6 @@
-{pkgs, ...}: {
+{ ... }:
+{
   nix = {
-    package = pkgs.nixVersions.latest;
-
     # https://nix.dev/manual/nix/2.22/command-ref/conf-file
     settings = {
       experimental-features = "nix-command flakes";
