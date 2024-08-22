@@ -461,7 +461,7 @@ let
         pango # for sway fonts
         cliphist # Wayland clipboard manager
         slurp # Select a region in a Wayland compositor
-        (rofi-wayland.override { plugins = [ rofi-calc ]; })
+        rofi-wayland
         wl-clipboard
         wtype
         wev # Wayland event viewer & key events
