@@ -2,7 +2,8 @@
   inputs,
   versions,
   ...
-}: let
+}:
+let
   importPackage = pkg: final: _prev: {
     ${pkg} = import inputs.${pkg} {
       system = final.system;
@@ -10,86 +11,93 @@
     };
   };
 
-  nixpkgsInputs = builtins.filter (input: builtins.match "^nixpkgs-.*" input != null) (builtins.attrNames inputs);
+  nixpkgsInputs = builtins.filter (input: builtins.match "^nixpkgs-.*" input != null) (
+    builtins.attrNames inputs
+  );
 
   generatedImports = builtins.listToAttrs (
     builtins.map (pkg: {
       name = pkg;
       value = importPackage pkg;
-    })
-    nixpkgsInputs
+    }) nixpkgsInputs
   );
 in
-  generatedImports
-  // {
-    # This one brings our custom packages from the 'pkgs' directory
-    additions = final: _prev:
-      import ../pkgs {
-        pkgs = final;
-        system = final.system;
-        inherit inputs versions;
+generatedImports
+// {
+  # This one brings our custom packages from the 'pkgs' directory
+  additions =
+    final: _prev:
+    import ../pkgs {
+      pkgs = final;
+      system = final.system;
+      inherit inputs versions;
+    };
+
+  modifications = final: prev: {
+    flashrom = import ./flashrom.nix { inherit final prev; };
+
+    kubeswitch = prev.kubeswitch.overrideAttrs (_: {
+      version = "0.9.1-next";
+      src = prev.fetchFromGitHub {
+        owner = "danielfoehrKn";
+        repo = "kubeswitch";
+        rev = "master";
+        hash = "sha256-0KXVi1t50IpLoL8QB04PznNz13MlN9Ib42EKu7gtZ+8=";
       };
 
-    modifications = final: prev: {
-      flashrom = import ./flashrom.nix {inherit final prev;};
+      doCheck = false;
+    });
 
-      kubeswitch = prev.kubeswitch.overrideAttrs (_: {
-        version = "0.9.1-next";
-        src = prev.fetchFromGitHub {
-          owner = "danielfoehrKn";
-          repo = "kubeswitch";
-          rev = "master";
-          hash = "sha256-Nh7ejnXGrLtxbjdH6nCxp+yLRfExhA1wQYBc6l0UB4A=";
-        };
+    gitwatch = final.writeShellApplication {
+      name = "gitwatch";
+      runtimeInputs = with final.pkgs; [
+        git
+        inotify-tools
+        openssh
+        coreutils
+        gnugrep
+        gnused
 
-        doCheck = false;
-      });
+        # for custom pre-commit hook
+        bash
+        eza
+      ];
 
-      gitwatch = final.writeShellApplication {
-        name = "gitwatch";
-        runtimeInputs = with final.pkgs; [
-          git
-          inotify-tools
-          openssh
-          coreutils
-          gnugrep
-          gnused
-
-          # for custom pre-commit hook
-          bash
-          eza
-        ];
-
-        bashOptions = ["errexit" "pipefail"];
-        checkPhase = "";
-        text = builtins.readFile (builtins.fetchurl {
+      bashOptions = [
+        "errexit"
+        "pipefail"
+      ];
+      checkPhase = "";
+      text = builtins.readFile (
+        builtins.fetchurl {
           url = "https://raw.githubusercontent.com/gitwatch/gitwatch/master/gitwatch.sh";
-        });
-      };
-
-      termdown = prev.termdown.overrideAttrs (_: rec {
-        version = "1.18.0";
-        src = final.fetchFromGitHub {
-          rev = version;
-          sha256 = "sha256-Hnk/MOYdbOl14fI0EFbIq7Hmc7TyhcZWGEg2/jmNJ5Y=";
-          repo = "termdown";
-          owner = "trehn";
-        };
-      });
+        }
+      );
     };
 
-    emacs-overlay = final: _prev: {
-      emacs-overlay = import inputs.nixpkgs {
-        system = final.system;
-        config.allowUnfree = true;
-        overlays = [(import inputs.emacs-overlay)];
+    termdown = prev.termdown.overrideAttrs (_: rec {
+      version = "1.18.0";
+      src = final.fetchFromGitHub {
+        rev = version;
+        sha256 = "sha256-Hnk/MOYdbOl14fI0EFbIq7Hmc7TyhcZWGEg2/jmNJ5Y=";
+        repo = "termdown";
+        owner = "trehn";
       };
-    };
+    });
+  };
 
-    tree-grepper = final: _prev: {
-      tree-grepper = {
-        system = final.system;
-        overlays = [(import inputs.tree-grepper.overlay)];
-      };
+  emacs-overlay = final: _prev: {
+    emacs-overlay = import inputs.nixpkgs {
+      system = final.system;
+      config.allowUnfree = true;
+      overlays = [ (import inputs.emacs-overlay) ];
     };
-  }
+  };
+
+  tree-grepper = final: _prev: {
+    tree-grepper = {
+      system = final.system;
+      overlays = [ (import inputs.tree-grepper.overlay) ];
+    };
+  };
+}
