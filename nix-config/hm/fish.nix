@@ -7,6 +7,8 @@
     ways = "the-way search";
     wayn = "the-way new";
 
+    ai = "aichat --session";
+
     curl = "curlie";
 
     cut = "tuc";
@@ -43,6 +45,17 @@
       expansion = "k get po -w -owide --sort-by=.metadata.creationTimestamp | rg '%'";
       setCursor = true;
     };
+
+    tfa = {
+      expansion = "tf apply -target='%'";
+      setCursor = true;
+    };
+
+    mvnpkg = "mvn package -DskipTests";
+    mvndep = "mvn dependency:resolve -Dclassifier=sources";
+    mvntree = "mvn dependency:tree | tee /tmp/tree.txt";
+    mvnpom = "mvn help:effective-pom | tee /tmp/pom.xml";
+    mvnupdate = "mvn versions:dependency-updates-report -DprocessDependencyManagementTransitive=false && chromium target/site/dependency-updates-report.html";
   };
 
   functions = {
@@ -296,12 +309,6 @@
     godeps = "go get -u all && go mod tidy";
 
     summon = "command summon -f summon.yml";
-
-    mvnpkg = "mvn package -DskipTests";
-    mvndep = "mvn dependency:resolve -Dclassifier=sources";
-    mvntree = "mvn dependency:tree | tee /tmp/tree.txt";
-    mvnpom = "mvn help:effective-pom | tee /tmp/pom.xml";
-    mvnupdate = "mvn versions:dependency-updates-report -DprocessDependencyManagementTransitive=false && chromium target/site/dependency-updates-report.html";
 
     cal = {
       wraps = "khal";
