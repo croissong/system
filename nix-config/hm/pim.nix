@@ -4,20 +4,17 @@
   outputs,
   pkgs,
   ...
-}: {
+}:
+{
   nixpkgs.overlays = [
-    (_: super: {
-      isync = super.isync.override {
-        withCyrusSaslXoauth2 = true;
-      };
-    })
+    (_: super: { isync = super.isync.override { withCyrusSaslXoauth2 = true; }; })
   ];
 
   home.packages = with pkgs; [
     davmail
     khal
     khard
-    mailctl
+    oama
 
     ## maybe/on-demand/unused
     # swaks # Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
@@ -64,7 +61,7 @@
           primary = true;
           flavor = "outlook.office365.com";
           realName = "Jan Möller";
-          passwordCommand = "${pkgs.mailctl}/bin/mailctl access ${outputs.vars.mail.wrk.username}";
+          passwordCommand = "${pkgs.oama}/bin/oama access ${outputs.vars.mail.wrk.username}";
           gpg = {
             signByDefault = true;
             key = "jan.moeller0@gmail.com";
@@ -78,7 +75,7 @@
               AuthMechs = "XOAUTH2";
             };
 
-            patterns = ["INBOX"];
+            patterns = [ "INBOX" ];
           };
 
           notmuch = {
@@ -87,8 +84,7 @@
 
           himalaya = {
             enable = true;
-            settings = {
-            };
+            settings = { };
           };
         };
       };
@@ -108,13 +104,16 @@
             url = "http://localhost:1080/users/${outputs.vars.mail.wrk.username}/calendar/";
             type = "caldav";
             userName = outputs.vars.mail.wrk.username;
-            passwordCommand = ["cat" config.sops.secrets."mail/wrk/password".path];
+            passwordCommand = [
+              "cat"
+              config.sops.secrets."mail/wrk/password".path
+            ];
           };
 
           vdirsyncer = {
             enable = true;
-            collections = ["calendar"];
-            itemTypes = ["VEVENT"];
+            collections = [ "calendar" ];
+            itemTypes = [ "VEVENT" ];
             timeRange = {
               start = "datetime.now() - timedelta(days=7)";
               end = "datetime.now() + timedelta(days=30)";
@@ -192,7 +191,7 @@
         };
 
         Install = {
-          WantedBy = ["timers.target"];
+          WantedBy = [ "timers.target" ];
         };
       };
     };
