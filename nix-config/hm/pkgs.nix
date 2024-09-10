@@ -117,7 +117,7 @@ let
           dasel # Query and update data structures from the command line.
           sd # Intuitive find & replace
           ruplacer # Find and replace text in source files
-          rnr # A command-line tool to batch rename files and directories
+          moreutils # (vidir)
           desed # Debugger for Sed
           teip # A tool to bypass a partial range of standard input to any command
           # TODO
@@ -632,7 +632,7 @@ let
 
     media = [
       ffmpeg
-      imagemagick
+      imagemagickBig
     ];
 
     virtualisation = [
