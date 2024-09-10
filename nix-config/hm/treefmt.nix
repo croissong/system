@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 {
-  projectRootFile = ".git/config";
+  projectRootFile = ".gitignore";
   programs = {
     black.enable = true;
     cue.enable = true;
