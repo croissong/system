@@ -38,6 +38,10 @@
             path = "~/dot/cam";
             devices = [ "phone" ];
           };
+          voice = {
+            path = "~/dot/voice";
+            devices = [ "phone" ];
+          };
         };
       };
     };
