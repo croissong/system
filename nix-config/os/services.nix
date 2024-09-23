@@ -1,4 +1,4 @@
-{ outputs, ... }:
+{ outputs, pkgs, ... }:
 {
   services = {
     fwupd.enable = true;
@@ -49,5 +49,16 @@
     upower = {
       enable = true;
     };
+  };
+
+  systemd.services.keyboard-chattering-fix = {
+    description = "A tool for blocking mechanical keyboard chattering on Linux";
+    after = [ "network.target" ];
+
+    serviceConfig = {
+      ExecStart = "${pkgs.keyboard-chattering-fix}/bin/keyboard-chattering-fix --threshold 50";
+    };
+
+    wantedBy = [ "multi-user.target" ];
   };
 }
