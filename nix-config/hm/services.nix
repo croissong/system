@@ -4,9 +4,10 @@
   outputs,
   pkgs,
   ...
-}: {
+}:
+{
   # don't auto start at boot
-  systemd.user.services.keybase.Install.WantedBy = lib.mkForce [];
+  systemd.user.services.keybase.Install.WantedBy = lib.mkForce [ ];
 
   services = {
     kdeconnect.enable = true;
@@ -29,7 +30,7 @@
     pueue = {
       enable = true;
       settings = {
-        shared = {};
+        shared = { };
       };
     };
   };
@@ -49,7 +50,7 @@
     };
 
     Install = {
-      WantedBy = ["graphical-session.target"];
+      WantedBy = [ "graphical-session.target" ];
     };
   };
   systemd.user.sockets.wob = {
@@ -62,7 +63,7 @@
     };
 
     Install = {
-      WantedBy = ["sockets.target"];
+      WantedBy = [ "sockets.target" ];
     };
   };
 }

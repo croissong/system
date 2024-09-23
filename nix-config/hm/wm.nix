@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   wayland.windowManager.sway = {
     enable = true;
     config = null;
@@ -22,8 +23,11 @@
   xdg.portal = with pkgs; {
     enable = true;
     xdgOpenUsePortal = false;
-    extraPortals = [xdg-desktop-portal-wlr xdg-desktop-portal-gtk];
-    configPackages = [sway];
+    extraPortals = [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+    configPackages = [ sway ];
   };
 
   services = {
@@ -62,12 +66,22 @@
 
     batsignal = {
       enable = true;
-      extraArgs = ["-w" "30" "-c" "15" "-d" "10"];
+      extraArgs = [
+        "-w"
+        "30"
+        "-c"
+        "15"
+        "-d"
+        "10"
+      ];
     };
 
     cliphist = {
       enable = true;
-      extraOptions = ["-max-items" "10"];
+      extraOptions = [
+        "-max-items"
+        "10"
+      ];
     };
   };
 }
