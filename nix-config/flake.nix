@@ -21,9 +21,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
+    nixpkgs-freecad.url = "github:nixos/nixpkgs/fe8b3aac33b23ceab8f57dad93c0e5393953877c";
+
     # nixpkgs-updatecli.url = "github:r-ryantm/nixpkgs/auto-update/updatecli";
-    nixpkgs-inlyne.url = "github:nixos/nixpkgs/825fc0ae4b3a11c938c0506c56c60b09810a53f9";
-    nixpkgs-nyxt.url = "github:nixos/nixpkgs/dc14ed91";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
