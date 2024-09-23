@@ -73,6 +73,7 @@ let
         imv # Command line image viewer for tiling window managers
         oculante # minimalistic crossplatform image viewer written in Rust
         vhs # A tool for generating terminal GIFs with code
+        wf-recorder # screen recording of wlroots-based compositors
         termshot # Creates screenshots based on terminal command output
         kdenlive # video editor
         menyoki # Screen{shot,cast} and perform ImageOps on the command line

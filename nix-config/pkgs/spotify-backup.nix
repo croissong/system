@@ -12,10 +12,14 @@ python3Packages.buildPythonApplication rec {
     rev = "master";
     owner = "caseychu";
     repo = "spotify-backup";
-    sha256 = "sha256-+z9IWgtc71GPPLDqNU4PXFDyD5Dczp3Bbrwzy/DaIts=";
+    sha256 = "sha256-u7BJvQhx7Y+DE/Tmzq/XCPVmtHCztyhiDVKR7fLvd0A=";
   };
 
-  phases = ["unpackPhase" "installPhase" "postFixup"];
+  phases = [
+    "unpackPhase"
+    "installPhase"
+    "postFixup"
+  ];
   format = "other";
   installPhase = ''
     install -Dm755 spotify-backup.py $out/bin/spotify-backup
