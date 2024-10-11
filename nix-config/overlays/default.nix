@@ -42,7 +42,7 @@ generatedImports
         owner = "danielfoehrKn";
         repo = "kubeswitch";
         rev = "master";
-        hash = "sha256-0KXVi1t50IpLoL8QB04PznNz13MlN9Ib42EKu7gtZ+8=";
+        hash = "sha256-kkrsbhR+OGB5VoaJxIIcN6Wr9c5nqub8uvcof+ALgwA=";
       };
 
       doCheck = false;

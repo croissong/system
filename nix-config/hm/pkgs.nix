@@ -384,12 +384,11 @@ let
 
         db = [
           usql # A universal command-line interface for SQL databases
-          mongodb-compass
 
-          ## maybe/on-demand/unused
           # dbeaver # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
           # sqlcmd # A command line tool for working with Microsoft SQL Server, Azure SQL Database
           # redli # A humane alternative to the Redis-cli and TLS
+          # mongodb-compass
           # mongosh # The MongoDB Shell
           # mongodb-tools
           # cassandra # (for cqlsh)

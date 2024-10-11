@@ -9,10 +9,10 @@ python3Packages.buildPythonApplication rec {
   src = fetchFromGitHub rec {
     inherit pname version;
     name = pname;
-    rev = "master";
+    rev = "8507cceefa155f47a54199db50a2d513c8b95549";
     owner = "caseychu";
     repo = "spotify-backup";
-    sha256 = "sha256-u7BJvQhx7Y+DE/Tmzq/XCPVmtHCztyhiDVKR7fLvd0A=";
+    sha256 = "sha256-jxddRSuSDVENX5bcGdD9l1Zq/I+6MhhH7Apw4cuUUPA=";
   };
 
   phases = [
