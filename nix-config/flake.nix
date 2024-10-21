@@ -76,19 +76,10 @@
       inherit (self) outputs;
       systems = [ "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
-
-      treefmtEval = forAllSystems (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     rec {
       versions = builtins.fromJSON (builtins.readFile ./versions.json);
       packages = forAllSystems (system: import ./pkgs { inherit system inputs versions; });
-
-      ### treefmt-nix
-      formatter = forAllSystems (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-      checks = forAllSystems (pkgs: {
-        formatting = treefmtEval.${pkgs.system}.config.build.check self;
-      });
-      ### treefmt-nix end
 
       overlays = import ./overlays { inherit inputs versions; };
       nixosModules = import ./modules/nixos;

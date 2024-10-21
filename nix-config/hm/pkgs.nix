@@ -323,7 +323,7 @@ let
       edit = [
         commitlint-rs
         helix # A post-modern modal text editor
-        (inputs.treefmt-nix.lib.mkWrapper pkgs ./treefmt.nix)
+        (inputs.treefmt-nix.lib.mkWrapper pkgs (import ./treefmt.nix { inherit lib pkgs inputs; }))
         devbox # Instant, easy, predictable shells and containers.
 
         nuspell
