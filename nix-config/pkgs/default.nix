@@ -18,6 +18,7 @@
   service-status = pkgs.callPackage ./service-status.nix {};
   spotify-backup = pkgs.callPackage ./spotify-backup.nix {};
   wutag = pkgs.callPackage ./wutag.nix {inherit versions;};
+  gitwatch-rs = pkgs.callPackage ./gitwatch-rs.nix { };
 
   mpv-simple-history = pkgs.callPackage ./mpv-simple-history.nix {};
 }
