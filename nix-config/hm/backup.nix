@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   backup = {
     service = {
       Unit = {
@@ -15,7 +16,8 @@
       Service = {
         Type = "oneshot";
         ExecStart = "${lib.getExe pkgs.resticprofile} backup";
-        Environment = "PATH=$PATH:${with pkgs;
+        Environment = "PATH=$PATH:${
+          with pkgs;
           lib.makeBinPath [
             bash
             coreutils
@@ -23,7 +25,8 @@
             git
             ripgrep
             unixtools.ping
-          ]}";
+          ]
+        }";
 
         # https://stackoverflow.com/questions/35805354/systemd-start-service-at-boot-time-after-network-is-really-up-for-wol-purpose
         ExecStartPre = "/bin/sh -c 'while ! ping -c1 1.1.1.1; do sleep 1; done'";
@@ -44,31 +47,34 @@
       };
 
       Install = {
-        WantedBy = ["timers.target"];
+        WantedBy = [ "timers.target" ];
       };
     };
   };
 
-  gitwatch = let
-    mkService = dir: {
-      Unit = {
-        Description = "Gitwatch ${dir}";
+  gitwatch =
+    let
+      mkService = dir: args: {
+        Unit = {
+          Description = "Gitwatch ${dir}";
+        };
+        Service = {
+          ExecStart = ''
+            ${pkgs.gitwatch-rs}/bin/gitwatch-rs ${config.home.homeDirectory}/dot/${dir}/ ${args}
+          '';
+          ExecStop = "/bin/true";
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
       };
-      Service = {
-        ExecStart = ''
-          ${pkgs.gitwatch}/bin/gitwatch -s 600 -m "chore: update ${dir}" ${config.home.homeDirectory}/dot/${dir}/
-        '';
-        ExecStop = "/bin/true";
-      };
-      Install = {
-        WantedBy = ["default.target"];
-      };
+    in
+    {
+      notes = mkService "notes" "--commit-message-script ~/dot/notes/ai.fish";
+      docs = mkService "docs" "--commit-message 'update docs'";
     };
-  in {
-    notes = mkService "notes";
-    docs = mkService "docs";
-  };
-in {
+in
+{
   systemd.user = {
     services = {
       backup = backup.service;
