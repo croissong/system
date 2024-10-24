@@ -15,8 +15,8 @@ rustPlatform.buildRustPackage rec {
   };
   cargoHash = "sha256-Xnue2oJ5Y0VVa1raXM703oQuFegh4wSoPxd26bVcjnQ=";
 
-  nativeBuildInputs = [pkg-config];
-  buildInputs = [openssl];
+  nativeBuildInputs = [ pkg-config ];
+  buildInputs = [ openssl ];
 
   meta = {
     homepage = "https://github.com/hakoerber/git-repo-manager";

@@ -33,7 +33,7 @@
   services = {
     swayidle = with pkgs; {
       enable = true;
-      extraArgs = ["-w"];
+      extraArgs = [ "-w" ];
       events = [
         {
           event = "before-sleep";

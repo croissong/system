@@ -21,7 +21,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
-    nixpkgs-freecad.url = "github:nixos/nixpkgs/fe8b3aac33b23ceab8f57dad93c0e5393953877c";
+    nixpkgs-azure-cli.url = "github:nixos/nixpkgs/65d98cb037009203ae0e73972b9d0f3e1f23353e";
 
     # nixpkgs-updatecli.url = "github:r-ryantm/nixpkgs/auto-update/updatecli";
 
@@ -54,11 +54,6 @@
 
     priv.url = "git+file:///home/moi/dot/priv";
 
-    gitwatch = {
-      url = "github:gitwatch/gitwatch";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,6 +61,11 @@
 
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    fenix = {
+      url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

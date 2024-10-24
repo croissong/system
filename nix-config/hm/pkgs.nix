@@ -12,7 +12,6 @@ let
     ent = [
       playerctl
       spotify
-      spotify-backup
       spotify-player
       steamcmd
       tor
@@ -151,6 +150,8 @@ let
         snapper # A tool for managing BTRFS and LVM snapshots
         httm # Interactive, file-level Time Machine-like tool for ZFS/btrfs
         rclone # CLI to sync files and directories to and from major cloud storage
+
+        spotify-backup
         gitwatch-rs
       ];
 
