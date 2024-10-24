@@ -61,6 +61,7 @@
   functions = {
     # https://fishshell.com/docs/current/cmds/bind.html
     # watch https://github.com/fish-shell/fish-shell/issues/1671
+    # `bind` lists all bindings
     fish_user_key_bindings = ''
       bind \t complete-and-search
       bind \cw backward-kill-word
@@ -68,6 +69,9 @@
       # Alt+left
       bind \e\[1\;3D backward-kill-bigword
       bind \ek kill-whole-line
+
+      bind \cp undo
+      bind \ep redo
     '';
 
     ls = {
@@ -291,7 +295,11 @@
 
     kc = {
       wraps = "kubectl";
-      body = "kubeswitch --show-preview=false $argv";
+      body = ''
+        kubeswitch --show-preview=false $argv
+        kn
+        kk
+      '';
     };
 
     kcc = "kc h";
@@ -346,7 +354,8 @@
       end
     '';
 
-    j = "just -g --choose";
+    j = "just -g $argv";
+    jj = "just --justfile ~/dot/priv/justfile $argv";
 
     ts-from-unix = "date --utc -Iseconds -d @$argv";
     ts-to-unix = "date -d '$argv' +'%s'";
