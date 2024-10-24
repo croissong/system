@@ -303,22 +303,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-csvlens": {
-      "locked": {
-        "lastModified": 1725954889,
-        "narHash": "sha256-dJ5bnYwQ4gCXF6P1NurkXtUYrraWGF7BQyox2Z0gJJk=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "fe8b3aac33b23ceab8f57dad93c0e5393953877c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "fe8b3aac33b23ceab8f57dad93c0e5393953877c",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1729449015,
@@ -423,7 +407,6 @@
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-azure-cli": "nixpkgs-azure-cli",
-        "nixpkgs-csvlens": "nixpkgs-csvlens",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "priv": "priv",
         "sops-nix": "sops-nix",
