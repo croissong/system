@@ -19,6 +19,7 @@
   inputs = {
     # hydra-check blender
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     nixpkgs-azure-cli.url = "github:nixos/nixpkgs/65d98cb037009203ae0e73972b9d0f3e1f23353e";

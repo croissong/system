@@ -99,7 +99,7 @@ generatedImports
     };
 
   emacs-overlay = final: _prev: {
-    emacs-overlay = import inputs.nixpkgs {
+    emacs-overlay = import inputs.nixpkgs-nixos-unstable {
       system = final.system;
       config.allowUnfree = true;
       overlays = [ (import inputs.emacs-overlay) ];
