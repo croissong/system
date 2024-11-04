@@ -1,6 +1,7 @@
 # watch: Autocomplete for aliases that shadow a different name (https://github.com/fish-shell/fish-shell/issues/6002)
 {
   abbreviations = {
+
     dl = "curl --create-dirs -O --output-dir /tmp/";
     jwtd = "jwt decode -j --date=Local";
 
@@ -98,6 +99,8 @@
       wraps = "bat";
       body = "bat $argv";
     };
+
+    mkd = "mkdir $argv && cd $argv";
 
     top = {
       wraps = "btm";
