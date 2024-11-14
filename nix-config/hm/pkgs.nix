@@ -581,6 +581,7 @@ let
         lshw
         hwinfo
         lm_sensors
+        pik # Process Interactive Kill
         procs # A modern replacement for ps written in Rust
         xdg-ninja # A shell script which checks your $HOME for unwanted files and directories
         xdg-utils

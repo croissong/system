@@ -169,8 +169,6 @@ let
       body = "viddy $argv";
     };
 
-    pkill = "command pkill -f -e $argv";
-
     df = {
       wraps = "duf";
       body = "duf $argv";
