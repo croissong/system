@@ -734,6 +734,7 @@ let
       kubectl # Kubernetes.io client binary
       kubelogin # A Kubernetes credential plugin implementing Azure authentication
       kubeswitch
+      kubecolor
       stern # Multi pod and container log tailing for Kubernetes
       kubernetes-helm # The Kubernetes Package Manager
       kustomize # Template-free customization of Kubernetes YAML manifests

@@ -18,7 +18,62 @@ let
     };
   };
 
-  abbreviations = {
+  kubectl = {
+    abbreviations = {
+      kcrm = "k --kubeconfig ~/.kube/config config delete-context";
+      kcmv = "k --kubeconfig ~/.kube/config config rename-context";
+      kg = "k get -o yaml";
+      kgn = "k neat get";
+      kd = "k describe";
+      kroll = "k rollout restart";
+
+      kl = {
+        expansion = "stern svc/%";
+        setCursor = true;
+      };
+
+      klj = "stern --template-file ~/.config/stern/stern.tpl";
+      kx = "k iexec";
+
+      kfwd = {
+        expansion = "k port-forward svc/%";
+        setCursor = true;
+      };
+
+      kw = {
+        expansion = "k get po -w -owide --sort-by=.metadata.creationTimestamp | rg '%'";
+        setCursor = true;
+      };
+
+    };
+
+    functions = {
+      k = {
+        wraps = "kubecolor";
+        body = "kubecolor $argv";
+      };
+
+      kn = "kubeswitch ns";
+      kk = ''
+        kubectl config view --minify -o jsonpath='{.contexts[0].context.cluster} {.contexts[0].context.namespace}{"\n"}'
+      '';
+
+      kc = {
+        wraps = "kubeswitch";
+        body = ''
+          kubeswitch --show-preview=false $argv
+          knkd
+          kk
+        '';
+      };
+
+      kcc = "kubeswitch h";
+      kce = "open .kube/config";
+
+    };
+  };
+
+  abbreviations = kubectl.abbreviations // {
 
     dl = "curl --create-dirs -O --output-dir /tmp/";
     jwtd = "jwt decode -j --date=Local";
@@ -40,31 +95,6 @@ let
 
     cert = "step certificate inspect";
 
-    kcrm = "k --kubeconfig ~/.kube/config config delete-context";
-    kcmv = "k --kubeconfig ~/.kube/config config rename-context";
-    kg = "k get -o yaml";
-    kgn = "k neat get";
-    kd = "k describe";
-    kroll = "k rollout restart";
-
-    kl = {
-      expansion = "stern svc/%";
-      setCursor = true;
-    };
-
-    klj = "stern --template-file ~/.config/stern/stern.tpl";
-    kx = "k iexec";
-
-    kfwd = {
-      expansion = "k port-forward svc/%";
-      setCursor = true;
-    };
-
-    kw = {
-      expansion = "k get po -w -owide --sort-by=.metadata.creationTimestamp | rg '%'";
-      setCursor = true;
-    };
-
     tfa = {
       expansion = "tf apply -target='%'";
       setCursor = true;
@@ -77,7 +107,7 @@ let
     mvnupdate = "mvn versions:dependency-updates-report -DprocessDependencyManagementTransitive=false && chromium target/site/dependency-updates-report.html";
   };
 
-  functions = {
+  functions = kubectl.functions // {
     # https://fishshell.com/docs/current/cmds/bind.html
     # watch https://github.com/fish-shell/fish-shell/issues/1671
     # `bind` lists all bindings
@@ -309,36 +339,6 @@ let
     man = ''
       emacsclient -que "(man \"$argv\")"
     '';
-
-    #
-    # Kubectl
-    #
-
-    k = {
-      wraps = "kubectl";
-      body = "kubectl $argv";
-    };
-
-    kc = {
-      wraps = "kubectl";
-      body = ''
-        kubeswitch --show-preview=false $argv
-        kn
-        kk
-      '';
-    };
-
-    kcc = "kc h";
-    kce = "open .kube/config";
-    kk = ''
-      kubectl config view --minify -o jsonpath='{.contexts[0].context.cluster} {.contexts[0].context.namespace}{"\n"}'
-    '';
-
-    kn = "kubeswitch ns";
-
-    #
-    #
-    #
 
     godeps = "go get -u all && go mod tidy";
 
