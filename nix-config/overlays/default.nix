@@ -48,45 +48,6 @@ generatedImports
 
       flashrom = import ./flashrom.nix { inherit final prev; };
 
-      kubeswitch = prev.kubeswitch.overrideAttrs (_: {
-        version = "0.9.1-next";
-        src = prev.fetchFromGitHub {
-          owner = "danielfoehrKn";
-          repo = "kubeswitch";
-          rev = "master";
-          hash = "sha256-/vN4oh5dyqHDiBAMV4Zt9PWoIXmlc5LWOMsW1npz9Fc=";
-        };
-
-        doCheck = false;
-      });
-
-      gitwatch = final.writeShellApplication {
-        name = "gitwatch";
-        runtimeInputs = with final.pkgs; [
-          git
-          inotify-tools
-          openssh
-          coreutils
-          gnugrep
-          gnused
-
-          # for custom pre-commit hook
-          bash
-          eza
-        ];
-
-        bashOptions = [
-          "errexit"
-          "pipefail"
-        ];
-        checkPhase = "";
-        text = builtins.readFile (
-          builtins.fetchurl {
-            url = "https://raw.githubusercontent.com/croissong/gitwatch/master/gitwatch.sh";
-          }
-        );
-      };
-
       termdown = prev.termdown.overrideAttrs (_: rec {
         version = "1.18.0";
         src = final.fetchFromGitHub {
