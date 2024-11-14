@@ -93,6 +93,13 @@ let
       bind \ep redo
     '';
 
+    fish_should_add_to_history = ''
+      for cmd in jj ll c open ls
+           string match -qr "^$cmd" -- $argv; and return 1
+      end
+      return 0
+    '';
+
     ls = {
       wraps = "eza";
       body = "eza -ga --group-directories-first $argv";
