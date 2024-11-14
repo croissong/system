@@ -60,7 +60,7 @@ let
         };
         Service = {
           ExecStart = ''
-            ${pkgs.gitwatch-rs}/bin/gitwatch-rs ${config.home.homeDirectory}/dot/${dir}/ ${args}
+            ${pkgs.gitwatch-rs}/bin/gitwatch-rs --debounce-seconds=600 ${config.home.homeDirectory}/dot/${dir}/ ${args}
           '';
           ExecStop = "/bin/true";
         };
