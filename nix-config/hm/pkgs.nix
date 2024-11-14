@@ -182,7 +182,7 @@ let
         oath-toolkit # oathtool
         gopass # The slightly more awesome standard unix password manager for teams.
         gopass-summon-provider # summon provider for gopass
-        _1password # 1Password command-line tool
+        _1password-cli # 1Password command-line tool
         tessen # An interactive menu to autotype and copy Pass and GoPass data
 
         gpg-tui # A terminal user interface for GnuPG
@@ -628,8 +628,7 @@ let
     cli = [ ];
 
     pers = [
-      ledger # Double-entry accounting system with a command-line reporting interface
-      reckon # Flexibly import bank account CSV files into Ledger for command line accounting
+      hledger
     ];
 
     media = [
@@ -658,7 +657,6 @@ let
 
     backup = [
       restic
-      autorestic
       resticprofile
       redu
     ];
