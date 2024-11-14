@@ -1,7 +1,4 @@
 { config, pkgs, ... }:
-let
-  fish = import ./fish.nix;
-in
 {
   programs = {
     bash = {
@@ -10,18 +7,6 @@ in
       profileExtra = ''
         [ "$(tty)" = "/dev/tty1" ] && exec sway
       '';
-    };
-
-    fish = {
-      enable = true;
-      functions = fish.functions;
-      shellAbbrs = fish.abbreviations;
-      plugins = with pkgs.fishPlugins; [
-        {
-          name = "fzf-fish";
-          src = fzf-fish.src;
-        }
-      ];
     };
 
     wezterm = {

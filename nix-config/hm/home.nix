@@ -5,7 +5,8 @@
   outputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.sops-nix.homeManagerModules.sops
 
@@ -14,6 +15,7 @@
     ./emacs.nix
     ./env.nix
     ./firefox.nix
+    ./fish.nix
     ./gpg.nix
     ./nix.nix
     ./mpv.nix

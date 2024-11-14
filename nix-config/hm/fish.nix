@@ -1,5 +1,23 @@
 # watch: Autocomplete for aliases that shadow a different name (https://github.com/fish-shell/fish-shell/issues/6002)
-{
+
+{ pkgs, ... }:
+let
+  fishConfig = {
+    programs = {
+      fish = {
+        enable = true;
+        functions = functions;
+        shellAbbrs = abbreviations;
+        plugins = with pkgs.fishPlugins; [
+          {
+            name = "fzf-fish";
+            src = fzf-fish.src;
+          }
+        ];
+      };
+    };
+  };
+
   abbreviations = {
 
     dl = "curl --create-dirs -O --output-dir /tmp/";
@@ -377,4 +395,5 @@
       gopass show -f $match | less
     '';
   };
-}
+in
+fishConfig
