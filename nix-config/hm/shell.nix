@@ -48,6 +48,8 @@
       enable = true;
     };
 
-    # TODO: yazi?
+    yazi = {
+      enable = true;
+    };
   };
 }
