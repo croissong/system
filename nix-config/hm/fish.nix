@@ -62,7 +62,7 @@ let
         wraps = "kubeswitch";
         body = ''
           kubeswitch --show-preview=false $argv
-          knkd
+          kn
           kk
         '';
       };
