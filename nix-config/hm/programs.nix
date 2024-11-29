@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs = {
     chromium = {
       enable = true;
@@ -13,8 +14,8 @@
 
     vscode = {
       enable = true;
-      package = pkgs.vscodium.fhsWithPackages (ps:
-        with ps; [
+      package = pkgs.vscodium.fhsWithPackages (
+        ps: with ps; [
           stdenv.cc.cc
           fuse3
           openssl
@@ -33,7 +34,8 @@
           freetype
           wayland
           vulkan-loader
-        ]);
+        ]
+      );
       mutableExtensionsDir = false;
       extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {

@@ -426,9 +426,6 @@ let
         mold # A faster drop-in replacement for existing Unix linkers
         # rust-analyzer # Experimental Rust compiler front-end for IDEs
 
-        # TODO
-        # https://github.com/nix-community/fenix/
-
         ## maybe/on-demand/unused
         # cargo-edit # Managing cargo dependencies from the command line
         # cargo-generate
