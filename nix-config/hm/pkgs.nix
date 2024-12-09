@@ -297,6 +297,9 @@ let
         argocd # Declarative continuous deployment for Kubernetes
         azure-cli
         civo
+        hcloud
+        holos
+        talosctl
         minio-client
         s3cmd # Command line tool for managing Amazon S3 and CloudFront services
         sops # Mozilla sops (Secrets OPerationS) is an editor of encrypted files
@@ -712,6 +715,7 @@ let
       ktlint # An anti-bikeshedding Kotlin linter with built-in formatter
       # TODO: build failure
       # mitmproxy # SSL-capable man-in-the-middle HTTP proxy
+      packer # tool for creating identical machine images for multiple platforms from a single source configuration
       prometheus # for promtool promql format
       protobuf # Google's data interchange format
       doctl # The official command line interface for the DigitalOcean API
@@ -721,7 +725,6 @@ let
       # cosign # Container Signing CLI with support for ephemeral keys and Sigstore signing
       # hexyl # A command-line hex viewer
       # mob # Tool for smooth git handover for remote pair/mob programming
-      # packer # tool for creating identical machine images for multiple platforms from a single source configuration
       # pluto # A cli tool to help discover deprecated apiVersions in Kubernetes
     ];
 

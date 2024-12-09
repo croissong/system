@@ -166,6 +166,8 @@ let
 
     mkd = "mkdir $argv && cd $argv";
 
+    img = "swayimg";
+
     top = {
       wraps = "btm";
       body = "btm $argv";
