@@ -21,7 +21,6 @@
     prettier.enable = true;
 
     rustfmt.enable = true;
-    rustfmt.package = inputs.fenix.packages.${pkgs.system}.default.rustfmt;
 
     shellcheck.enable = true;
     shfmt.enable = true;
