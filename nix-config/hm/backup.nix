@@ -60,7 +60,7 @@ let
         };
         Service = {
           ExecStart = ''
-            ${pkgs.gitwatch-rs}/bin/gitwatch-rs --debounce-seconds=600 ${config.home.homeDirectory}/dot/${dir}/ ${args}
+            ${pkgs.gitwatch-rs}/bin/gitwatch watch --debounce-seconds=600 ${args} ${config.home.homeDirectory}/dot/${dir}/
           '';
           ExecStop = "/bin/true";
         };
@@ -70,7 +70,7 @@ let
       };
     in
     {
-      notes = mkService "notes" "--commit-message-script ~/dot/notes/ai.fish";
+      notes = mkService "notes" "--commit-message-script ~/dot/notes/gitwatch.fish";
       docs = mkService "docs" "--commit-message 'update docs'";
     };
 in
