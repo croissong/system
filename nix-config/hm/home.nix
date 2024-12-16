@@ -12,6 +12,7 @@
 
     ./backup.nix
     ./dev.nix
+    ./docs.nix
     ./emacs.nix
     ./env.nix
     ./firefox.nix
