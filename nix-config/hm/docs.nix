@@ -1,20 +1,28 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
 let
   gitwatch =
     let
-      mkService = dir: args: {
+      mkService = dir: {
         Unit = {
           Description = "Gitwatch ${dir}";
         };
         Service = {
           ExecStart = ''
-            ${pkgs.gitwatch-rs}/bin/gitwatch watch --log-level=debug ${args} ${config.home.homeDirectory}/dot/${dir}/
+            ${pkgs.gitwatch-rs}/bin/gitwatch watch --log-level=debug ${config.home.homeDirectory}/dot/${dir}/
           '';
-          ExecStop = "/bin/true";
+          Environment = "PATH=$PATH:${
+            lib.makeBinPath [
+              pkgs.bash
+              pkgs.coreutils
+              pkgs.git
+              pkgs.aichat
+            ]
+          }";
         };
         Install = {
           WantedBy = [ "default.target" ];
@@ -22,8 +30,8 @@ let
       };
     in
     {
-      notes = mkService "notes" "";
-      docs = mkService "docs" "--commit-message 'update docs'";
+      notes = mkService "notes";
+      docs = mkService "docs";
     };
 in
 {
