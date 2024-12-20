@@ -525,7 +525,7 @@ let
         pinta # Drawing/editing program modeled after Paint.NET
         gimp # The GNU Image Manipulation Program
         epick # Color picker for creating harmonic color palettes
-        wl-color-picker
+        hyprpicker
         pastel # A command-line tool to generate, analyze, convert and manipulate colors
       ];
       video = [
