@@ -15,6 +15,9 @@ let
           }
         ];
       };
+
+      # https://discourse.nixos.org/t/slow-build-at-building-man-cache/52365/4
+      man.generateCaches = false;
     };
   };
 
@@ -68,7 +71,7 @@ let
       };
 
       kcc = "kubeswitch h";
-      kce = "open .kube/config";
+      kce = "open ~/.kube/config";
 
     };
   };
