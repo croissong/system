@@ -36,7 +36,11 @@ let
       };
 
       klj = "stern --template-file ~/.config/stern/stern.tpl";
-      kx = "k iexec";
+
+      kx = {
+        expansion = "k iexec % bash";
+        setCursor = true;
+      };
 
       kfwd = {
         expansion = "k port-forward svc/%";
@@ -181,7 +185,7 @@ let
       body = "handlr open $argv";
     };
 
-    history = "builtin history --show-time='%h/%d - %H:%M:%S ' | moar";
+    hist = "builtin history --show-time='%h/%d - %H:%M:%S ' | moar";
 
     tree = {
       wraps = "eza";
@@ -355,8 +359,6 @@ let
     '';
 
     godeps = "go get -u all && go mod tidy";
-
-    summon = "command summon -f summon.yml";
 
     cal = {
       wraps = "khal";
