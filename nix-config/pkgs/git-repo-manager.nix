@@ -6,14 +6,14 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "git-repo-manager";
-  version = "0.7.15";
+  version = "0.7.22";
   src = fetchFromGitHub {
     owner = "hakoerber";
     repo = "git-repo-manager";
     rev = "v${version}";
-    hash = "sha256-NSr8wWBKwT8AOO/NSHhSnYeje2hkAyjtDwooa2RqTfE=";
+    hash = "sha256-ycJecaeTn9gOXsiEJApJPVNhnWY6yfOcPPTiYZYW4uc=";
   };
-  cargoHash = "sha256-Xnue2oJ5Y0VVa1raXM703oQuFegh4wSoPxd26bVcjnQ=";
+  cargoHash = "sha256-Hik7c79rC87DqBrBP2a/6Ed6LWsI4Dj20ttqdoslapg=";
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [ openssl ];
