@@ -287,11 +287,15 @@ let
       ];
 
       general = [
-        aichat
 
         ## maybe/on-demand/unused
         # seer # A Qt gui frontend for GDB
         # powershell
+      ];
+
+      ai = [
+        aichat
+        aider-chat
       ];
 
       cn = [
@@ -371,6 +375,7 @@ let
           go-jsonnet
           xxHash # Extremely fast hash algorithm
           nim
+          cue
         ];
 
         c = [
