@@ -49,6 +49,7 @@ let
       calsync
       chezmoi # Manage your dotfiles across multiple machines
       inputs.esplanade.packages.${pkgs.system}.default
+      my-tabs
       updatecli # Continuously update everything
     ];
 

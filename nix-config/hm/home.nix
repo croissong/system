@@ -20,6 +20,7 @@
     ./gpg.nix
     ./nix.nix
     ./mpv.nix
+    ./my-tabs.nix
     ./pkgs.nix
     ./pim.nix
     ./programs.nix
