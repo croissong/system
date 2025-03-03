@@ -37,7 +37,7 @@
         ]
       );
       mutableExtensionsDir = false;
-      extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      profiles.default.extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "slint";
           publisher = "Slint";
