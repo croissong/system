@@ -75,7 +75,7 @@ let
         vhs # A tool for generating terminal GIFs with code
         wf-recorder # screen recording of wlroots-based compositors
         termshot # Creates screenshots based on terminal command output
-        kdenlive # video editor
+        kdePackages.kdenlive # video editor
         menyoki # Screen{shot,cast} and perform ImageOps on the command line
         satty # Modern Screenshot Annotation Tool
         bluetuith # A TUI bluetooth manager for Linux.
@@ -622,7 +622,7 @@ let
       media = [ ];
 
       productivity = [
-        focus
+        # TODO: wrong cli focus
 
         ## maybe/on-demand/unused
         # blanket # Improve focus and increase your productivity by listening to different sounds
@@ -689,6 +689,8 @@ let
       nix-search-cli
 
       nixos-shell
+      # https://github.com/juspay/omnix/issues/204
+      # omnix
       steam-run # run commands in the same FHS environment that is used for Steam
     ];
 

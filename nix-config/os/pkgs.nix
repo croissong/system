@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     bash
     coreutils
-    emacs
+    emacs30
     git
     gnupg
     home-manager
