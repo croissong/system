@@ -1,6 +1,8 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   bookmarks = builtins.fromJSON (builtins.readFile ../bookmarks.json);
-in {
+in
+{
   programs.firefox = {
     enable = true;
 
@@ -11,7 +13,10 @@ in {
         #TabsToolbar { visibility: collapse; }
       '';
 
-      bookmarks = bookmarks;
+      bookmarks = {
+        force = true;
+        settings = bookmarks;
+      };
 
       settings = {
         "browser.urlbar.suggest.engines" = false;
@@ -70,14 +75,14 @@ in {
             ];
 
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = ["@np"];
+            definedAliases = [ "@np" ];
           };
 
           "Github" = {
-            urls = [{template = "https://github.com/search?q={searchTerms}&type=repositories";}];
+            urls = [ { template = "https://github.com/search?q={searchTerms}&type=repositories"; } ];
             iconUpdateURL = "https://github.githubassets.com/favicons/favicon.svg";
             updateInterval = 24 * 60 * 60 * 1000; # every day
-            definedAliases = ["@gh"];
+            definedAliases = [ "@gh" ];
           };
 
           "Google".metaData.alias = "@g";
@@ -106,7 +111,7 @@ in {
         Locked = true;
       };
       PromptForDownloadLocation = true;
-      RequestedLocales = ["en"];
+      RequestedLocales = [ "en" ];
       UserMessaging = {
         ExtensionRecommendations = false;
         FeatureRecommendations = true;
