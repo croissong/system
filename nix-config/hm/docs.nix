@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  inputs,
   pkgs,
   ...
 }:
@@ -13,7 +14,9 @@ let
         };
         Service = {
           ExecStart = ''
-            ${pkgs.gitwatch-rs}/bin/gitwatch watch --log-level=debug ${config.home.homeDirectory}/dot/${dir}/
+            ${
+              inputs.gitwatch-rs.packages.${pkgs.system}.default
+            }/bin/gitwatch watch --log-level=debug ${config.home.homeDirectory}/dot/${dir}/
           '';
           Environment = "PATH=$PATH:${
             lib.makeBinPath [

@@ -153,7 +153,7 @@ let
         rclone # CLI to sync files and directories to and from major cloud storage
 
         spotify-backup
-        gitwatch-rs
+        inputs.gitwatch-rs.packages.${pkgs.system}.default
       ];
 
       tools = [
