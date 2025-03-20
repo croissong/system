@@ -112,6 +112,8 @@ let
     mvntree = "mvn dependency:tree | tee /tmp/tree.txt";
     mvnpom = "mvn help:effective-pom | tee /tmp/pom.xml";
     mvnupdate = "mvn versions:dependency-updates-report -DprocessDependencyManagementTransitive=false && chromium target/site/dependency-updates-report.html";
+
+    nixu = "j nix-os && j nix-hm false";
   };
 
   functions = kubectl.functions // {
