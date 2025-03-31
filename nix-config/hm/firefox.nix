@@ -50,7 +50,7 @@ in
       };
 
       search = {
-        default = "Google";
+        default = "google";
         force = true;
         engines = {
           "Nix Packages" = {
@@ -85,7 +85,7 @@ in
             definedAliases = [ "@gh" ];
           };
 
-          "Google".metaData.alias = "@g";
+          "google".metaData.alias = "@g";
 
           "Bing".metaData.hidden = true;
           "DuckDuckGo".metaData.hidden = true;
