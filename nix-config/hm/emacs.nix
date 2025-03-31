@@ -11,6 +11,7 @@ let
         auctex
         pdf-tools
         treesit-grammars.with-all-grammars
+        vterm
       ]
     );
 in
