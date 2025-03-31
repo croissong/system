@@ -5,7 +5,7 @@
 let
   package =
     with pkgs;
-    (nixpkgs-nixos-unstable.emacsPackagesFor emacs-overlay.emacs-pgtk).emacsWithPackages (
+    (nixpkgs-nixos-unstable.emacsPackagesFor emacs-overlay.emacs-unstable-pgtk).emacsWithPackages (
       epkgs: with epkgs; [
         jinx
         auctex
