@@ -702,7 +702,8 @@ let
       # ansible # Official assortment of Ansible collections
       # ansible-lint # Checks playbooks for practices and behaviour that could potentially be improved.
       # dhcping # Send DHCP request to find out if a DHCP server is running
-      # frp # A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.
+      frp # A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.
+      zrok
       ngrok # secure introspectable tunnels to localhost
       # rathole # A reverse proxy for NAT traversal
       # python3Packages.mitogen # Python Library for writing distributed self-replicating programs
