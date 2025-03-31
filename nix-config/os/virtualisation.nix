@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   virtualisation = {
     containers.enable = true;
     podman = {
@@ -17,5 +18,7 @@
       enable = true;
       socketActivation = true;
     };
+
+    waydroid.enable = true;
   };
 }
