@@ -52,6 +52,7 @@ let
         setCursor = true;
       };
 
+      kex = "kubectl explain --recursive";
     };
 
     functions = {
@@ -394,7 +395,7 @@ let
           set TMP (mktemp /tmp/stdin-XXX)
           cat >$TMP
           emacsclient -n $TMP
-          rm $TMP
+          command rm $TMP
       end
     '';
 
