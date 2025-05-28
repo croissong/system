@@ -365,6 +365,7 @@ let
 
         java = [
           jetbrains.idea-community # IDE by Jetbrains, community edition
+          jdt-language-server
 
           ## maybe/on-demand/unused
           # eclipse-mat # Fast and feature-rich Java heap analyzer
