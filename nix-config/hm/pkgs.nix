@@ -697,7 +697,6 @@ let
 
     tools = [
       miniserve # CLI tool to serve files and directories over HTTP
-      ventoy # A new multiboot USB solution (Binary)
 
       ## maybe/on-demand/unused
       # ansible # Official assortment of Ansible collections
