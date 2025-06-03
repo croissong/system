@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -15,7 +14,7 @@
     jsonnet-lint.enable = true;
     jsonnetfmt.enable = true;
     nimpretty.enable = true;
-    nixfmt-rfc-style.enable = true;
+    nixfmt.enable = true;
     opa.enable = true;
     packer.enable = true;
     prettier.enable = true;

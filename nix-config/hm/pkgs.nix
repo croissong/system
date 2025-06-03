@@ -677,7 +677,7 @@ let
     nix = [
       alejandra # The Uncompromising Nix Code Formatter
       deadnix # Find and remove unused code in .nix source files
-      nixfmt-rfc-style # for nixpkgs
+      nixfmt # for nixpkgs
       cachix
       hydra-check # check hydra for the build status of a package
       nh # Yet another nix cli helper
