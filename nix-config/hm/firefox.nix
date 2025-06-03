@@ -80,17 +80,17 @@ in
 
           "Github" = {
             urls = [ { template = "https://github.com/search?q={searchTerms}&type=repositories"; } ];
-            iconUpdateURL = "https://github.githubassets.com/favicons/favicon.svg";
+            icon = "https://github.githubassets.com/favicons/favicon.svg";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [ "@gh" ];
           };
 
           "google".metaData.alias = "@g";
 
-          "Bing".metaData.hidden = true;
-          "DuckDuckGo".metaData.hidden = true;
+          "bing".metaData.hidden = true;
+          "ddg".metaData.hidden = true;
           "Amazon.de".metaData.hidden = true;
-          "Wikipedia (en)".metaData.hidden = true;
+          "wikipedia".metaData.hidden = true;
         };
       };
     };
@@ -133,10 +133,6 @@ in
         "de-DE@dictionaries.addons.mozilla.org" = {
           installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/dictionary-german/latest.xpi";
-        };
-        "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}" = {
-          installation_mode = "force_installed";
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/auto-tab-discard/latest.xpi";
         };
 
         "brotab_mediator@example.org" = {
