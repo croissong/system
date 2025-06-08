@@ -134,9 +134,7 @@ let
     '';
 
     fish_should_add_to_history = ''
-      for cmd in jj ll c open ls
-           string match -qr "^$cmd" -- $argv; and return 1
-      end
+      string match -qr "^(jj|ll|c|open|ls)(\s|\$)" -- $argv; and return 1
       return 0
     '';
 
