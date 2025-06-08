@@ -357,7 +357,6 @@ let
           nodePackages.typescript-language-server
 
           nodePackages.prettier
-          nodePackages.prettier-plugin-toml
 
           ## maybe/on-demand/unused
           # deno # A secure runtime for JavaScript and TypeScript
