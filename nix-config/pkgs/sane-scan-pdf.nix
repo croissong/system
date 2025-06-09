@@ -16,9 +16,23 @@ stdenv.mkDerivation rec {
     hash = "sha256-WGtg+B11lKjTwTVICldz16UfjAk4l7pftukbfXb3S3c=";
   };
 
-  nativeBuildInputs = [makeWrapper];
+  nativeBuildInputs = [ makeWrapper ];
   # https://github.com/rocketraman/sane-scan-pdf/wiki/Dependencies-Installation
-  buildInputs = with pkgs; [bash netpbm coreutils ghostscript poppler_utils imagemagick unpaper util-linux tesseract parallel units bc sane-frontends];
+  buildInputs = with pkgs; [
+    bash
+    netpbm
+    coreutils
+    ghostscript
+    poppler_utils
+    imagemagick
+    unpaper
+    util-linux
+    tesseract
+    parallel
+    units
+    bc
+    sane-frontends
+  ];
 
   installPhase = ''
     install -m755 -D scan $out/bin/scan-pdf
