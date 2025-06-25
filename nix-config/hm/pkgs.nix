@@ -248,6 +248,7 @@ let
         upterm # Secure terminal-session sharing
         sslscan # Tests SSL/TLS services and discover supported cipher suites
         websocat # Command-line client for WebSockets (like netcat/socat)
+        wireguard-tools
       ];
 
       http = [
