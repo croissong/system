@@ -32,7 +32,6 @@ let
       libation # Audible audiobook manager
       system-config-printer
       ocrmypdf # Adds an OCR text layer to scanned PDF files
-      sane-scan-pdf # Sane command-line scan-to-pdf script
       sane-airscan
 
       ## maybe/on-demand/unused

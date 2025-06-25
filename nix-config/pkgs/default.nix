@@ -16,7 +16,6 @@
   git-repo-manager = pkgs.callPackage ./git-repo-manager.nix { };
   keyboard-chattering-fix = pkgs.callPackage ./keyboard-chattering-fix.nix { };
   qsv = pkgs.callPackage ./qsv.nix { inherit versions; };
-  sane-scan-pdf = pkgs.callPackage ./sane-scan-pdf.nix { inherit versions; };
   xmlformatter = pkgs.callPackage ./xmlformatter.nix { inherit versions; };
   service-status = pkgs.callPackage ./service-status.nix { };
   spotify-backup = pkgs.callPackage ./spotify-backup.nix { };
