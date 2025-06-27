@@ -36,6 +36,7 @@
     ./virtualisation.nix
     ./vpn.nix
     ./hardware-configuration.nix
+    ./wm.nix
   ];
 
   nixpkgs = {

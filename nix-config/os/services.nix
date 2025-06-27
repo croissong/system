@@ -3,6 +3,8 @@
   services = {
     fwupd.enable = true;
 
+    flatpak.enable = true;
+
     # https://nixos.wiki/wiki/Syncthing
     syncthing = {
       enable = true;
