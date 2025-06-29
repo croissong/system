@@ -15,10 +15,10 @@
     };
 
     incus = {
-      enable = true;
+      enable = false;
       socketActivation = true;
     };
 
-    waydroid.enable = true;
+    waydroid.enable = false;
   };
 }
