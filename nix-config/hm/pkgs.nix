@@ -109,6 +109,9 @@ let
 
           sttr # cli to perform various operations on string
           dtool # CLI tool collection to assist development
+
+          recode # Converts files between various character sets and usages
+          enca # Detects the encoding of text files and reencodes them
         ];
 
         csv = [
