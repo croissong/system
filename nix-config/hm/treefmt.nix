@@ -9,6 +9,7 @@
     black.enable = true;
     cue.enable = true;
     d2.enable = true;
+    dart-format.enable = true;
     gofmt.enable = true;
     just.enable = true;
     jsonnet-lint.enable = true;
