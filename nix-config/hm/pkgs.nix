@@ -50,9 +50,13 @@ let
     dot = [
       calsync
       chezmoi # Manage your dotfiles across multiple machines
-      inputs.esplanade.packages.${pkgs.system}.default
       my-tabs
       updatecli # Continuously update everything
+    ];
+
+    moi = [
+      je
+      esplanade
     ];
 
     cli = {
@@ -155,7 +159,7 @@ let
         rclone # CLI to sync files and directories to and from major cloud storage
 
         spotify-backup
-        inputs.gitwatch-rs.packages.${pkgs.system}.default
+        gitwatch-rs
       ];
 
       tools = [

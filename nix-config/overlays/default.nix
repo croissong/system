@@ -67,10 +67,19 @@ generatedImports
     };
   };
 
-  tree-grepper = final: _prev: {
-    tree-grepper = {
-      system = final.system;
-      overlays = [ (import inputs.tree-grepper.overlay) ];
-    };
+  tree-grepper = final: prev: {
+    tree-grepper = final.callPackage inputs.tree-grepper.overlay { };
+  };
+
+  je = final: prev: {
+    je = inputs.je.packages.${final.system}.default;
+  };
+
+  esplanade = final: prev: {
+    esplanade = inputs.esplanade.packages.${final.system}.default;
+  };
+
+  gitwatch-rs = final: prev: {
+    gitwatch-rs = inputs.gitwatch-rs.packages.${final.system}.default;
   };
 }

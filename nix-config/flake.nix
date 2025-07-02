@@ -55,6 +55,7 @@
     esplanade.url = "git+ssh://git@github.com/croissong/esplanade";
     # gitwatch-rs.url = "git+ssh://git@github.com/croissong/gitwatch-rs";
     gitwatch-rs.url = "path:/home/moi/code/moi/gitwatch-rs";
+    je.url = "path:/home/moi/code/moi/je";
 
     priv.url = "git+file:///home/moi/dot/priv";
 
