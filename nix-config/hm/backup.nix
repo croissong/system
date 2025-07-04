@@ -25,7 +25,7 @@ let
             ripgrep
           ]
         }";
-        ExecStopPost = "${lib.getExe pkgs.je} backup";
+        ExecStopPost = "${lib.getExe pkgs.je} service-status backup";
       };
     };
 
