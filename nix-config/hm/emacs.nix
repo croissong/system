@@ -19,7 +19,10 @@ in
   services.emacs = {
     enable = true;
     package = package;
-    client.enable = true;
+    client = {
+      enable = true;
+      arguments = [ "-r" ];
+    };
     defaultEditor = true;
     startWithUserSession = "graphical";
   };
