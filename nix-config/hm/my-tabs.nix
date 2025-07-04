@@ -12,8 +12,7 @@ let
 
       Service = {
         Type = "oneshot";
-        ExecStart = ''${lib.getExe pkgs.my-tabs} dump --cleanup --commit --ignore "$"{HOME}/dot/priv/tabs-ignore-list.txt "$"{XDG_STATE_HOME}/my-tabs/dump.txt'';
-        ExecStopPost = "${lib.getExe pkgs.service-status} tabs";
+        ExecStart = "${lib.getExe pkgs.je} tabs dump";
       };
     };
 

@@ -8,7 +8,6 @@
   gitwatch = inputs.gitwatch.packages.${system}.gitwatch;
 
   calsync = pkgs.callPackage ./calsync.nix { };
-  my-tabs = pkgs.callPackage ./my-tabs.nix { };
   focus = pkgs.callPackage ./focus.nix { inherit versions; };
   gitwatch-rs = pkgs.callPackage ./gitwatch-rs.nix { };
   holos = pkgs.callPackage ./holos.nix { };
