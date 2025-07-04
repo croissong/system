@@ -50,12 +50,9 @@
     };
 
     xml = {
-      command = "${pkgs.xmlformatter}/bin/xmlformat";
+      command = "${pkgs.libxml2}/bin/xmllint";
       options = [
-        "--blanks"
-        "--indent"
-        "4"
-        "--selfclose"
+        "--format"
         "-"
       ];
       includes = [ "*.xml" ];
