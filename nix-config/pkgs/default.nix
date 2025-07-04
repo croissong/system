@@ -14,7 +14,6 @@
   holos = pkgs.callPackage ./holos.nix { };
   redu = pkgs.callPackage ./redu.nix { inherit versions; };
   git-repo-manager = pkgs.callPackage ./git-repo-manager.nix { };
-  keyboard-chattering-fix = pkgs.callPackage ./keyboard-chattering-fix.nix { };
   qsv = pkgs.callPackage ./qsv.nix { inherit versions; };
   service-status = pkgs.callPackage ./service-status.nix { };
   spotify-backup = pkgs.callPackage ./spotify-backup.nix { };
