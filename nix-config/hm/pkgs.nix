@@ -47,7 +47,6 @@ let
     dot = [
       calsync
       chezmoi # Manage your dotfiles across multiple machines
-      my-tabs
       updatecli # Continuously update everything
     ];
 
