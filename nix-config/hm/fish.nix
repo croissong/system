@@ -99,6 +99,8 @@ let
     b64d = "sttr base64-decode";
 
     calc = "fend";
+    passs = "pass show -f";
+
     pwdc = "pwd | clip";
 
     cert = "step certificate inspect";
