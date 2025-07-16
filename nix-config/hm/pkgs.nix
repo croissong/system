@@ -301,7 +301,6 @@ let
 
       ai = [
         aichat
-        aider-chat
       ];
 
       cn = [
