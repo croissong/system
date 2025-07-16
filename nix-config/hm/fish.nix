@@ -136,7 +136,7 @@ let
     '';
 
     fish_should_add_to_history = ''
-      string match -qr "^(jj|ll|c|open|ls)(\s|\$)" -- $argv; and return 1
+      string match -qr "^(jj|ll|c|ls)(\s|\$)" -- $argv; and return 1
       return 0
     '';
 
