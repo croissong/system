@@ -1,12 +1,8 @@
 {
   pkgs ? import <nixpkgs> { },
-  system,
-  inputs,
   versions,
 }:
 {
-  gitwatch = inputs.gitwatch.packages.${system}.gitwatch;
-
   calsync = pkgs.callPackage ./calsync.nix { };
   focus = pkgs.callPackage ./focus.nix { inherit versions; };
   holos = pkgs.callPackage ./holos.nix { };

@@ -83,7 +83,7 @@
     in
     rec {
       versions = builtins.fromJSON (builtins.readFile ./versions.json);
-      packages = forAllSystems (system: import ./pkgs { inherit system inputs versions; });
+      packages = forAllSystems (system: import ./pkgs { inherit versions; });
 
       overlays = import ./overlays { inherit inputs versions; };
       nixosModules = import ./modules/nixos;

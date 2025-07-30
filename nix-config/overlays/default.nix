@@ -30,8 +30,7 @@ generatedImports
     final: _prev:
     import ../pkgs {
       pkgs = final;
-      system = final.system;
-      inherit inputs versions;
+      inherit versions;
     };
 
   modifications =
