@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.mpv = {
     enable = true;
 
-    package = pkgs.mpv.override {youtubeSupport = true;};
+    package = pkgs.mpv.override { youtubeSupport = true; };
     bindings = {
       WHEEL_UP = "ignore";
       WHEEL_DOWN = "ignore";
@@ -36,6 +37,7 @@
     scripts = with pkgs.mpvScripts; [
       reload
       seekTo
+      smart-copy-paste-2
       pkgs.mpv-simple-history
     ];
 
@@ -43,8 +45,12 @@
       reload = {
         reload_key_binding = "Ctrl+t";
       };
+      SmartCopyPaste_II = {
+        linux_copy = "wl-copy";
+        linux_paste = "wl-paste";
+      };
     };
   };
 
-  home.packages = [pkgs.yt-dlp];
+  home.packages = [ pkgs.yt-dlp ];
 }
