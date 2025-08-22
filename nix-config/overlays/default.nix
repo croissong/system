@@ -45,8 +45,6 @@ generatedImports
         ./rust.nix
       ];
 
-      flashrom = import ./flashrom.nix { inherit final prev; };
-
       termdown = prev.termdown.overrideAttrs (_: rec {
         version = "1.18.0";
         src = final.fetchFromGitHub {
