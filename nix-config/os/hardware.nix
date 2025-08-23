@@ -12,11 +12,12 @@
         intel-media-driver
       ];
     };
+
+    intel-gpu-tools.enable = true;
   };
 
   # verification
   environment.systemPackages = with pkgs; [
     libva-utils
-    intel-gpu-tools
   ];
 }
