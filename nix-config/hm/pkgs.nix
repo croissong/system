@@ -589,6 +589,7 @@ let
         flashrom
         bottom # A cross-platform graphical process/system monitor with a customizable interface
         inxi # A full featured CLI system information tool
+        dmidecode
         lshw
         hwinfo
         lm_sensors
@@ -619,6 +620,8 @@ let
       gaming = [
         wine-wayland # An Open Source implementation of the Windows API on top of OpenGL and Unix
         bottles # An easy-to-use wineprefix manager
+
+        starsector
 
         ## maybe/on-demand/unused
         # lutris # Open Source gaming platform for GNU/Linux
