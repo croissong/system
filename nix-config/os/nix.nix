@@ -1,6 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 {
   nix = {
+
+    package = pkgs.lixPackageSets.stable.lix;
+
     # https://nix.dev/manual/nix/2.22/command-ref/conf-file
     settings = {
       experimental-features = "nix-command flakes";

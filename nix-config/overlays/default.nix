@@ -25,7 +25,6 @@ in
 generatedImports
 // {
 
-  # This one brings our custom packages from the 'pkgs' directory
   additions =
     final: _prev:
     import ../pkgs {
@@ -33,28 +32,15 @@ generatedImports
       inherit versions;
     };
 
-  modifications =
-    final: prev:
-    let
-      rustOverlay = import ./rust.nix { inherit final prev; };
-    in
-    rustOverlay
-    // {
-
-      imports = [
-        ./rust.nix
-      ];
-
-      termdown = prev.termdown.overrideAttrs (_: rec {
-        version = "1.18.0";
-        src = final.fetchFromGitHub {
-          rev = version;
-          sha256 = "sha256-Hnk/MOYdbOl14fI0EFbIq7Hmc7TyhcZWGEg2/jmNJ5Y=";
-          repo = "termdown";
-          owner = "trehn";
-        };
-      });
-    };
+  lix = final: _prev: {
+    inherit (final.lixPackageSets.stable)
+      # nixpkgs-review
+      # nix-direnv
+      nix-eval-jobs
+      nix-fast-build
+      colmena
+      ;
+  };
 
   emacs-overlay = final: _prev: {
     emacs-overlay = import inputs.nixpkgs-nixos-unstable {
