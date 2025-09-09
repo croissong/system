@@ -24,6 +24,7 @@ let
       Timer = {
         Unit = "my-tabs.service";
         OnCalendar = "0/4:00:00";
+        OnBootSec = "30min";
         AccuracySec = "30min";
         Persistent = true;
       };
