@@ -80,6 +80,7 @@ let
         kdePackages.kdenlive # video editor
         menyoki # Screen{shot,cast} and perform ImageOps on the command line
         satty # Modern Screenshot Annotation Tool
+        ksnip
         bluetuith # A TUI bluetooth manager for Linux.
       ];
 
@@ -225,6 +226,8 @@ let
 
         font-manager
 
+        cook-cli
+
         ## maybe/on-demand/unused
         # nerdctl # CLI for containerd
         # python3Packages.graphtage # diff tree-like files such as JSON and XML
@@ -356,11 +359,7 @@ let
 
       lang = {
         webdev = [
-          nodejs_latest
-          bun # JavaScript runtime, bundler, transpiler and package manager
-
           nodePackages.typescript-language-server
-
           nodePackages.prettier
 
           ## maybe/on-demand/unused
@@ -695,6 +694,7 @@ let
       nix-tree
       nix-init # Generate Nix packages from URLs
       nix-search-cli
+      nixpkgs-review
 
       nixos-shell
       # https://github.com/juspay/omnix/issues/204
