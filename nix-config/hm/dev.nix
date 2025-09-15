@@ -2,11 +2,12 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs = {
     go = {
       enable = true;
-      goPath = "${config.xdg.dataHome}/go";
+      env.GOPATH = "${config.xdg.dataHome}/go";
     };
 
     java = {
