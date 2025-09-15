@@ -473,7 +473,7 @@ let
         pango # for sway fonts
         cliphist # Wayland clipboard manager
         slurp # Select a region in a Wayland compositor
-        rofi-wayland
+        rofi
         wl-clipboard
         wtype
         wev # Wayland event viewer & key events
@@ -548,8 +548,8 @@ let
       audio = [
         # TODO: collision with gotools
         # https://github.com/NixOS/nixpkgs/issues/275392
-        # sox # The Swiss Army knife of sound processing tools
-        # cozy # A modern audio book player for Linux using GTK 3
+        sox # The Swiss Army knife of sound processing tools
+        cozy # A modern audio book player for Linux using GTK 3
       ];
 
       comm = [
