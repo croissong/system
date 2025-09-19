@@ -123,16 +123,16 @@ let
     # https://fishshell.com/docs/current/cmds/bind.html
     # watch https://github.com/fish-shell/fish-shell/issues/1671
     # `bind` lists all bindings
+    # `fish_key_reader` finds key
     fish_user_key_bindings = ''
-      bind \t complete-and-search
-      bind \cw backward-kill-word
+      bind tab complete-and-search
+      bind ctrl-w backward-kill-word
 
-      # Alt+left
-      bind \e\[1\;3D backward-kill-bigword
-      bind \ek kill-whole-line
+      bind alt-left backward-kill-bigword
+      bind alt-k kill-whole-line
 
-      bind \cp undo
-      bind \ep redo
+      bind ctrl-p undo
+      bind alt-p redo
     '';
 
     fish_should_add_to_history = ''
