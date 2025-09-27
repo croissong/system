@@ -1,4 +1,3 @@
-# https://hydra.nixos.org/job/nixpkgs/trunk/krita.x86_64-linux
 {
   pkgs,
   lib,
@@ -262,7 +261,6 @@ let
         curl
         curlie # Frontend to curl that adds the ease of use of httpie, without compromising on features and performance
         httpie # A command line HTTP client whose goal is to make CLI human-friendly
-        http-prompt # An interactive HTTP command-line client
         hurl # Command line tool that performs HTTP requests defined in a simple plain text format
         openapi-generator-cli
       ];
