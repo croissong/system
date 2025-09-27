@@ -32,6 +32,7 @@
     ./security.nix
     ./services.nix
     ./sound.nix
+    ./swap.nix
     ./systemd.nix
     ./users.nix
     ./virtualisation.nix
