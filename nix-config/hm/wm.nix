@@ -21,31 +21,47 @@
   };
 
   services = {
-    swayidle = with pkgs; {
-      enable = true;
-      extraArgs = [ "-w" ];
-      events = [
-        {
-          event = "before-sleep";
-          command = "${lib.getExe swaylock} -f";
-        }
-        {
-          event = "after-resume";
-          command = "${sway}/bin/swaymsg 'output * power on'";
-        }
-      ];
-      timeouts = [
-        {
-          timeout = 1200;
-          command = "${sway}/bin/swaymsg 'output * power off'";
-          resumeCommand = "${sway}/bin/swaymsg 'output * power on'";
-        }
-        {
-          timeout = 2400;
-          command = "${systemd}/bin/systemctl suspend";
-        }
-      ];
-    };
+    # https://wiki.nixos.org/wiki/Swayidle
+    swayidle =
+      with pkgs;
+      let
+        lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
+        display = status: "swaymsg 'output * power ${status}'";
+      in
+      {
+        enable = true;
+
+        timeouts = [
+          {
+            timeout = 1200;
+            command = display "off";
+            resumeCommand = display "on";
+          }
+          {
+            timeout = 2400;
+            command = "${systemd}/bin/systemctl suspend";
+          }
+        ];
+
+        events = [
+          {
+            event = "before-sleep";
+            command = (display "off") + "; " + lock;
+          }
+          {
+            event = "after-resume";
+            command = display "on";
+          }
+          {
+            event = "lock";
+            command = (display "off") + "; " + lock;
+          }
+          {
+            event = "unlock";
+            command = display "on";
+          }
+        ];
+      };
 
     wlsunset = {
       enable = true;
