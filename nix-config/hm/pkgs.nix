@@ -743,7 +743,6 @@ let
     ];
 
     k8s = [
-      helmfile # Deploy Kubernetes Helm Charts
       krew # Krew is the package manager for kubectl plugins.
       kubectl # Kubernetes.io client binary
       kubelogin # A Kubernetes credential plugin implementing Azure authentication
@@ -751,7 +750,6 @@ let
       kubecolor
       stern # Multi pod and container log tailing for Kubernetes
       kubernetes-helm # The Kubernetes Package Manager
-      kustomize # Template-free customization of Kubernetes YAML manifests
 
       ## maybe/on-demand/unused
       # kubeshark # The API traffic viewer for Kubernetes. Think TCPDump and
