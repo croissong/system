@@ -33,6 +33,7 @@
     ./services.nix
     ./sound.nix
     ./swap.nix
+    ./syncthing.nix
     ./systemd.nix
     ./users.nix
     ./virtualisation.nix
