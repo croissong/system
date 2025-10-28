@@ -1,7 +1,7 @@
 { outputs, ... }:
 {
   services = {
-    # https://nixos.wiki/wiki/Syncthing
+    # https://wiki.nixos.org/wiki/Syncthing
     syncthing = {
       enable = true;
       user = "moi";
@@ -18,6 +18,10 @@
         folders = {
           docs = {
             path = "~/dot/docs";
+            devices = [ "phone" ];
+          };
+          cook = {
+            path = "~/dot/cook";
             devices = [ "phone" ];
           };
           notes = {
