@@ -164,7 +164,7 @@ let
         age # Modern encryption tool with small explicit keys
         b3sum # BLAKE3 cryptographic hash function
         bat # Cat clone with syntax highlighting and git integration
-        moar # Nice-to-use pager for humans
+        moor # Nice-to-use pager for humans
         broot # Fuzzy Search + tree + cd
         as-tree # Print a list of paths as a tree of paths
         gtree # Generate directory tree and the directories folder using Markdown or Programmatically
