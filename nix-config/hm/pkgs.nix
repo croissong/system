@@ -71,7 +71,6 @@ let
 
       media = [
         swayimg # Image viewer for Sway/Wayland
-        imv # Command line image viewer for tiling window managers
         oculante # minimalistic crossplatform image viewer written in Rust
         vhs # A tool for generating terminal GIFs with code
         wf-recorder # screen recording of wlroots-based compositors
@@ -274,7 +273,6 @@ let
       ];
 
       docs = [
-        asciidoctor-with-extensions
         drawio # A desktop application for creating diagrams
         graphviz # Graph visualization tools
         plantuml # Component that allows to quickly write uml diagrams
@@ -290,6 +288,7 @@ let
 
         ## maybe/on-demand/unused
         # akira-unstable # Native Linux Design application
+        # asciidoctor-with-extensions
         # no package: slidev  https://sli.dev/guide/install.html#starter-template
       ];
 
@@ -544,10 +543,7 @@ let
       ];
 
       audio = [
-        # TODO: collision with gotools
-        # https://github.com/NixOS/nixpkgs/issues/275392
         sox # The Swiss Army knife of sound processing tools
-        cozy # A modern audio book player for Linux using GTK 3
       ];
 
       comm = [
@@ -730,8 +726,6 @@ let
       # TODO: build failure
       # mitmproxy # SSL-capable man-in-the-middle HTTP proxy
       packer # tool for creating identical machine images for multiple platforms from a single source configuration
-      prometheus # for promtool promql format
-      protobuf # Google's data interchange format
       doctl # The official command line interface for the DigitalOcean API
 
       ## maybe/on-demand/unused
@@ -740,6 +734,8 @@ let
       # hexyl # A command-line hex viewer
       # mob # Tool for smooth git handover for remote pair/mob programming
       # pluto # A cli tool to help discover deprecated apiVersions in Kubernetes
+      # prometheus # for promtool promql format
+      # protobuf # Google's data interchange format
     ];
 
     k8s = [
