@@ -12,9 +12,9 @@
     DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
     DOT = "${config.home.homeDirectory}/dot";
     NH_FLAKE = "path://${DOT}/system/nix-config";
-    MOAR = "--no-statusbar --no-linenumbers --quit-if-one-screen";
+    MOOR = "--no-statusbar --no-linenumbers --quit-if-one-screen";
     NIXOS_OZONE_WL = "1"; # https://nixos.wiki/wiki/Wayland
-    PAGER = "moar";
+    PAGER = "moor";
     RIPGREP_CONFIG_PATH = "${config.xdg.configHome}/ripgrep/config";
     AGE_IDENTITY_FILE = "${config.xdg.configHome}/age/identity.age";
     AGE_RECIPIENTS_FILE = "${config.xdg.configHome}/age/public-key.txt";
@@ -41,7 +41,8 @@
     PSQL_HISTORY = "${config.xdg.dataHome}/psql_history";
     RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
     VAGRANT_HOME = "${config.xdg.dataHome}/vagrant";
-  } // outputs.vars.env;
+  }
+  // outputs.vars.env;
 
   xdg = {
     enable = true;

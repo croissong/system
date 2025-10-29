@@ -188,7 +188,7 @@ let
       body = "handlr open $argv";
     };
 
-    hist = "builtin history --show-time='%h/%d - %H:%M:%S ' | moar";
+    hist = "builtin history --show-time='%h/%d - %H:%M:%S ' | moor";
 
     tree = {
       wraps = "eza";
