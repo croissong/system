@@ -54,6 +54,7 @@
   # e.g. required to get correct SSH_AUTH_SOCK & GNUPGHOME in emacs
   systemd.user.sessionVariables = config.home.sessionVariables // {
     EDITOR = toString config.home.sessionVariables.EDITOR;
+    VISUAL = toString config.home.sessionVariables.VISUAL;
     JAVA_11_HOME = toString config.home.sessionVariables.JAVA_11_HOME;
   };
 }
