@@ -89,5 +89,7 @@
         "10"
       ];
     };
+
+    mako.enable = true;
   };
 }
