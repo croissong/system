@@ -25,8 +25,8 @@
     swayidle =
       with pkgs;
       let
-        lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
-        display = status: "swaymsg 'output * power ${status}'";
+        lock = "${swaylock}/bin/swaylock --daemonize";
+        display = status: "${sway}/bin/swaymsg 'output * power ${status}'";
       in
       {
         enable = true;
