@@ -202,7 +202,6 @@ let
         ouch # Painless compression and decompression in the terminal (git version)
 
         ookla-speedtest # Internet speedtest tool
-        podman # Tool and library for running OCI-based containers in pods
         podman-compose # A script to run docker-compose.yml using podman
 
         rsync # Fast incremental file transfer utility
@@ -658,7 +657,6 @@ let
 
     system = [
       batsignal # A lightweight battery monitor daemon
-      mako # Lightweight notification daemon for Wayland
       pamixer # Pulseaudio command-line mixer like amixer
       pavucontrol
     ];
