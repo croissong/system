@@ -1,7 +1,15 @@
 { ... }:
 {
   virtualisation = {
-    containers.enable = true;
+    containers = {
+      enable = true;
+      containersConf.settings = {
+        containers = {
+          # (hopefully tmp) fix for empty podman logs & broken testcontainers
+          log_driver = "k8s-file";
+        };
+      };
+    };
     podman = {
       # https://nixos.wiki/wiki/Podman
       enable = true;
