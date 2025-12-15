@@ -598,7 +598,7 @@ let
 
       disk = [
         btdu # Sampling disk usage profiler for btrfs
-        du-dust # du + rust = dust. Like du but more intuitive
+        dust # du + rust = dust. Like du but more intuitive
         erdtree # File-tree visualizer and disk usage analyzer
         dua # A tool to conveniently learn about the disk usage of directories, fast!
         duf # Disk Usage/Free Utility
