@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   sops.secrets.hashedPassword.neededForUsers = true;
 
   programs = {
@@ -10,7 +11,7 @@
     fish = {
       enable = true;
       # unset default 'ls' aliases, which take precedence over custom fish functions...
-      shellAliases = lib.mkForce {};
+      shellAliases = lib.mkForce { };
     };
     command-not-found.enable = false;
   };
