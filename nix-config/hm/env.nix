@@ -21,7 +21,6 @@
     SOPS_AGE_KEY_FILE = AGE_IDENTITY_FILE;
     SUMMON_PROVIDER = "${pkgs.gopass-summon-provider.outPath}/bin/gopass-summon-provider";
     TF_CLI_CONFIG_FILE = "${config.xdg.configHome}/terraform/terraformrc";
-    VISUAL = "emacsclient -c";
     WOBSOCK = "$XDG_RUNTIME_DIR/wob.sock";
 
     # bin overrides
