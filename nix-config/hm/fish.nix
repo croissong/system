@@ -90,10 +90,9 @@ let
     wayn = "the-way new";
 
     ai = "aichat --session";
-
     curl = "curlie";
-
     cut = "tuc";
+    img = "swayimg --gallery";
 
     b64e = "sttr base64-encode";
     b64d = "sttr base64-decode";
@@ -175,8 +174,6 @@ let
     };
 
     mkd = "mkdir $argv && cd $argv";
-
-    img = "swayimg";
 
     top = {
       wraps = "btm";
