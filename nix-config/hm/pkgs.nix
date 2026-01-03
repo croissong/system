@@ -180,7 +180,7 @@ let
         riffdiff # A diff filter highlighting which line parts have changed
         yamllint
         dig
-        dogdns # Command-line DNS client like dig
+        doggo # Command-line DNS Client for Humans
 
         gnumake
 

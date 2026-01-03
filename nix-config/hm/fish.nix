@@ -109,6 +109,8 @@ let
       setCursor = true;
     };
 
+    dig = "doggo";
+
     mvnpkg = "mvn package -DskipTests";
     mvndep = "mvn dependency:resolve -Dclassifier=sources";
     mvntree = "mvn dependency:tree | tee /tmp/tree.txt";
@@ -195,11 +197,6 @@ let
     ps = {
       wraps = "procs";
       body = "procs $argv";
-    };
-
-    dig = {
-      wraps = "dog";
-      body = "dog $argv";
     };
 
     sed = {
