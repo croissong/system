@@ -363,7 +363,7 @@ let
         ];
 
         java = [
-          jetbrains.idea-community # IDE by Jetbrains, community edition
+          jetbrains.idea-oss
           jdt-language-server
 
           ## maybe/on-demand/unused
