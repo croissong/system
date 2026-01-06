@@ -43,24 +43,12 @@
           }
         ];
 
-        events = [
-          {
-            event = "before-sleep";
-            command = (display "off") + "; " + lock;
-          }
-          {
-            event = "after-resume";
-            command = display "on";
-          }
-          {
-            event = "lock";
-            command = (display "off") + "; " + lock;
-          }
-          {
-            event = "unlock";
-            command = display "on";
-          }
-        ];
+        events = {
+          before-sleep = (display "off") + "; " + lock;
+          after-resume = display "on";
+          lock = (display "off") + "; " + lock;
+          unlock = display "on";
+        };
       };
 
     wlsunset = {
