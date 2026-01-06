@@ -656,7 +656,6 @@ let
     ];
 
     system = [
-      batsignal # A lightweight battery monitor daemon
       pamixer # Pulseaudio command-line mixer like amixer
       pavucontrol
     ];
