@@ -156,7 +156,7 @@ let
         httm # Interactive, file-level Time Machine-like tool for ZFS/btrfs
         rclone # CLI to sync files and directories to and from major cloud storage
 
-        spotify-backup
+        exportify-cli
         gitwatch-rs
       ];
 

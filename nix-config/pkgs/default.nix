@@ -10,7 +10,7 @@
   git-repo-manager = pkgs.callPackage ./git-repo-manager.nix { };
   qsv = pkgs.callPackage ./qsv.nix { inherit versions; };
   service-status = pkgs.callPackage ./service-status.nix { };
-  spotify-backup = pkgs.callPackage ./spotify-backup.nix { };
+  exportify-cli = pkgs.callPackage ./exportify-cli.nix { };
   wutag = pkgs.callPackage ./wutag.nix { inherit versions; };
 
   mpv-simple-history = pkgs.callPackage ./mpv-simple-history.nix { };
