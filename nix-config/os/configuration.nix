@@ -14,6 +14,7 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
+    ./audio.nix
     ./base.nix
     ./boot.nix
     ./env.nix
@@ -31,7 +32,6 @@
     ./secrets.nix
     ./security.nix
     ./services.nix
-    ./sound.nix
     ./swap.nix
     ./syncthing.nix
     ./systemd.nix
