@@ -1,6 +1,10 @@
 { pkgs, ... }:
 {
   # https://nixos.wiki/wiki/PipeWire
+
+  # pactl list sources short
+  # pw-loopback -l 5000 -C rnnoise_source
+
   security.rtkit.enable = true;
 
   services = {
@@ -12,10 +16,6 @@
       # https://discourse.nixos.org/t/pipewire-rnnoise-module-wont-work/58975/11
       extraConfig.pipewire = {
         "99-input-denoising" = {
-          "pulse.properties" = {
-            "default.configured.audio.source" = "Noise Canceling source";
-          };
-
           "context.modules" = [
             {
               name = "libpipewire-module-filter-chain";
@@ -41,6 +41,8 @@
                   "node.name" = "capture.rnnoise_source";
                   "node.passive" = true;
                   "audio.rate" = 48000;
+                  "target.object" =
+                    "alsa_input.usb-Blue_Microphones_Yeti_Nano_2223SG000B88_888-000439040606-00.analog-stereo";
                 };
                 "playback.props" = {
                   "node.name" = "rnnoise_source";
@@ -54,6 +56,20 @@
       };
 
       wireplumber.extraConfig = {
+        "10-default-source" = {
+          "audio.source" = [
+            {
+              matches = [
+                { "media.name" = "Noise Canceling source"; }
+              ];
+              actions = {
+                update-props = {
+                  "priority.session" = 2000;
+                };
+              };
+            }
+          ];
+        };
         "99-deprioritize-monitors" = {
           "monitor.alsa.rules" = [
             {
