@@ -78,6 +78,7 @@ let
         kdePackages.kdenlive # video editor
         menyoki # Screen{shot,cast} and perform ImageOps on the command line
         satty # Modern Screenshot Annotation Tool
+        rustdesk-flutter
         ksnip
         bluetuith # A TUI bluetooth manager for Linux.
       ];
@@ -303,7 +304,6 @@ let
       ];
 
       cn = [
-        argocd # Declarative continuous deployment for Kubernetes
         azure-cli
         civo
         hcloud
@@ -318,11 +318,8 @@ let
         tflint # Terraform linter
 
         ## maybe/on-demand/unused
-        # argo # Container native workflow engine for Kubernetes
+        # argocd # Declarative continuous deployment for Kubernetes
         # k6 # A modern load testing tool, using Go and JavaScript
-        # istioctl
-        # nodePackages.cdktf-cli # CDK for Terraform CLI
-        # pulumi-bin
         # tektoncd-cli # CLI for interacting with Tekton
         # mimir # Grafana Mimir
         # grafana
@@ -530,7 +527,6 @@ let
         krita # Edit and paint images
         pinta # Drawing/editing program modeled after Paint.NET
         gimp # The GNU Image Manipulation Program
-        epick # Color picker for creating harmonic color palettes
         hyprpicker
         pastel # A command-line tool to generate, analyze, convert and manipulate colors
       ];
@@ -549,6 +545,8 @@ let
         mumble # low-latency, high quality voice chat software
         signal-desktop
         slack
+        teams-for-linux
+        mattermost-desktop
 
         ## maybe/on-demand/unused
         # linphone
