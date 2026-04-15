@@ -74,7 +74,7 @@
       enable = true;
       extraOptions = [
         "-max-items"
-        "10"
+        "30"
       ];
     };
 

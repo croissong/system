@@ -1,4 +1,4 @@
-{ outputs, ... }:
+{ ... }:
 {
   services = {
     fwupd.enable = true;
