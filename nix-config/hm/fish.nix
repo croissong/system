@@ -102,10 +102,17 @@ let
 
     pwdc = "pwd | clip";
 
+    pwg = "pwgen -cy  32 1 | clip";
+
     cert = "step certificate inspect";
 
     tfa = {
       expansion = "tf apply -target='%'";
+      setCursor = true;
+    };
+
+    repl = {
+      expansion = "ruplacer --no-regex '%' '' --go";
       setCursor = true;
     };
 
@@ -118,6 +125,12 @@ let
     mvnupdate = "mvn versions:dependency-updates-report -DprocessDependencyManagementTransitive=false && chromium target/site/dependency-updates-report.html";
 
     nixu = "j nix-os && j nix-hm false";
+
+    cooks = "cook server --port 9081  ~/dot/cook/";
+
+    colorpick = ''
+      grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:-
+    '';
   };
 
   functions = kubectl.functions // {
@@ -180,11 +193,6 @@ let
     top = {
       wraps = "btm";
       body = "btm $argv";
-    };
-
-    open = {
-      wraps = "handlr open";
-      body = "handlr open $argv";
     };
 
     hist = "builtin history --show-time='%h/%d - %H:%M:%S ' | moor";
@@ -327,7 +335,7 @@ let
       body = "wthrr $argv";
     };
 
-    myip = "dig -1 myip.opendns.com @resolver1.opendns.com";
+    myip = "doggo -1 myip.opendns.com @resolver1.opendns.com";
     cg = "cd (git root)";
     printer = "system-config-printer";
 
