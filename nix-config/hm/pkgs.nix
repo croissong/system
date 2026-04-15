@@ -61,12 +61,12 @@ let
         oauth2c # (step-cli fallback...) User-friendly OAuth2 CLI
         pwgen
         kubeconform # Tool for validating Kubernetes YAML or JSON configuration files
+        skopeo # A command line utility for various operations on container images
 
         ## maybe/on-demand/unused
         # angle-grinder # Slice and dice logs on the command line
         # cocogitto # The Conventional Commits & semver toolbox
         # kubernetes-polaris # Validate and remediate Kubernetes resources
-        # skopeo # A command line utility for various operations on container images
       ];
 
       media = [
@@ -188,6 +188,7 @@ let
         oath-toolkit # oathtool
         gopass # The slightly more awesome standard unix password manager for teams.
         gopass-summon-provider # summon provider for gopass
+        git-credential-gopass # summon provider for gopass
         _1password-cli # 1Password command-line tool
         tessen # An interactive menu to autotype and copy Pass and GoPass data
 
@@ -197,8 +198,6 @@ let
 
         just # A handy way to save and run project-specific commands
         go-task # A task runner / simpler Make alternative
-
-        git-repo-manager # A git tool to manage & sync repos
 
         ouch # Painless compression and decompression in the terminal (git version)
 
@@ -226,11 +225,12 @@ let
 
         cook-cli
 
-        ## maybe/on-demand/unused
+        ## bench
         # nerdctl # CLI for containerd
         # python3Packages.graphtage # diff tree-like files such as JSON and XML
         # gitleaks
         # bfg-repo-cleaner #  cleansing bad data out of your Git repository history
+        # git-repo-manager
       ];
     };
 
@@ -352,8 +352,8 @@ let
 
       lang = {
         webdev = [
-          nodePackages.typescript-language-server
-          nodePackages.prettier
+          typescript-language-server
+          prettier
 
           ## maybe/on-demand/unused
           # deno # A secure runtime for JavaScript and TypeScript
@@ -634,6 +634,9 @@ let
 
     pers = [
       hledger
+      hledger-ui
+      hledger-web
+      # hledger-fmt
     ];
 
     media = [
@@ -683,6 +686,7 @@ let
       nix-tree
       nix-init # Generate Nix packages from URLs
       nix-search-cli
+      nix-update
       nixpkgs-review
 
       nixos-shell
