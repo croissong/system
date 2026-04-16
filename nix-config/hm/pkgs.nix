@@ -758,6 +758,9 @@ let
       tenacity # FLOSS Audacity Fork
 
       blender
+
+      qcad # 1. , technical drawings
+      librecad # 2d
       freecad # General purpose Open Source 3D modeler
 
       zoom-us # Video Conferencing and Web Conferencing Service
