@@ -301,6 +301,7 @@ let
 
       ai = [
         aichat
+        claude-agent-acp
       ];
 
       cn = [
@@ -740,6 +741,7 @@ let
     k8s = [
       krew # Krew is the package manager for kubectl plugins.
       kubectl # Kubernetes.io client binary
+      k9s
       kubelogin # A Kubernetes credential plugin implementing Azure authentication
       kubeswitch
       kubecolor
