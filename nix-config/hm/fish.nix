@@ -207,11 +207,6 @@ let
       body = "procs $argv";
     };
 
-    sed = {
-      wraps = "sd";
-      body = "sd $argv";
-    };
-
     diff = {
       wraps = "difft";
       body = "difft $argv";
