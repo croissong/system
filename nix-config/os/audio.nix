@@ -12,48 +12,50 @@
       enable = true;
       alsa.enable = true;
       pulse.enable = true;
+      extraLadspaPackages = [ pkgs.rnnoise-plugin ];
 
-      # https://discourse.nixos.org/t/pipewire-rnnoise-module-wont-work/58975/11
-      extraConfig.pipewire = {
-        "99-input-denoising" = {
-          "context.modules" = [
+      configPackages = [
+        # https://discourse.nixos.org/t/pipewire-rnnoise-module-wont-work/58975/11
+        (pkgs.writeTextDir "share/pipewire/pipewire.conf.d/99-input-denoising.conf" ''
+            context.modules = [
             {
-              name = "libpipewire-module-filter-chain";
+              name = libpipewire-module-filter-chain
               args = {
-                "node.description" = "Noise Canceling source";
-                "media.name" = "Noise Canceling source";
-                "filter.graph" = {
+                node.description = "Noise Canceling source"
+                media.name = "Noise Canceling source"
+                filter.graph = {
                   nodes = [
                     {
-                      type = "ladspa";
-                      name = "rnnoise";
-                      plugin = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
-                      label = "noise_suppressor_mono";
+                      type = "ladspa"
+                      name = "rnnoise"
+                      plugin = "librnnoise_ladspa"
+                      label = "noise_suppressor_mono"
                       control = {
-                        "VAD Threshold (%)" = 50.0;
-                        "VAD Grace Period (ms)" = 150;
-                        "Retroactive VAD Grace (ms)" = 50;
-                      };
+                        "VAD Threshold (%)" = 50.0
+                        "VAD Grace Period (ms)" = 150
+                        "Retroactive VAD Grace (ms)" = 50
+                      }
                     }
-                  ];
-                };
-                "capture.props" = {
-                  "node.name" = "capture.rnnoise_source";
-                  "node.passive" = true;
-                  "audio.rate" = 48000;
-                  "target.object" =
-                    "alsa_input.usb-Blue_Microphones_Yeti_Nano_2223SG000B88_888-000439040606-00.analog-stereo";
-                };
-                "playback.props" = {
-                  "node.name" = "rnnoise_source";
-                  "media.class" = "Audio/Source";
-                  "audio.rate" = 48000;
-                };
-              };
+                  ]
+                }
+                capture.props = {
+                  node.name = "capture.rnnoise_source"
+                  node.passive = true
+                  audio.rate = 48000
+                  target.object =
+                    "alsa_input.usb-Blue_Microphones_Yeti_Nano_2223SG000B88_888-000439040606-00.analog-stereo"
+                }
+                playback.props = {
+                  node.name = "rnnoise_source"
+                  node.always-process = true
+                  media.class = "Audio/Source"
+                  audio.rate = 48000
+                }
+              }
             }
-          ];
-        };
-      };
+          ]
+        '')
+      ];
 
       wireplumber.extraConfig = {
         "10-default-source" = {
