@@ -14,7 +14,7 @@
     keybase.enable = true;
 
     spotifyd = {
-      enable = true;
+      enable = false;
       settings = {
         global = {
           username = outputs.vars.spotify.username;
