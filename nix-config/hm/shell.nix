@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 {
+
+  home.shell = {
+    enableBashIntegration = false;
+    enableZshIntegration = false;
+  };
+
   programs = {
     bash = {
       enable = true;
@@ -20,12 +26,10 @@
     starship = {
       enable = true;
       enableTransience = true;
-      enableZshIntegration = false;
     };
 
     atuin = {
       enable = true;
-      enableZshIntegration = false;
       flags = [ "--disable-up-arrow" ];
     };
 
@@ -40,7 +44,6 @@
 
     direnv = {
       enable = true;
-      enableZshIntegration = false;
       nix-direnv.enable = true;
     };
 
