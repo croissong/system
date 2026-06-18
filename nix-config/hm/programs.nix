@@ -12,7 +12,7 @@
     nix-index.enableFishIntegration = false;
     command-not-found.enable = false;
 
-    vscode = {
+    vscodium = {
       enable = true;
       package = pkgs.vscodium.fhsWithPackages (
         ps: with ps; [
