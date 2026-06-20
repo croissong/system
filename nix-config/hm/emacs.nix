@@ -16,8 +16,7 @@ let
         # https://codeberg.org/divyaranjan/emacs-reader/issues/115
         # https://github.com/shanyouli/nur-packages/blob/master/pkgs/emacs/emacs-reader.nix
         (melpaBuild {
-          ename = "reader";
-          pname = "emacs-reader";
+          pname = "reader";
           version = "20260515";
           src = fetchFromGitea {
             domain = "codeberg.org";
