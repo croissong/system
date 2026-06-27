@@ -40,6 +40,9 @@
     PSQL_HISTORY = "${config.xdg.dataHome}/psql_history";
     RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
     VAGRANT_HOME = "${config.xdg.dataHome}/vagrant";
+
+    ANTHROPIC_API_KEY_FILE = config.sops.secrets."anthropicApikey".path;
+    OPENAI_API_KEY_FILE = config.sops.secrets."openaiApikey".path;
   }
   // outputs.vars.env;
 
