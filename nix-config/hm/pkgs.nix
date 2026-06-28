@@ -683,6 +683,7 @@ let
       nil # Yet another language server for Nix
       nixd # Feature-rich Nix language server interoperating with C++ nix
       nixos-generators
+      nix-alien
       nix-prefetch-git # Script used to obtain source hashes for fetchgit
       nix-tree
       nix-init # Generate Nix packages from URLs

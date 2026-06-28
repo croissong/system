@@ -65,4 +65,8 @@ generatedImports
   gitwatch-rs = final: prev: {
     gitwatch-rs = inputs.gitwatch-rs.packages.${final.system}.default;
   };
+
+  nix-alien = final: prev: {
+    nix-alien = inputs.nix-alien.packages.${final.system}.nix-alien;
+  };
 }
