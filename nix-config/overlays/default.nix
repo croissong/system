@@ -16,7 +16,7 @@ let
   );
 
   generatedImports = builtins.listToAttrs (
-    builtins.map (pkg: {
+    map (pkg: {
       name = pkg;
       value = importPackage pkg;
     }) nixpkgsInputs
