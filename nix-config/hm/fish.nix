@@ -98,7 +98,10 @@ let
     b64d = "sttr base64-decode";
 
     calc = "fend";
-    passs = "pass show -f";
+    passs = {
+      expansion = "pass show -f '%' | bat";
+      setCursor = true;
+    };
 
     pwdc = "pwd | clip";
 
