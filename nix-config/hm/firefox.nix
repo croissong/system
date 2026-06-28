@@ -8,10 +8,6 @@ in
 
     profiles.default = {
       path = "kxzh8tid.default";
-      userChrome = ''
-
-        #TabsToolbar { visibility: collapse; }
-      '';
 
       bookmarks = {
         force = true;
@@ -37,6 +33,9 @@ in
         "mousewheel.with_control.action" = 1;
 
         "extensions.formautofill.creditCards.enabled" = false;
+
+        "sidebar.main.tools" = "syncedtabs,aichat";
+        "sidebar.verticalTabs" = true;
 
         "signon.firefoxRelay.feature" = false;
 
@@ -140,15 +139,17 @@ in
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/brotab/latest.xpi";
         };
 
-        "duplicate-tab@firefox.stefansundin.com" = {
-          installation_mode = "force_installed";
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/duplicate-tab-shortcut/latest.xpi";
-        };
-
         "sponsorBlocker@ajay.app" = {
           installation_mode = "force_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
         };
+
+        "tabswitcher@oddsquat.org" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/tabswitcher/latest.xpi";
+        };
+
+        # https://addons.mozilla.org/en-US/firefox/addon/easy-container-shortcuts/
 
         # "*" = {
         #   installation_mode = "blocked";
