@@ -22,7 +22,11 @@
 
     rustfmt.enable = true;
 
-    shellcheck.enable = true;
+    shellcheck = {
+      enable = true;
+      external-sources = true;
+    };
+
     shfmt.enable = true;
     stylua.enable = true;
     taplo.enable = true;
