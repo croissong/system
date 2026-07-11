@@ -44,7 +44,6 @@ let
     orga = [ klog-time-tracker ];
 
     dot = [
-      calsync
       chezmoi # Manage your dotfiles across multiple machines
       updatecli # Continuously update everything
     ];

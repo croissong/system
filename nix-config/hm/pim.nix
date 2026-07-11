@@ -11,7 +11,7 @@
   ];
 
   home.packages = with pkgs; [
-    davmail
+    # davmail
     khal
     khard
     oama
@@ -33,14 +33,14 @@
 
     himalaya = {
       enable = true;
-      package = pkgs.himalaya.override {
-        buildFeatures = ["notmuch"];
-      };
+      # package = pkgs.himalaya.override {
+      #   buildFeatures = ["notmuch"];
+      # };
     };
 
-    notmuch = {
-      enable = true;
-    };
+    # notmuch = {
+    #   enable = true;
+    # };
   };
 
   services = {
@@ -78,13 +78,17 @@
             patterns = [ "INBOX" ];
           };
 
-          notmuch = {
-            enable = true;
-          };
+          # notmuch = {
+          #   enable = true;
+          # };
 
           himalaya = {
             enable = true;
             settings = { };
+          };
+
+          folders = {
+            inbox = "datawerk/Inbox";
           };
         };
       };
@@ -157,41 +161,6 @@
           #   enable = true;
           #   readOnly = true;
           # };
-        };
-      };
-    };
-  };
-
-  systemd.user = {
-    services = {
-      calsync = {
-        Unit = {
-          Description = "calsync";
-        };
-
-        Service = {
-          Type = "oneshot";
-          ExecStart = "${lib.getExe pkgs.calsync} --noninteractive";
-          ExecStopPost = "${lib.getExe pkgs.service-status} calsync";
-        };
-      };
-    };
-
-    timers = {
-      calsync = {
-        Unit = {
-          Description = "regular calsync";
-          After = "network-online.target";
-        };
-
-        Timer = {
-          Unit = "calsync.service";
-          OnCalendar = "0/2:00:00";
-          AccuracySec = "10min";
-        };
-
-        Install = {
-          WantedBy = [ "timers.target" ];
         };
       };
     };
