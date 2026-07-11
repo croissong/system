@@ -2,13 +2,15 @@
 {
   xdg.portal = with pkgs; {
     enable = true;
-    xdgOpenUsePortal = false;
-    extraPortals = [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-      kdePackages.xdg-desktop-portal-kde
-    ];
-    configPackages = [ sway ];
+    wlr = {
+      enable = true;
+      settings = {
+        screencast = {
+          chooser_type = "simple";
+          chooser_cmd = "${slurp}/bin/slurp -f 'Monitor: %o' -or";
+        };
+      };
+    };
   };
 
 }
