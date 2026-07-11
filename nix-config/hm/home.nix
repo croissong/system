@@ -43,6 +43,7 @@
     enableNixpkgsReleaseCheck = false;
 
     pointerCursor = {
+      enable = true;
       package = pkgs.vanilla-dmz;
       name = "Vanilla-DMZ";
     };
