@@ -7,15 +7,15 @@
 }:
 python3Packages.buildPythonApplication rec {
   pname = "exportify-cli";
-  version = "v0.5.3";
+  version = "v0.7.0";
 
   src = fetchFromGitHub rec {
     inherit pname version;
     name = pname;
-    rev = "1e8613734aa3babb5ae45219e4d094069a0b1eac";
+    rev = "v0.7.0";
     owner = "donmerendolo";
     repo = "exportify-cli";
-    sha256 = "sha256-vfCRwJM8h7SM+3Q58QKtFcPVNYXt1qdv8VYp/cgXv8A=";
+    sha256 = "sha256-Iy7haSZe5ID/4PTBM5JtMP+sxy50oin/DHdYR8EH/4k=";
   };
 
   propagatedBuildInputs = with python3Packages; [
