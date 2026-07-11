@@ -13,17 +13,17 @@
   };
 
   hardware = {
-    printers = {
-      ensurePrinters = [
-        {
-          name = "Moi";
-          location = "Home";
-          deviceUri = "ipp://HP9457A541BE8C.local:631/ipp/print";
-          model = "everywhere";
-        }
-      ];
-      ensureDefaultPrinter = "Moi";
-    };
+    # printers = {
+    #   ensurePrinters = [
+    #     {
+    #       name = "Moi";
+    #       location = "Home";
+    #       deviceUri = "ipp://HP9457A541BE8C.local:631/ipp/print";
+    #       model = "everywhere";
+    #     }
+    #   ];
+    #   ensureDefaultPrinter = "Moi";
+    # };
 
     sane = {
       enable = true;
