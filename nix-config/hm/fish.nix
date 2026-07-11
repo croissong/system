@@ -14,6 +14,9 @@ let
             src = fzf-fish.src;
           }
         ];
+        shellInit = ''
+          set -gx OPENAI_API_KEY (cat $OPENAI_API_KEY_FILE)
+        '';
       };
 
       # https://discourse.nixos.org/t/slow-build-at-building-man-cache/52365/4
@@ -82,6 +85,8 @@ let
   };
 
   abbreviations = kubectl.abbreviations // {
+
+    fixkbd = "sudo modprobe -r atkbd && sudo modprobe atkbd";
 
     dl = "curl --create-dirs -O --output-dir /tmp/";
     jwtd = "jwt decode -j --date=Local";
