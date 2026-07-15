@@ -10,13 +10,13 @@
 
   services.gitwatch = {
     notes = {
-      repo_path = "${config.home.homeDirectory}/dot/notes/";
+      repo_path = "${config.home.homeDirectory}/dot/notes/moi";
       args = [ "--log-level=debug" ];
       extraPackages = with pkgs; [
         bash
         coreutils
         git
-        aichat
+        claude-code
       ];
     };
     docs = {
