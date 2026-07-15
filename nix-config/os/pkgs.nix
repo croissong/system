@@ -7,5 +7,6 @@
     git
     gnupg
     home-manager
+    unixtools.netstat
   ];
 }

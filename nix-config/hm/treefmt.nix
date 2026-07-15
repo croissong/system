@@ -34,6 +34,15 @@
   };
 
   settings.formatter = {
+    hledger = {
+      command = "${lib.getExe pkgs.hledger-fmt}";
+      options = [
+        "--exit-zero-on-changes"
+        "--fix"
+      ];
+      includes = [ "*.hledger" ];
+    };
+
     slint = {
       command = "${lib.getExe pkgs.slint-lsp}";
       options = [

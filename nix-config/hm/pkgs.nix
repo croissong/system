@@ -299,7 +299,6 @@ let
       ];
 
       ai = [
-        aichat
         claude-agent-acp
       ];
 
