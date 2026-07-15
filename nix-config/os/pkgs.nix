@@ -8,5 +8,6 @@
     gnupg
     home-manager
     unixtools.netstat
+    pciutils
   ];
 }
