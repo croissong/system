@@ -1,17 +1,18 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
       font-awesome
+      font-awesome_6
       hack-font
       noto-fonts
     ];
 
     fontconfig = {
       defaultFonts = {
-        serif = ["Noto Serif"];
-        sansSerif = ["Noto Sans"];
-        monospace = ["Hack"];
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "Noto Sans" ];
+        monospace = [ "Hack" ];
       };
     };
   };
