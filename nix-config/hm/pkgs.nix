@@ -441,7 +441,8 @@ let
         shfmt # A shell parser and formatter
         shellcheck # Shell script analysis tool (binary release)
         bash-language-server
-        nushell # A modern shell written in Rust
+
+        # nushell # A modern shell written in Rust
       ];
     };
 
@@ -635,7 +636,7 @@ let
       hledger
       hledger-ui
       hledger-web
-      # hledger-fmt
+      hledger-fmt
     ];
 
     media = [
