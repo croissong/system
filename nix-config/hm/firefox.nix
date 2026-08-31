@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
-  bookmarks = builtins.fromJSON (builtins.readFile ../bookmarks.json);
+  bookmarks = lib.importJSON ../bookmarks.json;
 in
 {
   programs.firefox = {
